@@ -83,7 +83,7 @@ namespace BombOtter.Sprite
             {
                 AnimateLeft(gameTime);
 
-                if (spritePosition.X > 20)
+                if (spritePosition.X > (spriteWidth / 2))
                 {
                     spritePosition = new Vector2(spritePosition.X - spriteSpeed, spritePosition.Y);
                 }
