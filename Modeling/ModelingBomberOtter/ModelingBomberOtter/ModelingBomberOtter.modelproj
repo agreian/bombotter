@@ -17,6 +17,13 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" />
   <ItemGroup>
+    <Content Include="Sequence\DropBomb.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Sequence\DropBomb.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Sequence\DropBomb.sequencediagram</DependentUpon>
+    </Content>
     <Folder Include="ModelDefinition\" />
     <Content Include="Main.classdiagram">
       <SubType>Content</SubType>
@@ -28,5 +35,6 @@
     <Content Include="ModelDefinition\ModelingBomberOtter.uml">
       <SubType>Content</SubType>
     </Content>
+    <Folder Include="Sequence" />
   </ItemGroup>
 </Project>
