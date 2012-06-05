@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="754ffdf3-bfd0-4cfd-b6de-71a4f280ef28" name="CreateGame" linkedPackageId="3004697c-fd06-469a-87ac-4aa48b272471" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="65cc28ab-fca8-42e8-8e40-cee99304a7e6">
+      <profileInstance Id="f7b1a41d-c310-468e-9903-f59ee7455280" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="6ab37d45-477f-42c9-a03b-ee5bd36a4f23">
+      <profileInstance Id="91664022-4dfb-4569-8279-af37efc5b105" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="6fa400f5-1533-4dcd-b682-0678019d4a97" name="CreateGame" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="75c62a35-089f-4f03-be9d-97190413c776" />
+        <nodes>
+          <initialNode Id="d4975ce9-d4d1-45c3-8150-500f4dc7cedc" name="Initial1" isLeaf="false">
+            <elementDefinition Id="91fc509d-cf57-4a44-92b5-6d5bc3490a55" />
+            <flowNodeTargets>
+              <controlFlow Id="15b37950-1a86-4b8e-a500-939368dfcc90" isLeaf="false">
+                <opaqueActionMoniker Id="b5c79fdb-bd56-46cb-87de-3475e217171a" LastKnownName="Créer une partie" />
+                <elementDefinition Id="1056ec3f-95c0-427e-b80e-80c6edd163ce" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <objectNode Id="8d61582a-ca8a-45dd-9d26-e9a36198b917" name="Joueur connecté" isLeaf="false" ordering="Unordered" isControlType="false">
+            <elementDefinition Id="8d710a41-a1b4-41dc-9bc2-dfab632048c3" />
+            <upperBound>
+              <literalInteger Id="94647c6d-bb6a-4617-9240-1f790caa01b5" name="2147483647" value="2147483647">
+                <elementDefinition Id="78a39c85-7641-48fc-a41d-4dfd5f4416b5" />
+              </literalInteger>
+            </upperBound>
+          </objectNode>
+          <opaqueAction Id="b5c79fdb-bd56-46cb-87de-3475e217171a" name="Créer une partie" isLeaf="false">
+            <elementDefinition Id="c88f8610-119c-4434-86b1-c368ae23a992" />
+            <flowNodeTargets>
+              <controlFlow Id="5dbc731f-de50-4813-b47c-90bcc09f92dc" isLeaf="false">
+                <opaqueActionMoniker Id="5d7c548d-84c8-43c6-8c82-8cab985a67e1" LastKnownName="Remplir formulaire (nom de la partie, nombre de joueurs max, mode, map)" />
+                <elementDefinition Id="d7580b94-176f-45c1-8864-943fec7fe7a1" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="5d7c548d-84c8-43c6-8c82-8cab985a67e1" name="Remplir formulaire (nom de la partie, nombre de joueurs max, mode, map)" isLeaf="false">
+            <elementDefinition Id="470d172b-0973-4557-be5b-8e506ee87c57" />
+            <flowNodeTargets>
+              <controlFlow Id="d72f3e03-ad55-46ab-b800-08d81ea0f38f" isLeaf="false">
+                <opaqueActionMoniker Id="5a50f63f-ff9f-4e64-997c-2db4b0070170" LastKnownName="Soumettre au serveur" />
+                <elementDefinition Id="86b2f27c-0c46-4134-ad90-e60e19581524" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="5a50f63f-ff9f-4e64-997c-2db4b0070170" name="Soumettre au serveur" isLeaf="false">
+            <elementDefinition Id="ccc78a11-f79c-4e81-a743-bfbd8d5001e8" />
+            <flowNodeTargets>
+              <controlFlow Id="fae4ace2-78bd-4dbd-9ee4-bea88c5ebc30" isLeaf="false">
+                <opaqueActionMoniker Id="b7f85dd7-8bca-4ea7-b8a8-ca9dfab52611" LastKnownName="Vérifier saisies utilisateur" />
+                <elementDefinition Id="55ab3d4e-b4b0-41df-9032-bb1c6a5cd408" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <objectNode Id="9c9cbd44-2f99-4bb0-8f03-9ff95ab95bf3" name="Serveur" isLeaf="false" ordering="Unordered" isControlType="false">
+            <elementDefinition Id="d6ae2010-3802-4fc6-bbc2-b93c4e9a38ed" />
+            <upperBound>
+              <literalInteger Id="3325ec5c-f896-414e-822a-9d36d6b81cff" name="2147483647" value="2147483647">
+                <elementDefinition Id="3f04f89e-f5cb-48ad-a9ef-47f599c72fe9" />
+              </literalInteger>
+            </upperBound>
+          </objectNode>
+          <opaqueAction Id="b7f85dd7-8bca-4ea7-b8a8-ca9dfab52611" name="Vérifier saisies utilisateur" isLeaf="false">
+            <elementDefinition Id="9980688a-2a0f-42af-a1d3-cc5806744333" />
+            <flowNodeTargets>
+              <controlFlow Id="c493c591-8105-4b82-9537-7d3f3a518fef" guard="Valides" isLeaf="false">
+                <decisionNodeMoniker Id="8ac8a0db-767b-405f-a104-4cbac9c20fc1" LastKnownName="Decision1" />
+                <elementDefinition Id="0ce07efe-47b7-40ef-9127-d19fda7d724a" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="8ac8a0db-767b-405f-a104-4cbac9c20fc1" name="Decision1" isLeaf="false">
+            <elementDefinition Id="30dbe816-6a10-4cd5-a5d1-3d99b4d4e122" />
+            <flowNodeTargets>
+              <controlFlow Id="4270c32f-2ee4-4a9b-a613-a4f1bff9ce41" guard="Non" isLeaf="false">
+                <opaqueActionMoniker Id="5d7c548d-84c8-43c6-8c82-8cab985a67e1" LastKnownName="Remplir formulaire (nom de la partie, nombre de joueurs max, mode, map)" />
+                <elementDefinition Id="07504af9-931c-4407-8eb6-a750ea76544d" />
+              </controlFlow>
+              <controlFlow Id="cf31aebe-e059-4f89-831c-640860cbbd70" guard="Oui" isLeaf="false">
+                <opaqueActionMoniker Id="24ff193a-aa96-4345-899c-463e49e41f9b" LastKnownName="Créer partie" />
+                <elementDefinition Id="abc057f5-2737-4751-a1b2-b6c7fabfce8c" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="24ff193a-aa96-4345-899c-463e49e41f9b" name="Créer partie" isLeaf="false">
+            <elementDefinition Id="bc02d4ac-7562-46b3-bf6e-f18b0c92b0c9" />
+            <flowNodeTargets>
+              <controlFlow Id="815eba8f-f711-4eaa-87ce-15245cad5b0f" isLeaf="false">
+                <opaqueActionMoniker Id="dbdcc5eb-8917-4bed-85a4-22b2b3f849ef" LastKnownName="Actualiser liste des parties" />
+                <elementDefinition Id="24a8a91e-8f5b-48a7-b98c-416cfc68a8a7" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="dbdcc5eb-8917-4bed-85a4-22b2b3f849ef" name="Actualiser liste des parties" isLeaf="false">
+            <elementDefinition Id="bf56e8fc-35de-4402-8c9d-7a75e68d2357" />
+            <flowNodeTargets>
+              <controlFlow Id="d10aecd3-4be5-47e0-9837-13bcd69cc687" isLeaf="false">
+                <opaqueActionMoniker Id="05702307-c77c-4899-b055-2f1b447279f8" LastKnownName="Informer le joueur" />
+                <elementDefinition Id="593b171f-0d65-43f7-8250-1560e1879ee4" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="05702307-c77c-4899-b055-2f1b447279f8" name="Informer le joueur" isLeaf="false">
+            <elementDefinition Id="bdbef708-3396-499d-945c-974a42b1357b" />
+            <flowNodeTargets>
+              <controlFlow Id="3c1617bd-b092-424c-ba61-c609ced11013" isLeaf="false">
+                <opaqueActionMoniker Id="8a6fa0e7-6f58-4b08-ad2d-d443aea30ebe" LastKnownName="Afficher écran d'attente de joueurs" />
+                <elementDefinition Id="b1288155-0d77-4179-b668-208bb5ea0309" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="8a6fa0e7-6f58-4b08-ad2d-d443aea30ebe" name="Afficher écran d'attente de joueurs" isLeaf="false">
+            <elementDefinition Id="ab8a8181-64e1-4f07-8882-a91dc660eda4" />
+            <flowNodeTargets>
+              <controlFlow Id="a53c8cf6-552e-496e-995c-0f807e10aa19" isLeaf="false">
+                <activityFinalNodeMoniker Id="f9d64764-e198-41db-9a37-bd1853691114" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="3473dc19-e2bb-46a4-b055-c75d9cbc0a6f" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <activityFinalNode Id="f9d64764-e198-41db-9a37-bd1853691114" name="ActivityFinal1" isLeaf="false">
+            <elementDefinition Id="f1d25141-8226-4ee3-b541-593ccfced086" />
+          </activityFinalNode>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="3004697c-fd06-469a-87ac-4aa48b272471" name="ModelingBomberOtter">
+    <elementDefinition Id="88282688-3de2-4379-887a-e7e87a06a3ce" />
+  </package>
+</activityRootModel>

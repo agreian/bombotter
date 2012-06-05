@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UMLUseCaseDiagram1">
+  <useCaseModelRootMoniker Id="7d675b66-be85-4552-8c93-a490b2632aa4" />
+  <nestedChildShapes>
+    <actorShape Id="53dbcf9d-ab50-44e9-b2f7-d76024f29433" absoluteBounds="1.875, 2.25, 0.5, 0.5" isReference="false" heightOffset="0">
+      <actorMoniker Id="be56bd69-8e33-4ec5-8075-dabe188b8f2b" LastKnownName="Joueur" />
+      <relativeChildShapes />
+    </actorShape>
+    <useCaseShape Id="72bf5f62-8db7-4d7b-acbe-fd518125a76d" absoluteBounds="4.5, 1, 1.125, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="69b5fbc5-e77c-41fe-8dcc-404b2beab459" LastKnownName="Se connecter au serveur" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(2.375 : 2.3936170212766); (4.65620174426347 : 1.4228928747815)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="af23ea82-1938-47f8-bde4-5c91eea2eba0" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="53dbcf9d-ab50-44e9-b2f7-d76024f29433" />
+        <useCaseShapeMoniker Id="72bf5f62-8db7-4d7b-acbe-fd518125a76d" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseShape Id="c6de68f7-e1e1-43bd-a116-285d650e1dad" absoluteBounds="3.125, 2.25, 1.125, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="eb4c3227-cf42-4030-9ca0-2e5da2744572" LastKnownName="Paramétrer le jeu" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(2.375 : 2.5); (3.125 : 2.5)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="f5d9b144-7c5e-4330-a2a4-d4592c8751d6" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="53dbcf9d-ab50-44e9-b2f7-d76024f29433" />
+        <useCaseShapeMoniker Id="c6de68f7-e1e1-43bd-a116-285d650e1dad" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseShape Id="d48df823-4f3d-4681-996c-05bd70769212" absoluteBounds="3.375, 3.625, 1.125, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="9fb198d7-2f45-4b76-b25d-316dd10cbc96" LastKnownName="Quitter" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(2.375 : 2.68965517241379); (3.65315860574897 : 3.65929273539577)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="1185a973-34da-4f2e-ac34-f5e6758c5840" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="53dbcf9d-ab50-44e9-b2f7-d76024f29433" />
+        <useCaseShapeMoniker Id="d48df823-4f3d-4681-996c-05bd70769212" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseShape Id="b2b70161-6969-4c90-9ce4-fd98501c61ae" absoluteBounds="6.625, 0.75, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="10ce63ad-8d02-4adc-8934-74cae0b6094f" LastKnownName="Rejoindre partie" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseDependencyConnector edgePoints="[(6.63907494715565 : 1.05890000640538); (5.60517964944622 : 1.18422064855197)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black">
+      <dependencyMoniker Id="30b61610-1dfd-4238-b3b6-bc1174ba4933" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="b2b70161-6969-4c90-9ce4-fd98501c61ae" />
+        <useCaseShapeMoniker Id="72bf5f62-8db7-4d7b-acbe-fd518125a76d" />
+      </nodes>
+    </useCaseDependencyConnector>
+    <useCaseShape Id="4006165d-378d-4e31-995f-6dae8cbdd3ea" absoluteBounds="6.625, 1.5, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="7cf0c71b-2bc7-432f-9493-fa7c320dcc38" LastKnownName="Configurer partie" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseDependencyConnector edgePoints="[(6.6750929464019 : 1.64093162337016); (5.55631625976434 : 1.36971303267014)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black">
+      <dependencyMoniker Id="783a1761-e53a-4d74-9542-f452c0b021a2" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="4006165d-378d-4e31-995f-6dae8cbdd3ea" />
+        <useCaseShapeMoniker Id="72bf5f62-8db7-4d7b-acbe-fd518125a76d" />
+      </nodes>
+    </useCaseDependencyConnector>
+    <useCaseShape Id="6d0c0bbf-b432-4b17-a07d-dfea6cf1f8f7" absoluteBounds="4.625, 1.75, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="f7de4c2d-f356-4c67-a894-5f021b09be25" LastKnownName="Activer/désactiver sons" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseDependencyConnector edgePoints="[(4.71454739910726 : 2.14276612204965); (4.13047156306677 : 2.34592293458547)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black">
+      <dependencyMoniker Id="b506fa94-1c9e-4d4a-bf74-2eade2fd0eae" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="6d0c0bbf-b432-4b17-a07d-dfea6cf1f8f7" />
+        <useCaseShapeMoniker Id="c6de68f7-e1e1-43bd-a116-285d650e1dad" />
+      </nodes>
+    </useCaseDependencyConnector>
+    <useCaseShape Id="f01759a9-caa3-4e5c-8c23-269cad8ff373" absoluteBounds="4.625, 2.375, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="d88d0287-d885-4eff-aaa0-dea806459b5e" LastKnownName="Modifier les contrôles" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseDependencyConnector edgePoints="[(4.63239412259016 : 2.58216470631219); (4.23953336835876 : 2.54800290159641)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black">
+      <dependencyMoniker Id="b0a7ae2b-1605-4e8f-b574-01a1c9ca44a3" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="f01759a9-caa3-4e5c-8c23-269cad8ff373" />
+        <useCaseShapeMoniker Id="c6de68f7-e1e1-43bd-a116-285d650e1dad" />
+      </nodes>
+    </useCaseDependencyConnector>
+    <useCaseShape Id="a055ead7-555b-469c-99c3-13ddae0659f2" absoluteBounds="4.625, 3, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="53e33d79-a395-4d23-b8ff-ce9e9325b19d" LastKnownName="Configurer la résolution" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseDependencyConnector edgePoints="[(4.77904731838219 : 3.06950294872114); (4.05226238127488 : 2.69031080762168)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black">
+      <dependencyMoniker Id="fd79259f-764a-4fb1-9ad0-596f0e9bf69b" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="a055ead7-555b-469c-99c3-13ddae0659f2" />
+        <useCaseShapeMoniker Id="c6de68f7-e1e1-43bd-a116-285d650e1dad" />
+      </nodes>
+    </useCaseDependencyConnector>
+  </nestedChildShapes>
+</useCaseDiagram>
