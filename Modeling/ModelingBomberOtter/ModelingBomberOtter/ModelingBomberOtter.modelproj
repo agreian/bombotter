@@ -17,6 +17,20 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" />
   <ItemGroup>
+    <Content Include="Activity\CreateGame.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Activity\CreateGame.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Activity\CreateGame.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="Class\Main.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Class\Main.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Class\Main.classdiagram</DependentUpon>
+    </Content>
     <Content Include="Sequence\DropBomb.sequencediagram">
       <SubType>Content</SubType>
     </Content>
@@ -24,17 +38,20 @@
       <SubType>Content</SubType>
       <DependentUpon>Sequence\DropBomb.sequencediagram</DependentUpon>
     </Content>
+    <Content Include="UseCase\ucClient.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UseCase\ucClient.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UseCase\ucClient.usecasediagram</DependentUpon>
+    </Content>
     <Folder Include="ModelDefinition\" />
-    <Content Include="Main.classdiagram">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Main.classdiagram.layout">
-      <SubType>Content</SubType>
-      <DependentUpon>Main.classdiagram</DependentUpon>
-    </Content>
     <Content Include="ModelDefinition\ModelingBomberOtter.uml">
       <SubType>Content</SubType>
     </Content>
+    <Folder Include="Class" />
+    <Folder Include="Activity" />
+    <Folder Include="UseCase" />
     <Folder Include="Sequence" />
   </ItemGroup>
 </Project>

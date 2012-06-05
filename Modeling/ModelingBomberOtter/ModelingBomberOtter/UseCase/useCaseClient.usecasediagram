@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm11="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="7d675b66-be85-4552-8c93-a490b2632aa4" name="useCaseClient" linkedPackageId="798a417e-1e72-4246-9aa5-c7abd2431982" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="4cdabf66-7787-4ded-b475-64027ccdd228">
+      <profileInstance Id="ea20c425-8017-4060-be4e-4037b2f233f3" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="947ef302-3aa2-4e35-9444-4290a8b7f0f5">
+      <profileInstance Id="325ca860-3aff-4077-8c67-24c76380e059" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="be56bd69-8e33-4ec5-8075-dabe188b8f2b" name="Joueur" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8fb5c658-8590-4c88-aca2-5d8aec834685" />
+        <targetEnds>
+          <association Id="af23ea82-1938-47f8-bde4-5c91eea2eba0" isDerived="false" sourceEndRoleName="Joueur" targetEndRoleName="Connexion" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="69b5fbc5-e77c-41fe-8dcc-404b2beab459" LastKnownName="Se connecter au serveur" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f6bd5b20-dfaa-4ce1-a19a-37a4f7ed8d70" name="Joueur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="841984d9-f6af-4803-b2e1-58158ffe1111" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2a952e01-01f9-4de1-bb20-e6baa1cb3a7f" name="Connexion" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8e934a76-8c5f-42b0-a6fa-856e843011e0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="7f37baf4-38f5-4f87-a768-1675d7faeed7" />
+          </association>
+          <association Id="f5d9b144-7c5e-4330-a2a4-d4592c8751d6" isDerived="false" sourceEndRoleName="Joueur" targetEndRoleName="Paramètres" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="eb4c3227-cf42-4030-9ca0-2e5da2744572" LastKnownName="Paramétrer le jeu" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="36225863-34c5-4b7c-b570-3d13e78617c1" name="Joueur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="85a89d12-cf45-47dc-a1ab-a81901f5ffee" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="da4b0b9b-84ac-4e7f-892f-03ffb2503b49" name="Paramètres" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="3ddc4211-4075-4ac8-9e56-6a67bb1a7d6f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="3462333e-1d1b-40ba-a124-7b53b83f9a42" />
+          </association>
+          <association Id="1185a973-34da-4f2e-ac34-f5e6758c5840" isDerived="false" sourceEndRoleName="Joueur" targetEndRoleName="Quitter" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="9fb198d7-2f45-4b76-b25d-316dd10cbc96" LastKnownName="Quitter" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e4c2a8ea-1bdb-4e7f-917c-baa404530782" name="Joueur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f90e30e2-6c59-4f11-b515-d3a82ecb9679" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="32d2ed46-558f-4e76-a38d-1b11f919a0ad" name="Quitter" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="5b9be33d-bb95-47c9-8a18-1f0268175186" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="88f21bfc-1056-4a71-b2b4-c6bca28afeaf" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="69b5fbc5-e77c-41fe-8dcc-404b2beab459" name="Se connecter au serveur" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7f72400d-8af7-4536-8dc8-147c6b0351f4" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="eb4c3227-cf42-4030-9ca0-2e5da2744572" name="Paramétrer le jeu" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e162b7da-1082-4d66-9a3c-6885967f7197" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="9fb198d7-2f45-4b76-b25d-316dd10cbc96" name="Quitter" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="da44a462-df33-4fc3-bc4a-c58721f2c2f9" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="10ce63ad-8d02-4adc-8934-74cae0b6094f" name="Rejoindre partie" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a80c5002-3593-49d4-89fe-ab69730b339e" />
+        <suppliersInternal>
+          <dependency Id="30b61610-1dfd-4238-b3b6-bc1174ba4933">
+            <useCaseMoniker Id="69b5fbc5-e77c-41fe-8dcc-404b2beab459" LastKnownName="Se connecter au serveur" />
+            <elementDefinition Id="55ef6086-5a5d-46ff-a05d-f95f94ef9003" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="7cf0c71b-2bc7-432f-9493-fa7c320dcc38" name="Configurer partie" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="77d354f6-11a3-43d9-924f-e592cc8e5c42" />
+        <suppliersInternal>
+          <dependency Id="783a1761-e53a-4d74-9542-f452c0b021a2">
+            <useCaseMoniker Id="69b5fbc5-e77c-41fe-8dcc-404b2beab459" LastKnownName="Se connecter au serveur" />
+            <elementDefinition Id="600d9422-2d61-4ffe-bfdc-6fb98aea5aeb" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="f7de4c2d-f356-4c67-a894-5f021b09be25" name="Activer/désactiver sons" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="cfcd3631-c519-4660-af8b-de3d2ea10924" />
+        <suppliersInternal>
+          <dependency Id="b506fa94-1c9e-4d4a-bf74-2eade2fd0eae">
+            <useCaseMoniker Id="eb4c3227-cf42-4030-9ca0-2e5da2744572" LastKnownName="Paramétrer le jeu" />
+            <elementDefinition Id="bb704848-2f60-468d-b30e-70af064b75b1" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d88d0287-d885-4eff-aaa0-dea806459b5e" name="Modifier les contrôles" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b8c0e2df-5781-425a-b903-45f16340bd44" />
+        <suppliersInternal>
+          <dependency Id="b0a7ae2b-1605-4e8f-b574-01a1c9ca44a3">
+            <useCaseMoniker Id="eb4c3227-cf42-4030-9ca0-2e5da2744572" LastKnownName="Paramétrer le jeu" />
+            <elementDefinition Id="a418853c-6c82-4a9f-aa10-912f65e605b7" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="53e33d79-a395-4d23-b8ff-ce9e9325b19d" name="Configurer la résolution" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="cb1123d3-0f9a-46b7-8c8a-32a03327313b" />
+        <suppliersInternal>
+          <dependency Id="fd79259f-764a-4fb1-9ad0-596f0e9bf69b">
+            <useCaseMoniker Id="eb4c3227-cf42-4030-9ca0-2e5da2744572" LastKnownName="Paramétrer le jeu" />
+            <elementDefinition Id="601597c8-cb76-473c-9ef1-2b4e5f4d3369" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="798a417e-1e72-4246-9aa5-c7abd2431982" name="ModelingBomberOtter">
+    <elementDefinition Id="88282688-3de2-4379-887a-e7e87a06a3ce" />
+  </package>
+</useCaseModelRoot>

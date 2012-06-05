@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner"
   dslVersion="1.0.0.0"
   Id="88282688-3de2-4379-887a-e7e87a06a3ce"
   name="ModelingBomberOtter" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -728,22 +728,22 @@ Vérifie si :
             </covered>
           </executionOccurrenceSpecification>
           <messageOccurrenceSpecification
-            Id="5ea8a7ca-eb1e-4afb-a68a-d1475e557c80"
-            name="MessageOccurrenceSpecification13">
-            <covered>
-              <lifelineMoniker
-                Id="106bdd71-eccd-44a8-af3d-6c49b22febe2"
-                LastKnownName="Joueur X"
-                LastKnownLocation="ModelingBomberOtter.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
             Id="f37e1690-88fd-4b81-b118-00e77e76827f"
             name="MessageOccurrenceSpecification14">
             <covered>
               <lifelineMoniker
                 Id="0ad306be-fa55-406b-beef-bb927310455f"
                 LastKnownName="Serveur"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="5ea8a7ca-eb1e-4afb-a68a-d1475e557c80"
+            name="MessageOccurrenceSpecification13">
+            <covered>
+              <lifelineMoniker
+                Id="106bdd71-eccd-44a8-af3d-6c49b22febe2"
+                LastKnownName="Joueur X"
                 LastKnownLocation="ModelingBomberOtter.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -984,16 +984,6 @@ Vérifie si :
             </covered>
           </executionOccurrenceSpecification>
           <messageOccurrenceSpecification
-            Id="895843db-2b2f-4e4d-aa1c-215e177b553f"
-            name="MessageOccurrenceSpecification8">
-            <covered>
-              <lifelineMoniker
-                Id="94d0c8b2-eb0a-4c95-9ea6-ff1453763163"
-                LastKnownName="Tous les joueurs"
-                LastKnownLocation="ModelingBomberOtter.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
             Id="e3a778c9-f7c7-4620-b494-6a2330ab1a03"
             name="MessageOccurrenceSpecification7">
             <covered>
@@ -1004,12 +994,12 @@ Vérifie si :
             </covered>
           </messageOccurrenceSpecification>
           <messageOccurrenceSpecification
-            Id="a8ecb1a8-4a46-4f3f-b99c-8bab33b5c42e"
-            name="MessageOccurrenceSpecification10">
+            Id="895843db-2b2f-4e4d-aa1c-215e177b553f"
+            name="MessageOccurrenceSpecification8">
             <covered>
               <lifelineMoniker
-                Id="0ad306be-fa55-406b-beef-bb927310455f"
-                LastKnownName="Serveur"
+                Id="94d0c8b2-eb0a-4c95-9ea6-ff1453763163"
+                LastKnownName="Tous les joueurs"
                 LastKnownLocation="ModelingBomberOtter.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -1020,6 +1010,16 @@ Vérifie si :
               <lifelineMoniker
                 Id="94d0c8b2-eb0a-4c95-9ea6-ff1453763163"
                 LastKnownName="Tous les joueurs"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="a8ecb1a8-4a46-4f3f-b99c-8bab33b5c42e"
+            name="MessageOccurrenceSpecification10">
+            <covered>
+              <lifelineMoniker
+                Id="0ad306be-fa55-406b-beef-bb927310455f"
+                LastKnownName="Serveur"
                 LastKnownLocation="ModelingBomberOtter.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -1256,22 +1256,22 @@ Vérifie si :
             </covered>
           </executionOccurrenceSpecification>
           <messageOccurrenceSpecification
-            Id="75663f05-b81f-4893-b5ca-5f24ee32e575"
-            name="MessageOccurrenceSpecification17">
-            <covered>
-              <lifelineMoniker
-                Id="0ad306be-fa55-406b-beef-bb927310455f"
-                LastKnownName="Serveur"
-                LastKnownLocation="ModelingBomberOtter.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
             Id="c754fe0a-5afa-4aa9-9028-4605f1b851f5"
             name="MessageOccurrenceSpecification18">
             <covered>
               <lifelineMoniker
                 Id="94d0c8b2-eb0a-4c95-9ea6-ff1453763163"
                 LastKnownName="Tous les joueurs"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="75663f05-b81f-4893-b5ca-5f24ee32e575"
+            name="MessageOccurrenceSpecification17">
+            <covered>
+              <lifelineMoniker
+                Id="0ad306be-fa55-406b-beef-bb927310455f"
+                LastKnownName="Serveur"
                 LastKnownLocation="ModelingBomberOtter.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -1344,16 +1344,6 @@ Vérifie si :
             </covered>
           </executionOccurrenceSpecification>
           <messageOccurrenceSpecification
-            Id="2bc90551-d6fc-477f-9692-cfdfd621f8a7"
-            name="MessageOccurrenceSpecification23">
-            <covered>
-              <lifelineMoniker
-                Id="0ad306be-fa55-406b-beef-bb927310455f"
-                LastKnownName="Serveur"
-                LastKnownLocation="ModelingBomberOtter.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
             Id="e4b7c696-b994-4ec2-bf3c-0fdde359be1c"
             name="MessageOccurrenceSpecification24">
             <covered>
@@ -1364,12 +1354,12 @@ Vérifie si :
             </covered>
           </messageOccurrenceSpecification>
           <messageOccurrenceSpecification
-            Id="f37404ac-0450-4452-8f13-dfe6cc47a0fe"
-            name="MessageOccurrenceSpecification25">
+            Id="2bc90551-d6fc-477f-9692-cfdfd621f8a7"
+            name="MessageOccurrenceSpecification23">
             <covered>
               <lifelineMoniker
-                Id="94d0c8b2-eb0a-4c95-9ea6-ff1453763163"
-                LastKnownName="Tous les joueurs"
+                Id="0ad306be-fa55-406b-beef-bb927310455f"
+                LastKnownName="Serveur"
                 LastKnownLocation="ModelingBomberOtter.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -1380,6 +1370,16 @@ Vérifie si :
               <lifelineMoniker
                 Id="0ad306be-fa55-406b-beef-bb927310455f"
                 LastKnownName="Serveur"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="f37404ac-0450-4452-8f13-dfe6cc47a0fe"
+            name="MessageOccurrenceSpecification25">
+            <covered>
+              <lifelineMoniker
+                Id="94d0c8b2-eb0a-4c95-9ea6-ff1453763163"
+                LastKnownName="Tous les joueurs"
                 LastKnownLocation="ModelingBomberOtter.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -1824,6 +1824,718 @@ Vérifie si :
           </generalization>
         </generalsInternal>
       </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="0901715c-18ca-47ce-9271-0a85b05fa094"
+        name="Activity1"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="012e33f7-1756-42e3-98f1-ce5533f54a38"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="73e77c30-2374-4625-afcb-e13855e3e938"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="29a856db-97ba-4b1f-b0d9-196f1609cd8a"
+                  LastKnownName="Action1"
+                  LastKnownLocation="ModelingBomberOtter.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction
+            Id="29a856db-97ba-4b1f-b0d9-196f1609cd8a"
+            name="Action1"
+            isLeaf="false" />
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="8fb5c658-8590-4c88-aca2-5d8aec834685"
+        name="Joueur"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="7f37baf4-38f5-4f87-a768-1675d7faeed7"
+            isDerived="false"
+            sourceEndRoleName="Joueur"
+            targetEndRoleName="Connexion"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="7f72400d-8af7-4536-8dc8-147c6b0351f4"
+              LastKnownName="Se connecter au serveur"
+              LastKnownLocation="ModelingBomberOtter.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="841984d9-f6af-4803-b2e1-58158ffe1111"
+                  name="Joueur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8e934a76-8c5f-42b0-a6fa-856e843011e0"
+                  name="Connexion"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="3462333e-1d1b-40ba-a124-7b53b83f9a42"
+            isDerived="false"
+            sourceEndRoleName="Joueur"
+            targetEndRoleName="Paramètres"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="e162b7da-1082-4d66-9a3c-6885967f7197"
+              LastKnownName="Paramétrer le jeu"
+              LastKnownLocation="ModelingBomberOtter.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="85a89d12-cf45-47dc-a1ab-a81901f5ffee"
+                  name="Joueur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3ddc4211-4075-4ac8-9e56-6a67bb1a7d6f"
+                  name="Paramètres"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="88f21bfc-1056-4a71-b2b4-c6bca28afeaf"
+            isDerived="false"
+            sourceEndRoleName="Joueur"
+            targetEndRoleName="Quitter"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="da44a462-df33-4fc3-bc4a-c58721f2c2f9"
+              LastKnownName="Quitter"
+              LastKnownLocation="ModelingBomberOtter.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f90e30e2-6c59-4f11-b515-d3a82ecb9679"
+                  name="Joueur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5b9be33d-bb95-47c9-8a18-1f0268175186"
+                  name="Quitter"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="c5fa78c9-ed5a-4ac2-83e4-6ade4024c027"
+        name="UseCase1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="b6e0bb13-0b96-4de3-af0d-e913b7f0c601"
+        name="Subsystem1"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <artifact
+        Id="5f1fd423-a00f-4f17-869e-9161374cb60b"
+        name="Artifact1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="7f72400d-8af7-4536-8dc8-147c6b0351f4"
+        name="Se connecter au serveur"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="8d48c78c-fb87-4eb9-9e9f-6ebfd458b04f"
+        name="Actor1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e162b7da-1082-4d66-9a3c-6885967f7197"
+        name="Paramétrer le jeu"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="da44a462-df33-4fc3-bc4a-c58721f2c2f9"
+        name="Quitter"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a80c5002-3593-49d4-89fe-ab69730b339e"
+        name="Rejoindre partie"
+        isAbstract="false"
+        isLeaf="false">
+        <suppliersInternal>
+          <dependency
+            Id="55ef6086-5a5d-46ff-a05d-f95f94ef9003">
+            <useCaseMoniker
+              Id="7f72400d-8af7-4536-8dc8-147c6b0351f4"
+              LastKnownName="Se connecter au serveur"
+              LastKnownLocation="ModelingBomberOtter.uml" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="77d354f6-11a3-43d9-924f-e592cc8e5c42"
+        name="Configurer partie"
+        isAbstract="false"
+        isLeaf="false">
+        <suppliersInternal>
+          <dependency
+            Id="600d9422-2d61-4ffe-bfdc-6fb98aea5aeb">
+            <useCaseMoniker
+              Id="7f72400d-8af7-4536-8dc8-147c6b0351f4"
+              LastKnownName="Se connecter au serveur"
+              LastKnownLocation="ModelingBomberOtter.uml" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="cfcd3631-c519-4660-af8b-de3d2ea10924"
+        name="Activer/désactiver sons"
+        isAbstract="false"
+        isLeaf="false">
+        <suppliersInternal>
+          <dependency
+            Id="bb704848-2f60-468d-b30e-70af064b75b1">
+            <useCaseMoniker
+              Id="e162b7da-1082-4d66-9a3c-6885967f7197"
+              LastKnownName="Paramétrer le jeu"
+              LastKnownLocation="ModelingBomberOtter.uml" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="09e48a0e-3d68-4b28-9bc5-90cf4ab8c6af"
+        name="UseCase21"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b8c0e2df-5781-425a-b903-45f16340bd44"
+        name="Modifier les contrôles"
+        isAbstract="false"
+        isLeaf="false">
+        <suppliersInternal>
+          <dependency
+            Id="a418853c-6c82-4a9f-aa10-912f65e605b7">
+            <useCaseMoniker
+              Id="e162b7da-1082-4d66-9a3c-6885967f7197"
+              LastKnownName="Paramétrer le jeu"
+              LastKnownLocation="ModelingBomberOtter.uml" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="cb1123d3-0f9a-46b7-8c8a-32a03327313b"
+        name="Configurer la résolution"
+        isAbstract="false"
+        isLeaf="false">
+        <suppliersInternal>
+          <dependency
+            Id="601597c8-cb76-473c-9ef1-2b4e5f4d3369">
+            <useCaseMoniker
+              Id="e162b7da-1082-4d66-9a3c-6885967f7197"
+              LastKnownName="Paramétrer le jeu"
+              LastKnownLocation="ModelingBomberOtter.uml" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <interaction
+        Id="6eed66f1-30f0-4e61-8871-3f6a60595418"
+        name="CreateGame"
+        collapseFragmentsFlag="false"
+        isActiveClass="false"
+        isAbstract="false"
+        isLeaf="false"
+        isReentrant="false">
+        <fragments>
+          <behaviorExecutionSpecification
+            Id="f04ee047-7d55-4f02-a131-2bf34f708a8f"
+            name="BehaviorExecutionSpecification1">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="9d23df56-605d-4d6e-b61b-6e781ebb504d"
+                LastKnownName="Serveur"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="a2d3958d-fe0b-4668-8950-5bb639c92a4b"
+                LastKnownName="ExecutionOccurrenceSpecification2"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="73295e76-f100-49bf-90e4-02a2fd7b2d63"
+                LastKnownName="ExecutionOccurrenceSpecification1"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="98e68bd9-08c5-4d49-b8da-370604a51c70"
+                LastKnownName="MessageOccurrenceSpecification2"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="c4524254-0a25-4d4b-98b9-3b631e2d043d"
+                LastKnownName="MessageOccurrenceSpecification3"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="73295e76-f100-49bf-90e4-02a2fd7b2d63"
+            name="ExecutionOccurrenceSpecification1">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="2753f064-b2c3-41f5-970b-872cf6d12e70"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="ModelingBomberOtter.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="9d23df56-605d-4d6e-b61b-6e781ebb504d"
+                LastKnownName="Serveur"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="4cb81b98-8b27-4c8c-bce4-5b4771aa3f37"
+            name="MessageOccurrenceSpecification1">
+            <covered>
+              <lifelineMoniker
+                Id="b57730df-599a-45a0-a3bb-12aa3c22728a"
+                LastKnownName="Joueur connecté"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="98e68bd9-08c5-4d49-b8da-370604a51c70"
+            name="MessageOccurrenceSpecification2">
+            <covered>
+              <lifelineMoniker
+                Id="9d23df56-605d-4d6e-b61b-6e781ebb504d"
+                LastKnownName="Serveur"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="c4524254-0a25-4d4b-98b9-3b631e2d043d"
+            name="MessageOccurrenceSpecification3">
+            <covered>
+              <lifelineMoniker
+                Id="9d23df56-605d-4d6e-b61b-6e781ebb504d"
+                LastKnownName="Serveur"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="7331d567-9737-4d33-b48d-b75d438febc3"
+            name="MessageOccurrenceSpecification4">
+            <covered>
+              <lifelineMoniker
+                Id="b57730df-599a-45a0-a3bb-12aa3c22728a"
+                LastKnownName="Joueur connecté"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="a2d3958d-fe0b-4668-8950-5bb639c92a4b"
+            name="ExecutionOccurrenceSpecification2">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="3580465d-85d6-4270-8876-e1fb57e610a2"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="ModelingBomberOtter.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="9d23df56-605d-4d6e-b61b-6e781ebb504d"
+                LastKnownName="Serveur"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+        </fragments>
+        <lifelines>
+          <lifeline
+            Id="b57730df-599a-45a0-a3bb-12aa3c22728a"
+            name="Joueur connecté"
+            isActor="true"
+            lifelineDisplayName="Joueur connecté">
+            <topLevelOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="4cb81b98-8b27-4c8c-bce4-5b4771aa3f37"
+                LastKnownName="MessageOccurrenceSpecification1"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="7331d567-9737-4d33-b48d-b75d438febc3"
+                LastKnownName="MessageOccurrenceSpecification4"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="9d23df56-605d-4d6e-b61b-6e781ebb504d"
+            name="Serveur"
+            isActor="false"
+            lifelineDisplayName="Serveur">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="73295e76-f100-49bf-90e4-02a2fd7b2d63"
+                LastKnownName="ExecutionOccurrenceSpecification1"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="a2d3958d-fe0b-4668-8950-5bb639c92a4b"
+                LastKnownName="ExecutionOccurrenceSpecification2"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+        </lifelines>
+        <messages>
+          <message
+            Id="55fab489-5b87-4cec-8bb6-d61d1d68df60"
+            name="CreateGame(name, map, mode)"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="4cb81b98-8b27-4c8c-bce4-5b4771aa3f37"
+                LastKnownName="MessageOccurrenceSpecification1"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="98e68bd9-08c5-4d49-b8da-370604a51c70"
+                LastKnownName="MessageOccurrenceSpecification2"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="a9523686-b609-44d2-b20b-b2169fee55b2"
+            name="validCreation()"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="c4524254-0a25-4d4b-98b9-3b631e2d043d"
+                LastKnownName="MessageOccurrenceSpecification3"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="7331d567-9737-4d33-b48d-b75d438febc3"
+                LastKnownName="MessageOccurrenceSpecification4"
+                LastKnownLocation="ModelingBomberOtter.uml" />
+            </receiveEvent>
+          </message>
+        </messages>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="2753f064-b2c3-41f5-970b-872cf6d12e70"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="3580465d-85d6-4270-8876-e1fb57e610a2"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="75c62a35-089f-4f03-be9d-97190413c776"
+        name="CreateGame"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="91fc509d-cf57-4a44-92b5-6d5bc3490a55"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="1056ec3f-95c0-427e-b80e-80c6edd163ce"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="c88f8610-119c-4434-86b1-c368ae23a992"
+                  LastKnownName="Créer une partie"
+                  LastKnownLocation="ModelingBomberOtter.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <objectNode
+            Id="8d710a41-a1b4-41dc-9bc2-dfab632048c3"
+            name="Joueur connecté"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <upperBound>
+              <literalInteger
+                Id="78a39c85-7641-48fc-a41d-4dfd5f4416b5"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
+          <opaqueAction
+            Id="c88f8610-119c-4434-86b1-c368ae23a992"
+            name="Créer une partie"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="d7580b94-176f-45c1-8864-943fec7fe7a1"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="470d172b-0973-4557-be5b-8e506ee87c57"
+                  LastKnownName="Remplir formulaire (nom de la partie, nombre de joueurs max, mode, map)"
+                  LastKnownLocation="ModelingBomberOtter.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="470d172b-0973-4557-be5b-8e506ee87c57"
+            name="Remplir formulaire (nom de la partie, nombre de joueurs max, mode, map)"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="86b2f27c-0c46-4134-ad90-e60e19581524"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="ccc78a11-f79c-4e81-a743-bfbd8d5001e8"
+                  LastKnownName="Soumettre au serveur"
+                  LastKnownLocation="ModelingBomberOtter.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="ccc78a11-f79c-4e81-a743-bfbd8d5001e8"
+            name="Soumettre au serveur"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="55ab3d4e-b4b0-41df-9032-bb1c6a5cd408"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="9980688a-2a0f-42af-a1d3-cc5806744333"
+                  LastKnownName="Vérifier saisies utilisateur"
+                  LastKnownLocation="ModelingBomberOtter.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <objectNode
+            Id="d6ae2010-3802-4fc6-bbc2-b93c4e9a38ed"
+            name="Serveur"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <upperBound>
+              <literalInteger
+                Id="3f04f89e-f5cb-48ad-a9ef-47f599c72fe9"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
+          <opaqueAction
+            Id="9980688a-2a0f-42af-a1d3-cc5806744333"
+            name="Vérifier saisies utilisateur"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="0ce07efe-47b7-40ef-9127-d19fda7d724a"
+                guard="Valides"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="30dbe816-6a10-4cd5-a5d1-3d99b4d4e122"
+                  LastKnownName="Decision1"
+                  LastKnownLocation="ModelingBomberOtter.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="30dbe816-6a10-4cd5-a5d1-3d99b4d4e122"
+            name="Decision1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="07504af9-931c-4407-8eb6-a750ea76544d"
+                guard="Non"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="470d172b-0973-4557-be5b-8e506ee87c57"
+                  LastKnownName="Remplir formulaire (nom de la partie, nombre de joueurs max, mode, map)"
+                  LastKnownLocation="ModelingBomberOtter.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="abc057f5-2737-4751-a1b2-b6c7fabfce8c"
+                guard="Oui"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="bc02d4ac-7562-46b3-bf6e-f18b0c92b0c9"
+                  LastKnownName="Créer partie"
+                  LastKnownLocation="ModelingBomberOtter.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="bc02d4ac-7562-46b3-bf6e-f18b0c92b0c9"
+            name="Créer partie"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="24a8a91e-8f5b-48a7-b98c-416cfc68a8a7"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="bf56e8fc-35de-4402-8c9d-7a75e68d2357"
+                  LastKnownName="Actualiser liste des parties"
+                  LastKnownLocation="ModelingBomberOtter.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="bf56e8fc-35de-4402-8c9d-7a75e68d2357"
+            name="Actualiser liste des parties"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="593b171f-0d65-43f7-8250-1560e1879ee4"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="bdbef708-3396-499d-945c-974a42b1357b"
+                  LastKnownName="Informer le joueur"
+                  LastKnownLocation="ModelingBomberOtter.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="bdbef708-3396-499d-945c-974a42b1357b"
+            name="Informer le joueur"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="b1288155-0d77-4179-b668-208bb5ea0309"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="ab8a8181-64e1-4f07-8882-a91dc660eda4"
+                  LastKnownName="Afficher écran d'attente de joueurs"
+                  LastKnownLocation="ModelingBomberOtter.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="ab8a8181-64e1-4f07-8882-a91dc660eda4"
+            name="Afficher écran d'attente de joueurs"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="3473dc19-e2bb-46a4-b055-c75d9cbc0a6f"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="f1d25141-8226-4ee3-b541-593ccfced086"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="ModelingBomberOtter.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <activityFinalNode
+            Id="f1d25141-8226-4ee3-b541-593ccfced086"
+            name="ActivityFinal1"
+            isLeaf="false" />
+        </nodes>
+      </activity>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
