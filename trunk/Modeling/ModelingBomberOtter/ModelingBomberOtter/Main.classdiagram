@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="fd19e4c2-c374-4721-b580-b394d319a0c8" name="Main classes" linkedPackageId="24b3739a-f65d-41f1-bb99-7847abfaa314" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="fd19e4c2-c374-4721-b580-b394d319a0c8" name="Main classes" linkedPackageId="24b3739a-f65d-41f1-bb99-7847abfaa314" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <ownedCommentsInternal>
     <comment Id="75146582-0641-4968-8c73-3a93bb277796">
       <elementDefinition Id="2e4f6c04-ad9a-41d5-b9b7-0b125bd4c904" />
@@ -332,6 +332,17 @@
           <generalization Id="2074be1e-d427-47a5-a35e-1e2f6f7c3821" isSubstitutable="false">
             <classMoniker Id="f3e30183-ec56-4757-8439-4105cdbd857b" LastKnownName="MapItem" />
             <elementDefinition Id="5faf8c8d-d695-4e90-acd4-f8585aa19496" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="bb04ba85-e772-42dc-a35d-52bb60bb0240" name="CanKick" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="1cc14d4a-98e6-40d6-a866-23a646180cb8" />
+        <generalsInternal>
+          <generalization Id="fc9c1637-9097-4be9-92f4-ae86349a67b3" isSubstitutable="false">
+            <classMoniker Id="e8183cde-5464-46ab-aeca-fd45a460ed65" LastKnownName="Bonus" />
+            <elementDefinition Id="e17a6b82-1e5c-4d93-8102-a78d2a6714cb" />
           </generalization>
         </generalsInternal>
       </class>
