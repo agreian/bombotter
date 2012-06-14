@@ -20,11 +20,13 @@ namespace BombOtter
         public int WindowWidth { get; set; }
         public int WindowHeight { get; set; }
 
+        public const int BOX_SIZE = 60;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         bool bombDropped;
 
-        Texture2D bombTexture, caseTexture;
+        Texture2D bombTexture, caseTexture, groundTexture;
 
         OtterSprite playerSprite;
         KeyboardState currentKBState;
@@ -38,8 +40,11 @@ namespace BombOtter
             Content.RootDirectory = "Content";
             Window.AllowUserResizing = false;
 
-            WindowWidth = 780;
-            WindowHeight = 660;
+            WindowWidth = 13 * BOX_SIZE;
+            WindowHeight = 11 * BOX_SIZE;
+
+            IsFixedTimeStep = false;
+            graphics.SynchronizeWithVerticalRetrace = false;
         }
 
         /// <summary>
@@ -58,12 +63,12 @@ namespace BombOtter
             fillCaseList();
 
             /* Résolution de la fenêtre */
-            // Largeur et hauteur doivent être multiple de 60 (largeur d'une caisse)
+            // Largeur et hauteur doivent être multiple de BOX_SIZE (largeur d'une caisse)
 
-            if (!(WindowWidth % 60 == 0) && (WindowHeight % 60 == 0)) // Valeur par défaut sinon
+            if (!(WindowWidth % BOX_SIZE == 0) && (WindowHeight % BOX_SIZE == 0)) // Valeur par défaut sinon
             {
-                WindowWidth = 780;
-                WindowHeight = 660;
+                WindowWidth = 13 * BOX_SIZE;
+                WindowHeight = 11 * BOX_SIZE;
             }
 
             graphics.PreferredBackBufferWidth = WindowWidth;
@@ -85,6 +90,7 @@ namespace BombOtter
             playerSprite = new OtterSprite(Content.Load<Texture2D>("otter"), 0, 64, 72, WindowWidth, WindowHeight);
             bombTexture = Content.Load<Texture2D>("bomb");
             caseTexture = Content.Load<Texture2D>("case");
+            groundTexture = Content.Load<Texture2D>("grass");
             // TODO: use this.Content to load your game content here
         }
 
@@ -126,6 +132,12 @@ namespace BombOtter
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.LightGray);
+
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.Opaque, SamplerState.LinearWrap, DepthStencilState.Default, RasterizerState.CullNone);
+            Rectangle source = new Rectangle(0, 0, WindowWidth, WindowHeight);
+            spriteBatch.Draw(groundTexture, Vector2.Zero, source, Color.White, 0, Vector2.Zero, 1.0f, SpriteEffects.None, 0.5f);
+            spriteBatch.End();
+
             spriteBatch.Begin();
             
             foreach(BombSprite currentBomb in bombList)
@@ -144,17 +156,17 @@ namespace BombOtter
             base.Draw(gameTime);
         }
 
-        // Se base sur une map à 780*660px, à savoir matrice de 13*11 composée de carrés de 60px² (= taille d'une caisse)
+        // Se base sur une map à 780*660px, à savoir matrice de 13*11 composée de carrés de BOX_SIZEpx² (= taille d'une caisse)
         // On a donc 6 colonnes et 5 lignes de caisses, alternées entre les lignes/colonnes walkable
         public void fillCaseList()
         {
             int i, j;
 
-            for (i = 60; i < WindowWidth; i += 120)
+            for (i = BOX_SIZE; i < WindowWidth; i += 2 * BOX_SIZE)
             {
-                for (j = 60; j < WindowHeight; j += 120)
+                for (j = BOX_SIZE; j < WindowHeight; j += 2 * BOX_SIZE)
                 {
-                    caseList.Add(new CaseSprite(caseTexture, 60, 60, new Vector2((float) i, (float) j))); // check si x = i et y = j
+                    caseList.Add(new CaseSprite(caseTexture, BOX_SIZE, BOX_SIZE, new Vector2((float)i, (float)j))); // check si x = i et y = j
                 }
             }
         }
@@ -175,7 +187,7 @@ namespace BombOtter
 
         public void DropBomb()
         {
-            bombToDraw = new BombSprite(bombTexture, 60, 60, 0, new Vector2(playerSprite.spritePosition.X, playerSprite.spritePosition.Y + 15));
+            bombToDraw = new BombSprite(bombTexture, BOX_SIZE, BOX_SIZE-20, 0, new Vector2(playerSprite.spritePosition.X, playerSprite.spritePosition.Y + 15));
             bombList.Add(bombToDraw);
         }
     }

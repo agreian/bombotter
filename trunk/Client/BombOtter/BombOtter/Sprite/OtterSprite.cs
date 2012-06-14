@@ -13,8 +13,9 @@ namespace BombOtter.Sprite
         public float timer { get; set; }
         public float interval { get; set; }
         public int currentFrame { get; set; }
-        public int spriteSpeed { get; set; }
+        public float spriteSpeed { get; set; }
         public Vector2 origin { get; set; }
+        public Vector2 direction { get; set; }
         public Boolean facing { get; set; }
 
         KeyboardState currentKBState;
@@ -29,8 +30,8 @@ namespace BombOtter.Sprite
             this.currentFrame = currentFrame;
             spritePosition = new Vector2(400, 300);
             facing = true; // Par défaut, la sprite est de face. Si elle monte, elle sera de dos
-            spriteSpeed = 2;
-            interval = 100f;
+            spriteSpeed = 0.15f;
+            interval = 80f;
             WindowHeight = windowHeight;
             WindowWidth = windowWidth;
         }
@@ -75,7 +76,8 @@ namespace BombOtter.Sprite
 
                 if (spritePosition.X < (WindowWidth - (spriteWidth / 2)))
                 {
-                    spritePosition = new Vector2(spritePosition.X + spriteSpeed, spritePosition.Y);
+                    direction = Vector2.Normalize(new Vector2(1, 0));
+                    spritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
                 }
             }
 
@@ -85,7 +87,8 @@ namespace BombOtter.Sprite
 
                 if (spritePosition.X > (spriteWidth / 2))
                 {
-                    spritePosition = new Vector2(spritePosition.X - spriteSpeed, spritePosition.Y);
+                    direction = Vector2.Normalize(new Vector2(-1, 0));
+                    spritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
                 }
             }
 
@@ -95,7 +98,8 @@ namespace BombOtter.Sprite
 
                 if (spritePosition.Y < (WindowHeight - (spriteHeight / 2)))
                 {
-                    spritePosition = new Vector2(spritePosition.X, spritePosition.Y + spriteSpeed);
+                    direction = Vector2.Normalize(new Vector2(0, 1));
+                    spritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
                 }
             }
 
@@ -105,7 +109,8 @@ namespace BombOtter.Sprite
 
                 if (spritePosition.Y > 25)
                 {
-                    spritePosition = new Vector2(spritePosition.X, spritePosition.Y - spriteSpeed);
+                    direction = Vector2.Normalize(new Vector2(0, -1));
+                    spritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
                 }
             }
 
