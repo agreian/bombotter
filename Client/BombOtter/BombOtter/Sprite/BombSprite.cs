@@ -20,7 +20,7 @@ namespace BombOtter.Sprite
         {
             playerNumber = player;
             interval = 100f;
-            sourceRect = new Rectangle(0, 0, 60, 40);
+            sourceRect = new Rectangle(0, 0, width, height);
             origin = new Vector2(sourceRect.Width / 2, sourceRect.Height / 2);
             timer = 0;
         }
@@ -38,7 +38,7 @@ namespace BombOtter.Sprite
                     currentFrame = 0;
                 }
 
-                sourceRect = new Rectangle(currentFrame * spriteWidth, 0, 60, 40);
+                sourceRect = new Rectangle(currentFrame * spriteWidth, 0, spriteWidth, spriteHeight);
                 timer = 0f;
             }
         }
