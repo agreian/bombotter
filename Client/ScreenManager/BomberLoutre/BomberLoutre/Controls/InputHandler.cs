@@ -57,7 +57,7 @@ namespace ScreenManager
 
         #region Constructor Region
 
-        public InputHandler(ScreenManager game)
+        public InputHandler(BomberLoutre game)
             : base(game)
         {
             keyboardState = Keyboard.GetState();

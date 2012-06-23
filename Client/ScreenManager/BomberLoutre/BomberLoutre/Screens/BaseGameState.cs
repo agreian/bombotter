@@ -13,7 +13,7 @@ namespace ScreenManager
     {
         #region Fields region
 
-        protected ScreenManager GameRef;
+        protected BomberLoutre GameRef;
 
         protected ControlManager ControlManager;
 
@@ -31,7 +31,7 @@ namespace ScreenManager
         public BaseGameState(Game game, GameStateManager manager)
             : base(game, manager)
         {
-            GameRef = (ScreenManager)game;
+            GameRef = (BomberLoutre)game;
 
             playerIndexInControl = PlayerIndex.One;
         }

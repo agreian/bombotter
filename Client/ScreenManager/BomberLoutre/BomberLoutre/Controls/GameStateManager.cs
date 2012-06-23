@@ -36,7 +36,7 @@ namespace ScreenManager
 
         #region Constructor Region
 
-        public GameStateManager(ScreenManager game)
+        public GameStateManager(BomberLoutre game)
             : base(game)
         {
             drawOrder = startDrawOrder;

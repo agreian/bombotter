@@ -10,7 +10,7 @@ namespace ScreenManager
         /// </summary>
         static void Main(string[] args)
         {
-            using (ScreenManager game = new ScreenManager())
+            using (BomberLoutre game = new BomberLoutre())
             {
                 game.Run();
             }
