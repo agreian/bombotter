@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenManager", "ScreenManager\ScreenManager\ScreenManager.csproj", "{09E68853-FEE0-46A0-9675-F75B0AC2BED9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BomberLoutre", "ScreenManager\ScreenManager\BomberLoutre.csproj", "{09E68853-FEE0-46A0-9675-F75B0AC2BED9}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "ScreenManagerContent", "ScreenManager\ScreenManagerContent\ScreenManagerContent.contentproj", "{B525AC7C-51F9-418A-A21F-2EEC1018F473}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenManagerContent", "ScreenManager\ScreenManagerContent\ScreenManagerContent.contentproj", "{B525AC7C-51F9-418A-A21F-2EEC1018F473}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -14,7 +14,7 @@ namespace ScreenManager
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class ScreenManager : Microsoft.Xna.Framework.Game
+    public class BomberLoutre : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
         public SpriteBatch spriteBatch;
@@ -22,7 +22,7 @@ namespace ScreenManager
 
         TitleScreen titleScreen;
 
-        public ScreenManager()
+        public BomberLoutre()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";

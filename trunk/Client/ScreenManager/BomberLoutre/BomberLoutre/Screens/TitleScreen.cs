@@ -21,7 +21,7 @@ namespace ScreenManager
         #endregion
 
         #region Constructor region
-        public TitleScreen(ScreenManager game, GameStateManager manager)
+        public TitleScreen(BomberLoutre game, GameStateManager manager)
             : base(game, manager)
         {
             menuString = new string[] { "Jouer", "Options", "Crédits", "Quitter" };
@@ -34,7 +34,7 @@ namespace ScreenManager
 
         public override void Initialize()
         {
-            menuPosition = new Vector2(350, 350);
+            menuPosition = new Vector2(150, 33);
             base.Initialize();
         }
 
@@ -42,7 +42,7 @@ namespace ScreenManager
         {
             // Graphics
             ContentManager Content = GameRef.Content;
-            backgroundImage = Content.Load<Texture2D>("Graphics/Titles/Title");
+            backgroundImage = Content.Load<Texture2D>("Graphics/Titles/Title2");
 
             // Music
             MediaPlayer.IsRepeating = true;
@@ -110,7 +110,7 @@ namespace ScreenManager
                 {
                     Color textColor = Color.Black;
                     if (i == indexMenu)
-                        textColor = Color.Green;
+                        textColor = Color.Pink;
                     GameRef.spriteBatch.DrawString(this.BigFont, menuString[i],
                         new Vector2(menuPosition.X - this.BigFont.MeasureString(menuString[i]).X / 2,
                             menuPosition.Y + this.BigFont.MeasureString(menuString[i]).Y * i - this.BigFont.MeasureString(menuString[i]).Y / 2), textColor);
