@@ -1,6 +1,6 @@
 using System;
 
-namespace ScreenManager
+namespace BomberLoutre
 {
 #if WINDOWS || XBOX
     static class Program

@@ -7,7 +7,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace ScreenManager
+using BomberLoutre.Controls;
+
+namespace BomberLoutre.Screens
 {
     public abstract partial class BaseGameState : GameState
     {
@@ -18,6 +20,8 @@ namespace ScreenManager
         protected ControlManager ControlManager;
 
         protected SpriteFont BigFont;
+        protected SpriteFont MidFont;
+        protected SpriteFont SmallFont;
 
         protected PlayerIndex playerIndexInControl;
 
@@ -46,6 +50,8 @@ namespace ScreenManager
 
             SpriteFont menuFont = Content.Load<SpriteFont>(@"Graphics\Fonts\ControlFont");
             BigFont = Content.Load<SpriteFont>(@"Graphics\Fonts\BigFont");
+            MidFont = Content.Load<SpriteFont>(@"Graphics\Fonts\MidFont");
+            SmallFont = Content.Load<SpriteFont>(@"Graphics\Fonts\SmallFont");
             ControlManager = new ControlManager(menuFont);
 
             base.LoadContent();

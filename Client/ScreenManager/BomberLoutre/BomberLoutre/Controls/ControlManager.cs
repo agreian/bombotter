@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace ScreenManager
+namespace BomberLoutre.Controls
 {
     public class ControlManager : List<Control>
     {

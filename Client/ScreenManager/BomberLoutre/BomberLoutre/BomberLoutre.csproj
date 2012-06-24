@@ -116,6 +116,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="BomberLoutre.cs" />
+    <Compile Include="Screens\CreditScreen.cs" />
     <Compile Include="Screens\TitleScreen.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -124,7 +125,7 @@
     <Content Include="ico.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ScreenManagerContent\ScreenManagerContent.contentproj">
+    <ProjectReference Include="..\BomberLoutreContent\BomberLoutreContent.contentproj">
       <Name>ScreenManagerContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
       <Project>{B525AC7C-51F9-418A-A21F-2EEC1018F473}</Project>

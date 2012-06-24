@@ -8,7 +8,9 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace ScreenManager
+using BomberLoutre.Controls;
+
+namespace BomberLoutre.Screens
 {
     public class TitleScreen : BaseGameState
     {
@@ -42,7 +44,7 @@ namespace ScreenManager
         {
             // Graphics
             ContentManager Content = GameRef.Content;
-            backgroundImage = Content.Load<Texture2D>("Graphics/Titles/Title2");
+            backgroundImage = Content.Load<Texture2D>("Graphics/Screens/Title");
 
             // Music
             MediaPlayer.IsRepeating = true;
@@ -70,7 +72,7 @@ namespace ScreenManager
                             //StateManager.ChangeState(GameRef.OptionMenuScreen);
                             break;
                         case "Crédits":
-                            //StateManager.ChangeState(GameRef.CreditMenuScreen);
+                            StateManager.ChangeState(GameRef.CreditScreen);
                             break;
                         case "Quitter":
                             GameRef.Exit();
