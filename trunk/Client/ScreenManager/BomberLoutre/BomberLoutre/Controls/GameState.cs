@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace ScreenManager
+namespace BomberLoutre.Controls
 {
     public abstract partial class GameState : Microsoft.Xna.Framework.DrawableGameComponent
     {

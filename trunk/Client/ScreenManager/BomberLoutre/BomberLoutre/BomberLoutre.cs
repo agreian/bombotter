@@ -9,7 +9,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace ScreenManager
+using BomberLoutre.Screens;
+using BomberLoutre.Controls;
+
+namespace BomberLoutre
 {
     /// <summary>
     /// This is the main type for your game
@@ -20,21 +23,26 @@ namespace ScreenManager
         public SpriteBatch spriteBatch;
         GameStateManager stateManager;
 
-        TitleScreen titleScreen;
+        public TitleScreen TitleScreen;
+        public CreditScreen CreditScreen;
 
         public BomberLoutre()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 600;
+
             Components.Add(new InputHandler(this));
 
             stateManager = new GameStateManager(this);
             Components.Add(stateManager);
 
-            titleScreen = new TitleScreen(this, stateManager);
+            TitleScreen = new TitleScreen(this, stateManager);
+            CreditScreen = new CreditScreen(this, stateManager);
 
-            stateManager.ChangeState(titleScreen);
+            stateManager.ChangeState(TitleScreen);
         }
 
         /// <summary>
