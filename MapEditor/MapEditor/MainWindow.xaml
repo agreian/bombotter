@@ -7,8 +7,10 @@
             <RowDefinition />
             <RowDefinition Height="96" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Name="gridView">
-        </Grid>
+        <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1" Margin="10">
+            <Grid Grid.Row="0" Name="gridView" />
+            <!--<DataGrid Name="dataGrid"  />-->
+        </Border>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -32,7 +34,21 @@
                     <Button Grid.RowSpan="3" Grid.Column="1" Content="Valider" Margin="2,20,10,20" Name="btnValidate" Click="btnValidate_Click" />
                 </Grid>
             </GroupBox>
-            <Button Content="Sélectionner texture" Grid.Column="1" Margin="40,30,40,30" Name="btnSelectTexture" Click="btnSelectTexture_Click" />
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" Content="Sélectionner texture" Margin="80,20,80,0" Name="btnSelectTexture" Click="btnSelectTexture_Click" />
+                <Grid Grid.Row="1" Margin="80,10,80,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Margin="0,0,5,0" Content="Charger" Name="btnLoad" Click="btnLoad_Click" />
+                    <Button Grid.Column="1" Margin="5,0,0,0" Content="Enregistrer" Name="btnSave" Click="btnSave_Click" />
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
 </Window>
