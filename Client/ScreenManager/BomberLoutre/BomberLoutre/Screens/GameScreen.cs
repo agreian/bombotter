@@ -5,12 +5,22 @@ using BomberLoutre.Controls;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
+
+using BombOtter.Sprite;
 
 namespace BomberLoutre.Screens
 {
     public class GameScreen : BaseGameState
     {
         #region Field region
+        private bool pause;
+
+        SoundEffect bombExplosionSound;
+        SoundEffect itemPickUpSound;
+        SoundEffect playerDeathSound;
+
+        OtterSprite Player; /* TODO : Créer une classe Player */
         #endregion
 
         #region Constructor region
@@ -30,6 +40,9 @@ namespace BomberLoutre.Screens
         {
             // Graphics
             ContentManager Content = GameRef.Content;
+
+
+
 
             // Music
             // MediaPlayer.IsRepeating = true;

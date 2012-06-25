@@ -20,6 +20,7 @@ namespace BomberLoutre
         public CreditScreen CreditScreen;
         public OptionScreen OptionScreen;
         public ControlEditScreen ControlEditScreen;
+        public GameScreen GameScreen;
 
         public BomberLoutre()
         {
@@ -41,6 +42,7 @@ namespace BomberLoutre
             CreditScreen = new CreditScreen(this, stateManager);
             OptionScreen = new OptionScreen(this, stateManager);
             ControlEditScreen = new ControlEditScreen(this, stateManager);
+            GameScreen = new GameScreen(this, stateManager);
 
             stateManager.ChangeState(TitleScreen);
         }
