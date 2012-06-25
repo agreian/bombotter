@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
@@ -48,7 +44,7 @@ namespace BomberLoutre.Screens
 
             // Music
             MediaPlayer.IsRepeating = true;
-            //MediaPlayer.Play(GameRef.Content.Load<Song>("Audio/Musics/Title"));
+            MediaPlayer.Play(Content.Load<Song>("Audio/Musics/Title"));
 
             base.LoadContent();
         }
@@ -101,7 +97,7 @@ namespace BomberLoutre.Screens
             GameRef.spriteBatch.Begin();
             base.Draw(gameTime);
 
-            GameRef.spriteBatch.Draw(backgroundImage, new Rectangle(0,0,800,600), Color.White);
+            GameRef.spriteBatch.Draw(backgroundImage, new Rectangle(0, 0, GameRef.graphics.PreferredBackBufferWidth, GameRef.graphics.PreferredBackBufferHeight), Color.White);
 
             ControlManager.Draw(GameRef.spriteBatch);
 

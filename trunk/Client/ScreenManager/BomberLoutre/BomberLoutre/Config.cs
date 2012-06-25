@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using System.IO;
 
 namespace BomberLoutre
 {
@@ -43,7 +38,8 @@ namespace BomberLoutre
         public static float InvincibleBlinkFrequency = 0.5f;
 
         public static float Volume = 0.0f;
-        public static bool StateVolume = true;
+        public static bool SoundState = true;
+        public static bool MusicState = true;
 
         public static int[,] Resolutions = new int[,] { { 800, 600 }, { 1024, 768 }, { 1280, 1024 }, { 1366, 768 }, { 1920, 1080 } };
         public static int IndexResolution = 0;
@@ -55,6 +51,7 @@ namespace BomberLoutre
         public const string ControlOptionString = "Contrôles";
         public const string ResolutionOptionString = "Résolution";
         public const string FullScreenOptionString = "Plein écran";
+        public const string MusicOptionString = "Musique";
         public const string SoundOptionString = "Sons";
         public const string BackOptionString = "Retour";
     }

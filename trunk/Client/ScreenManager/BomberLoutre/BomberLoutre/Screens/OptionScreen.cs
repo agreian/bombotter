@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
@@ -25,7 +21,12 @@ namespace BomberLoutre.Screens
         public OptionScreen(BomberLoutre game, GameStateManager manager)
             : base(game, manager)
         {
-            menuString = new string[] { Config.ControlOptionString, Config.ResolutionOptionString, Config.FullScreenOptionString, Config.BackOptionString };
+            menuString = new string[] { Config.ControlOptionString, 
+                                        Config.ResolutionOptionString, 
+                                        Config.FullScreenOptionString, 
+                                        Config.MusicOptionString,
+                                        Config.SoundOptionString, 
+                                        Config.BackOptionString };
             indexMenu = 0;
         }
         #endregion
@@ -42,7 +43,7 @@ namespace BomberLoutre.Screens
         {
             // Graphics
             ContentManager Content = GameRef.Content;
-            backgroundImage = Content.Load<Texture2D>("Graphics/Screens/Option");
+            backgroundImage = Content.Load<Texture2D>("Graphics/Screens/Menu");
 
             // Music
             MediaPlayer.IsRepeating = true;
@@ -54,7 +55,7 @@ namespace BomberLoutre.Screens
         public override void Update(GameTime gameTime)
         {
             ControlManager.Update(gameTime, PlayerIndex.One);
-
+ 
             if (InputHandler.KeyDown(Keys.Escape))
                 StateManager.PushState(GameRef.TitleScreen);
 
@@ -67,19 +68,24 @@ namespace BomberLoutre.Screens
                         break;
                     case Config.ResolutionOptionString:
                         Config.IndexResolution = (Config.IndexResolution < Config.Resolutions.GetLength(0) - 1) ? ++Config.IndexResolution : 0;
-                        GameRef.graphics.PreferredBackBufferWidth = Config.Resolutions[Config.IndexResolution, 0];
-                        GameRef.graphics.PreferredBackBufferHeight = Config.Resolutions[Config.IndexResolution, 1];
                         break;
                     case Config.FullScreenOptionString:
                         Config.FullScreen = !(Config.FullScreen);
                         GameRef.graphics.IsFullScreen = Config.FullScreen;
                         break;
                     case Config.SoundOptionString:
-                        Config.StateVolume = !(Config.StateVolume);
+                        Config.SoundState = !(Config.SoundState);
+                        break;
+                    case Config.MusicOptionString:
+                        Config.MusicState = !(Config.MusicState);
+                        if (Config.MusicState) MediaPlayer.Play(GameRef.Content.Load<Song>("Audio/Musics/Title"));
+                        else MediaPlayer.Stop();
                         break;
                     case Config.BackOptionString:
-                        StateManager.PushState(GameRef.TitleScreen);
+                        GameRef.graphics.PreferredBackBufferWidth = Config.Resolutions[Config.IndexResolution, 0];
+                        GameRef.graphics.PreferredBackBufferHeight = Config.Resolutions[Config.IndexResolution, 1];
                         GameRef.graphics.ApplyChanges();
+                        StateManager.PushState(GameRef.TitleScreen);
                         break;
                 }                
             }
@@ -104,10 +110,12 @@ namespace BomberLoutre.Screens
             GameRef.spriteBatch.Begin();
             base.Draw(gameTime);
 
-            GameRef.spriteBatch.Draw(backgroundImage, new Rectangle(0, 0, 800, 600), Color.White);
+            GameRef.spriteBatch.Draw(backgroundImage, new Rectangle(0, 0, GameRef.graphics.PreferredBackBufferWidth, GameRef.graphics.PreferredBackBufferHeight), Color.White);
             ControlManager.Draw(GameRef.spriteBatch);
 
             Color textColor;
+            string value; // Utilisée pour afficher "Activé" (True) ou "Désactivé" (False)
+            Vector2 AddedTextPosition; // Position du texte ajouté à la volée ci-dessous
 
             for (int i = 0; i < menuString.Length; i++)
             {
@@ -115,7 +123,7 @@ namespace BomberLoutre.Screens
 
                 GameRef.spriteBatch.DrawString(this.BigFont, menuString[i], new Vector2(menuPosition.X, menuPosition.Y + this.BigFont.MeasureString(menuString[i]).Y * i - this.BigFont.MeasureString(menuString[i]).Y / 2), textColor);
 
-                Vector2 AddedTextPosition = new Vector2(menuPosition.X + this.BigFont.MeasureString(menuString[i]).X, menuPosition.Y + (this.BigFont.MeasureString(menuString[i]).Y) * i - this.BigFont.MeasureString(menuString[i]).Y / 2);
+                AddedTextPosition = new Vector2(menuPosition.X + this.BigFont.MeasureString(menuString[i]).X, menuPosition.Y + (this.BigFont.MeasureString(menuString[i]).Y) * i - this.BigFont.MeasureString(menuString[i]).Y / 2);
 
                 switch (menuString[i])
                 {
@@ -123,10 +131,16 @@ namespace BomberLoutre.Screens
                         GameRef.spriteBatch.DrawString(this.BigFont, " : " + Config.Resolutions[Config.IndexResolution, 0] + "x" + Config.Resolutions[Config.IndexResolution, 1], AddedTextPosition, textColor);
                         break;
                     case Config.FullScreenOptionString:
-                        string value = (Config.FullScreen) ? "Activé" : "Désactivé";
+                        value = (Config.FullScreen) ? "Activé" : "Désactivé";
+                        GameRef.spriteBatch.DrawString(this.BigFont, " : " + value, AddedTextPosition, textColor);
+                        break;
+                    case Config.MusicOptionString:
+                        value = (Config.MusicState) ? "Activée" : "Désactivée";
                         GameRef.spriteBatch.DrawString(this.BigFont, " : " + value, AddedTextPosition, textColor);
                         break;
                     case Config.SoundOptionString:
+                        value = (Config.SoundState) ? "Activés" : "Désactivés";
+                        GameRef.spriteBatch.DrawString(this.BigFont, " : " + value, AddedTextPosition, textColor);
                         break;
                 }
             }            

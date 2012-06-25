@@ -119,9 +119,14 @@
     <Compile Include="Program.cs" />
     <Compile Include="BomberLoutre.cs" />
     <Compile Include="Screens\ControlEditScreen.cs" />
+    <Compile Include="Screens\GameScreen.cs" />
     <Compile Include="Screens\OptionScreen.cs" />
     <Compile Include="Screens\CreditScreen.cs" />
     <Compile Include="Screens\TitleScreen.cs" />
+    <Compile Include="Sprites\BombSprite.cs" />
+    <Compile Include="Sprites\CaseSprite.cs" />
+    <Compile Include="Sprites\OtterSprite.cs" />
+    <Compile Include="Sprites\Sprite.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ico.ico" />
