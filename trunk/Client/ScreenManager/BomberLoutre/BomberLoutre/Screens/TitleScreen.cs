@@ -36,7 +36,7 @@ namespace BomberLoutre.Screens
 
         public override void Initialize()
         {
-            menuPosition = new Vector2(150, 33);
+            menuPosition = new Vector2(150, 350);
             base.Initialize();
         }
 
@@ -69,7 +69,7 @@ namespace BomberLoutre.Screens
                             //StateManager.ChangeState(GameRef.GameModeMenuScreen);
                             break;
                         case "Options":
-                            //StateManager.ChangeState(GameRef.OptionMenuScreen);
+                            StateManager.ChangeState(GameRef.OptionScreen);
                             break;
                         case "Crédits":
                             StateManager.ChangeState(GameRef.CreditScreen);
@@ -99,7 +99,6 @@ namespace BomberLoutre.Screens
         public override void Draw(GameTime gameTime)
         {
             GameRef.spriteBatch.Begin();
-
             base.Draw(gameTime);
 
             GameRef.spriteBatch.Draw(backgroundImage, new Rectangle(0,0,800,600), Color.White);
@@ -112,7 +111,7 @@ namespace BomberLoutre.Screens
                 {
                     Color textColor = Color.Black;
                     if (i == indexMenu)
-                        textColor = Color.Pink;
+                        textColor = Color.CornflowerBlue;
                     GameRef.spriteBatch.DrawString(this.BigFont, menuString[i],
                         new Vector2(menuPosition.X - this.BigFont.MeasureString(menuString[i]).X / 2,
                             menuPosition.Y + this.BigFont.MeasureString(menuString[i]).Y * i - this.BigFont.MeasureString(menuString[i]).Y / 2), textColor);

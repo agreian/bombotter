@@ -17,7 +17,8 @@
     <XnaCrossPlatformGroupID>84229312-e130-4a94-a68a-75b65341e561</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
     <ApplicationIcon>ico.ico</ApplicationIcon>
-    <Thumbnail>GameThumbnail.png</Thumbnail>
+    <Thumbnail>
+    </Thumbnail>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -107,6 +108,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config.cs" />
     <Compile Include="Screens\BaseGameState.cs" />
     <Compile Include="Controls\Control.cs" />
     <Compile Include="Controls\ControlManager.cs" />
@@ -116,12 +118,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="BomberLoutre.cs" />
+    <Compile Include="Screens\ControlEditScreen.cs" />
+    <Compile Include="Screens\OptionScreen.cs" />
     <Compile Include="Screens\CreditScreen.cs" />
     <Compile Include="Screens\TitleScreen.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Game.ico" />
-    <Content Include="GameThumbnail.png" />
     <Content Include="ico.ico" />
   </ItemGroup>
   <ItemGroup>

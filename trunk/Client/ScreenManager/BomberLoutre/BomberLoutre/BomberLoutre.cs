@@ -19,12 +19,14 @@ namespace BomberLoutre
     /// </summary>
     public class BomberLoutre : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
+        public GraphicsDeviceManager graphics;
         public SpriteBatch spriteBatch;
         GameStateManager stateManager;
 
         public TitleScreen TitleScreen;
         public CreditScreen CreditScreen;
+        public OptionScreen OptionScreen;
+        public ControlEditScreen ControlEditScreen;
 
         public BomberLoutre()
         {
@@ -41,6 +43,8 @@ namespace BomberLoutre
 
             TitleScreen = new TitleScreen(this, stateManager);
             CreditScreen = new CreditScreen(this, stateManager);
+            OptionScreen = new OptionScreen(this, stateManager);
+            ControlEditScreen = new ControlEditScreen(this, stateManager);
 
             stateManager.ChangeState(TitleScreen);
         }

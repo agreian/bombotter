@@ -11,16 +11,19 @@ using Microsoft.Xna.Framework.Input;
 
 namespace BomberLoutre.Screens
 {
-    public class CreditScreen : BaseGameState
+    public class ControlEditScreen : BaseGameState
     {
         #region Field region
         Texture2D backgroundImage;
-        string creditString;
-        Vector2 creditPosition;
+        Vector2 textPosition;
+        string[] keysNames;
+        string instruction;
+        int counter;
         #endregion
 
         #region Constructor region
-        public CreditScreen(BomberLoutre game, GameStateManager manager) : base(game, manager)
+        public ControlEditScreen(BomberLoutre game, GameStateManager manager)
+            : base(game, manager)
         {
         }
         #endregion
@@ -29,21 +32,9 @@ namespace BomberLoutre.Screens
 
         public override void Initialize()
         {
-            StringBuilder builder = new StringBuilder();
-            builder.AppendLine("Team C# :");
-            builder.AppendLine("- Paul JAY (chef de projet)");
-            builder.AppendLine("- Daniel BERLEMONT (responsable technique)");
-            builder.AppendLine("- Simon BLIGUET (responsable des livrables)");
-            builder.AppendLine("- Vincent GUILLOUX (responsable média)");
-            builder.AppendLine("- Rémi PRAUD (responsable de la communication)");
-            builder.AppendLine("- Florent BROUCA (responsable des tests)");
-            builder.AppendLine("- Jérémy BABOUCHE");
-            builder.AppendLine("- Ahmad PATEL");
-            builder.AppendLine("- Hadrien CLARAS");
-
-            creditString = builder.ToString();
-
-            creditPosition = new Vector2(20, 20);
+            instruction = "Appuyez une touche pour la commande : Haut";
+            keysNames = new string[] { "Haut", "Bas", "Gauche", "Droite", "Bombe" };
+            textPosition = new Vector2(20, 20);
 
             base.Initialize();
         }
@@ -68,6 +59,17 @@ namespace BomberLoutre.Screens
             if (InputHandler.KeyDown(Keys.Escape))
                 StateManager.PushState(GameRef.TitleScreen);
 
+            if (counter < keysNames.Length)
+                instruction = "Appuyez une touche pour la commande : " + keysNames[counter];
+
+            else instruction = "Configuration des touches terminées";
+
+            if (counter < keysNames.Length && InputHandler.HavePressedKey() && InputHandler.GetPressedKeys().Length > 0)
+            {
+                Config.DefaultKeys[counter] = InputHandler.GetPressedKeys()[0];
+                counter++;
+            }
+
             base.Update(gameTime);
         }
 
@@ -81,7 +83,8 @@ namespace BomberLoutre.Screens
 
             ControlManager.Draw(GameRef.spriteBatch);
             Color textColor = Color.Black;
-            GameRef.spriteBatch.DrawString(this.MidFont, creditString, creditPosition, textColor);
+
+            GameRef.spriteBatch.DrawString(this.MidFont, instruction, textPosition, textColor);
 
             GameRef.spriteBatch.End();
         }
