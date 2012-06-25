@@ -1,0 +1,38 @@
+﻿<Window x:Class="MapEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" MinHeight="646" MinWidth="650" Height="646" Width="650">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="96" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Name="gridView">
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            
+            <GroupBox Grid.Column="0" Header="Type de case" Margin="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <RadioButton Grid.Column="0" Grid.Row="0" Content="Vide" Margin="10,2,10,2" Name="optBlank" IsChecked="True" />
+                    <RadioButton Grid.Column="0" Grid.Row="1" Content="Destructible" Margin="10,2,10,2" Name="optBreakable" IsChecked="False" />
+                    <RadioButton Grid.Column="0" Grid.Row="2" Content="Indestructible" Margin="10,2,10,2" Name="optUnbreakable" IsChecked="False" />
+                    <Button Grid.RowSpan="3" Grid.Column="1" Content="Valider" Margin="2,20,10,20" Name="btnValidate" Click="btnValidate_Click" />
+                </Grid>
+            </GroupBox>
+            <Button Content="Sélectionner texture" Grid.Column="1" Margin="40,30,40,30" Name="btnSelectTexture" Click="btnSelectTexture_Click" />
+        </Grid>
+    </Grid>
+</Window>
