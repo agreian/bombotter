@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using BomberLoutre.Controls;
@@ -31,15 +28,15 @@ namespace BomberLoutre.Screens
         {
             StringBuilder builder = new StringBuilder();
             builder.AppendLine("Team C# :");
-            builder.AppendLine("- Paul JAY (chef de projet)");
-            builder.AppendLine("- Daniel BERLEMONT (responsable technique)");
-            builder.AppendLine("- Simon BLIGUET (responsable des livrables)");
-            builder.AppendLine("- Vincent GUILLOUX (responsable média)");
-            builder.AppendLine("- Rémi PRAUD (responsable de la communication)");
-            builder.AppendLine("- Florent BROUCA (responsable des tests)");
-            builder.AppendLine("- Jérémy BABOUCHE");
-            builder.AppendLine("- Ahmad PATEL");
-            builder.AppendLine("- Hadrien CLARAS");
+            builder.AppendLine("     - Paul JAY");
+            builder.AppendLine("     - Jérémy BABOUCHE");
+            builder.AppendLine("     - Daniel BERLEMONT");
+            builder.AppendLine("     - Simon BLIGUET");
+            builder.AppendLine("     - Florent BROUCA");
+            builder.AppendLine("     - Hadrien CLARAS");
+            builder.AppendLine("     - Vincent GUILLOUX");
+            builder.AppendLine("     - Ahmad PATEL");
+            builder.AppendLine("     - Rémi PRAUD");
 
             creditString = builder.ToString();
 
@@ -52,7 +49,7 @@ namespace BomberLoutre.Screens
         {
             // Graphics
             ContentManager Content = GameRef.Content;
-            backgroundImage = Content.Load<Texture2D>("Graphics/Screens/Credit");
+            backgroundImage = Content.Load<Texture2D>("Graphics/Screens/Menu");
 
             // Music
             MediaPlayer.IsRepeating = true;
@@ -77,11 +74,11 @@ namespace BomberLoutre.Screens
 
             base.Draw(gameTime);
 
-            GameRef.spriteBatch.Draw(backgroundImage, new Rectangle(0, 0, 800, 600), Color.White);
+            GameRef.spriteBatch.Draw(backgroundImage, new Rectangle(0, 0, GameRef.graphics.PreferredBackBufferWidth, GameRef.graphics.PreferredBackBufferHeight), Color.White);
 
             ControlManager.Draw(GameRef.spriteBatch);
             Color textColor = Color.Black;
-            GameRef.spriteBatch.DrawString(this.MidFont, creditString, creditPosition, textColor);
+            GameRef.spriteBatch.DrawString(this.BigFont, creditString, creditPosition, textColor);
 
             GameRef.spriteBatch.End();
         }

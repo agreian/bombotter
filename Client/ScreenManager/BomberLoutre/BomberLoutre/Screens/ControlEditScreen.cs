@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using BomberLoutre.Controls;
 using Microsoft.Xna.Framework.Content;
@@ -43,7 +39,7 @@ namespace BomberLoutre.Screens
         {
             // Graphics
             ContentManager Content = GameRef.Content;
-            backgroundImage = Content.Load<Texture2D>("Graphics/Screens/Credit");
+            backgroundImage = Content.Load<Texture2D>("Graphics/Screens/Menu");
 
             // Music
             MediaPlayer.IsRepeating = true;
@@ -57,17 +53,32 @@ namespace BomberLoutre.Screens
             ControlManager.Update(gameTime, PlayerIndex.One);
 
             if (InputHandler.KeyDown(Keys.Escape))
+            {
                 StateManager.PushState(GameRef.TitleScreen);
+                counter = 0;
+            }
 
+            // L'utilisateur n'a pas encore défini tous les contrôles
             if (counter < keysNames.Length)
                 instruction = "Appuyez une touche pour la commande : " + keysNames[counter];
 
-            else instruction = "Configuration des touches terminées";
+            else
+            {
+                instruction = "Configuration des touches terminées : \n";
+                for (int i = 0; i < keysNames.Length; i++)
+                {
+                    instruction += "     - " + keysNames[i] + " : " + Config.DefaultKeys[i] + "\n";
+                }
+                instruction += "\nAppuyez sur \"ÉCHAP\" pour revenir au menu.";
+            }
 
             if (counter < keysNames.Length && InputHandler.HavePressedKey() && InputHandler.GetPressedKeys().Length > 0)
             {
-                Config.DefaultKeys[counter] = InputHandler.GetPressedKeys()[0];
-                counter++;
+                if (InputHandler.GetPressedKeys()[0] != Keys.Escape)
+                {
+                    Config.DefaultKeys[counter] = InputHandler.GetPressedKeys()[0];
+                    counter++;
+                }
             }
 
             base.Update(gameTime);
@@ -79,7 +90,7 @@ namespace BomberLoutre.Screens
 
             base.Draw(gameTime);
 
-            GameRef.spriteBatch.Draw(backgroundImage, new Rectangle(0, 0, 800, 600), Color.White);
+            GameRef.spriteBatch.Draw(backgroundImage, new Rectangle(0, 0, GameRef.graphics.PreferredBackBufferWidth, GameRef.graphics.PreferredBackBufferHeight), Color.White);
 
             ControlManager.Draw(GameRef.spriteBatch);
             Color textColor = Color.Black;
