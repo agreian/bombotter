@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+using BomberLoutre;
+
 namespace BombOtter.Sprite
 {
     class OtterSprite : Sprite
@@ -18,10 +20,7 @@ namespace BombOtter.Sprite
         KeyboardState currentKBState;
         KeyboardState previousKBState;
 
-        public int WindowHeight { get; set; } // utiles pour déplacer la loutre
-        public int WindowWidth { get; set; }
-
-        public OtterSprite(Texture2D texture, int currentFrame, int spriteWidth, int spriteHeight, int windowWidth, int windowHeight) 
+        public OtterSprite(Texture2D texture, int currentFrame, int spriteWidth, int spriteHeight) 
             : base(texture, spriteWidth, spriteHeight)
         {
             this.currentFrame = currentFrame;
@@ -29,8 +28,6 @@ namespace BombOtter.Sprite
             facing = true; // Par défaut, la sprite est de face. Si elle monte, elle sera de dos
             spriteSpeed = 0.15f;
             interval = 80f;
-            WindowHeight = windowHeight;
-            WindowWidth = windowWidth;
         }
 
         public void HandleSpriteMovement(GameTime gameTime)
@@ -64,17 +61,17 @@ namespace BombOtter.Sprite
             if (currentFrame == 6 || currentFrame == 13 || currentFrame == 20 || currentFrame == 26 || currentFrame == 34 || currentFrame == 41)
                 column = 6;
 
+            // Encadre la frame
             sourceRect = new Rectangle(column * spriteWidth, line * spriteHeight, spriteWidth, spriteHeight);
 
             if (currentKBState.IsKeyDown(Keys.Right) == true)
             {
                 AnimateRight(gameTime);
 
-
-                if (spritePosition.X < (WindowWidth - (spriteWidth / 2)))
+                if (spritePosition.X < (Config.Resolutions[Config.IndexResolution, 0] - (spriteWidth / 2)))
                 {
                     direction = Vector2.Normalize(new Vector2(1, 0));
-                    spritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
+                    spritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
                 }
             }
 
@@ -85,7 +82,7 @@ namespace BombOtter.Sprite
                 if (spritePosition.X > (spriteWidth / 2))
                 {
                     direction = Vector2.Normalize(new Vector2(-1, 0));
-                    spritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
+                    spritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
                 }
             }
 
@@ -93,10 +90,10 @@ namespace BombOtter.Sprite
             {
                 AnimateDown(gameTime);
 
-                if (spritePosition.Y < (WindowHeight - (spriteHeight / 2)))
+                if (spritePosition.Y < (Config.Resolutions[Config.IndexResolution, 1] - (spriteHeight / 2)))
                 {
                     direction = Vector2.Normalize(new Vector2(0, 1));
-                    spritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
+                    spritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
                 }
             }
 
@@ -107,7 +104,7 @@ namespace BombOtter.Sprite
                 if (spritePosition.Y > 25)
                 {
                     direction = Vector2.Normalize(new Vector2(0, -1));
-                    spritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
+                    spritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
                 }
             }
 
