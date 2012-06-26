@@ -22,19 +22,19 @@ sequence<GameWaitRoom*> RoomList;
 
 class Game
 {
-   string name;
-   int state;
-   int nbRound;
-   
-   RoomList rooms;
-   Map currentMap;
-	
+	string name;
+	int state;
+	int nbRound;
+
+	RoomList rooms;
+	Map currentMap;
+
 	void addBot();
-   void removeBot();
-   
-   bool createMap(string mode, string mapSkin);
-   void startMap();
-   void endMap();
+	void removeBot();
+
+	bool createMap(string mode, string mapSkin);
+	void startMap();
+	void endMap();
 };
 
 sequence<Game> GameList;

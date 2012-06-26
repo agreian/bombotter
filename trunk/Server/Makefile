@@ -1,29 +1,31 @@
-INC = -I../inc
+INC = -I../inc -I../gen
 LOCALINC = -I.
 ICELIB = -lIce -lIceUtil -lpthread
 CC = g++
 OFILES = ../tmp/ServerApplication.o \
 	../tmp/Game.o \
 	../tmp/Bomberloutre_*.o \
-	../tmp/UserConnectionI.o
+	../tmp/UserConnectionI.o \
+	../tmp/GamesManagerI.o
 
-all: dir interfaces Bomberloutre.o ServerApplication.o Game.o UserConnectionI.o
+all: dir interfaces Bomberloutre.o ServerApplication.o Game.o UserConnectionI.o GamesManagerI.o
 	cd ./src; \
 	$(CC) $(INC) $(ICELIB) $(OFILES) main.cpp -o ../bin/main; \
 	cd ..;
 
 dir:
 	mkdir -p ./tmp; \
-	mkdir -p ./bin;
+	mkdir -p ./bin; \
+	mkdir -p ./gen;
 
 Bomberloutre.o:
-	cd ./src; \
-	$(CC) $(INC) -c Bomberloutre.cpp -o ../tmp/Bomberloutre_main.o; \
-	$(CC) $(INC) -c Bomberloutre_map.cpp -o ../tmp/Bomberloutre_map.o; \
-	$(CC) $(INC) -c Bomberloutre_game.cpp -o ../tmp/Bomberloutre_game.o; \
-	$(CC) $(INC) -c Bomberloutre_object.cpp -o ../tmp/Bomberloutre_object.o; \
-	$(CC) $(INC) -c Bomberloutre_player.cpp -o ../tmp/Bomberloutre_player.o; \
-	$(CC) $(INC) -c Bomberloutre_user.cpp -o ../tmp/Bomberloutre_user.o; \
+	cd ./gen; \
+	$(CC) $(LOCALINC) -c Bomberloutre.cpp -o ../tmp/Bomberloutre_main.o; \
+	$(CC) $(LOCALINC) -c Bomberloutre_map.cpp -o ../tmp/Bomberloutre_map.o; \
+	$(CC) $(LOCALINC) -c Bomberloutre_game.cpp -o ../tmp/Bomberloutre_game.o; \
+	$(CC) $(LOCALINC) -c Bomberloutre_object.cpp -o ../tmp/Bomberloutre_object.o; \
+	$(CC) $(LOCALINC) -c Bomberloutre_player.cpp -o ../tmp/Bomberloutre_player.o; \
+	$(CC) $(LOCALINC) -c Bomberloutre_user.cpp -o ../tmp/Bomberloutre_user.o; \
 	cd ..;
 
 Game.o:
@@ -41,13 +43,17 @@ UserConnectionI.o:
 	$(CC) $(INC) -c UserConnectionI.cpp -o ../tmp/UserConnectionI.o; \
 	cd ..;
 
+GamesManagerI.o:
+	cd ./src; \
+	$(CC) $(INC) -c GamesManagerI.cpp -o ../tmp/GamesManagerI.o; \
+	cd ..;
+
 interfaces:
 	cd ./interface; \
-	slice2cpp $(LOCALINC) --header-ext hpp --output-dir ../src Bomberloutre*.ice; \
-	mv ../src/Bomberloutre*.hpp ../inc/; \
+	slice2cpp $(LOCALINC) --header-ext hpp --output-dir ../gen Bomberloutre*.ice; \
 	cd ..;
 
 clean:
 	rm -Rf ./tmp; \
-	rm ./inc/Bomberloutre*.hpp; \
-	rm ./src/Bomberloutre.cpp;
+	rm -Rf ./gen; \
+	rm -Rf ./bin;
