@@ -5,7 +5,8 @@
 int main(int argc, char** argv)
 {
 	std::cout << "Hello World!" << std::endl;
-	try {
+	try
+	{
 		ServerApplication app;
 		return app.main(argc,argv);
 	}
