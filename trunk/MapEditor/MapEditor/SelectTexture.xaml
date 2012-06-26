@@ -6,7 +6,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
-            <RowDefinition Height="30" />
+            <RowDefinition Height="35" />
         </Grid.RowDefinitions>
         <ListBox Name="listTextures" Grid.Row="0" Margin="5" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type my:SelectTexture}}, Path=Textures}">
             <ListBox.ItemTemplate>
@@ -16,7 +16,7 @@
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="60" />
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="1" Content="{Binding Path=Label}" Margin="2" VerticalContentAlignment="Center" />
+                        <Label Grid.Column="1" Content="{Binding Path=Label}" Margin="5,2,2,2" VerticalContentAlignment="Center" />
                         <Image Grid.Column="0" Source="{Binding Path=Image}" Margin="2" Height="58" Stretch="UniformToFill" StretchDirection="Both" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Grid>
                 </DataTemplate>
@@ -27,8 +27,8 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Name="btnOK" Margin="2,2,5,2" Width="80" HorizontalAlignment="Right" Content="Ok" Click="btnOK_Click" />
-            <Button Grid.Column="1" Name="btnCancel" Margin="2,2,5,2" Width="80" HorizontalAlignment="Left" Content="Annuler" Click="btnCancel_Click" />
+            <Button Grid.Column="0" Name="btnOK" Margin="2,2,5,10" Width="70" HorizontalAlignment="Right" Content="Ok" Click="btnOK_Click" />
+            <Button Grid.Column="1" Name="btnCancel" Margin="2,2,5,10" Width="70" HorizontalAlignment="Left" Content="Annuler" Click="btnCancel_Click" />
         </Grid>
     </Grid>
 </Window>

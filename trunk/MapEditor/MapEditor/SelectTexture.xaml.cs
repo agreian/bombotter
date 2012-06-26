@@ -17,12 +17,12 @@ namespace MapEditor
             private set;
         }
 
-        public delegate void TextureSelectedEventHandler(int type, BitmapImage image);
+        public delegate void TextureSelectedEventHandler(int type, Texture image);
         public event TextureSelectedEventHandler TextureSelected;
 
         private int _type = -1;
 
-        private void NotifyTextureSelected(BitmapImage image)
+        private void NotifyTextureSelected(Texture image)
         {
             if (TextureSelected != null)
                 TextureSelected(_type, image);
@@ -45,11 +45,11 @@ namespace MapEditor
                     this.Title = "Textures du sol";
                     break;
                 case 1:
-                    dirName = "Dectructibles";
+                    dirName = "Destructibles";
                     this.Title = "Textures des blocs destructibles";
                     break;
                 case 2:
-                    dirName = "Indectructibles";
+                    dirName = "Indestructibles";
                     this.Title = "Textures des blocs indestructibles";
                     break;
                 default:
@@ -72,7 +72,7 @@ namespace MapEditor
         {
             if (listTextures.SelectedItem != null && listTextures.SelectedItem is Texture)
             {
-                NotifyTextureSelected(((Texture)listTextures.SelectedItem).Image);
+                NotifyTextureSelected((Texture)listTextures.SelectedItem);
             }
 
             this.Close();
@@ -82,7 +82,7 @@ namespace MapEditor
         {
             if (listTextures.SelectedItem != null && listTextures.SelectedItem is Texture)
             {
-                NotifyTextureSelected(((Texture)listTextures.SelectedItem).Image);
+                NotifyTextureSelected((Texture)listTextures.SelectedItem);
             }
 
             this.Close();
