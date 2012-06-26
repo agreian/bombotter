@@ -108,9 +108,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\Bomb.cs" />
     <Compile Include="Config.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="Screens\BaseGameState.cs" />
+    <Compile Include="Components\Player.cs" />
+    <Compile Include="Sprites\Screens\BaseGameState.cs" />
     <Compile Include="Controls\Control.cs" />
     <Compile Include="Controls\ControlManager.cs" />
     <Compile Include="Controls\GameState.cs" />
@@ -119,11 +120,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="BomberLoutre.cs" />
-    <Compile Include="Screens\ControlEditScreen.cs" />
-    <Compile Include="Screens\GameScreen.cs" />
-    <Compile Include="Screens\OptionScreen.cs" />
-    <Compile Include="Screens\CreditScreen.cs" />
-    <Compile Include="Screens\TitleScreen.cs" />
+    <Compile Include="Sprites\Screens\ControlEditScreen.cs" />
+    <Compile Include="Sprites\Screens\GameScreen.cs" />
+    <Compile Include="Sprites\Screens\OptionScreen.cs" />
+    <Compile Include="Sprites\Screens\CreditScreen.cs" />
+    <Compile Include="Sprites\Screens\TitleScreen.cs" />
     <Compile Include="App.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

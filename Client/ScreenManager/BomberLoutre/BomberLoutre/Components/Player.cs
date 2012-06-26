@@ -4,7 +4,7 @@ using BomberLoutre.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace BomberLoutre
+namespace BomberLoutre.Components
 {
     class Player
     {
@@ -64,9 +64,9 @@ namespace BomberLoutre
             this.id = id;
             this.gameRef = game;
 
-            Texture2D spriteTexture = gameRef.Content.Load<Texture2D>("Graphics/Characters/otterSprite");
+            Texture2D spriteTexture = gameRef.Content.Load<Texture2D>("Graphics/Sprites/otterSprite");
 
-            Sprite = new OtterSprite(spriteTexture, currentFrame);
+            Sprite = new OtterSprite(spriteTexture, currentFrame, position);
             
             isAlive = true;
             bombPower = 1;
@@ -78,12 +78,13 @@ namespace BomberLoutre
 
         #region XNA Method Region
         public void Update(GameTime gameTime)
-        {                
+        {
+            Sprite.Update(gameTime);    
         }
 
         public void Draw(GameTime gameTime)
         {
-            
+            Sprite.Draw(gameTime, gameRef.spriteBatch);
         }
         #endregion
 
