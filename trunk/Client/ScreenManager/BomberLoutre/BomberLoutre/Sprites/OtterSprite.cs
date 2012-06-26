@@ -20,18 +20,18 @@ namespace BomberLoutre.Sprite
         KeyboardState currentKBState;
         KeyboardState previousKBState;
 
-        public OtterSprite(Texture2D texture, int currentFrame) : base(texture)
+        public OtterSprite(Texture2D texture, int currentFrame, Vector2 position) : base(texture)
         {
             this.currentFrame = currentFrame;
-            spritePosition = new Vector2(400, 300);
+            spritePosition = position;
             facing = true; // Par défaut, la sprite est de face. Si elle monte, elle sera de dos
             spriteSpeed = 0.15f;
             interval = 80f;
-            spriteHeight = 64;
-            spriteWidth = 72;
+            spriteWidth = 64;
+            spriteHeight = 72;
         }
 
-        public void HandleSpriteMovement(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             previousKBState = currentKBState;
             currentKBState = Keyboard.GetState();
@@ -69,7 +69,7 @@ namespace BomberLoutre.Sprite
             {
                 AnimateRight(gameTime);
 
-                if (spritePosition.X < (Config.Resolutions[Config.IndexResolution, 0] - (spriteWidth / 2)))
+                if (spritePosition.X < (Properties.App.Default.ScreenWidth - (spriteWidth / 2)))
                 {
                     direction = Vector2.Normalize(new Vector2(1, 0));
                     spritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
@@ -91,7 +91,7 @@ namespace BomberLoutre.Sprite
             {
                 AnimateDown(gameTime);
 
-                if (spritePosition.Y < (Config.Resolutions[Config.IndexResolution, 1] - (spriteHeight / 2)))
+                if (spritePosition.Y < (Properties.App.Default.ScreenHeight - (spriteHeight / 2)))
                 {
                     direction = Vector2.Normalize(new Vector2(0, 1));
                     spritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
@@ -110,6 +110,11 @@ namespace BomberLoutre.Sprite
             }
 
             origin = new Vector2(sourceRect.Width / 2, sourceRect.Height / 2);
+        }
+
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(spriteTexture, spritePosition, sourceRect, Color.White, 0f, origin, 1.0f, SpriteEffects.None, 0);
         }
 
         public void AnimateRight(GameTime gameTime)
