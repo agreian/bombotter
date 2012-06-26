@@ -10,6 +10,7 @@ namespace BomberLoutre
         public static Point MapSize = new Point(13, 11);
         public static int TileWidth = 60;
         public static int TileHeight = 60;
+        public static Rectangle MapLayer = new Rectangle((Properties.App.Default.ScreenWidth - MapSize.X * TileWidth) / 2, (Properties.App.Default.ScreenHeight - MapSize.Y * TileHeight) / 2, MapSize.X * TileWidth, MapSize.Y * TileHeight);
 
         public static Point[] PlayersPositions = new Point[]
         {
@@ -27,10 +28,8 @@ namespace BomberLoutre
 
         public static float Volume = 0.0f;
 
-        public static int[,] Resolutions = new int[,] { { 1024, 768 }, { 1280, 1024 }, { 1366, 768 }, { 1920, 1080 } };
+        public static int[,] Resolutions = new int[,] { {900, 700}, { 1024, 768 }, { 1280, 1024 }, { 1366, 768 }, { 1920, 1080 } };
         public static int IndexResolution = 0;
-
-        public static bool ActiveSuddenDeath = false;
 
 
         /* Option menu */

@@ -86,7 +86,8 @@ namespace BomberLoutre.Components
 
         #region XNA Method Region
         public void Update(GameTime gameTime)
-        {            
+        {
+            CheckBombing();
             Sprite.Update(gameTime);
         }
 
