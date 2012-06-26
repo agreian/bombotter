@@ -1,13 +1,10 @@
-﻿using System.Text;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using BomberLoutre.Controls;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
 
-using BombOtter.Sprite;
+using BomberLoutre.Sprite;
 
 namespace BomberLoutre.Screens
 {
@@ -20,7 +17,7 @@ namespace BomberLoutre.Screens
         SoundEffect itemPickUpSound;
         SoundEffect playerDeathSound;
 
-        OtterSprite Player; /* TODO : Créer une classe Player */
+        Player Player; /* TODO : Créer une classe Player */
         #endregion
 
         #region Constructor region

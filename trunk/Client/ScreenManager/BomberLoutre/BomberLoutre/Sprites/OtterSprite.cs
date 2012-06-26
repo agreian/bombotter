@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Input;
 
 using BomberLoutre;
 
-namespace BombOtter.Sprite
+namespace BomberLoutre.Sprite
 {
     class OtterSprite : Sprite
     {
@@ -20,14 +20,15 @@ namespace BombOtter.Sprite
         KeyboardState currentKBState;
         KeyboardState previousKBState;
 
-        public OtterSprite(Texture2D texture, int currentFrame, int spriteWidth, int spriteHeight) 
-            : base(texture, spriteWidth, spriteHeight)
+        public OtterSprite(Texture2D texture, int currentFrame) : base(texture)
         {
             this.currentFrame = currentFrame;
             spritePosition = new Vector2(400, 300);
             facing = true; // Par défaut, la sprite est de face. Si elle monte, elle sera de dos
             spriteSpeed = 0.15f;
             interval = 80f;
+            spriteHeight = 64;
+            spriteWidth = 72;
         }
 
         public void HandleSpriteMovement(GameTime gameTime)

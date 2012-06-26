@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace BombOtter.Sprite
+namespace BomberLoutre.Sprite
 {
     class BombSprite : Sprite
     {
