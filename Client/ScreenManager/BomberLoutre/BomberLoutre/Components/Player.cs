@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using BomberLoutre.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using BomberLoutre.Controls;
+using BomberLoutre.Screens;
 
 namespace BomberLoutre.Components
 {
@@ -10,10 +12,13 @@ namespace BomberLoutre.Components
     {
         #region Field Region
 
-        private BomberLoutre gameRef;
+        private BomberLoutre GameRef;
+        private GameScreen gameScreen;
         private int id;
 
         public OtterSprite Sprite { get; protected set; }
+
+        private bool bombDropped;
 
         // Characteristics
         private bool isAlive;       // Joueur vivant
@@ -59,12 +64,15 @@ namespace BomberLoutre.Components
         #endregion
 
         #region Constructor Region
-        public Player(int id, BomberLoutre game, Vector2 position, int currentFrame)
+        public Player(int id, BomberLoutre game, Vector2 position, int currentFrame, GameScreen gameScreen)
         {
             this.id = id;
-            this.gameRef = game;
+            GameRef = game;
+            this.gameScreen = gameScreen;
 
-            Texture2D spriteTexture = gameRef.Content.Load<Texture2D>("Graphics/Sprites/otterSprite");
+            bombDropped = false;
+
+            Texture2D spriteTexture = GameRef.Content.Load<Texture2D>("Graphics/Sprites/otterSprite");
 
             Sprite = new OtterSprite(spriteTexture, currentFrame, position);
             
@@ -78,18 +86,36 @@ namespace BomberLoutre.Components
 
         #region XNA Method Region
         public void Update(GameTime gameTime)
-        {
-            Sprite.Update(gameTime);    
+        {            
+            Sprite.Update(gameTime);
         }
 
         public void Draw(GameTime gameTime)
         {
-            Sprite.Draw(gameTime, gameRef.spriteBatch);
+            Sprite.Draw(gameTime, GameRef.spriteBatch);
         }
         #endregion
 
         #region Method Region
 
+        private void CheckBombing()
+        {
+            if (InputHandler.KeyDown(Properties.App.Default.KeySpace))
+            {
+                if (!bombDropped)
+                {
+                    DropBomb();
+                    bombDropped = true;
+                }
+            }
+
+            else bombDropped = false;
+        }
+
+        private void DropBomb()
+        {
+            gameScreen.AddBomb(new Bomb(id, Sprite.spritePosition, GameRef));
+        }
         #endregion
     }
 }

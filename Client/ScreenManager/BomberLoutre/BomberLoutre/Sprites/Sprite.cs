@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace BomberLoutre.Sprite
 {
-    class Sprite
+    public class Sprite
     {
         public Texture2D spriteTexture { get; set; }
         public int spriteWidth { get; set; }
@@ -21,6 +21,12 @@ namespace BomberLoutre.Sprite
             spriteTexture = texture;
             spriteWidth = width;
             spriteHeight = height;
+        }
+
+        public Sprite(Texture2D texture, Vector2 position)
+        {
+            spriteTexture = texture;
+            spritePosition = position;
         }
 
         public Sprite(Texture2D texture, int width, int height, Vector2 position)
