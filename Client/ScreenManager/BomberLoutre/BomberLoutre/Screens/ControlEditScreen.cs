@@ -11,9 +11,9 @@ namespace BomberLoutre.Screens
     {
         #region Field region
         Texture2D backgroundImage;
-        Vector2 textPosition;
+        Vector2 textPosition, errorPosition;
+        string instruction, error;
         string[] keysNames;
-        string instruction;
         int counter;
         #endregion
 
@@ -29,10 +29,14 @@ namespace BomberLoutre.Screens
         public override void Initialize()
         {
             instruction = "Appuyez une touche pour la commande : Haut";
+            error = "";
             keysNames = new string[] { "Haut", "Bas", "Gauche", "Droite", "Bombe" };
             textPosition = new Vector2(20, 20);
 
             base.Initialize();
+
+            // On a besoin de MidFont initialisé pendant base.Initialize()
+            errorPosition = new Vector2(20, this.MidFont.MeasureString(instruction).Y + 20);
         }
 
         protected override void LoadContent()
@@ -67,16 +71,81 @@ namespace BomberLoutre.Screens
                 instruction = "Configuration des touches terminées : \n";
                 for (int i = 0; i < keysNames.Length; i++)
                 {
-                    instruction += "     - " + keysNames[i] + " : " + Config.DefaultKeys[i] + "\n";
+                    instruction += "     - " + keysNames[i] + " : ";
+
+                    switch (i)
+                    {
+                        case 0:
+                            instruction += Properties.App.Default.KeyUp + "\n";
+                            break;
+
+                        case 1:
+                            instruction += Properties.App.Default.KeyDown + "\n";
+                            break;
+
+                        case 2:
+                            instruction += Properties.App.Default.KeyLeft + "\n";
+                            break;
+
+                        case 3:
+                            instruction += Properties.App.Default.KeyRight + "\n";
+                            break;
+
+                        case 4:
+                            instruction += Properties.App.Default.KeySpace + "\n";
+                            break;
+                    }
                 }
+
                 instruction += "\nAppuyez sur \"ÉCHAP\" pour revenir au menu.";
             }
-
+            
             if (counter < keysNames.Length && InputHandler.HavePressedKey() && InputHandler.GetPressedKeys().Length > 0)
             {
                 if (InputHandler.GetPressedKeys()[0] != Keys.Escape)
                 {
-                    Config.DefaultKeys[counter] = InputHandler.GetPressedKeys()[0];
+                    error = ""; // Réinitialisation pour les coups suivants
+
+                    switch(counter)
+                    {
+                        case 0:
+                            Properties.App.Default.KeyUp = InputHandler.GetPressedKeys()[0];
+                        break;
+
+                        case 1:
+                            if (InputHandler.GetPressedKeys()[0] != Properties.App.Default.KeyUp)
+                                Properties.App.Default.KeyDown = InputHandler.GetPressedKeys()[0];
+                            else { error = "Touche déjà utilisée !"; counter--; }
+                        break;
+
+                        case 2:
+                            if (InputHandler.GetPressedKeys()[0] != Properties.App.Default.KeyUp
+                                && InputHandler.GetPressedKeys()[0] != Properties.App.Default.KeyDown
+                                )
+                                Properties.App.Default.KeyLeft = InputHandler.GetPressedKeys()[0];
+                            else { error = "Touche déjà utilisée !"; counter--; }
+                        break;
+
+                        case 3:
+                            if (InputHandler.GetPressedKeys()[0] != Properties.App.Default.KeyUp
+                                && InputHandler.GetPressedKeys()[0] != Properties.App.Default.KeyDown
+                                && InputHandler.GetPressedKeys()[0] != Properties.App.Default.KeyLeft
+                                )
+                            Properties.App.Default.KeyRight = InputHandler.GetPressedKeys()[0];
+                            else { error = "Touche déjà utilisée !"; counter--; }
+                        break;
+
+                        case 4:
+                            if (InputHandler.GetPressedKeys()[0] != Properties.App.Default.KeyUp
+                                && InputHandler.GetPressedKeys()[0] != Properties.App.Default.KeyDown
+                                && InputHandler.GetPressedKeys()[0] != Properties.App.Default.KeyLeft
+                                && InputHandler.GetPressedKeys()[0] != Properties.App.Default.KeyRight
+                                )
+                            Properties.App.Default.KeySpace = InputHandler.GetPressedKeys()[0];
+                            else { error = "Touche déjà utilisée !"; counter--; }
+                        break;
+                    }
+
                     counter++;
                 }
             }
@@ -96,7 +165,7 @@ namespace BomberLoutre.Screens
             Color textColor = Color.Black;
 
             GameRef.spriteBatch.DrawString(this.MidFont, instruction, textPosition, textColor);
-
+            GameRef.spriteBatch.DrawString(this.MidFont, error, errorPosition, Color.Red);
             GameRef.spriteBatch.End();
         }
 

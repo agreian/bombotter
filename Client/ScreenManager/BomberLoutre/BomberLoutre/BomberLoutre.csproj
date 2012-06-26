@@ -124,6 +124,11 @@
     <Compile Include="Screens\OptionScreen.cs" />
     <Compile Include="Screens\CreditScreen.cs" />
     <Compile Include="Screens\TitleScreen.cs" />
+    <Compile Include="App.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>App.settings</DependentUpon>
+    </Compile>
     <Compile Include="Sprites\BombSprite.cs" />
     <Compile Include="Sprites\CaseSprite.cs" />
     <Compile Include="Sprites\OtterSprite.cs" />
@@ -166,7 +171,14 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="App.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>App.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Properties</CustomToolNamespace>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

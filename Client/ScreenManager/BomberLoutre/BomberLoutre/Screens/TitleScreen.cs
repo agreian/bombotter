@@ -44,7 +44,8 @@ namespace BomberLoutre.Screens
 
             // Music
             MediaPlayer.IsRepeating = true;
-            MediaPlayer.Play(Content.Load<Song>("Audio/Musics/Title"));
+            if (Properties.App.Default.MusicState)                
+                MediaPlayer.Play(Content.Load<Song>("Audio/Musics/Title"));
 
             base.LoadContent();
         }

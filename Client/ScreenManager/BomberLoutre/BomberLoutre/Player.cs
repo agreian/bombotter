@@ -51,6 +51,11 @@ namespace BomberLoutre
             get { return bombNumber; }
         }
 
+        public bool CanKick
+        {
+            get { return canKick; }
+        }
+
         #endregion
 
         #region Constructor Region
@@ -67,6 +72,7 @@ namespace BomberLoutre
             bombPower = 1;
             bombNumber = 1;
             bombAvailable = 1;
+            canKick = false;
         }
         #endregion
 
