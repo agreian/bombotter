@@ -134,6 +134,7 @@
     <Compile Include="Sprites\CaseSprite.cs" />
     <Compile Include="Sprites\OtterSprite.cs" />
     <Compile Include="Sprites\Sprite.cs" />
+    <Compile Include="World\Map.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ico.ico" />

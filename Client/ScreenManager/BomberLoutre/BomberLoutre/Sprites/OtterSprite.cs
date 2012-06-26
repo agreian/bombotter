@@ -27,8 +27,8 @@ namespace BomberLoutre.Sprite
             facing = true; // Par défaut, la sprite est de face. Si elle monte, elle sera de dos
             spriteSpeed = 0.5f;
             interval = 80f;
-            spriteWidth = 64;
-            spriteHeight = 72;
+            spriteWidth = Config.OtterWidth;
+            spriteHeight = Config.OtterHeight;
         }
 
         public void Update(GameTime gameTime)
@@ -69,7 +69,7 @@ namespace BomberLoutre.Sprite
             {
                 AnimateRight(gameTime);
 
-                if (spritePosition.X < ((Properties.App.Default.ScreenWidth - Config.MapLayer.X) - (spriteWidth / 2)))
+                if (spritePosition.X < ((Config.MapLayer.Width + Config.MapLayer.X) - (spriteWidth / 2)))
                 {
                     direction = Vector2.Normalize(new Vector2(1, 0));
                     spritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
@@ -80,7 +80,7 @@ namespace BomberLoutre.Sprite
             {
                 AnimateLeft(gameTime);
 
-                if (spritePosition.X > Config.MapLayer.X)
+                if (spritePosition.X > Config.MapLayer.X + (spriteWidth / 2))
                 {
                     direction = Vector2.Normalize(new Vector2(-1, 0));
                     spritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
@@ -91,7 +91,7 @@ namespace BomberLoutre.Sprite
             {
                 AnimateDown(gameTime);
 
-                if (spritePosition.Y < ((Properties.App.Default.ScreenHeight - Config.MapLayer.X) - (spriteHeight / 2)))
+                if (spritePosition.Y < ((Config.MapLayer.Height + Config.MapLayer.Y) - (spriteHeight / 2)))
                 {
                     direction = Vector2.Normalize(new Vector2(0, 1));
                     spritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
@@ -102,7 +102,7 @@ namespace BomberLoutre.Sprite
             {
                 AnimateUp(gameTime);
 
-                if (spritePosition.Y > Config.MapLayer.Y)
+                if (spritePosition.Y > Config.MapLayer.Y + (spriteHeight / 2))
                 {
                     direction = Vector2.Normalize(new Vector2(0, -1));
                     spritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;

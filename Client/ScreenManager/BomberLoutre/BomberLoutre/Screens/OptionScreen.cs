@@ -48,19 +48,13 @@ namespace BomberLoutre.Screens
                 else break;
             }
 
-            // Initialisation des autres paramètres du menu Option (en fonction des param utilisateurs)
-
-
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            // Graphics
-            ContentManager Content = GameRef.Content;
-            backgroundImage = Content.Load<Texture2D>("Graphics/Screens/Menu");
+            backgroundImage = GameRef.Content.Load<Texture2D>("Graphics/Screens/Menu");
 
-            // Music
             MediaPlayer.IsRepeating = true;
             //MediaPlayer.Play(GameRef.Content.Load<Song>("Audio/Musics/Title"));
 
@@ -97,14 +91,19 @@ namespace BomberLoutre.Screens
                         else MediaPlayer.Stop();
                         break;
                     case Config.BackOptionString:
+                        // Changement de la résolution / Application des changements (ex: FullScreen)
                         GameRef.graphics.PreferredBackBufferWidth = Config.Resolutions[Config.IndexResolution, 0];
                         GameRef.graphics.PreferredBackBufferHeight = Config.Resolutions[Config.IndexResolution, 1];
                         GameRef.graphics.ApplyChanges();
+
+                        // Sauvegarde dans les paramètres locaux User
                         Properties.App.Default.ScreenWidth = Config.Resolutions[Config.IndexResolution, 0];
                         Properties.App.Default.ScreenHeight = Config.Resolutions[Config.IndexResolution, 1];
                         Properties.App.Default.Save();
 
-                        StateManager.PushState(GameRef.TitleScreen);
+                        Config.UpdateMapLayer(); // Mise à jour de la position de la "zone-map", vu que la résolution a changé
+
+                        StateManager.PushState(GameRef.TitleScreen); // Retour vers l'écran d'accueil
                         break;
                 }                
             }
