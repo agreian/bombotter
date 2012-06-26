@@ -56,9 +56,9 @@ namespace BomberLoutre.Screens
         {
             ControlManager.Update(gameTime, PlayerIndex.One);
 
-            if (InputHandler.KeyDown(Keys.Escape))
+            if (InputHandler.KeyPressed(Keys.Enter))
             {
-                StateManager.PushState(GameRef.TitleScreen);
+                StateManager.PushState(GameRef.OptionScreen);
                 counter = 0;
             }
 
@@ -97,12 +97,12 @@ namespace BomberLoutre.Screens
                     }
                 }
 
-                instruction += "\nAppuyez sur \"ÉCHAP\" pour revenir au menu.";
+                instruction += "\nAppuyez sur \"ENTRÉE\" pour revenir au menu.";
             }
             
             if (counter < keysNames.Length && InputHandler.HavePressedKey() && InputHandler.GetPressedKeys().Length > 0)
             {
-                if (InputHandler.GetPressedKeys()[0] != Keys.Escape)
+                if (InputHandler.GetPressedKeys()[0] != Keys.Enter)
                 {
                     error = ""; // Réinitialisation pour les coups suivants
 
