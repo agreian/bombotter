@@ -47,11 +47,8 @@ namespace BomberLoutre.Screens
 
         protected override void LoadContent()
         {
-            // Graphics
-            ContentManager Content = GameRef.Content;
-            backgroundImage = Content.Load<Texture2D>("Graphics/Screens/Menu");
+            backgroundImage = GameRef.Content.Load<Texture2D>("Graphics/Screens/Menu");
 
-            // Music
             MediaPlayer.IsRepeating = true;
             //MediaPlayer.Play(GameRef.Content.Load<Song>("Audio/Musics/Title"));
 

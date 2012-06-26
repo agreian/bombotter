@@ -69,22 +69,30 @@ namespace BomberLoutre.Components
             this.id = id;
             GameRef = game;
             this.gameScreen = gameScreen;
+            
+            Texture2D spriteTexture = GameRef.Content.Load<Texture2D>("Graphics/Sprites/otterSprite");
+            Sprite = new OtterSprite(spriteTexture, currentFrame, position);
+        }
+        #endregion
 
+        #region XNA Method Region
+
+        public void Initialize()
+        {
             bombDropped = false;
 
-            Texture2D spriteTexture = GameRef.Content.Load<Texture2D>("Graphics/Sprites/otterSprite");
-
-            Sprite = new OtterSprite(spriteTexture, currentFrame, position);
-            
             isAlive = true;
             bombPower = 1;
             bombNumber = 1;
             bombAvailable = 1;
             canKick = false;
         }
-        #endregion
 
-        #region XNA Method Region
+        public void LoadContent()
+        {
+
+        }
+
         public void Update(GameTime gameTime)
         {
             CheckBombing();
