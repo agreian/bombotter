@@ -7,11 +7,14 @@ OFILES = ../tmp/ServerApplication.o \
 	../tmp/Bomberloutre_*.o \
 	../tmp/UserConnectionI.o
 
-all: interfaces Bomberloutre.o ServerApplication.o Game.o UserConnectionI.o
-	mkdir -p ./tmp; \
+all: dir interfaces Bomberloutre.o ServerApplication.o Game.o UserConnectionI.o
 	cd ./src; \
 	$(CC) $(INC) $(ICELIB) $(OFILES) main.cpp -o ../bin/main; \
 	cd ..;
+
+dir:
+	mkdir -p ./tmp; \
+	mkdir -p ./bin;
 
 Bomberloutre.o:
 	cd ./src; \
