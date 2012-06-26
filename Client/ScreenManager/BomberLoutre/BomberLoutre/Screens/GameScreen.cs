@@ -5,13 +5,14 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
 
 using BomberLoutre.Sprite;
+using Microsoft.Xna.Framework.Media;
 
 namespace BomberLoutre.Screens
 {
     public class GameScreen : BaseGameState
     {
         #region Field region
-        /*
+        
         private bool pause;
 
         SoundEffect bombExplosionSound;
@@ -19,7 +20,7 @@ namespace BomberLoutre.Screens
         SoundEffect playerDeathSound;
 
         Player Player; // TODO : Créer une classe Player
-        */
+        
         #endregion
 
         #region Constructor region
@@ -37,15 +38,14 @@ namespace BomberLoutre.Screens
 
         protected override void LoadContent()
         {
-            // Graphics
             ContentManager Content = GameRef.Content;
 
+            if(Properties.App.Default.MusicState)
+                MediaPlayer.Play(GameRef.Content.Load<Song>("Audio/Musics/Battle"));
+            MediaPlayer.Volume = 0.40f;
 
+            bombExplosionSound = GameRef.Content.Load<SoundEffect>("Audio/Sounds/bombExplosion");
 
-
-            // Music
-            // MediaPlayer.IsRepeating = true;
-            // MediaPlayer.Play(GameRef.Content.Load<Song>("Audio/Musics/Title"));
 
             base.LoadContent();
         }
@@ -55,7 +55,15 @@ namespace BomberLoutre.Screens
             ControlManager.Update(gameTime, PlayerIndex.One);
 
             if (InputHandler.KeyDown(Keys.Escape))
+            {
                 StateManager.PushState(GameRef.TitleScreen);
+                MediaPlayer.Stop();
+            }
+
+            if (InputHandler.KeyDown(Properties.App.Default.KeyUp))
+            {
+                bombExplosionSound.Play();
+            }
 
             base.Update(gameTime);
         }
@@ -63,6 +71,7 @@ namespace BomberLoutre.Screens
         public override void Draw(GameTime gameTime)
         {
             GameRef.spriteBatch.Begin();
+            GameRef.spriteBatch.End();
             base.Draw(gameTime);
 
         }

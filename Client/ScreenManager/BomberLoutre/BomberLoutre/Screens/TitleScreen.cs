@@ -42,7 +42,7 @@ namespace BomberLoutre.Screens
             ContentManager Content = GameRef.Content;
             backgroundImage = Content.Load<Texture2D>("Graphics/Screens/Title");
 
-            // Music
+            // TODO : Gérer la musique pas uniquement lors du LoadContent, sinon en revenant sur le Title on n'a pas de musique
             MediaPlayer.IsRepeating = true;
             if (Properties.App.Default.MusicState)                
                 MediaPlayer.Play(Content.Load<Song>("Audio/Musics/Title"));
@@ -63,7 +63,7 @@ namespace BomberLoutre.Screens
                     switch (menuString[indexMenu])
                     {
                         case "Jouer":
-                            //StateManager.ChangeState(GameRef.GameModeMenuScreen);
+                            StateManager.ChangeState(GameRef.GameScreen);
                             break;
                         case "Options":
                             StateManager.ChangeState(GameRef.OptionScreen);
