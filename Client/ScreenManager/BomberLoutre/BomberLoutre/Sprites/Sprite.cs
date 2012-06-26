@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace BombOtter.Sprite
+namespace BomberLoutre.Sprite
 {
     class Sprite
     {
@@ -10,6 +10,11 @@ namespace BombOtter.Sprite
         public int spriteHeight { get; set; }
         public Rectangle sourceRect { get; set; }
         public Vector2 spritePosition { get; set; }
+
+        public Sprite(Texture2D texture)
+        {
+            spriteTexture = texture;
+        }
 
         public Sprite(Texture2D texture, int width, int height)
         {
