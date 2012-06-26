@@ -14,7 +14,7 @@ namespace BomberLoutre.Sprite
         {
             spriteWidth = 60;
             spriteHeight = 40;
-            interval = 100f;
+            interval = 150f;
             sourceRect = new Rectangle(0, 0, spriteWidth, spriteHeight);
             origin = new Vector2(sourceRect.Width / 2, sourceRect.Height / 2);
             timer = 0;
