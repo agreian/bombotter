@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 
 using BomberLoutre.Screens;
 using BomberLoutre.Controls;
+using System;
 
 namespace BomberLoutre
 {
@@ -30,8 +31,9 @@ namespace BomberLoutre
             IsFixedTimeStep = false;
             graphics.SynchronizeWithVerticalRetrace = false;
             */
-            graphics.PreferredBackBufferWidth = 800;
-            graphics.PreferredBackBufferHeight = 600;
+            graphics.PreferredBackBufferWidth = Properties.App.Default.ScreenWidth;
+            graphics.PreferredBackBufferHeight = Properties.App.Default.ScreenHeight;
+            graphics.IsFullScreen = Properties.App.Default.ScreenFullScreen;
 
             Components.Add(new InputHandler(this));
 

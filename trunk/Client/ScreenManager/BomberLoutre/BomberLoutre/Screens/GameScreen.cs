@@ -11,13 +11,15 @@ namespace BomberLoutre.Screens
     public class GameScreen : BaseGameState
     {
         #region Field region
+        /*
         private bool pause;
 
         SoundEffect bombExplosionSound;
         SoundEffect itemPickUpSound;
         SoundEffect playerDeathSound;
 
-        Player Player; /* TODO : Créer une classe Player */
+        Player Player; // TODO : Créer une classe Player
+        */
         #endregion
 
         #region Constructor region

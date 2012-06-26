@@ -16,8 +16,6 @@ namespace BomberLoutre
             new Point(53, 33)
         };
 
-        public static bool FullScreen = false;
-
         public static Point[] PlayersPositions = new Point[]
         {
             new Point(1, 1),
@@ -38,8 +36,6 @@ namespace BomberLoutre
         public static float InvincibleBlinkFrequency = 0.5f;
 
         public static float Volume = 0.0f;
-        public static bool SoundState = true;
-        public static bool MusicState = true;
 
         public static int[,] Resolutions = new int[,] { { 800, 600 }, { 1024, 768 }, { 1280, 1024 }, { 1366, 768 }, { 1920, 1080 } };
         public static int IndexResolution = 0;
