@@ -25,7 +25,7 @@ namespace BomberLoutre.Sprites
             this.currentFrame = currentFrame;
             spritePosition = position;
             facing = true; // Par défaut, la sprite est de face. Si elle monte, elle sera de dos
-            spriteSpeed = 0.5f;
+            spriteSpeed = 0.30f;
             interval = 80f;
             spriteWidth = Config.OtterWidth;
             spriteHeight = Config.OtterHeight;

@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace BomberLoutre.Components
 {
-    public class Box
+    public class Rock
     {
         private BomberLoutre GameRef;
         public Sprite Sprite { get; protected set; }
@@ -13,10 +13,10 @@ namespace BomberLoutre.Components
         private Texture2D spriteTexture;
 
         #region Constructor
-        public Box(BomberLoutre gameRef, Vector2 position)
+        public Rock(BomberLoutre gameRef, Vector2 position)
         {
             GameRef = gameRef;
-            spriteTexture = GameRef.Content.Load<Texture2D>("Graphics/Sprites/caseSprite");
+            spriteTexture = GameRef.Content.Load<Texture2D>("Graphics/Sprites/rockSprite");
 
             cellPosition = Map.CellToVector((int)position.X, (int)position.Y);
             Sprite = new Sprite(spriteTexture, Config.TileWidth, Config.TileHeight, cellPosition);
