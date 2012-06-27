@@ -2,14 +2,12 @@
 #define GAME_MODEL_HEADER
 
 // Game.h
-#include "string.h"
 #include <iostream>
-#include "Bomberloutre_game.h"
+#include <string>
 
-using namespace System;
 using namespace std;
 
-class GameModel : public Bomberloutre::Game
+class GameModel
 {
 	public:
 		GameModel();

@@ -54,6 +54,8 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalIncludeDirectories>.;$(IceHome)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -80,11 +82,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bomberloutre_game.h" />
-    <ClInclude Include="Bomberloutre_map.h" />
-    <ClInclude Include="Bomberloutre_object.h" />
-    <ClInclude Include="Bomberloutre_player.h" />
-    <ClInclude Include="Bomberloutre_user.h" />
+    <ClInclude Include="Bomberloutre.h" />
+    <ClInclude Include="Bomberloutre_map_item.h" />
     <ClInclude Include="BombItem.h" />
     <ClInclude Include="Bonus.h" />
     <ClInclude Include="BotPlayerModel.h" />
@@ -93,20 +92,15 @@
     <ClInclude Include="MapItem.h" />
     <ClInclude Include="MapModel.h" />
     <ClInclude Include="PlayerModel.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="RockItem.h" />
     <ClInclude Include="ServerModel.h" />
-    <ClInclude Include="Stdafx.h" />
     <ClInclude Include="UserModel.h" />
     <ClInclude Include="VoidItem.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="Bomberloutre_game.cpp" />
-    <ClCompile Include="Bomberloutre_map.cpp" />
-    <ClCompile Include="Bomberloutre_object.cpp" />
-    <ClCompile Include="Bomberloutre_player.cpp" />
-    <ClCompile Include="Bomberloutre_user.cpp" />
+    <ClCompile Include="Bomberloutre.cpp" />
+    <ClCompile Include="Bomberloutre_map_item.cpp" />
     <ClCompile Include="BombItem.cpp" />
     <ClCompile Include="Bonus.cpp" />
     <ClCompile Include="BotPlayerModel.cpp" />
@@ -116,19 +110,12 @@
     <ClCompile Include="PlayerModel.cpp" />
     <ClCompile Include="RockItem.cpp" />
     <ClCompile Include="ServerModel.cpp" />
-    <ClCompile Include="Stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="UserModel.cpp" />
     <ClCompile Include="VoidItem.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\interface\Bomberloutre_game.ice" />
-    <None Include="..\..\interface\Bomberloutre_map.ice" />
-    <None Include="..\..\interface\Bomberloutre_object.ice" />
-    <None Include="..\..\interface\Bomberloutre_player.ice" />
-    <None Include="..\..\interface\Bomberloutre_user.ice" />
+    <None Include="..\..\interface\Bomberloutre.ice" />
+    <None Include="..\..\interface\Bomberloutre_map_item.ice" />
     <None Include="app.ico" />
     <None Include="ReadMe.txt" />
   </ItemGroup>

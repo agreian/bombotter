@@ -2,19 +2,17 @@
 #define PLAYER_MODEL_HEADER
 
 // PlayerModel.h
-#include "string.h"
 #include <iostream>
-#include "Bomberloutre_player.h"
 #include "Bonus.h"
 
 using namespace System;
 using namespace std;
 
-class PlayerModel : public Bomberloutre::Player
+class PlayerModel
 {
 	private :
 		int height;
-		int widht;
+		int width;
 		
 	protected :
 		int flamePower;
