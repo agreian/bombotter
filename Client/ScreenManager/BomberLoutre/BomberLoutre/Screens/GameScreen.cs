@@ -19,9 +19,10 @@ namespace BomberLoutre.Screens
         SoundEffect itemLootSound;
         SoundEffect playerDeathSound;
 
-        List<Player> playerList;
-        List<Bomb> bombList;
-        List<Bonus> bonusList;
+        List<Player>    playerList;
+        List<Bomb>      bombList;
+        List<Bonus>     bonusList;
+        List<Box>       boxList;
 
         Map MapZone;
         #endregion
@@ -41,22 +42,23 @@ namespace BomberLoutre.Screens
             playerList = new List<Player>();
             bombList = new List<Bomb>();
             bonusList = new List<Bonus>();
+            boxList = new List<Box>();
 
             for (int i = 0; i < Config.PlayerNumber; ++i)
-            {
-                // Pour le moment, la loutre est placée au coin gauche supérieure, donc (X + largeur/2) et (Y + hauteur/2)
                 playerList.Add(new Player(i, GameRef, new Vector2(Config.MapLayer.X + (Config.OtterWidth/2), Config.MapLayer.Y + (Config.OtterHeight/2)), 0, this));
-            }
 
-            string[] types = new string[] { "powerUp", "powerUpGold", "canKick", "speedUp" };
+            /* A dégager quand les bonus / caisses ne seront plus générés aléatoirement */
             Random randomizer = new Random();
 
-
+            /* Ajout de Bonus au pif
+            string[] types = new string[] { "powerUp", "powerUpGold", "canKick", "speedUp" };
             for (int i = 0; i < 15; ++i)
-            {               
                 bonusList.Add(new Bonus(GameRef, new Vector2((float) randomizer.Next(13)+1, (float) randomizer.Next(11)+1), types[randomizer.Next(4)]));
-            }
-                        
+             -------------------- */
+
+            for (int i = 0; i < 70; ++i)
+                boxList.Add(new Box(GameRef, new Vector2((float) randomizer.Next(13) + 1, (float) randomizer.Next(11) + 1)));
+
             base.Initialize();
         }
 
@@ -100,7 +102,8 @@ namespace BomberLoutre.Screens
 
             for (i = 0; i < bombList.Count; ++i)        bombList[i].Draw(gameTime);
             for (i = 0; i < bonusList.Count; ++i)       bonusList[i].Draw(gameTime);
-            for(i = 0; i < Config.PlayerNumber; ++i)    playerList[i].Draw(gameTime);
+            for (i = 0; i < boxList.Count; ++i)         boxList[i].Draw(gameTime);
+            for (i = 0; i < Config.PlayerNumber; ++i)   playerList[i].Draw(gameTime);
 
             GameRef.spriteBatch.End();
             base.Draw(gameTime);

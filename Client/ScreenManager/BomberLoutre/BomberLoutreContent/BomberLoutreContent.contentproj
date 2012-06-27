@@ -101,11 +101,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Graphics\Sprites\caseSprite.jpg">
-      <Name>caseSprite</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Graphics\Sprites\otterSprite.png">
       <Name>otterSprite</Name>
       <Importer>TextureImporter</Importer>
@@ -153,7 +148,13 @@
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Graphics\Sprites\caseSprite.png">
+      <Name>caseSprite</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="Graphics\Bonus\boots.png">
       <Name>boots</Name>
