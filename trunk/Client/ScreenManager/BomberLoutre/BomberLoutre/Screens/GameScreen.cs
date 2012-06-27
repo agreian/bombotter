@@ -54,7 +54,7 @@ namespace BomberLoutre.Screens
             string[] types = new string[] { "powerUp", "powerUpGold", "canKick", "speedUp" };
             for (int i = 0; i < 15; ++i)
                 bonusList.Add(new Bonus(GameRef, new Vector2((float) randomizer.Next(13)+1, (float) randomizer.Next(11)+1), types[randomizer.Next(4)]));
-             -------------------- */
+            -------------------- */
 
             for (int i = 0; i < 70; ++i)
                 boxList.Add(new Box(GameRef, new Vector2((float) randomizer.Next(13) + 1, (float) randomizer.Next(11) + 1)));
