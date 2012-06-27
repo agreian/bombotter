@@ -8,19 +8,20 @@ using System.Collections.Generic;
 using BomberLoutre.Controls;
 using BomberLoutre.Components;
 using BomberLoutre.World;
+using System;
 
 namespace BomberLoutre.Screens
 {
     public class GameScreen : BaseGameState
     {
         #region Field region
-        GameStateManager gsManager;
         SoundEffect bombExplosionSound;
         SoundEffect itemLootSound;
         SoundEffect playerDeathSound;
 
         List<Player> playerList;
         List<Bomb> bombList;
+        List<Bonus> bonusList;
 
         Map MapZone;
         #endregion
@@ -28,7 +29,6 @@ namespace BomberLoutre.Screens
         #region Constructor region
         public GameScreen(BomberLoutre game, GameStateManager manager) : base(game, manager)
         {
-            gsManager = manager;
             MapZone = new Map(GameRef); 
             GameRef.Components.Add(MapZone);    // Ajoute la Map aux "Components", = instance qui vont appeler successivement Ctor()/Initialize()/LoadContent()
         }
@@ -40,11 +40,21 @@ namespace BomberLoutre.Screens
         {
             playerList = new List<Player>();
             bombList = new List<Bomb>();
+            bonusList = new List<Bonus>();
 
             for (int i = 0; i < Config.PlayerNumber; ++i)
             {
                 // Pour le moment, la loutre est placée au coin gauche supérieure, donc (X + largeur/2) et (Y + hauteur/2)
                 playerList.Add(new Player(i, GameRef, new Vector2(Config.MapLayer.X + (Config.OtterWidth/2), Config.MapLayer.Y + (Config.OtterHeight/2)), 0, this));
+            }
+
+            string[] types = new string[] { "powerUp", "powerUpGold", "canKick", "speedUp" };
+            Random randomizer = new Random();
+
+
+            for (int i = 0; i < 15; ++i)
+            {               
+                bonusList.Add(new Bonus(GameRef, new Vector2((float) randomizer.Next(13)+1, (float) randomizer.Next(11)+1), types[randomizer.Next(4)]));
             }
                         
             base.Initialize();
@@ -75,11 +85,8 @@ namespace BomberLoutre.Screens
                 MediaPlayer.Stop();
             }
 
-            for(i = 0; i < Config.PlayerNumber; ++i)
-                playerList[i].Update(gameTime);
-
-            for (i = 0; i < bombList.Count; ++i)
-                bombList[i].Update(gameTime);
+            for(i = 0; i < Config.PlayerNumber; ++i)    playerList[i].Update(gameTime);
+            for (i = 0; i < bombList.Count; ++i)        bombList[i].Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -91,31 +98,9 @@ namespace BomberLoutre.Screens
 
             GameRef.spriteBatch.Begin();
 
-            /* DESSIN DE LA ZONE-MAP 
-            Texture2D rect = new Texture2D(GameRef.graphics.GraphicsDevice, Config.MapLayer.Width, Config.MapLayer.Height);
-
-            Color[] data = new Color[Config.MapLayer.Width * Config.MapLayer.Height];
-            for (i = 0; i < data.Length; ++i) data[i] = Color.Chocolate;
-            rect.SetData(data);
-
-            Vector2 coor = new Vector2(Config.MapLayer.X, Config.MapLayer.Y);
-            GameRef.spriteBatch.Draw(rect, coor, Color.White);
-            FIN DU DESSIN DE LA ZONE-MAP */
-
-            for(i = 0; i < Config.PlayerNumber; ++i)
-                playerList[i].Draw(gameTime);
-
-            string position = "";
-
-            for (i = 0; i < bombList.Count; ++i)
-            {
-                bombList[i].Draw(gameTime);
-                position = "(" + bombList[i].Sprite.spritePosition.X.ToString() + " : " + bombList[i].Sprite.spritePosition.Y.ToString() + ")";
-                GameRef.spriteBatch.DrawString(this.SmallFont, position, new Vector2(bombList[i].Sprite.spritePosition.X, bombList[i].Sprite.spritePosition.Y - 10), Color.Red);
-            }
-
-            position = "(" + playerList[0].Sprite.spritePosition.X.ToString() + " : " + playerList[0].Sprite.spritePosition.Y.ToString() + ")";
-            GameRef.spriteBatch.DrawString(this.MidFont, position, new Vector2(0, 0), Color.Red);
+            for (i = 0; i < bombList.Count; ++i)        bombList[i].Draw(gameTime);
+            for (i = 0; i < bonusList.Count; ++i)       bonusList[i].Draw(gameTime);
+            for(i = 0; i < Config.PlayerNumber; ++i)    playerList[i].Draw(gameTime);
 
             GameRef.spriteBatch.End();
             base.Draw(gameTime);

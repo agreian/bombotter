@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using BomberLoutre.Sprite;
+using BomberLoutre.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using BomberLoutre.Controls;
@@ -8,7 +8,7 @@ using BomberLoutre.Screens;
 
 namespace BomberLoutre.Components
 {
-    class Player : Microsoft.Xna.Framework.DrawableGameComponent
+    class Player
     {
         #region Field Region
 
@@ -64,7 +64,7 @@ namespace BomberLoutre.Components
         #endregion
 
         #region Constructor Region
-        public Player(int id, BomberLoutre game, Vector2 position, int currentFrame, GameScreen gameScreen) : base(game)
+        public Player(int id, BomberLoutre game, Vector2 position, int currentFrame, GameScreen gameScreen)
         {
             this.id = id;
             GameRef = game;

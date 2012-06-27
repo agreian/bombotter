@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Input;
 
 using BomberLoutre;
 
-namespace BomberLoutre.Sprite
+namespace BomberLoutre.Sprites
 {
     class OtterSprite : Sprite
     {
