@@ -29,8 +29,7 @@ namespace BomberLoutre.Controls
 
         #region Constructor Region
 
-        public GameStateManager(BomberLoutre game)
-            : base(game)
+        public GameStateManager(BomberLoutre game) : base(game)
         {
             drawOrder = startDrawOrder;
         }

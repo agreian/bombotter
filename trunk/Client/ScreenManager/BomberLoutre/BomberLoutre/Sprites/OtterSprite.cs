@@ -228,5 +228,10 @@ namespace BomberLoutre.Sprites
                 timer = 0f;
             }
         }
+
+        public Rectangle SourceRectangle()
+        {
+            return sourceRect;
+        }
     }
 }

@@ -97,7 +97,7 @@ namespace BomberLoutre.Components
         }
         #endregion
 
-        #region Method Region
+        #region Player Method Region
 
         private void CheckBombing()
         {
@@ -117,6 +117,11 @@ namespace BomberLoutre.Components
         {
             // Un p'tit offset out of nowhere à rendre plus précis (peut-être :D ?)
             gameScreen.AddBomb(new Bomb(id, new Vector2(Sprite.spritePosition.X + (Sprite.spriteWidth / 4), Sprite.spritePosition.Y + (Sprite.spriteHeight / 4)), GameRef));
+        }
+
+        private Rectangle SourceRectangle()
+        {
+            return Sprite.SourceRectangle();
         }
         #endregion
     }
