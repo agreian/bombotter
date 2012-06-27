@@ -117,8 +117,15 @@ module Bomberloutre
 
 	interface ServerInterface
 	{
-		UserData connect(string login, string password);
-		UserData createUser(string login, string password);
+		exception UserException { string reason; };
+		exception BadLoginException 				extends UserException {};
+		exception BadPasswordException 			extends UserException {};
+		exception UserAlreadyExistsException 	extends UserException {};
+		
+		UserData connect(string login, string password)
+			throws BadLoginException, BadPasswordException;
+		UserData createUser(string login, string password)
+			throws UserAlreadyExistsException;
 		bool deleteUser(string login);
 		
 		GameInterface* addGame(string name,GameWaitRoom* room,MapObserver* mo);
