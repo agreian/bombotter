@@ -1,32 +1,81 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using BomberLoutre.Screens;
-using BomberLoutre.Controls;
+using BomberLoutre.Components;
+using System.IO;
 
 namespace BomberLoutre.World
 {
     public class Map : Microsoft.Xna.Framework.DrawableGameComponent
     {
-        Texture2D GroundTexture;
+        Texture2D GroundTexture, RockTexture, BoxTexture;
         BomberLoutre GameRef;
+        GameScreen GameScreen;
+        string mapFileName;
+        byte[,] matrix = new byte[13, 11];
 
-        public Map(BomberLoutre gameRef) : base(gameRef)
+        public Map(BomberLoutre gameRef, string fileName, GameScreen gameScreen) : base(gameRef)
         {
             GameRef = gameRef;
+            mapFileName = fileName;
+            GameScreen = gameScreen;
         }
 
         public override void Initialize()
-        {
+        {            
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            GroundTexture = Game.Content.Load<Texture2D>("Graphics/Textures/2");
+            using (StreamReader fileReader = new StreamReader(Path.Combine("Maps", mapFileName)))
+            {
+                string currentLine = string.Empty;
+                string[] splits;
+
+                for (int i = 0; i < 11; ++i)
+                {
+                    currentLine = fileReader.ReadLine();
+                    splits = currentLine.Split(';');
+
+                    for (int j = 0; j < 13; ++j)
+                    {
+                        matrix[j, i] = byte.Parse(splits[j]);
+                    }
+                }
+
+                currentLine = fileReader.ReadLine();
+                splits = currentLine.Split('#', '_', '\\', '.');
+                GroundTexture = Game.Content.Load<Texture2D>(string.Format("Graphics/Textures/{0}/{1}/{2}", splits[1], splits[2], splits[3]));
+            }
+
+            for (int i = 0; i < 13; ++i)
+            {
+                for (int j = 0; j < 11; ++j)
+                {
+                    if (matrix[i, j] == 1)
+                    {
+                        GameScreen.AddBox(new Box(GameRef, new Vector2(i+1, j+1)));
+                    }
+
+                    if (matrix[i, j] == 2)
+                    {
+                        GameScreen.AddRock(new Rock(GameRef, new Vector2(i + 1, j + 1)));
+                    }
+                }
+            }
+
+/*          A utiliser quand on aura des textures (plusieurs) rock/box
+            currentLine = fileReader.ReadLine();
+            splits = currentLine.Split('#', '_', '\\', '.');
+            GroundTexture = Game.Content.Load<Texture2D>("Graphics/Textures/" + splits[1] + "/" + splits[2] + "/" + splits[3]);
+
+            currentLine = fileReader.ReadLine();
+            splits = currentLine.Split('#', '_', '\\', '.');
+            GroundTexture = Game.Content.Load<Texture2D>("Graphics/Textures/" + splits[1] + "/" + splits[2] + "/" + splits[3]);
+ */
+            
             base.LoadContent();
         }
 

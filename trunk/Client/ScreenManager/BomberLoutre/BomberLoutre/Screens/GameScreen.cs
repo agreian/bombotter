@@ -23,15 +23,20 @@ namespace BomberLoutre.Screens
         List<Bomb>      bombList;
         List<Bonus>     bonusList;
         List<Box>       boxList;
+        List<Rock>      rockList;
 
+        string mapName;
         Map MapZone;
         #endregion
 
         #region Constructor region
         public GameScreen(BomberLoutre game, GameStateManager manager) : base(game, manager)
         {
-            MapZone = new Map(GameRef); 
-            GameRef.Components.Add(MapZone);    // Ajoute la Map aux "Components", = instance qui vont appeler successivement Ctor()/Initialize()/LoadContent()
+            playerList = new List<Player>();
+            bombList = new List<Bomb>();
+            bonusList = new List<Bonus>();
+            boxList = new List<Box>();
+            rockList = new List<Rock>();
         }
         #endregion
 
@@ -39,26 +44,21 @@ namespace BomberLoutre.Screens
 
         public override void Initialize()
         {
-            playerList = new List<Player>();
-            bombList = new List<Bomb>();
-            bonusList = new List<Bonus>();
-            boxList = new List<Box>();
+            mapName = "map1.map";
+            MapZone = new Map(GameRef, mapName, this);
+            GameRef.Components.Add(MapZone);    // Ajoute la Map aux "Components", = instance qui vont appeler successivement Ctor()/Initialize()/LoadContent()
 
             for (int i = 0; i < Config.PlayerNumber; ++i)
                 playerList.Add(new Player(i, GameRef, new Vector2(Config.MapLayer.X + (Config.OtterWidth/2), Config.MapLayer.Y + (Config.OtterHeight/2)), 0, this));
 
-            /* A dégager quand les bonus / caisses ne seront plus générés aléatoirement */
-            Random randomizer = new Random();
 
             /* Ajout de Bonus au pif
+            Random randomizer = new Random();
             string[] types = new string[] { "powerUp", "powerUpGold", "canKick", "speedUp" };
             for (int i = 0; i < 15; ++i)
                 bonusList.Add(new Bonus(GameRef, new Vector2((float) randomizer.Next(13)+1, (float) randomizer.Next(11)+1), types[randomizer.Next(4)]));
             -------------------- */
-
-            for (int i = 0; i < 70; ++i)
-                boxList.Add(new Box(GameRef, new Vector2((float) randomizer.Next(13) + 1, (float) randomizer.Next(11) + 1)));
-
+            
             base.Initialize();
         }
 
@@ -103,7 +103,10 @@ namespace BomberLoutre.Screens
             for (i = 0; i < bombList.Count; ++i)        bombList[i].Draw(gameTime);
             for (i = 0; i < bonusList.Count; ++i)       bonusList[i].Draw(gameTime);
             for (i = 0; i < boxList.Count; ++i)         boxList[i].Draw(gameTime);
+            for (i = 0; i < rockList.Count; ++i)         rockList[i].Draw(gameTime);
             for (i = 0; i < Config.PlayerNumber; ++i)   playerList[i].Draw(gameTime);
+
+            GameRef.spriteBatch.DrawString(this.MidFont, String.Format("({0} : {1})", playerList[0].Sprite.spritePosition.X, playerList[0].Sprite.spritePosition.Y), new Vector2(30, 30), Color.Red);
 
             GameRef.spriteBatch.End();
             base.Draw(gameTime);
@@ -115,6 +118,16 @@ namespace BomberLoutre.Screens
         public void AddBomb(Bomb bomb)
         {
             bombList.Add(bomb);
+        }
+
+        public void AddBox(Box box)
+        {
+            boxList.Add(box);
+        }
+
+        public void AddRock(Rock rock)
+        {
+            rockList.Add(rock);
         }
         #endregion
     }
