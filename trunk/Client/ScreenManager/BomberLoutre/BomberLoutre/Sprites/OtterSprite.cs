@@ -26,7 +26,7 @@ namespace BomberLoutre.Sprites
             SpritePosition = position;
             facing = true; // Par défaut, la Sprite est de face. Si elle monte, elle sera de dos
 
-            SpriteSpeed = 0.15f;
+            SpriteSpeed = 0.2f;
             interval = 80f;
 
             SpriteWidth = Config.OtterWidth;
@@ -134,7 +134,11 @@ namespace BomberLoutre.Sprites
                 }
             }
 
-            else { cellOffset.X = Config.OtterWidth/4; cellOffset.Y = 0; }
+            else
+            {
+                cellOffset.X = Config.OtterWidth / 4;
+                cellOffset.Y = Config.OtterHeight / 2;
+            }
             
             CellPosition = Map.PointToVector((int)(SpritePosition.X + cellOffset.X), (int)(SpritePosition.Y + cellOffset.Y));
         }
