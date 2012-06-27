@@ -10,16 +10,12 @@ int ServerApplication::run(int argc, char** argv)
 {
 	std::cout << "My server is running !!" << std::endl;
 	
-	m_userConnection = new UserConnectionI();
-	m_gamesManager = new GamesManagerI();
+	m_adapter = communicator()->createObjectAdapter("BomberloutreServer");
 	
-	Ice::ObjectAdapterPtr adapter = 
-		communicator()->createObjectAdapter("UserConnection");
-		
-	adapter->add(m_userConnection, communicator()->stringToIdentity("UserConnectionInterface"));
-	m_gamesManagerPrx = adapter->add(m_gamesManager, communicator()->stringToIdentity("GamesManagerInterface"));
+	m_server = new BomberServer(m_adapter);
+	m_adapter->add(m_server,communicator()->stringToIdentity("BomberServer"));
 	
-	adapter->activate();
+	m_adapter->activate();
 	
 	callbackOnInterrupt();
 	communicator()->waitForShutdown();

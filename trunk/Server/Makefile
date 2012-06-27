@@ -3,12 +3,10 @@ LOCALINC = -I.
 ICELIB = -lIce -lIceUtil -lpthread
 CC = g++
 OFILES = ../tmp/ServerApplication.o \
-	../tmp/Game.o \
 	../tmp/Bomberloutre_*.o \
-	../tmp/UserConnectionI.o \
-	../tmp/GamesManagerI.o
+	../tmp/BomberServer.o
 
-all: dir interfaces Bomberloutre.o ServerApplication.o Game.o UserConnectionI.o GamesManagerI.o
+all: dir interfaces Bomberloutre ServerApplication BomberServer
 	cd ./src; \
 	$(CC) $(INC) $(ICELIB) $(OFILES) main.cpp -o ../bin/main; \
 	cd ..;
@@ -18,34 +16,30 @@ dir:
 	mkdir -p ./bin; \
 	mkdir -p ./gen;
 
-Bomberloutre.o:
+Bomberloutre:
+	cd ./gen; \
+	$(CC) $(LOCALINC) -c Bomberloutre.cpp -o ../tmp/Bomberloutre_main.o; \
+	$(CC) $(LOCALINC) -c Bomberloutre_map_item.cpp -o ../tmp/Bomberloutre_map_item.o; \
+	cd ..;
+
+Bomberloutre.old:
 	cd ./gen; \
 	$(CC) $(LOCALINC) -c Bomberloutre.cpp -o ../tmp/Bomberloutre_main.o; \
 	$(CC) $(LOCALINC) -c Bomberloutre_map.cpp -o ../tmp/Bomberloutre_map.o; \
 	$(CC) $(LOCALINC) -c Bomberloutre_game.cpp -o ../tmp/Bomberloutre_game.o; \
-	$(CC) $(LOCALINC) -c Bomberloutre_object.cpp -o ../tmp/Bomberloutre_object.o; \
+	$(CC) $(LOCALINC) -c Bomberloutre_map_item.cpp -o ../tmp/Bomberloutre_map_item.o; \
 	$(CC) $(LOCALINC) -c Bomberloutre_player.cpp -o ../tmp/Bomberloutre_player.o; \
 	$(CC) $(LOCALINC) -c Bomberloutre_user.cpp -o ../tmp/Bomberloutre_user.o; \
 	cd ..;
 
-Game.o:
+BomberServer:
 	cd ./src; \
-	$(CC) $(INC) -c Game.cpp -o ../tmp/Game.o; \
+	$(CC) $(INC) -c BomberServer.cpp -o ../tmp/BomberServer.o;\
 	cd ..;
-
-ServerApplication.o:
+	
+ServerApplication:
 	cd ./src; \
 	$(CC) $(INC) -c ServerApplication.cpp -o ../tmp/ServerApplication.o; \
-	cd ..;
-
-UserConnectionI.o:
-	cd ./src; \
-	$(CC) $(INC) -c UserConnectionI.cpp -o ../tmp/UserConnectionI.o; \
-	cd ..;
-
-GamesManagerI.o:
-	cd ./src; \
-	$(CC) $(INC) -c GamesManagerI.cpp -o ../tmp/GamesManagerI.o; \
 	cd ..;
 
 interfaces:

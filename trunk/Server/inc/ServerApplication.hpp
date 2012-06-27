@@ -4,9 +4,8 @@
 #include <Ice/Ice.h>
 #include <IceUtil/IceUtil.h>
 
-#include "Game.hpp"
-#include "UserConnectionI.hpp"
-#include "GamesManagerI.hpp"
+#include "Bomberloutre.hpp"
+#include "BomberServer.hpp"
 
 class ServerApplication : public Ice::Application
 {
@@ -19,14 +18,8 @@ public:
 	virtual void interruptCallback(int);
 	
 private:
-	Ice::ObjectAdapterPtr	m_adapter;
-	
-	UserConnectionI * 		m_userConnection;
-	GamesManagerI	*		m_gamesManager;
-	Ice::ObjectPrx			m_gamesManagerPrx;
-	
-	std::vector<Game> 		m_currentGames;
-
+	::Ice::ObjectAdapterPtr m_adapter;
+	BomberServer*	m_server;
 };
 
 #endif

@@ -10,6 +10,10 @@ int main(int argc, char** argv)
 		ServerApplication app;
 		return app.main(argc,argv);
 	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 	catch(...)
 	{
 		std::cerr << "Exception" << std::endl;
