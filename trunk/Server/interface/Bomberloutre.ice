@@ -115,13 +115,13 @@ module Bomberloutre
 		void bonusesDropped(Bonuses b);
 	};
 
+	exception UserException { string reason; };
+	exception BadLoginException 				extends UserException {};
+	exception BadPasswordException 			extends UserException {};
+	exception UserAlreadyExistsException 	extends UserException {};
+
 	interface ServerInterface
-	{
-		exception UserException { string reason; };
-		exception BadLoginException 				extends UserException {};
-		exception BadPasswordException 			extends UserException {};
-		exception UserAlreadyExistsException 	extends UserException {};
-		
+	{	
 		UserData connect(string login, string password)
 			throws BadLoginException, BadPasswordException;
 		UserData createUser(string login, string password)
