@@ -93,6 +93,7 @@ module Bomberloutre
 		int getHeight();
 		
 		bool move(Player p, Point pt);
+		void kickBomb(Player p);
 		void dropBomb(Player p, Bomb b);
 	};
 
