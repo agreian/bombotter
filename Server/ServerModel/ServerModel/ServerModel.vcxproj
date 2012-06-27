@@ -80,28 +80,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bomberloutre_game.h" />
+    <ClInclude Include="Bomberloutre_map.h" />
+    <ClInclude Include="Bomberloutre_object.h" />
+    <ClInclude Include="Bomberloutre_player.h" />
+    <ClInclude Include="Bomberloutre_user.h" />
+    <ClInclude Include="BombItem.h" />
     <ClInclude Include="Bonus.h" />
     <ClInclude Include="BotPlayerModel.h" />
+    <ClInclude Include="BoxItem.h" />
     <ClInclude Include="GameModel.h" />
+    <ClInclude Include="MapItem.h" />
     <ClInclude Include="MapModel.h" />
     <ClInclude Include="PlayerModel.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="RockItem.h" />
     <ClInclude Include="ServerModel.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="UserModel.h" />
+    <ClInclude Include="VoidItem.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="Bomberloutre_game.cpp" />
+    <ClCompile Include="Bomberloutre_map.cpp" />
+    <ClCompile Include="Bomberloutre_object.cpp" />
+    <ClCompile Include="Bomberloutre_player.cpp" />
+    <ClCompile Include="Bomberloutre_user.cpp" />
+    <ClCompile Include="BombItem.cpp" />
     <ClCompile Include="Bonus.cpp" />
     <ClCompile Include="BotPlayerModel.cpp" />
+    <ClCompile Include="BoxItem.cpp" />
     <ClCompile Include="GameModel.cpp" />
+    <ClCompile Include="MapItem.cpp" />
     <ClCompile Include="PlayerModel.cpp" />
+    <ClCompile Include="RockItem.cpp" />
     <ClCompile Include="ServerModel.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="UserModel.cpp" />
+    <ClCompile Include="VoidItem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\interface\Bomberloutre_game.ice" />
@@ -120,7 +140,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties ZerocIce_Enabled="True" ZerocIce_OutputDir="." ZerocIce_IncludePath="./../interface/" />
+      <UserProperties ZerocIce_Enabled="True" ZerocIce_OutputDir="." ZerocIce_IncludePath=".\..\..\interface" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
