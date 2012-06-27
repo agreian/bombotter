@@ -44,12 +44,12 @@ namespace BomberLoutre.Screens
 
         public override void Initialize()
         {
-            mapName = "map1.map";
+            mapName = "map3.map";
             MapZone = new Map(GameRef, mapName, this);
             GameRef.Components.Add(MapZone);    // Ajoute la Map aux "Components", = instance qui vont appeler successivement Ctor()/Initialize()/LoadContent()
 
             for (int i = 0; i < Config.PlayerNumber; ++i)
-                playerList.Add(new Player(i, GameRef, new Vector2(Config.MapLayer.X + (Config.OtterWidth/2), Config.MapLayer.Y + (Config.OtterHeight/2)), 0, this));
+                playerList.Add(new Player(i, GameRef, new Vector2(Config.MapLayer.X, Config.MapLayer.Y), 0, this));
 
 
             /* Ajout de Bonus au pif
@@ -107,7 +107,7 @@ namespace BomberLoutre.Screens
             for (i = 0; i < rockList.Count; ++i)        rockList[i].Draw(gameTime);
             for (i = 0; i < Config.PlayerNumber; ++i)   playerList[i].Draw(gameTime);
 
-            GameRef.spriteBatch.DrawString(this.MidFont, String.Format("({0} : {1})", playerList[0].Sprite.SpritePosition.X, playerList[0].Sprite.SpritePosition.Y), new Vector2(30, 30), Color.Red);
+            GameRef.spriteBatch.DrawString(this.MidFont, String.Format("({0} : {1})", playerList[0].Sprite.SpritePosition.X - Config.MapLayer.X, playerList[0].Sprite.SpritePosition.Y - Config.MapLayer.Y), new Vector2(30, 30), Color.Red);
             GameRef.spriteBatch.DrawString(this.MidFont, String.Format("({0} : {1})", playerList[0].Sprite.CellPosition.X, playerList[0].Sprite.CellPosition.Y), new Vector2(30, 60), Color.Red);
 
             GameRef.spriteBatch.End();

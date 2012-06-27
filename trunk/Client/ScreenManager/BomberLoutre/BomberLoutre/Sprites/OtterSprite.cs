@@ -13,9 +13,9 @@ namespace BomberLoutre.Sprites
         public float interval { get; set; }
         public int currentFrame { get; set; }
         public float SpriteSpeed { get; set; }
-        public Vector2 origin { get; set; }
         public Vector2 direction { get; set; }
         public Boolean facing { get; set; }
+        private Point cellOffset;
 
         KeyboardState currentKBState;
         KeyboardState previousKBState;
@@ -25,10 +25,14 @@ namespace BomberLoutre.Sprites
             this.currentFrame = currentFrame;
             SpritePosition = position;
             facing = true; // Par défaut, la Sprite est de face. Si elle monte, elle sera de dos
-            SpriteSpeed = 0.30f;
+
+            SpriteSpeed = 0.15f;
             interval = 80f;
+
             SpriteWidth = Config.OtterWidth;
             SpriteHeight = Config.OtterHeight;
+
+            cellOffset = new Point(0, 0);
         }
 
         public void Update(GameTime gameTime)
@@ -65,11 +69,18 @@ namespace BomberLoutre.Sprites
             // Encadre la frame
             sourceRect = new Rectangle(column * SpriteWidth, line * SpriteHeight, SpriteWidth, SpriteHeight);
 
+            if(previousKBState != currentKBState)
+            {
+                cellOffset.X = Config.OtterWidth / 4; 
+                cellOffset.Y = Config.OtterHeight / 2;
+            }
+            
             if (currentKBState.IsKeyDown(Keys.Right) == true)
             {
                 AnimateRight(gameTime);
+                cellOffset.X = (Config.OtterWidth - Config.TileWidth);
 
-                if (SpritePosition.X < ((Config.MapLayer.Width + Config.MapLayer.X) - (SpriteWidth / 2)))
+                if (SpritePosition.X < (Config.MapLayer.Width + Config.MapLayer.X - Config.OtterWidth))
                 {
                     if (!Map.IsWall((int) CellPosition.X + 1, (int) CellPosition.Y))
                     {
@@ -82,44 +93,56 @@ namespace BomberLoutre.Sprites
             else if (currentKBState.IsKeyDown(Keys.Left) == true)
             {
                 AnimateLeft(gameTime);
+                cellOffset.X = Config.OtterWidth;
 
-                if (SpritePosition.X > Config.MapLayer.X + (SpriteWidth / 2))
+                if (SpritePosition.X > Config.MapLayer.X)
                 {
-                    direction = Vector2.Normalize(new Vector2(-1, 0));
-                    SpritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
+                    if (!Map.IsWall((int)CellPosition.X - 1, (int)CellPosition.Y))
+                    {
+                        direction = Vector2.Normalize(new Vector2(-1, 0));
+                        SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
+                    }
                 }
             }
 
             else if (currentKBState.IsKeyDown(Keys.Down) == true)
             {
                 AnimateDown(gameTime);
+                cellOffset.Y = Config.OtterHeight - Config.TileHeight;
 
-                if (SpritePosition.Y < ((Config.MapLayer.Height + Config.MapLayer.Y) - (SpriteHeight / 2)))
+                if (SpritePosition.Y < (Config.MapLayer.Height + Config.MapLayer.Y - Config.OtterHeight))
                 {
-                    direction = Vector2.Normalize(new Vector2(0, 1));
-                    SpritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
+                    if (!Map.IsWall((int)CellPosition.X, (int)CellPosition.Y + 1))
+                    {
+                        direction = Vector2.Normalize(new Vector2(0, 1));
+                        SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
+                    }
                 }
             }
 
             else if (currentKBState.IsKeyDown(Keys.Up) == true)
             {
                 AnimateUp(gameTime);
-
-                if (SpritePosition.Y > Config.MapLayer.Y + (SpriteHeight / 2))
+                cellOffset.Y = Config.OtterHeight;
+                if (SpritePosition.Y > Config.MapLayer.Y)
                 {
-                    direction = Vector2.Normalize(new Vector2(0, -1));
-                    SpritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
+                    if (!Map.IsWall((int)CellPosition.X, (int)CellPosition.Y - 1))
+                    {
+                        direction = Vector2.Normalize(new Vector2(0, -1));
+                        SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
+                    }
                 }
             }
 
-            origin = new Vector2(sourceRect.Width / 2, sourceRect.Height / 2);
-            CellPosition = Map.PointToVector((int) (SpritePosition.X), (int) (SpritePosition.Y + SpriteHeight/4));
+            else { cellOffset.X = Config.OtterWidth/4; cellOffset.Y = 0; }
+            
+            CellPosition = Map.PointToVector((int)(SpritePosition.X + cellOffset.X), (int)(SpritePosition.Y + cellOffset.Y));
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(SpriteTexture, SpritePosition, sourceRect, Color.White, 0f, origin, 1.0f, SpriteEffects.None, 0);
             //spriteBatch.Draw(SpriteTexture, SpritePosition, sourceRect, Color.White, 0f, origin, 1.0f, SpriteEffects.None, 0);
+            spriteBatch.Draw(SpriteTexture, SpritePosition, sourceRect, Color.White);
         }
 
         public void AnimateRight(GameTime gameTime)
@@ -234,7 +257,7 @@ namespace BomberLoutre.Sprites
             }
         }
 
-        public Rectangle SourceRectangle()
+        private Rectangle SourceRectangle()
         {
             return sourceRect;
         }

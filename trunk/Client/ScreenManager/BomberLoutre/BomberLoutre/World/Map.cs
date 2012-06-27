@@ -98,7 +98,7 @@ namespace BomberLoutre.World
 
         public static Vector2 PointToVector(int x, int y)
         {
-            return new Vector2((float)Math.Floor(((x - Config.MapLayer.X + Config.TileWidth) / (float)Config.TileWidth)), (float)Math.Floor(((y - Config.MapLayer.Y + Config.TileHeight) / (float)Config.TileHeight))); 
+            return new Vector2((float) Math.Floor((x - Config.MapLayer.X) / (float)Config.TileWidth) + 1, (float)Math.Floor((y - Config.MapLayer.Y) / (float)Config.TileHeight) + 1); 
         }
 
         public static Vector2 CellToVector(int x, int y)
@@ -108,6 +108,7 @@ namespace BomberLoutre.World
 
         public static bool IsWall(int x, int y)
         {
+            if (x < 1 || x > 13 || y < 1 || y > 11) return false; // On dit qu'il n'y a pas collision mais le joueur sera bloqué par les limites de la zone-map
             return walls[x-1, y-1];
         }
     }
