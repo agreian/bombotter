@@ -57,7 +57,7 @@
     <Compile Include="Map\MapSurvival.cs" />
     <Compile Include="Player\Player.cs" />
     <Compile Include="MapItem\Rock.cs" />
-    <Compile Include="Serveur.cs" />
+    <Compile Include="Server.cs" />
     <Compile Include="Texture.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
