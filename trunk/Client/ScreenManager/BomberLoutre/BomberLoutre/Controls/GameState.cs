@@ -35,8 +35,7 @@ namespace BomberLoutre.Controls
 
         #region Constructor Region
 
-        public GameState(Game game, GameStateManager manager)
-            : base(game)
+        public GameState(Game game, GameStateManager manager) : base(game)
         {
             StateManager = manager;
 
