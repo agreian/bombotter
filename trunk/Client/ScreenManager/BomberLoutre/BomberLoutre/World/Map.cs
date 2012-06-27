@@ -13,13 +13,16 @@ namespace BomberLoutre.World
         BomberLoutre GameRef;
         GameScreen GameScreen;
         string mapFileName;
-        byte[,] matrix = new byte[13, 11];
+        static byte[,] matrix;
+        static bool[,] walls; 
 
         public Map(BomberLoutre gameRef, string fileName, GameScreen gameScreen) : base(gameRef)
         {
             GameRef = gameRef;
             mapFileName = fileName;
             GameScreen = gameScreen;
+            matrix = new byte[13, 11];
+            walls = new bool[13, 11];
         }
 
         public override void Initialize()
@@ -34,14 +37,15 @@ namespace BomberLoutre.World
                 string currentLine = string.Empty;
                 string[] splits;
 
-                for (int i = 0; i < 11; ++i)
+                for (int i = 0; i < 11; ++i) // On va lire les 11 lignes du fichier map (= 11 lignes de la map)
                 {
                     currentLine = fileReader.ReadLine();
                     splits = currentLine.Split(';');
 
-                    for (int j = 0; j < 13; ++j)
+                    for (int j = 0; j < 13; ++j) // On va attribuer chacune des 13 colonnes de la ligne courante
                     {
                         matrix[j, i] = byte.Parse(splits[j]);
+                        if (matrix[j, i] != 0) walls[j, i] = true;
                     }
                 }
 
@@ -94,12 +98,17 @@ namespace BomberLoutre.World
 
         public static Vector2 PointToVector(int x, int y)
         {
-            return new Vector2((float) Math.Floor((x / (float) Config.TileWidth)),  (float) Math.Floor((y / (float) Config.TileHeight))); 
+            return new Vector2((float)Math.Floor(((x - Config.MapLayer.X + Config.TileWidth) / (float)Config.TileWidth)), (float)Math.Floor(((y - Config.MapLayer.Y + Config.TileHeight) / (float)Config.TileHeight))); 
         }
 
         public static Vector2 CellToVector(int x, int y)
         {
             return new Vector2(((x-1) * Config.TileWidth) + Config.MapLayer.X, ((y-1) * Config.TileHeight) + Config.MapLayer.Y);
+        }
+
+        public static bool IsWall(int x, int y)
+        {
+            return walls[x-1, y-1];
         }
     }
 }

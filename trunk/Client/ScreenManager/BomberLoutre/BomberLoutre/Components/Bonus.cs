@@ -48,7 +48,7 @@ namespace BomberLoutre.Components
 
         public void Draw(GameTime gameTime)
         {
-            GameRef.spriteBatch.Draw(Texture, Sprite.spritePosition, SourceRectangle, Color.White);
+            GameRef.spriteBatch.Draw(Texture, Sprite.SpritePosition, SourceRectangle, Color.White);
         }
     }
 }

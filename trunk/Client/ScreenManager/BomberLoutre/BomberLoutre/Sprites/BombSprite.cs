@@ -11,8 +11,8 @@ namespace BomberLoutre.Sprites
 
         public BombSprite(Texture2D texture, Vector2 position) : base(texture, position)
         {
-            spriteWidth = 60;
-            spriteHeight = 40;
+            SpriteWidth = 60;
+            SpriteHeight = 40;
             interval = 150f;
             timer = 0;
         }
@@ -30,14 +30,14 @@ namespace BomberLoutre.Sprites
                     currentFrame = 0;
                 }
 
-                sourceRect = new Rectangle(currentFrame * spriteWidth, 0, spriteWidth, spriteHeight);
+                sourceRect = new Rectangle(currentFrame * SpriteWidth, 0, SpriteWidth, SpriteHeight);
                 timer = 0f;
             }
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(spriteTexture, spritePosition, sourceRect, Color.White);
+            spriteBatch.Draw(SpriteTexture, SpritePosition, sourceRect, Color.White);
         }
 
     }
