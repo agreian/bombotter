@@ -45,9 +45,14 @@ namespace BomberLoutre.World
             base.Draw(gameTime);
         }
 
-        public static Point PointToCell(int x, int y)
+        public static Vector2 PointToVector(int x, int y)
         {
-            return new Point((int) Math.Floor((x / (float) Config.TileWidth)), (int) Math.Floor((y / (float) Config.TileHeight))); 
+            return new Vector2((float) Math.Floor((x / (float) Config.TileWidth)),  (float) Math.Floor((y / (float) Config.TileHeight))); 
+        }
+
+        public static Vector2 CellToVector(int x, int y)
+        {
+            return new Vector2(x * Config.TileWidth, y * Config.TileHeight);
         }
     }
 }

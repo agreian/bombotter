@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-using BomberLoutre.Sprite;
+using BomberLoutre.Sprites;
 using BomberLoutre.World;
 
 
@@ -12,7 +12,7 @@ namespace BomberLoutre.Components
         private BomberLoutre GameRef;
         public BombSprite Sprite { get; protected set; }
         private int playerId;
-        private Point cellPosition;
+        private Vector2 cellPosition;
 
         #region Constructor
         public Bomb(int pId, Vector2 position, BomberLoutre gameRef)
@@ -22,7 +22,7 @@ namespace BomberLoutre.Components
             this.playerId = pId;
 
             // Calcul de la case exacte, pour insérer la bombe au centre celle-ci
-            cellPosition = Map.PointToCell((int) position.X, (int) position.Y);
+            cellPosition = Map.PointToVector((int)position.X, (int)position.Y);
             Vector2 perfectPosition = new Vector2(cellPosition.X * Config.TileWidth, cellPosition.Y * Config.TileHeight);
             Sprite = new BombSprite(spriteTexture, perfectPosition);
         }
