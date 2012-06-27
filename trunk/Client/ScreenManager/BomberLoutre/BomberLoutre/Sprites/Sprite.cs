@@ -14,6 +14,7 @@ namespace BomberLoutre.Sprites
         public Sprite(Texture2D texture)
         {
             spriteTexture = texture;
+            sourceRect = new Rectangle(0, 0, spriteWidth, spriteHeight);
         }
 
         public Sprite(Texture2D texture, int width, int height)
@@ -21,12 +22,14 @@ namespace BomberLoutre.Sprites
             spriteTexture = texture;
             spriteWidth = width;
             spriteHeight = height;
+            sourceRect = new Rectangle(0, 0, spriteWidth, spriteHeight);
         }
 
         public Sprite(Texture2D texture, Vector2 position)
         {
             spriteTexture = texture;
             spritePosition = position;
+            sourceRect = new Rectangle(0, 0, spriteWidth, spriteHeight);
         }
 
         public Sprite(Texture2D texture, int width, int height, Vector2 position)
@@ -35,6 +38,7 @@ namespace BomberLoutre.Sprites
             spriteWidth = width;
             spriteHeight = height;
             spritePosition = position;
+            sourceRect = new Rectangle(0, 0, spriteWidth, spriteHeight);
         }
     }
 }

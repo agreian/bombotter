@@ -110,6 +110,7 @@
   <ItemGroup>
     <Compile Include="Components\Bomb.cs" />
     <Compile Include="Components\Bonus.cs" />
+    <Compile Include="Components\Box.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Components\Player.cs" />
     <Compile Include="Screens\BaseGameState.cs" />
