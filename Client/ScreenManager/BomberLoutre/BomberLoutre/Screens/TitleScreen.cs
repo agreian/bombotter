@@ -24,7 +24,7 @@ namespace BomberLoutre.Screens
         {
             menuString = new string[] { "Jouer", "Options", "Crédits", "Quitter" };
             indexMenu = 0;
-            enableMenu = false;
+            enableMenu = true;
         }
         #endregion
 
