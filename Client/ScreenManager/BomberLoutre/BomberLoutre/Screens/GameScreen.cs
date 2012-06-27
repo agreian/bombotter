@@ -29,6 +29,8 @@ namespace BomberLoutre.Screens
         public GameScreen(BomberLoutre game, GameStateManager manager) : base(game, manager)
         {
             gsManager = manager;
+            MapZone = new Map(GameRef); 
+            GameRef.Components.Add(MapZone);    // Ajoute la Map aux "Components", = instance qui vont appeler successivement Ctor()/Initialize()/LoadContent()
         }
         #endregion
 
@@ -44,9 +46,7 @@ namespace BomberLoutre.Screens
                 // Pour le moment, la loutre est placée au coin gauche supérieure, donc (X + largeur/2) et (Y + hauteur/2)
                 playerList.Add(new Player(i, GameRef, new Vector2(Config.MapLayer.X + (Config.OtterWidth/2), Config.MapLayer.Y + (Config.OtterHeight/2)), 0, this));
             }
-
-            MapZone = new Map(GameRef, gsManager);
-
+                        
             base.Initialize();
         }
 
@@ -105,8 +105,17 @@ namespace BomberLoutre.Screens
             for(i = 0; i < Config.PlayerNumber; ++i)
                 playerList[i].Draw(gameTime);
 
+            string position = "";
+
             for (i = 0; i < bombList.Count; ++i)
+            {
                 bombList[i].Draw(gameTime);
+                position = "(" + bombList[i].Sprite.spritePosition.X.ToString() + " : " + bombList[i].Sprite.spritePosition.Y.ToString() + ")";
+                GameRef.spriteBatch.DrawString(this.SmallFont, position, new Vector2(bombList[i].Sprite.spritePosition.X, bombList[i].Sprite.spritePosition.Y - 10), Color.Red);
+            }
+
+            position = "(" + playerList[0].Sprite.spritePosition.X.ToString() + " : " + playerList[0].Sprite.spritePosition.Y.ToString() + ")";
+            GameRef.spriteBatch.DrawString(this.MidFont, position, new Vector2(0, 0), Color.Red);
 
             GameRef.spriteBatch.End();
             base.Draw(gameTime);

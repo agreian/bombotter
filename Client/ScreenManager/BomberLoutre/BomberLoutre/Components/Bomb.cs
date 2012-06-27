@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 using BomberLoutre.Sprite;
-using Microsoft.Xna.Framework.Graphics;
+using BomberLoutre.World;
+
 
 namespace BomberLoutre.Components
 {
@@ -14,6 +12,7 @@ namespace BomberLoutre.Components
         private BomberLoutre GameRef;
         public BombSprite Sprite { get; protected set; }
         private int playerId;
+        private Point cellPosition;
 
         #region Constructor
         public Bomb(int pId, Vector2 position, BomberLoutre gameRef)
@@ -21,7 +20,11 @@ namespace BomberLoutre.Components
             GameRef = gameRef;
             Texture2D spriteTexture = GameRef.Content.Load<Texture2D>("Graphics/Sprites/bombSprite");
             this.playerId = pId;
-            Sprite = new BombSprite(spriteTexture, position);
+
+            // Calcul de la case exacte, pour insérer la bombe au centre celle-ci
+            cellPosition = Map.PointToCell((int) position.X, (int) position.Y);
+            Vector2 perfectPosition = new Vector2(cellPosition.X * Config.TileWidth, cellPosition.Y * Config.TileHeight);
+            Sprite = new BombSprite(spriteTexture, perfectPosition);
         }
         #endregion
 

@@ -8,7 +8,7 @@ using BomberLoutre.Screens;
 
 namespace BomberLoutre.Components
 {
-    class Player
+    class Player : Microsoft.Xna.Framework.DrawableGameComponent
     {
         #region Field Region
 
@@ -64,21 +64,12 @@ namespace BomberLoutre.Components
         #endregion
 
         #region Constructor Region
-        public Player(int id, BomberLoutre game, Vector2 position, int currentFrame, GameScreen gameScreen)
+        public Player(int id, BomberLoutre game, Vector2 position, int currentFrame, GameScreen gameScreen) : base(game)
         {
             this.id = id;
             GameRef = game;
             this.gameScreen = gameScreen;
-            
-            Texture2D spriteTexture = GameRef.Content.Load<Texture2D>("Graphics/Sprites/otterSprite");
-            Sprite = new OtterSprite(spriteTexture, currentFrame, position);
-        }
-        #endregion
 
-        #region XNA Method Region
-
-        public void Initialize()
-        {
             bombDropped = false;
 
             isAlive = true;
@@ -86,12 +77,13 @@ namespace BomberLoutre.Components
             bombNumber = 1;
             bombAvailable = 1;
             canKick = false;
-        }
 
-        public void LoadContent()
-        {
-
+            Texture2D spriteTexture = GameRef.Content.Load<Texture2D>("Graphics/Sprites/otterSprite");
+            Sprite = new OtterSprite(spriteTexture, currentFrame, position);
         }
+        #endregion
+
+        #region XNA Method Region
 
         public void Update(GameTime gameTime)
         {
