@@ -1,12 +1,9 @@
-#include "stdafx.h"
-
 #include "UserModel.h"
 
 UserModel::UserModel()
 {
 	/*Trololo */
 }
-
 
 UserModel::UserModel(string log, string pwd)
 {

@@ -2,15 +2,13 @@
 #define USER_MODEL_HEADER
 
 // User.h
-#include "string.h"
 #include <iostream>
-#include "Bomberloutre_user.h"
 #include "GameModel.h"
+#include "Bomberloutre.h"
 
-using namespace System;
 using namespace std;
 
-class UserModel : public Bomberloutre::User
+class UserModel
 {
 	// TODO : ajoutez ici vos méthodes pour cette classe.
 	public:
