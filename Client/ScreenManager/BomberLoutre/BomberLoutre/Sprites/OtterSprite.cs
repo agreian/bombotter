@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-using BomberLoutre;
+using BomberLoutre.World;
 
 namespace BomberLoutre.Sprites
 {
@@ -12,7 +12,7 @@ namespace BomberLoutre.Sprites
         public float timer { get; set; }
         public float interval { get; set; }
         public int currentFrame { get; set; }
-        public float spriteSpeed { get; set; }
+        public float SpriteSpeed { get; set; }
         public Vector2 origin { get; set; }
         public Vector2 direction { get; set; }
         public Boolean facing { get; set; }
@@ -23,12 +23,12 @@ namespace BomberLoutre.Sprites
         public OtterSprite(Texture2D texture, int currentFrame, Vector2 position) : base(texture)
         {
             this.currentFrame = currentFrame;
-            spritePosition = position;
-            facing = true; // Par défaut, la sprite est de face. Si elle monte, elle sera de dos
-            spriteSpeed = 0.30f;
+            SpritePosition = position;
+            facing = true; // Par défaut, la Sprite est de face. Si elle monte, elle sera de dos
+            SpriteSpeed = 0.30f;
             interval = 80f;
-            spriteWidth = Config.OtterWidth;
-            spriteHeight = Config.OtterHeight;
+            SpriteWidth = Config.OtterWidth;
+            SpriteHeight = Config.OtterHeight;
         }
 
         public void Update(GameTime gameTime)
@@ -63,16 +63,19 @@ namespace BomberLoutre.Sprites
                 column = 6;
 
             // Encadre la frame
-            sourceRect = new Rectangle(column * spriteWidth, line * spriteHeight, spriteWidth, spriteHeight);
+            sourceRect = new Rectangle(column * SpriteWidth, line * SpriteHeight, SpriteWidth, SpriteHeight);
 
             if (currentKBState.IsKeyDown(Keys.Right) == true)
             {
                 AnimateRight(gameTime);
 
-                if (spritePosition.X < ((Config.MapLayer.Width + Config.MapLayer.X) - (spriteWidth / 2)))
+                if (SpritePosition.X < ((Config.MapLayer.Width + Config.MapLayer.X) - (SpriteWidth / 2)))
                 {
-                    direction = Vector2.Normalize(new Vector2(1, 0));
-                    spritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
+                    if (!Map.IsWall((int) CellPosition.X + 1, (int) CellPosition.Y))
+                    {
+                        direction = Vector2.Normalize(new Vector2(1, 0));
+                        SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
+                    }
                 }
             }
 
@@ -80,10 +83,10 @@ namespace BomberLoutre.Sprites
             {
                 AnimateLeft(gameTime);
 
-                if (spritePosition.X > Config.MapLayer.X + (spriteWidth / 2))
+                if (SpritePosition.X > Config.MapLayer.X + (SpriteWidth / 2))
                 {
                     direction = Vector2.Normalize(new Vector2(-1, 0));
-                    spritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
+                    SpritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
                 }
             }
 
@@ -91,10 +94,10 @@ namespace BomberLoutre.Sprites
             {
                 AnimateDown(gameTime);
 
-                if (spritePosition.Y < ((Config.MapLayer.Height + Config.MapLayer.Y) - (spriteHeight / 2)))
+                if (SpritePosition.Y < ((Config.MapLayer.Height + Config.MapLayer.Y) - (SpriteHeight / 2)))
                 {
                     direction = Vector2.Normalize(new Vector2(0, 1));
-                    spritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
+                    SpritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
                 }
             }
 
@@ -102,19 +105,21 @@ namespace BomberLoutre.Sprites
             {
                 AnimateUp(gameTime);
 
-                if (spritePosition.Y > Config.MapLayer.Y + (spriteHeight / 2))
+                if (SpritePosition.Y > Config.MapLayer.Y + (SpriteHeight / 2))
                 {
                     direction = Vector2.Normalize(new Vector2(0, -1));
-                    spritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * spriteSpeed;
+                    SpritePosition += direction * (float) gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
                 }
             }
 
             origin = new Vector2(sourceRect.Width / 2, sourceRect.Height / 2);
+            CellPosition = Map.PointToVector((int) (SpritePosition.X), (int) (SpritePosition.Y + SpriteHeight/4));
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(spriteTexture, spritePosition, sourceRect, Color.White, 0f, origin, 1.0f, SpriteEffects.None, 0);
+            spriteBatch.Draw(SpriteTexture, SpritePosition, sourceRect, Color.White, 0f, origin, 1.0f, SpriteEffects.None, 0);
+            //spriteBatch.Draw(SpriteTexture, SpritePosition, sourceRect, Color.White, 0f, origin, 1.0f, SpriteEffects.None, 0);
         }
 
         public void AnimateRight(GameTime gameTime)

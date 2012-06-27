@@ -116,7 +116,7 @@ namespace BomberLoutre.Components
         private void DropBomb()
         {
             // Un p'tit offset out of nowhere à rendre plus précis (peut-être :D ?)
-            gameScreen.AddBomb(new Bomb(id, new Vector2(Sprite.spritePosition.X + (Sprite.spriteWidth / 4), Sprite.spritePosition.Y + (Sprite.spriteHeight / 4)), GameRef));
+            gameScreen.AddBomb(new Bomb(id, new Vector2(Sprite.SpritePosition.X, Sprite.SpritePosition.Y), GameRef));
         }
 
         private Rectangle SourceRectangle()

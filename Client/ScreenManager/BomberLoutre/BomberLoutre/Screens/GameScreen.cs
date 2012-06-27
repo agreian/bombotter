@@ -104,10 +104,11 @@ namespace BomberLoutre.Screens
             for (i = 0; i < bombList.Count; ++i)        bombList[i].Draw(gameTime);
             for (i = 0; i < bonusList.Count; ++i)       bonusList[i].Draw(gameTime);
             for (i = 0; i < boxList.Count; ++i)         boxList[i].Draw(gameTime);
-            for (i = 0; i < rockList.Count; ++i)         rockList[i].Draw(gameTime);
+            for (i = 0; i < rockList.Count; ++i)        rockList[i].Draw(gameTime);
             for (i = 0; i < Config.PlayerNumber; ++i)   playerList[i].Draw(gameTime);
 
-            GameRef.spriteBatch.DrawString(this.MidFont, String.Format("({0} : {1})", playerList[0].Sprite.spritePosition.X, playerList[0].Sprite.spritePosition.Y), new Vector2(30, 30), Color.Red);
+            GameRef.spriteBatch.DrawString(this.MidFont, String.Format("({0} : {1})", playerList[0].Sprite.SpritePosition.X, playerList[0].Sprite.SpritePosition.Y), new Vector2(30, 30), Color.Red);
+            GameRef.spriteBatch.DrawString(this.MidFont, String.Format("({0} : {1})", playerList[0].Sprite.CellPosition.X, playerList[0].Sprite.CellPosition.Y), new Vector2(30, 60), Color.Red);
 
             GameRef.spriteBatch.End();
             base.Draw(gameTime);
