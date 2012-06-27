@@ -119,6 +119,12 @@ namespace BomberLoutre.Controls
             }
         }
 
+
+        public static bool CheckIfReplayMusic()
+        {
+            return ((Properties.App.Default.MusicState) && (MediaPlayer.State != MediaState.Playing));
+        }
+
         #endregion
     }
 }

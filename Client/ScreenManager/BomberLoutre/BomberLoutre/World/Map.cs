@@ -9,7 +9,7 @@ namespace BomberLoutre.World
 {
     public class Map : Microsoft.Xna.Framework.DrawableGameComponent
     {
-        Texture2D GroundTexture, RockTexture, BoxTexture;
+        Texture2D GroundTexture;
         BomberLoutre GameRef;
         GameScreen GameScreen;
         string mapFileName;

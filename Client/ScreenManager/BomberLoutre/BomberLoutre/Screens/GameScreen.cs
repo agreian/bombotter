@@ -64,8 +64,6 @@ namespace BomberLoutre.Screens
 
         protected override void LoadContent()
         {
-            if(Properties.App.Default.MusicState)
-                MediaPlayer.Play(GameRef.Content.Load<Song>("Audio/Musics/Battle"));
             MediaPlayer.Volume = 0.40f;
 
             bombExplosionSound = GameRef.Content.Load<SoundEffect>("Audio/Sounds/bombExplosion");
@@ -78,6 +76,9 @@ namespace BomberLoutre.Screens
         public override void Update(GameTime gameTime)
         {
             int i;
+
+            if(CheckIfReplayMusic())
+                MediaPlayer.Play(GameRef.Content.Load<Song>("Audio/Musics/Battle"));
 
             ControlManager.Update(gameTime, PlayerIndex.One);            
 

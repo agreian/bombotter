@@ -52,6 +52,9 @@ namespace BomberLoutre.Screens
         {
             ControlManager.Update(gameTime, PlayerIndex.One);
 
+            if (CheckIfReplayMusic())
+                MediaPlayer.Play(GameRef.Content.Load<Song>("Audio/Musics/Title"));
+
             if (InputHandler.KeyPressed(Keys.Enter))
             {
                 if (!enableMenu)
@@ -61,6 +64,7 @@ namespace BomberLoutre.Screens
                     switch (menuString[indexMenu])
                     {
                         case "Jouer":
+                            MediaPlayer.Stop(); 
                             StateManager.ChangeState(GameRef.GameScreen);
                             break;
                         case "Options":
