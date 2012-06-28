@@ -9,11 +9,11 @@ MapClassic::~MapClassic()
 {
 	//CODE TON PUTAIN DE BOT !
 }
-/*bool MapClassic::checkMove(PlayerModel p, Point arrive)
+/*bool MapClassic::checkMove(PlayerModel p, ::BomberLoutreInterface::Point arrive)
 {
 	/*
 	A implémenter seulement dans MapModel NON ? 
-	1 - Étudier la map actuelle et voir si le mouvement est possible (en fonction du point de destination et du Kicker du player)	
+	1 - Étudier la map actuelle et voir si le mouvement est possible (en fonction du ::BomberLoutreInterface::Point de destination et du Kicker du player)	
 	
 }*/
 
