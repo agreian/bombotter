@@ -15,6 +15,7 @@ class PlayerModel;
 class BombItem;
 class BoxItem;
 class VoidItem;
+class Bonus;
 
 #define MAPHEIGHT 11
 #define MAPWIDTH 13
@@ -38,6 +39,7 @@ class MapModel :
 		int logicalMap[MAPWIDTH][MAPHEIGHT]; //Contein MapItem code
 		MapItem* map[MAPWIDTH][MAPHEIGHT];
 		vector<PlayerModel*> listPlayer;
+		vector< ::BomberLoutreInterface::MapObserverPrx> observers;
 	
 		MapModel();	
 		MapModel(int _height, int _width);		
@@ -70,13 +72,23 @@ class MapModel :
  
 		virtual void dropBomb(const ::BomberLoutreInterface::Player&, const ::BomberLoutreInterface::Bomb&, const ::Ice::Current& = ::Ice::Current());
 
+		void bombKicked(BombItem* b, int x, int y, ::BomberLoutreInterface::Point p);
+
+		void bombExploded(BombItem* b, int x, int y);
+
+		void bombHasBeenPlanted(BombItem* b, int x, int y);
+
+		void refreshPlayers();		
+		void bonusesDropped(Bonus* b, int x, int y);
+		void playerDied(PlayerModel* p);
+
 		enum MapItemCode
 		{
 			VoidItemCode = 0,
 			BoxItemCode = 1,
 			RockItemCode = 2,
 			BombItemCode = 3,
-			ExplosionItemCode = 4,
+			FlameItemCode = 4,
 
 			FlameUpCode = 10,
 			GoldenFlameCode = 11,
