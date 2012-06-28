@@ -1,4 +1,6 @@
 #include "BombItem.h"
+#include <boost/thread/thread.hpp>
+#include <boost/timer.hpp>
 
 /*BombItem::BombItem()
 {
@@ -10,6 +12,8 @@ BombItem::BombItem(MapModel* map, PlayerModel* player, int power):MapItem(map,tr
 	this->player = player;
 	this->power = power;
 	this->timer = 3.0;
+	
+	boost::thread threadExplosion(boost::bind(&BombItem::explod, this));
 }
 BombItem::~BombItem()
 {
@@ -18,6 +22,13 @@ BombItem::~BombItem()
 
 void BombItem::explod()
 {
+	boost::timer t;
+	
+	while(this->timer > 0)
+	{
+		timer -= t.elapsed();
+	}
+
 	this->map->handleExplode(this);
 }
 
