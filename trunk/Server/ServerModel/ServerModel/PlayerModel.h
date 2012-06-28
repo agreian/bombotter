@@ -20,7 +20,7 @@ class PlayerModel
 	protected :
 		MapModel *map;
 		int flamePower;
-		bool invincibie;
+		bool invincible;
 		bool invisibility;
 		int kicker;
 		int nbBomb;
@@ -29,13 +29,15 @@ class PlayerModel
 		int posX;
 		int posY;
 		int speed;
+		bool alive;
 	
 	public :
 		PlayerModel();
+		PlayerModel(MapModel* map):
 		PlayerModel(int newWidth, int newHeight);
 
 		void addBonus(Bonus* b);
-		void die();
+		void die(BombItem* bomb);
 		void draw();
 		
 		void dropBomb();
