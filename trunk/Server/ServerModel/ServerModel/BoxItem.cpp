@@ -1,17 +1,26 @@
-#include "stdafx.h"
-
 #include "BoxItem.h"
+#include <ctime>
+#include "stdlib.h"
+#define NBBONUS 4
+using namespace std;
 
+float BoxItem::dropChances = 0.5;
+/*
 BoxItem::BoxItem()
 {
-	/*Trololo */
+	
+}*/
+
+BoxItem::BoxItem(MapModel* map):MapItem(map,true,false)
+{
+
 }
 
 BoxItem::~BoxItem()
 {
 	/*Trololo */
 }
-
+/*
 bool BoxItem::isDestructible() 
 {
 	return true;
@@ -20,14 +29,43 @@ bool BoxItem::isDestructible()
 bool BoxItem::isWalkable()
 {
 	return false;
-}
+}*/
 
 void BoxItem::appears()
 {
-	
+	//TODO : wtf?
 }
 
 void BoxItem::disappears()
 {
-	// DISAPPEEEEAR !!!! Like a ninja turtle! 
+	float randomDrop;
+	int randomItem, itemCode;
+	srand(time(NULL));
+	randomDrop = rand() / float(RAND_MAX);
+
+	if( randomDrop <= this->dropChances)
+	{
+		randomItem = (rand() / float(RAND_MAX)) * NBBONUS +1;
+		switch(randomItem)
+		{
+			case 1:
+				itemCode = MapModel::MapItemCode::FlameUpCode;
+				break;
+			case 2:
+				itemCode = MapModel::MapItemCode::BombUpCode;
+				break;
+			case 3:
+				itemCode = MapModel::MapItemCode::SpeedUpCode;
+				break;
+			case 4:
+				itemCode = MapModel::MapItemCode::KickerCode;
+				break;
+		}
+		this->map->dropBonus(itemCode);
+	}
+}
+
+int BoxItem::getId()
+{
+	return MapModel::MapItemCode::BoxItemCode;
 }

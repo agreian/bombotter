@@ -1,10 +1,13 @@
-#include "stdafx.h"
-
 #include "SpeedUp.h"
-
+/*
 SpeedUp::SpeedUp()
 {
-	this->speed++;
+	this->speed = 1;
+}*/
+
+SpeedUp::SpeedUp(MapModel* map):Bonus(map)
+{
+	this->speed = 1;
 }
 
 SpeedUp::~SpeedUp()
@@ -12,3 +15,7 @@ SpeedUp::~SpeedUp()
 	/*Trololo */
 }
 
+int SpeedUp::getId()
+{
+	return MapModel::MapItemCode::SpeedUpCode;
+}

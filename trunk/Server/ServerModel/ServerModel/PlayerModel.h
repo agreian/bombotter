@@ -34,7 +34,7 @@ class PlayerModel
 		PlayerModel();
 		PlayerModel(int newWidth, int newHeight);
 
-		void addBonus(Bonus b);
+		void addBonus(Bonus* b);
 		void die();
 		void draw();
 		

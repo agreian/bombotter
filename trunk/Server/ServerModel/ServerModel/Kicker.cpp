@@ -1,15 +1,25 @@
 #include "stdafx.h"
 
 #include "Kicker.h"
-
+/*
 Kicker::Kicker()
 {
-	/* Will give to the player the ability to kick bombs */
+	
+	this->kick = true;
+}*/
+
+Kicker::Kicker(MapModel* map):Bonus(map)
+{
 	this->kick = true;
 }
 
 Kicker::~Kicker()
 {
 	/*Trololo */
+}
+
+int Kicker::getId()
+{
+	return MapModel::MapItemCode::KickerCode;
 }
 

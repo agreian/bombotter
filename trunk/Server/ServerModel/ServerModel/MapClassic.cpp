@@ -5,6 +5,10 @@ MapClassic::MapClassic()
 	//CODE TON PUTAIN DE BOT !
 }
 
+MapClassic::~MapClassic()
+{
+	//CODE TON PUTAIN DE BOT !
+}
 /*bool MapClassic::checkMove(PlayerModel p, Point arrive)
 {
 	/*

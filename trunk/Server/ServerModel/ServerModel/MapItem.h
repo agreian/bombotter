@@ -14,11 +14,12 @@ class MapItem
 {
 	// TODO : ajoutez ici vos méthodes pour cette classe.
 	public:
-		MapItem();
+		/*MapItem();*/
+		MapItem(MapModel* map, bool destructible, bool walkable);
 		~MapItem();
 
-		virtual bool isDestructible() = 0;
-		virtual bool isWalkable() = 0;
+		bool isDestructible();
+		bool isWalkable();
 		virtual int getId() = 0;
 		/* GETTERS */
 

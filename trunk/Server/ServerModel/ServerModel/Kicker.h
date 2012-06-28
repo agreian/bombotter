@@ -13,10 +13,11 @@ class Kicker : public Bonus
 {
 	// TODO : ajoutez ici vos méthodes pour cette classe.
 	public:
-		Kicker();
+		//Kicker();
+		Kicker(MapModel* map);
 		~Kicker();
 		/* GETTERS */
-
+		int getId();
 		/* SETTERS */
 };
 

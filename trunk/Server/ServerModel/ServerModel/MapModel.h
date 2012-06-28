@@ -28,7 +28,7 @@ class MapModel
 		MapModel();		
 		~MapModel();
 		bool checkMove(PlayerModel p, Point arrive);
-		void dropBonus(MapItem* bonus);
+		void dropBonus(int bonus);
 		// Factory à Map Item
 		//bool checkMove(PlayerModel p, Point arrive);
 //		void dropBonus(MapItem bonus);

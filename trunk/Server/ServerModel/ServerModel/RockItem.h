@@ -13,13 +13,16 @@ class RockItem : public MapItem
 {
 	// TODO : ajoutez ici vos méthodes pour cette classe.
 	public:
-		RockItem();
+		//RockItem();
+		RockItem(MapModel* map);
 		~RockItem();
 
-		bool isDestructible();
-		bool isWalkable();
+	/*	bool isDestructible();
+		bool isWalkable();*/
 
 		/* GETTERS */
+
+		int getId();
 
 		/* SETTERS */
 };
