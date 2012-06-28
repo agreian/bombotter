@@ -36,6 +36,7 @@ class PlayerModel
 		int speed;
 		bool alive;
 		vector<Bonus*> bonuses;
+		int dir;
 	
 	public :
 		enum playerDirectionId { dirLeft=0, dirRight=1, dirUp=2, dirDown=3 };
@@ -44,12 +45,13 @@ class PlayerModel
 		PlayerModel(MapModel* map, UserModel* user, int width, int height, int flamePower,bool invincible,	bool invisibility,	bool kicker,	int nbBomb,	int nbDeath, int nbKill, int posX, int posY, int speed, bool alive, int nbSuicide, int nbBombUsed);		
 
 		void addBonus(Bonus* b);
-		void die(BombItem* bomb);
+		void die(PlayerModel* player);
 		bool hasBonus(Bonus* b);
 		
 		void dropBomb();
 		void dropBonus();
 		
+		void addKill(int nb);
 		
 		void moveUp();
 		void moveDown();
@@ -67,6 +69,8 @@ class PlayerModel
 		void decNbBombUsed();
 		bool getKicker();
 		bool isAlive();
+		int getDir();
+		int getPower();
 };
 
 #endif
