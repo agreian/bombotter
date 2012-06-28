@@ -14,13 +14,13 @@ class BombItem : public MapItem
 	// TODO : ajoutez ici vos méthodes pour cette classe.
 	public:
 		//BombItem();
-		BombItem(MapModel* map, PlayerModel* player, int power, int timer);
+		BombItem(MapModel* map, PlayerModel* player, int power);
 		~BombItem();
 
 		/* GETTERS */
 
 		int getPower();
-		int getTimer();
+		float getTimer();
 		PlayerModel* getPlayer();
 		int getId();
 
@@ -29,7 +29,7 @@ class BombItem : public MapItem
 	private:
 		void explod();
 		int power;
-		int timer;
+		float timer;
 		PlayerModel* player;
 };
 
