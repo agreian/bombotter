@@ -13,10 +13,12 @@ class BombUp : public Bonus
 {
 	// TODO : ajoutez ici vos méthodes pour cette classe.
 	public:
-		BombUp();
+		//BombUp();
+		BombUp(MapModel* map);
 		~BombUp();
-		/* GETTERS */
 
+		/* GETTERS */
+		int getId();
 		/* SETTERS */
 };
 

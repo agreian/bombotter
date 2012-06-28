@@ -2,13 +2,22 @@
 
 #include "BombUp.h"
 
-BombUp::BombUp()
+/*BombUp::BombUp()
 {
-	this->bomb++;
+	this->bomb = 1;
+}*/
+BombUp::BombUp(MapModel* map):Bonus(map)
+{
+	this->bomb = 1;
 }
 
 BombUp::~BombUp()
 {
 	/*Trololo */
+}
+
+int BombUp::getId()
+{
+	return MapModel::MapItemCode::BombUpCode;
 }
 
