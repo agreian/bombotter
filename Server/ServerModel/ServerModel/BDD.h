@@ -3,15 +3,15 @@
 
 #include <string>
 #include <vector>
-#include <sqlite3.h>
+#include "sqlite3.h"
 
 using namespace std;
 
-class Database
+class BDD
 {
 public:
-	Database(char* filename);
-	~Database();
+	BDD(char* filename);
+	~BDD();
 	
 	bool open(char* filename);
 	vector<vector<string> > query(char* query);
