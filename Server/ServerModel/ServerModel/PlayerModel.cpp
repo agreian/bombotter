@@ -69,7 +69,6 @@ void PlayerModel::die(PlayerModel* player)
 	this->alive = false;
 	this->nbDeath++;
 	if( player==this) this->nbSuicide++;
-	else player->addKill(1);
 }
 
 		
@@ -78,6 +77,10 @@ void PlayerModel::dropBomb()
 	this->map->poserBombe(this);
 }
 
+void PlayerModel::addKill(int nb)
+{
+	this->nbKill += nb;
+}
 
 void PlayerModel::dropBonus()
 {
@@ -88,21 +91,25 @@ void PlayerModel::dropBonus()
 
 void PlayerModel::moveUp()
 {
+	this->dir = PlayerModel::dirUp;
 	this->posY -= this->speed*1;
 }
 
 void PlayerModel::moveDown()
 {
+	this->dir = PlayerModel::dirDown;
 	this->posY += this->speed*1;
 }
 
 void PlayerModel::moveLeft()
 {
+	this->dir = PlayerModel::dirLeft;
 	this->posX -= this->speed*1;
 }
 
 void PlayerModel::moveRight()
 {
+	this->dir = PlayerModel::dirRight;
 	this->posX += this->speed*1;
 }
 
@@ -154,4 +161,14 @@ bool PlayerModel::getKicker()
 bool PlayerModel::isAlive()
 {
 	return this->alive;
+}
+
+int PlayerModel::getDir()
+{
+	return this->dir;
+}
+
+int PlayerModel::getPower()
+{
+	return this->power;
 }
