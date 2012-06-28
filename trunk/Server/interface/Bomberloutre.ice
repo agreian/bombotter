@@ -21,6 +21,7 @@ module BomberLoutreInterface
 
 	interface GameUserInterface
 	{
+		string getCreatorName();
 		void userReady(UserData u);
 	};
 
