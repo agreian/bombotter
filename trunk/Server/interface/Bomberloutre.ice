@@ -71,6 +71,7 @@ module BomberLoutreInterface
 		void userReady(string username);
 		
 		void gameDataUpdated(GameData g);
+		void newMapDefined(string map);
 		
 		void gameStart();
 		void gameEnd();
