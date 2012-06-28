@@ -59,7 +59,7 @@ namespace BomberLoutre.Screens
         {
             ControlManager.Update(gameTime, PlayerIndex.One);
 
-            if (InputHandler.KeyDown(Keys.Escape))
+            if (InputHandler.Pushed("Escape", PlayerIndex.One))
                 StateManager.PushState(GameRef.TitleScreen);
 
             base.Update(gameTime);

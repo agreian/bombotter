@@ -66,10 +66,10 @@ namespace BomberLoutre.Screens
         {
             ControlManager.Update(gameTime, PlayerIndex.One);
 
-            if (InputHandler.KeyDown(Keys.Escape))
+            if (InputHandler.Pushed("Escape", PlayerIndex.One))
                 StateManager.PushState(GameRef.TitleScreen);
 
-            if (InputHandler.KeyPressed(Keys.Enter))
+            if (InputHandler.Pushed("Enter", PlayerIndex.One))
             {
                 switch (menuString[indexMenu])
                 {
@@ -109,14 +109,14 @@ namespace BomberLoutre.Screens
                 }                
             }
 
-            if (InputHandler.KeyPressed(Keys.Up))
+            if (InputHandler.Pushed("Up", PlayerIndex.One))
             {
                 if (indexMenu <= 0)
                     indexMenu = menuString.Length - 1;
                 else
                     indexMenu--;
             }
-            else if (InputHandler.KeyPressed(Keys.Down))
+            else if (InputHandler.Pushed("Down", PlayerIndex.One))
             {
                 indexMenu = (indexMenu + 1) % menuString.Length;
             }

@@ -18,6 +18,7 @@ namespace BomberLoutre.Controls
         static GamePadState[] gamePadStates;
         static GamePadState[] lastGamePadStates;
         public static GamePadState xboxPadState;
+        public static GamePadCapabilities xboxPadCap;
 
         #endregion
 
@@ -81,6 +82,10 @@ namespace BomberLoutre.Controls
                 gamePadStates[(int)index] = GamePad.GetState(index);
 
             xboxPadState = gamePadStates[(int) PlayerIndex.One];
+
+            xboxPadCap = GamePad.GetCapabilities(PlayerIndex.One);
+
+
 
             base.Update(gameTime);
         }
@@ -146,6 +151,54 @@ namespace BomberLoutre.Controls
             return gamePadStates[(int)index].IsButtonDown(button);
         }
 
+        #endregion
+
+        #region Keyboard AND GamePad Region
+        public static bool Pushed(string touch, PlayerIndex index)
+        {
+            switch(touch)
+            {
+                case "Up":
+                    return ButtonReleased(Buttons.DPadUp, index) || KeyPressed(Properties.App.Default.KeyUp);
+                case "Down":
+                    return ButtonReleased(Buttons.DPadDown, index) || KeyPressed(Properties.App.Default.KeyDown);
+                case "Left":
+                    return ButtonReleased(Buttons.DPadLeft, index) || KeyPressed(Properties.App.Default.KeyLeft);
+                case "Right":
+                    return ButtonReleased(Buttons.DPadRight, index) || KeyPressed(Properties.App.Default.KeyRight);
+                case "Space":
+                    return ButtonReleased(Buttons.B, index) || KeyPressed(Properties.App.Default.KeySpace);
+                case "Enter":
+                    return ButtonReleased(Buttons.A, index) || KeyPressed(Keys.Enter);
+                case "Escape":
+                    return ButtonReleased(Buttons.X, index) || KeyPressed(Keys.Escape);
+            }
+
+            return false;
+        }
+
+        public static bool Maintained(string touch, PlayerIndex index)
+        {
+            switch (touch)
+            {
+                case "Up":
+                    return ButtonDown(Buttons.DPadUp, index) || KeyDown(Properties.App.Default.KeyUp);
+                case "Down":
+                    return ButtonDown(Buttons.DPadDown, index) || KeyDown(Properties.App.Default.KeyDown);
+                case "Left":
+                    return ButtonDown(Buttons.DPadLeft, index) || KeyDown(Properties.App.Default.KeyLeft);
+                case "Right":
+                    return ButtonDown(Buttons.DPadRight, index) || KeyDown(Properties.App.Default.KeyRight);
+                case "Space":
+                    return ButtonDown(Buttons.B, index) || KeyDown(Properties.App.Default.KeySpace);
+                case "Enter":
+                    return ButtonDown(Buttons.A, index) || KeyDown(Keys.Enter);
+                case "Escape":
+                    return ButtonDown(Buttons.X, index) || KeyDown(Keys.Escape);
+            }
+
+            return false;
+        }
         #endregion
     }
 }
