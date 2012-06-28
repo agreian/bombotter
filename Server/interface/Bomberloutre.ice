@@ -3,7 +3,7 @@
 
 #include <Bomberloutre_map_item.ice>
 
-module Bomberloutre
+module BomberLoutreInterface
 {
 	struct UserData
 	{
@@ -19,12 +19,18 @@ module Bomberloutre
 	};
 	sequence<UserData> UserDataList;
 
+	interface GameUserInterface
+	{
+		void userReady(UserData u);
+	};
+
 	struct GameData
 	{
 		string name;
 		int roundCount;
 		int state;
 		int playerCount;
+		GameUserInterface* gameui;
 	};
 	sequence<GameData> GameDataList;
 	
@@ -60,6 +66,8 @@ module Bomberloutre
 		void allUsersReady();
 		void userReady(string username);
 		
+		void gameDataUpdated(GameData g);
+		
 		void gameStart();
 		void gameEnd();
 	};
@@ -92,8 +100,11 @@ module Bomberloutre
 		int getWidth();
 		int getHeight();
 		
-		bool move(Player p, Point pt);
-		void kickBomb(Player p);
+		void moveUp(Player p);
+		void moveDown(Player p);
+		void moveLeft(Player p);
+		void moveRight(Player p);
+		
 		void dropBomb(Player p, Bomb b);
 	};
 
@@ -111,8 +122,11 @@ module Bomberloutre
 		
 		void bombHasBeenPlanted(Bomb b);
 		void bombExploded(Bomb b);
+		void bombKicked(Bomb b, Point dest);
 		
 		void bonusesDropped(Bonuses b);
+		
+		void playerDied(Player p);
 	};
 
 	exception UserException { string reason; };
@@ -128,8 +142,8 @@ module Bomberloutre
 			throws UserAlreadyExistsException;
 		bool deleteUser(string login);
 		
-		GameInterface* addGame(string name,GameWaitRoom* room,MapObserver* mo);
-		Map				joinGame(string name,GameWaitRoom* room,MapObserver* mo);
+		GameInterface* addGame(string name, UserData user, GameWaitRoom* room, MapObserver* mo);
+		Map				joinGame(string name, UserData user, GameWaitRoom* room, MapObserver* mo);
 		GameDataList	getGameList();
 		UserDataList	getUserList();
 	};
