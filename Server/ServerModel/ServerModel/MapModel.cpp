@@ -5,7 +5,7 @@
 #include "VoidItem.h"
 #include "BoxItem.h"
 #include "RockItem.h"
-#include "ExplosionItem.h"
+#include "FlameItem.h"
 #include "FlameUp.h"
 #include "BombUp.h"
 #include "SpeedUp.h"
@@ -14,6 +14,12 @@
 #include <time.h>
 #include <iostream>
 #include <fstream>
+
+MapModel::MapModel()
+{
+	this->height = 60;
+	this->width = 60;
+}
 
 MapModel::MapModel(int _height, int _width)
 {
@@ -92,6 +98,7 @@ void MapModel::checkMove(PlayerModel* p, ::BomberLoutreInterface::Point arrive)
 
 	if(valid)
 	{
+		refreshPlayers();
 		p->setPosX(arrive.x);
 		p->setPosY(arrive.y);
 	}
@@ -108,9 +115,9 @@ bool MapModel::testCase(int bordX, int bordY, PlayerModel* p)
 	case BombItemCode:
 		return false;//rajouter le kikable
 		break;
-	case ExplosionItemCode:
-		p->die(((ExplosionItem*)(this->map[bordY][bordX]))->getPlayer());
-		((ExplosionItem*)(this->map[bordY][bordX]))->getPlayer()->addKill(1);
+	case FlameItemCode:
+		p->die(((FlameItem*)(this->map[bordY][bordX]))->getPlayer());
+		((FlameItem*)(this->map[bordY][bordX]))->getPlayer()->addKill(1);
 		break;
 	case FlameUpCode:
 	case GoldenFlameCode:
@@ -145,29 +152,34 @@ void MapModel::createMapItem(int typeMapItem, ::BomberLoutreInterface::Point p, 
 	case BombItemCode:
 		this->map[p.y][p.x] = new BombItem(this, player, player->getPower());
 		this->logicalMap[p.y][p.x] = BombItemCode;
+		bombHasBeenPlanted((BombItem*)(this->logicalMap[p.y][p.x]), p.x, p.y);
 		break;
-	case ExplosionItemCode:
-		this->map[p.y][p.x] = new ExplosionItem(this, player);
-		this->logicalMap[p.y][p.x] = ExplosionItemCode;
+	case FlameItemCode:
+		this->map[p.y][p.x] = new FlameItem(this, player);
+		this->logicalMap[p.y][p.x] = FlameItemCode;
 		break;
 
 	case FlameUpCode:
 		this->map[p.y][p.x] = new FlameUp(this);
 		this->logicalMap[p.y][p.x] = FlameUpCode;
+		bonusesDropped((Bonus*)(this->logicalMap[p.y][p.x]), p.x, p.y);
 		break;
 	case GoldenFlameCode:
 		break;
 	case BombUpCode:
 		this->map[p.y][p.x] = new BombUp(this);
 		this->logicalMap[p.y][p.x] = BombUpCode;
+		bonusesDropped((Bonus*)(this->logicalMap[p.y][p.x]), p.x, p.y);
 		break;
 	case SpeedUpCode:
 		this->map[p.y][p.x] = new SpeedUp(this);
 		this->logicalMap[p.y][p.x] = SpeedUpCode;
+		bonusesDropped((Bonus*)(this->logicalMap[p.y][p.x]), p.x, p.y);
 		break;
 	case KickerCode:
 		this->map[p.y][p.x] = new Kicker(this);
 		this->logicalMap[p.y][p.x] = KickerCode;
+		bonusesDropped((Bonus*)(this->logicalMap[p.y][p.x]), p.x, p.y);
 		break;
 	case InvisibleItemCode:
 		break;
@@ -233,7 +245,6 @@ void MapModel::dropBonus(VoidItem* voidItem)
 	if(find)
 	{
 		float randomDrop;
-		int randomItem, itemCode;
 		srand(time(NULL));
 		randomDrop = rand() / float(RAND_MAX);
 
@@ -247,7 +258,7 @@ void MapModel::dropBonus(VoidItem* voidItem)
 void MapModel::dropBonus(::BomberLoutreInterface::Point p)
 {
 	int randomItem, itemCode;
-	randomItem = (rand() / float(RAND_MAX)) * 4 +1;
+	randomItem = (int)((rand() / float(RAND_MAX)) * 4 +1);
 	switch(randomItem)
 	{
 		case 1:
@@ -293,6 +304,7 @@ void MapModel::handleExplode(BombItem* b)
 
 	if(find)
 	{
+		bombExploded(b, position.x, position.y);
 		for (int dir=PlayerModel::dirLeft; dir<= PlayerModel::dirDown; dir++)
 		{
 			bool goOut = false;
@@ -315,13 +327,13 @@ void MapModel::handleExplode(BombItem* b)
 					case VoidItemCode:
 						pp.x = x0;
 						pp.y = y0;
-						this->createMapItem(ExplosionItemCode, pp, b->getPlayer()); 
+						this->createMapItem(FlameItemCode, pp, b->getPlayer()); 
 						break;
 					case RockItemCode: goOut=true; break;
-					case ExplosionItemCode: 
+					case FlameItemCode: 
 						pp.x = x0;
 						pp.y = y0;
-						this->createMapItem(ExplosionItemCode, pp, b->getPlayer());
+						this->createMapItem(FlameItemCode, pp, b->getPlayer());
 						break;
 					case BoxItemCode: ((BoxItem*)(this->map[y0][x0]))->disappears(); goOut=true; break;
 					case FlameUpCode: 
@@ -334,7 +346,7 @@ void MapModel::handleExplode(BombItem* b)
 					case ShieldItemCode:   
 						pp.x = x0;
 						pp.y = y0;
-						this->createMapItem(ExplosionItemCode, pp, b->getPlayer());
+						this->createMapItem(FlameItemCode, pp, b->getPlayer());
 						break;
 					case BombItemCode: this->handleExplode((BombItem*)this->map[y0][x0]); break;
 				}
@@ -379,7 +391,7 @@ void MapModel::dropBomb(PlayerModel *p)
 		break;
 	case BombItemCode:
 	case VoidItemCode:
-	case ExplosionItemCode:
+	case FlameItemCode:
 	case FlameUpCode:
 	case GoldenFlameCode:
 	case BombUpCode:
@@ -401,7 +413,7 @@ void MapModel::dropBomb(PlayerModel *p)
 void MapModel::loapMap(string id)
 {
 	FILE * pFile;
-	  	pFile = fopen (id,"rw");
+	pFile = fopen (id.c_str(),"rw");
   	char currentChar;
   	int ligne = 0, colonne = 0;
   	if (pFile!=NULL)
@@ -509,5 +521,107 @@ void MapModel::dropBomb(const ::BomberLoutreInterface::Player& p, const ::Bomber
 		{
 			(*i)->dropBomb();
 		}
+	}
+}
+
+void MapModel::bombHasBeenPlanted(BombItem* b, int x, int y)
+{
+	::BomberLoutreInterface::Bomb bomb;
+	bomb.i = x;
+	bomb.j = y;
+	bomb.power = (int)b->getPower();
+	bomb.timer = (int)b->getTimer();
+	for(std::vector< ::BomberLoutreInterface::MapObserverPrx>::iterator i=observers.begin();i!=observers.end();++i)
+	{
+		(*i)->bombHasBeenPlanted(bomb);
+	}
+}
+
+void MapModel::bombExploded(BombItem* b, int x, int y)
+{
+	::BomberLoutreInterface::Bomb bomb;
+	bomb.i = x;
+	bomb.j = y;
+	bomb.power = b->getPower();
+	bomb.timer = b->getTimer();
+	for(std::vector< ::BomberLoutreInterface::MapObserverPrx>::iterator i=observers.begin();i!=observers.end();++i)
+	{
+		(*i)->bombExploded(bomb);
+	}
+}
+
+void MapModel::bombKicked(BombItem* b, int x, int y, ::BomberLoutreInterface::Point p)
+{
+	::BomberLoutreInterface::Bomb bomb;
+	bomb.i = x;
+	bomb.j = y;
+	bomb.power = (int)b->getPower();
+	bomb.timer = (int)b->getTimer();
+	for(std::vector< ::BomberLoutreInterface::MapObserverPrx>::iterator i=observers.begin();i!=observers.end();++i)
+	{
+		(*i)->bombKicked(bomb, p);
+	}
+}
+
+void MapModel::refreshPlayers()
+{
+	::BomberLoutreInterface::PlayerList pList;
+
+	for(std::vector<PlayerModel*>::iterator i=listPlayer.begin();i!=listPlayer.end();++i)
+	{
+		::BomberLoutreInterface::Player player;
+		player.posX = (*i)->getPosX();
+		player.posY = (*i)->getPosY();
+
+		player.height = 64;
+		player.width = 72;
+
+		player.killCount = (*i)->getNbKill();
+		player.deathCount = (*i)->getNbDeath();
+		player.suicideCount = (*i)->getNbSuicide();
+		pList.push_back(player);
+	}
+	
+	for(std::vector< ::BomberLoutreInterface::MapObserverPrx>::iterator i=observers.begin();i!=observers.end();++i)
+	{
+		(*i)->refreshPlayers(pList);
+	}
+}
+
+void MapModel::bonusesDropped(Bonus* bomb, int x, int y)
+{
+	::BomberLoutreInterface::Bonuses bList;
+	::BomberLoutreInterface::Bonus b;
+	b.i = x;
+	b.j = y;
+	b.power = bomb->getPower();
+	b.kick = bomb->getKick();
+	b.bomb = bomb->getBomb();
+	b.speed = bomb->getSpeed();
+
+	bList.push_back(b);
+
+	for(std::vector< ::BomberLoutreInterface::MapObserverPrx>::iterator i=observers.begin();i!=observers.end();++i)
+	{
+		(*i)->bonusesDropped(bList);
+	}
+}
+
+void MapModel::playerDied(PlayerModel* p)
+{
+	::BomberLoutreInterface::Player player;
+	player.posX = p->getPosX();
+	player.posY = p->getPosY();
+
+	player.height = 64;
+	player.width = 72;
+
+	player.killCount = p->getNbKill();
+	player.deathCount = p->getNbDeath();
+	player.suicideCount = p->getNbSuicide();
+	
+	for(std::vector< ::BomberLoutreInterface::MapObserverPrx>::iterator i=observers.begin();i!=observers.end();++i)
+	{
+		(*i)->playerDied(player);
 	}
 }
