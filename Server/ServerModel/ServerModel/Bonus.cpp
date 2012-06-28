@@ -18,4 +18,22 @@ Bonus::~Bonus()
 	/*Trololo */
 }
 
+int Bonus::getBomb()
+{
+	return this->bomb;
+}
 
+bool Bonus::getKick()
+{
+	return this->kick;
+}
+
+int Bonus::getPower()
+{
+	return this->power;
+}
+
+int Bonus::getSpeed()
+{
+	return this->speed;
+}

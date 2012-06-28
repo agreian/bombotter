@@ -18,6 +18,10 @@ class Bonus : public MapItem
 		~Bonus();
 		/* GETTERS */
 		virtual int getId() = 0;
+		int getBomb();
+		bool getKick();
+		int getPower();
+		int getSpeed();
 
 		/* SETTERS */
 
