@@ -1,4 +1,7 @@
 #include "MapModel.h"
+#include "PlayerModel.h"
+#include "MapItem.h"
+#include "BombItem.h"
 
 /*MapModel::MapModel()
 {

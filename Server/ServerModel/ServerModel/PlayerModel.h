@@ -4,9 +4,12 @@
 // PlayerModel.h
 #include <iostream>
 #include "Bonus.h"
+#include "MapModel.h"
 
 using namespace System;
 using namespace std;
+
+class MapModel;
 
 class PlayerModel
 {
@@ -15,6 +18,7 @@ class PlayerModel
 		int width;
 		
 	protected :
+		MapModel *map;
 		int flamePower;
 		bool invincibie;
 		bool invisibility;
