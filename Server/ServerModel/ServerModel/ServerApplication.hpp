@@ -19,7 +19,7 @@ public:
 	
 private:
 	::Ice::ObjectAdapterPtr m_adapter;
-	ServerModel*	m_server;
+	ServerModel*			m_server;
 };
 
 #endif

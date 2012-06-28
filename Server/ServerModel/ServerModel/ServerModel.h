@@ -29,10 +29,10 @@ class ServerModel :
 		deleteUser(const std::string&, const Ice::Current& = ::Ice::Current());
 		
 		virtual BomberLoutreInterface::GameInterfacePrx
-		addGame(const std::string&, const ::BomberLoutreInterface::GameWaitRoomPrx&, const ::BomberLoutreInterface::MapObserverPrx&, const Ice::Current& = ::Ice::Current());
+		addGame(const std::string &,const BomberLoutreInterface::UserData &, const ::BomberLoutreInterface::GameWaitRoomPrx &,const BomberLoutreInterface::MapObserverPrx &,const Ice::Current & = ::Ice::Current());
 		
 		virtual BomberLoutreInterface::Map 
-		joinGame(const std::string&, const ::BomberLoutreInterface::GameWaitRoomPrx&, const ::BomberLoutreInterface::MapObserverPrx&, const Ice::Current& = ::Ice::Current());
+		joinGame(const std::string&, const ::BomberLoutreInterface::UserData &, const ::BomberLoutreInterface::GameWaitRoomPrx&, const ::BomberLoutreInterface::MapObserverPrx&, const Ice::Current& = ::Ice::Current());
 		
 		virtual BomberLoutreInterface::GameDataList 
 		getGameList(const Ice::Current& = ::Ice::Current());
