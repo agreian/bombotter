@@ -16,10 +16,10 @@ class ServerModel :
 		ServerModel(::Ice::ObjectAdapterPtr);
 		~ServerModel();
 
-		void addGame(string name);
+		void addGame(std::string name);
 		void getListGame();
 		void getListUser();
-		void removeGame(string name);
+		void removeGame(std::string name);
 		void sendInvitationToPlayer(PlayerModel player, Game g);
 		
 		virtual Bomberloutre::UserData 
@@ -45,6 +45,8 @@ class ServerModel :
 	
 	private:
 		std::vector<int> m_currentGames;
+		std::vector<UserModel*> m_currentUsers;
+
 		::Ice::ObjectAdapterPtr m_adapter;
 };
 

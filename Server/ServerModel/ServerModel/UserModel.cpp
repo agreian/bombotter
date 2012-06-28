@@ -36,3 +36,41 @@ UserModel* UserModel::CreateUser(string login, string password)
 	return user;
 }
 
+void UserModel::addWin(int nbKill, int nbDeath, int nbSuicide)
+{
+	this->nbWin++;
+	this->nbKill += nbKill;
+	this->nbDeath += nbDeath;
+	this->nbSuicide += nbSuicide;
+}
+
+void UserModel::addLoose(int nbKill, int nbDeath, int nbSuicide)
+{
+	this->nbLoose++;
+	this->nbKill += nbKill;
+	this->nbDeath += nbDeath;
+	this->nbSuicide += nbSuicide;
+}
+
+void UserModel::addDraw(int nbKill, int nbDeath, int nbSuicide)
+{
+	this->nbDraw++;
+	this->nbKill += nbKill;
+	this->nbDeath += nbDeath;
+	this->nbSuicide += nbSuicide;
+}
+
+bool UserModel::deleteUser()
+{
+	return false;
+}
+
+void UserModel::joinGame(GameModel* game)
+{
+	this->gameTag = game->name;
+}
+
+void UserModel::save()
+{
+	//save user information : nbWin, nbkill ....
+}

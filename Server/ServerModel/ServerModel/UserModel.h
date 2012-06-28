@@ -24,9 +24,10 @@ class UserModel
 		void joinGame(GameModel* game);
 		
 		/* GETTERS */
-
+		std::string getLogin() { return login; }
 
 		/* SETTERS */
+		void setGameTag(const std::string & gt) { gameTag = gt; }
 
 	private:
 		/*
@@ -48,7 +49,7 @@ class UserModel
 		UserModel();
 		UserModel(string log, string pwd);
 		/* Save new information of the user : new Game Tag, updates of Win, Lose or Draw number */
-		bool Commit();
+		bool save();
 };
 
 #endif //USER_MODEL_HEADER

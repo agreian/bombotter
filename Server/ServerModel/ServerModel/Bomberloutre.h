@@ -18,8 +18,8 @@
 // </auto-generated>
 //
 
-#ifndef __C__Users_Florent_Documents_Visual_Studio_2010_Projects_BomberLoutre_Server_ServerModel_ServerModel_Bomberloutre_h__
-#define __C__Users_Florent_Documents_Visual_Studio_2010_Projects_BomberLoutre_Server_ServerModel_ServerModel_Bomberloutre_h__
+#ifndef __C__Users_Remi_Documents_Visual_Studio_2010_Projects_Bomberloutre_Server_ServerModel_ServerModel_Bomberloutre_h__
+#define __C__Users_Remi_Documents_Visual_Studio_2010_Projects_Bomberloutre_Server_ServerModel_ServerModel_Bomberloutre_h__
 
 #include <Ice/LocalObjectF.h>
 #include <Ice/ProxyF.h>
@@ -53,8 +53,10 @@
 namespace IceProxy
 {
 
-namespace Bomberloutre
+namespace BomberLoutreInterface
 {
+
+class GameUserInterface;
 
 class GameInterface;
 
@@ -70,8 +72,12 @@ class ServerInterface;
 
 }
 
-namespace Bomberloutre
+namespace BomberLoutreInterface
 {
+
+class GameUserInterface;
+bool operator==(const GameUserInterface&, const GameUserInterface&);
+bool operator<(const GameUserInterface&, const GameUserInterface&);
 
 class GameInterface;
 bool operator==(const GameInterface&, const GameInterface&);
@@ -98,59 +104,68 @@ bool operator<(const ServerInterface&, const ServerInterface&);
 namespace IceInternal
 {
 
-::Ice::Object* upCast(::Bomberloutre::GameInterface*);
-::IceProxy::Ice::Object* upCast(::IceProxy::Bomberloutre::GameInterface*);
+::Ice::Object* upCast(::BomberLoutreInterface::GameUserInterface*);
+::IceProxy::Ice::Object* upCast(::IceProxy::BomberLoutreInterface::GameUserInterface*);
 
-::Ice::Object* upCast(::Bomberloutre::GameWaitRoom*);
-::IceProxy::Ice::Object* upCast(::IceProxy::Bomberloutre::GameWaitRoom*);
+::Ice::Object* upCast(::BomberLoutreInterface::GameInterface*);
+::IceProxy::Ice::Object* upCast(::IceProxy::BomberLoutreInterface::GameInterface*);
 
-::Ice::Object* upCast(::Bomberloutre::MapInterface*);
-::IceProxy::Ice::Object* upCast(::IceProxy::Bomberloutre::MapInterface*);
+::Ice::Object* upCast(::BomberLoutreInterface::GameWaitRoom*);
+::IceProxy::Ice::Object* upCast(::IceProxy::BomberLoutreInterface::GameWaitRoom*);
 
-::Ice::Object* upCast(::Bomberloutre::MapObserver*);
-::IceProxy::Ice::Object* upCast(::IceProxy::Bomberloutre::MapObserver*);
+::Ice::Object* upCast(::BomberLoutreInterface::MapInterface*);
+::IceProxy::Ice::Object* upCast(::IceProxy::BomberLoutreInterface::MapInterface*);
 
-::Ice::Object* upCast(::Bomberloutre::ServerInterface*);
-::IceProxy::Ice::Object* upCast(::IceProxy::Bomberloutre::ServerInterface*);
+::Ice::Object* upCast(::BomberLoutreInterface::MapObserver*);
+::IceProxy::Ice::Object* upCast(::IceProxy::BomberLoutreInterface::MapObserver*);
+
+::Ice::Object* upCast(::BomberLoutreInterface::ServerInterface*);
+::IceProxy::Ice::Object* upCast(::IceProxy::BomberLoutreInterface::ServerInterface*);
 
 }
 
-namespace Bomberloutre
+namespace BomberLoutreInterface
 {
 
-typedef ::IceInternal::Handle< ::Bomberloutre::GameInterface> GameInterfacePtr;
-typedef ::IceInternal::ProxyHandle< ::IceProxy::Bomberloutre::GameInterface> GameInterfacePrx;
+typedef ::IceInternal::Handle< ::BomberLoutreInterface::GameUserInterface> GameUserInterfacePtr;
+typedef ::IceInternal::ProxyHandle< ::IceProxy::BomberLoutreInterface::GameUserInterface> GameUserInterfacePrx;
+
+void __read(::IceInternal::BasicStream*, GameUserInterfacePrx&);
+void __patch__GameUserInterfacePtr(void*, ::Ice::ObjectPtr&);
+
+typedef ::IceInternal::Handle< ::BomberLoutreInterface::GameInterface> GameInterfacePtr;
+typedef ::IceInternal::ProxyHandle< ::IceProxy::BomberLoutreInterface::GameInterface> GameInterfacePrx;
 
 void __read(::IceInternal::BasicStream*, GameInterfacePrx&);
 void __patch__GameInterfacePtr(void*, ::Ice::ObjectPtr&);
 
-typedef ::IceInternal::Handle< ::Bomberloutre::GameWaitRoom> GameWaitRoomPtr;
-typedef ::IceInternal::ProxyHandle< ::IceProxy::Bomberloutre::GameWaitRoom> GameWaitRoomPrx;
+typedef ::IceInternal::Handle< ::BomberLoutreInterface::GameWaitRoom> GameWaitRoomPtr;
+typedef ::IceInternal::ProxyHandle< ::IceProxy::BomberLoutreInterface::GameWaitRoom> GameWaitRoomPrx;
 
 void __read(::IceInternal::BasicStream*, GameWaitRoomPrx&);
 void __patch__GameWaitRoomPtr(void*, ::Ice::ObjectPtr&);
 
-typedef ::IceInternal::Handle< ::Bomberloutre::MapInterface> MapInterfacePtr;
-typedef ::IceInternal::ProxyHandle< ::IceProxy::Bomberloutre::MapInterface> MapInterfacePrx;
+typedef ::IceInternal::Handle< ::BomberLoutreInterface::MapInterface> MapInterfacePtr;
+typedef ::IceInternal::ProxyHandle< ::IceProxy::BomberLoutreInterface::MapInterface> MapInterfacePrx;
 
 void __read(::IceInternal::BasicStream*, MapInterfacePrx&);
 void __patch__MapInterfacePtr(void*, ::Ice::ObjectPtr&);
 
-typedef ::IceInternal::Handle< ::Bomberloutre::MapObserver> MapObserverPtr;
-typedef ::IceInternal::ProxyHandle< ::IceProxy::Bomberloutre::MapObserver> MapObserverPrx;
+typedef ::IceInternal::Handle< ::BomberLoutreInterface::MapObserver> MapObserverPtr;
+typedef ::IceInternal::ProxyHandle< ::IceProxy::BomberLoutreInterface::MapObserver> MapObserverPrx;
 
 void __read(::IceInternal::BasicStream*, MapObserverPrx&);
 void __patch__MapObserverPtr(void*, ::Ice::ObjectPtr&);
 
-typedef ::IceInternal::Handle< ::Bomberloutre::ServerInterface> ServerInterfacePtr;
-typedef ::IceInternal::ProxyHandle< ::IceProxy::Bomberloutre::ServerInterface> ServerInterfacePrx;
+typedef ::IceInternal::Handle< ::BomberLoutreInterface::ServerInterface> ServerInterfacePtr;
+typedef ::IceInternal::ProxyHandle< ::IceProxy::BomberLoutreInterface::ServerInterface> ServerInterfacePrx;
 
 void __read(::IceInternal::BasicStream*, ServerInterfacePrx&);
 void __patch__ServerInterfacePtr(void*, ::Ice::ObjectPtr&);
 
 }
 
-namespace Bomberloutre
+namespace BomberLoutreInterface
 {
 
 struct UserData
@@ -286,8 +301,8 @@ struct UserData
     void __read(::IceInternal::BasicStream*);
 };
 
-typedef ::std::vector< ::Bomberloutre::UserData> UserDataList;
-void __writeUserDataList(::IceInternal::BasicStream*, const ::Bomberloutre::UserData*, const ::Bomberloutre::UserData*);
+typedef ::std::vector< ::BomberLoutreInterface::UserData> UserDataList;
+void __writeUserDataList(::IceInternal::BasicStream*, const ::BomberLoutreInterface::UserData*, const ::BomberLoutreInterface::UserData*);
 void __readUserDataList(::IceInternal::BasicStream*, UserDataList&);
 
 struct GameData
@@ -296,6 +311,7 @@ struct GameData
     ::Ice::Int roundCount;
     ::Ice::Int state;
     ::Ice::Int playerCount;
+    ::BomberLoutreInterface::GameUserInterfacePrx gameui;
 
     bool operator==(const GameData& __rhs) const
     {
@@ -316,6 +332,10 @@ struct GameData
             return false;
         }
         if(playerCount != __rhs.playerCount)
+        {
+            return false;
+        }
+        if(gameui != __rhs.gameui)
         {
             return false;
         }
@@ -360,6 +380,14 @@ struct GameData
         {
             return false;
         }
+        if(gameui < __rhs.gameui)
+        {
+            return true;
+        }
+        else if(__rhs.gameui < gameui)
+        {
+            return false;
+        }
         return false;
     }
 
@@ -384,8 +412,8 @@ struct GameData
     void __read(::IceInternal::BasicStream*);
 };
 
-typedef ::std::vector< ::Bomberloutre::GameData> GameDataList;
-void __writeGameDataList(::IceInternal::BasicStream*, const ::Bomberloutre::GameData*, const ::Bomberloutre::GameData*);
+typedef ::std::vector< ::BomberLoutreInterface::GameData> GameDataList;
+void __writeGameDataList(::IceInternal::BasicStream*, const ::BomberLoutreInterface::GameData*, const ::BomberLoutreInterface::GameData*);
 void __readGameDataList(::IceInternal::BasicStream*, GameDataList&);
 
 struct Player
@@ -397,7 +425,7 @@ struct Player
     ::Ice::Int killCount;
     ::Ice::Int deathCount;
     ::Ice::Int suicideCount;
-    ::Bomberloutre::UserData related;
+    ::BomberLoutreInterface::UserData related;
 
     bool operator==(const Player& __rhs) const
     {
@@ -534,8 +562,8 @@ struct Player
     void __read(::IceInternal::BasicStream*);
 };
 
-typedef ::std::vector< ::Bomberloutre::Player> PlayerList;
-void __writePlayerList(::IceInternal::BasicStream*, const ::Bomberloutre::Player*, const ::Bomberloutre::Player*);
+typedef ::std::vector< ::BomberLoutreInterface::Player> PlayerList;
+void __writePlayerList(::IceInternal::BasicStream*, const ::BomberLoutreInterface::Player*, const ::BomberLoutreInterface::Player*);
 void __readPlayerList(::IceInternal::BasicStream*, PlayerList&);
 
 struct Point
@@ -608,9 +636,9 @@ struct Point
 
 struct Map
 {
-    ::Bomberloutre::MapInterfacePrx mi;
-    ::Bomberloutre::MapItems items;
-    ::Bomberloutre::PlayerList players;
+    ::BomberLoutreInterface::MapInterfacePrx mi;
+    ::BomberLoutreInterface::MapItems items;
+    ::BomberLoutreInterface::PlayerList players;
 
     bool operator==(const Map& __rhs) const
     {
@@ -714,7 +742,7 @@ public:
 
 static UserException __UserException_init;
 
-class BadLoginException : public ::Bomberloutre::UserException
+class BadLoginException : public ::BomberLoutreInterface::UserException
 {
 public:
 
@@ -737,7 +765,7 @@ public:
 #endif
 };
 
-class BadPasswordException : public ::Bomberloutre::UserException
+class BadPasswordException : public ::BomberLoutreInterface::UserException
 {
 public:
 
@@ -760,7 +788,7 @@ public:
 #endif
 };
 
-class UserAlreadyExistsException : public ::Bomberloutre::UserException
+class UserAlreadyExistsException : public ::BomberLoutreInterface::UserException
 {
 public:
 
@@ -785,8 +813,11 @@ public:
 
 }
 
-namespace Bomberloutre
+namespace BomberLoutreInterface
 {
+
+class Callback_GameUserInterface_userReady_Base : virtual public ::IceInternal::CallbackBase { };
+typedef ::IceUtil::Handle< Callback_GameUserInterface_userReady_Base> Callback_GameUserInterface_userReadyPtr;
 
 class Callback_GameInterface_getName_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_GameInterface_getName_Base> Callback_GameInterface_getNamePtr;
@@ -842,6 +873,9 @@ typedef ::IceUtil::Handle< Callback_GameWaitRoom_allUsersReady_Base> Callback_Ga
 class Callback_GameWaitRoom_userReady_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_GameWaitRoom_userReady_Base> Callback_GameWaitRoom_userReadyPtr;
 
+class Callback_GameWaitRoom_gameDataUpdated_Base : virtual public ::IceInternal::CallbackBase { };
+typedef ::IceUtil::Handle< Callback_GameWaitRoom_gameDataUpdated_Base> Callback_GameWaitRoom_gameDataUpdatedPtr;
+
 class Callback_GameWaitRoom_gameStart_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_GameWaitRoom_gameStart_Base> Callback_GameWaitRoom_gameStartPtr;
 
@@ -857,11 +891,17 @@ typedef ::IceUtil::Handle< Callback_MapInterface_getWidth_Base> Callback_MapInte
 class Callback_MapInterface_getHeight_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_MapInterface_getHeight_Base> Callback_MapInterface_getHeightPtr;
 
-class Callback_MapInterface_move_Base : virtual public ::IceInternal::CallbackBase { };
-typedef ::IceUtil::Handle< Callback_MapInterface_move_Base> Callback_MapInterface_movePtr;
+class Callback_MapInterface_moveUp_Base : virtual public ::IceInternal::CallbackBase { };
+typedef ::IceUtil::Handle< Callback_MapInterface_moveUp_Base> Callback_MapInterface_moveUpPtr;
 
-class Callback_MapInterface_kickBomb_Base : virtual public ::IceInternal::CallbackBase { };
-typedef ::IceUtil::Handle< Callback_MapInterface_kickBomb_Base> Callback_MapInterface_kickBombPtr;
+class Callback_MapInterface_moveDown_Base : virtual public ::IceInternal::CallbackBase { };
+typedef ::IceUtil::Handle< Callback_MapInterface_moveDown_Base> Callback_MapInterface_moveDownPtr;
+
+class Callback_MapInterface_moveLeft_Base : virtual public ::IceInternal::CallbackBase { };
+typedef ::IceUtil::Handle< Callback_MapInterface_moveLeft_Base> Callback_MapInterface_moveLeftPtr;
+
+class Callback_MapInterface_moveRight_Base : virtual public ::IceInternal::CallbackBase { };
+typedef ::IceUtil::Handle< Callback_MapInterface_moveRight_Base> Callback_MapInterface_moveRightPtr;
 
 class Callback_MapInterface_dropBomb_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_MapInterface_dropBomb_Base> Callback_MapInterface_dropBombPtr;
@@ -878,8 +918,14 @@ typedef ::IceUtil::Handle< Callback_MapObserver_bombHasBeenPlanted_Base> Callbac
 class Callback_MapObserver_bombExploded_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_MapObserver_bombExploded_Base> Callback_MapObserver_bombExplodedPtr;
 
+class Callback_MapObserver_bombKicked_Base : virtual public ::IceInternal::CallbackBase { };
+typedef ::IceUtil::Handle< Callback_MapObserver_bombKicked_Base> Callback_MapObserver_bombKickedPtr;
+
 class Callback_MapObserver_bonusesDropped_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_MapObserver_bonusesDropped_Base> Callback_MapObserver_bonusesDroppedPtr;
+
+class Callback_MapObserver_playerDied_Base : virtual public ::IceInternal::CallbackBase { };
+typedef ::IceUtil::Handle< Callback_MapObserver_playerDied_Base> Callback_MapObserver_playerDiedPtr;
 
 class Callback_ServerInterface_connect_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_ServerInterface_connect_Base> Callback_ServerInterface_connectPtr;
@@ -907,8 +953,259 @@ typedef ::IceUtil::Handle< Callback_ServerInterface_getUserList_Base> Callback_S
 namespace IceProxy
 {
 
-namespace Bomberloutre
+namespace BomberLoutreInterface
 {
+
+class GameUserInterface : virtual public ::IceProxy::Ice::Object
+{
+public:
+
+    void userReady(const ::BomberLoutreInterface::UserData& u)
+    {
+        userReady(u, 0);
+    }
+    void userReady(const ::BomberLoutreInterface::UserData& u, const ::Ice::Context& __ctx)
+    {
+        userReady(u, &__ctx);
+    }
+
+    ::Ice::AsyncResultPtr begin_userReady(const ::BomberLoutreInterface::UserData& u)
+    {
+        return begin_userReady(u, 0, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_userReady(const ::BomberLoutreInterface::UserData& u, const ::Ice::Context& __ctx)
+    {
+        return begin_userReady(u, &__ctx, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_userReady(const ::BomberLoutreInterface::UserData& u, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_userReady(u, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_userReady(const ::BomberLoutreInterface::UserData& u, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_userReady(u, &__ctx, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_userReady(const ::BomberLoutreInterface::UserData& u, const ::BomberLoutreInterface::Callback_GameUserInterface_userReadyPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_userReady(u, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_userReady(const ::BomberLoutreInterface::UserData& u, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameUserInterface_userReadyPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_userReady(u, &__ctx, __del, __cookie);
+    }
+
+    void end_userReady(const ::Ice::AsyncResultPtr&);
+    
+private:
+
+    void userReady(const ::BomberLoutreInterface::UserData&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_userReady(const ::BomberLoutreInterface::UserData&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    
+public:
+    
+    ::IceInternal::ProxyHandle<GameUserInterface> ice_context(const ::Ice::Context& __context) const
+    {
+    #if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+        typedef ::IceProxy::Ice::Object _Base;
+        return dynamic_cast<GameUserInterface*>(_Base::ice_context(__context).get());
+    #else
+        return dynamic_cast<GameUserInterface*>(::IceProxy::Ice::Object::ice_context(__context).get());
+    #endif
+    }
+    
+    ::IceInternal::ProxyHandle<GameUserInterface> ice_adapterId(const std::string& __id) const
+    {
+    #if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+        typedef ::IceProxy::Ice::Object _Base;
+        return dynamic_cast<GameUserInterface*>(_Base::ice_adapterId(__id).get());
+    #else
+        return dynamic_cast<GameUserInterface*>(::IceProxy::Ice::Object::ice_adapterId(__id).get());
+    #endif
+    }
+    
+    ::IceInternal::ProxyHandle<GameUserInterface> ice_endpoints(const ::Ice::EndpointSeq& __endpoints) const
+    {
+    #if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+        typedef ::IceProxy::Ice::Object _Base;
+        return dynamic_cast<GameUserInterface*>(_Base::ice_endpoints(__endpoints).get());
+    #else
+        return dynamic_cast<GameUserInterface*>(::IceProxy::Ice::Object::ice_endpoints(__endpoints).get());
+    #endif
+    }
+    
+    ::IceInternal::ProxyHandle<GameUserInterface> ice_locatorCacheTimeout(int __timeout) const
+    {
+    #if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+        typedef ::IceProxy::Ice::Object _Base;
+        return dynamic_cast<GameUserInterface*>(_Base::ice_locatorCacheTimeout(__timeout).get());
+    #else
+        return dynamic_cast<GameUserInterface*>(::IceProxy::Ice::Object::ice_locatorCacheTimeout(__timeout).get());
+    #endif
+    }
+    
+    ::IceInternal::ProxyHandle<GameUserInterface> ice_connectionCached(bool __cached) const
+    {
+    #if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+        typedef ::IceProxy::Ice::Object _Base;
+        return dynamic_cast<GameUserInterface*>(_Base::ice_connectionCached(__cached).get());
+    #else
+        return dynamic_cast<GameUserInterface*>(::IceProxy::Ice::Object::ice_connectionCached(__cached).get());
+    #endif
+    }
+    
+    ::IceInternal::ProxyHandle<GameUserInterface> ice_endpointSelection(::Ice::EndpointSelectionType __est) const
+    {
+    #if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+        typedef ::IceProxy::Ice::Object _Base;
+        return dynamic_cast<GameUserInterface*>(_Base::ice_endpointSelection(__est).get());
+    #else
+        return dynamic_cast<GameUserInterface*>(::IceProxy::Ice::Object::ice_endpointSelection(__est).get());
+    #endif
+    }
+    
+    ::IceInternal::ProxyHandle<GameUserInterface> ice_secure(bool __secure) const
+    {
+    #if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+        typedef ::IceProxy::Ice::Object _Base;
+        return dynamic_cast<GameUserInterface*>(_Base::ice_secure(__secure).get());
+    #else
+        return dynamic_cast<GameUserInterface*>(::IceProxy::Ice::Object::ice_secure(__secure).get());
+    #endif
+    }
+    
+    ::IceInternal::ProxyHandle<GameUserInterface> ice_preferSecure(bool __preferSecure) const
+    {
+    #if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+        typedef ::IceProxy::Ice::Object _Base;
+        return dynamic_cast<GameUserInterface*>(_Base::ice_preferSecure(__preferSecure).get());
+    #else
+        return dynamic_cast<GameUserInterface*>(::IceProxy::Ice::Object::ice_preferSecure(__preferSecure).get());
+    #endif
+    }
+    
+    ::IceInternal::ProxyHandle<GameUserInterface> ice_router(const ::Ice::RouterPrx& __router) const
+    {
+    #if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+        typedef ::IceProxy::Ice::Object _Base;
+        return dynamic_cast<GameUserInterface*>(_Base::ice_router(__router).get());
+    #else
+        return dynamic_cast<GameUserInterface*>(::IceProxy::Ice::Object::ice_router(__router).get());
+    #endif
+    }
+    
+    ::IceInternal::ProxyHandle<GameUserInterface> ice_locator(const ::Ice::LocatorPrx& __locator) const
+    {
+    #if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+        typedef ::IceProxy::Ice::Object _Base;
+        return dynamic_cast<GameUserInterface*>(_Base::ice_locator(__locator).get());
+    #else
+        return dynamic_cast<GameUserInterface*>(::IceProxy::Ice::Object::ice_locator(__locator).get());
+    #endif
+    }
+    
+    ::IceInternal::ProxyHandle<GameUserInterface> ice_collocationOptimized(bool __co) const
+    {
+    #if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+        typedef ::IceProxy::Ice::Object _Base;
+        return dynamic_cast<GameUserInterface*>(_Base::ice_collocationOptimized(__co).get());
+    #else
+        return dynamic_cast<GameUserInterface*>(::IceProxy::Ice::Object::ice_collocationOptimized(__co).get());
+    #endif
+    }
+    
+    ::IceInternal::ProxyHandle<GameUserInterface> ice_twoway() const
+    {
+    #if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+        typedef ::IceProxy::Ice::Object _Base;
+        return dynamic_cast<GameUserInterface*>(_Base::ice_twoway().get());
+    #else
+        return dynamic_cast<GameUserInterface*>(::IceProxy::Ice::Object::ice_twoway().get());
+    #endif
+    }
+    
+    ::IceInternal::ProxyHandle<GameUserInterface> ice_oneway() const
+    {
+    #if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+        typedef ::IceProxy::Ice::Object _Base;
+        return dynamic_cast<GameUserInterface*>(_Base::ice_oneway().get());
+    #else
+        return dynamic_cast<GameUserInterface*>(::IceProxy::Ice::Object::ice_oneway().get());
+    #endif
+    }
+    
+    ::IceInternal::ProxyHandle<GameUserInterface> ice_batchOneway() const
+    {
+    #if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+        typedef ::IceProxy::Ice::Object _Base;
+        return dynamic_cast<GameUserInterface*>(_Base::ice_batchOneway().get());
+    #else
+        return dynamic_cast<GameUserInterface*>(::IceProxy::Ice::Object::ice_batchOneway().get());
+    #endif
+    }
+    
+    ::IceInternal::ProxyHandle<GameUserInterface> ice_datagram() const
+    {
+    #if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+        typedef ::IceProxy::Ice::Object _Base;
+        return dynamic_cast<GameUserInterface*>(_Base::ice_datagram().get());
+    #else
+        return dynamic_cast<GameUserInterface*>(::IceProxy::Ice::Object::ice_datagram().get());
+    #endif
+    }
+    
+    ::IceInternal::ProxyHandle<GameUserInterface> ice_batchDatagram() const
+    {
+    #if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+        typedef ::IceProxy::Ice::Object _Base;
+        return dynamic_cast<GameUserInterface*>(_Base::ice_batchDatagram().get());
+    #else
+        return dynamic_cast<GameUserInterface*>(::IceProxy::Ice::Object::ice_batchDatagram().get());
+    #endif
+    }
+    
+    ::IceInternal::ProxyHandle<GameUserInterface> ice_compress(bool __compress) const
+    {
+    #if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+        typedef ::IceProxy::Ice::Object _Base;
+        return dynamic_cast<GameUserInterface*>(_Base::ice_compress(__compress).get());
+    #else
+        return dynamic_cast<GameUserInterface*>(::IceProxy::Ice::Object::ice_compress(__compress).get());
+    #endif
+    }
+    
+    ::IceInternal::ProxyHandle<GameUserInterface> ice_timeout(int __timeout) const
+    {
+    #if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+        typedef ::IceProxy::Ice::Object _Base;
+        return dynamic_cast<GameUserInterface*>(_Base::ice_timeout(__timeout).get());
+    #else
+        return dynamic_cast<GameUserInterface*>(::IceProxy::Ice::Object::ice_timeout(__timeout).get());
+    #endif
+    }
+    
+    ::IceInternal::ProxyHandle<GameUserInterface> ice_connectionId(const std::string& __id) const
+    {
+    #if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+        typedef ::IceProxy::Ice::Object _Base;
+        return dynamic_cast<GameUserInterface*>(_Base::ice_connectionId(__id).get());
+    #else
+        return dynamic_cast<GameUserInterface*>(::IceProxy::Ice::Object::ice_connectionId(__id).get());
+    #endif
+    }
+    
+    static const ::std::string& ice_staticId();
+
+private: 
+
+    virtual ::IceInternal::Handle< ::IceDelegateM::Ice::Object> __createDelegateM();
+    virtual ::IceInternal::Handle< ::IceDelegateD::Ice::Object> __createDelegateD();
+    virtual ::IceProxy::Ice::Object* __newInstance() const;
+};
 
 class GameInterface : virtual public ::IceProxy::Ice::Object
 {
@@ -943,12 +1240,12 @@ public:
         return begin_getName(&__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_getName(const ::Bomberloutre::Callback_GameInterface_getNamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_getName(const ::BomberLoutreInterface::Callback_GameInterface_getNamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_getName(0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_getName(const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameInterface_getNamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_getName(const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameInterface_getNamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_getName(&__ctx, __del, __cookie);
     }
@@ -991,12 +1288,12 @@ public:
         return begin_getState(&__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_getState(const ::Bomberloutre::Callback_GameInterface_getStatePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_getState(const ::BomberLoutreInterface::Callback_GameInterface_getStatePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_getState(0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_getState(const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameInterface_getStatePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_getState(const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameInterface_getStatePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_getState(&__ctx, __del, __cookie);
     }
@@ -1039,12 +1336,12 @@ public:
         return begin_getRoundCount(&__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_getRoundCount(const ::Bomberloutre::Callback_GameInterface_getRoundCountPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_getRoundCount(const ::BomberLoutreInterface::Callback_GameInterface_getRoundCountPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_getRoundCount(0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_getRoundCount(const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameInterface_getRoundCountPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_getRoundCount(const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameInterface_getRoundCountPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_getRoundCount(&__ctx, __del, __cookie);
     }
@@ -1087,12 +1384,12 @@ public:
         return begin_setName(newname, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_setName(const ::std::string& newname, const ::Bomberloutre::Callback_GameInterface_setNamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_setName(const ::std::string& newname, const ::BomberLoutreInterface::Callback_GameInterface_setNamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_setName(newname, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_setName(const ::std::string& newname, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameInterface_setNamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_setName(const ::std::string& newname, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameInterface_setNamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_setName(newname, &__ctx, __del, __cookie);
     }
@@ -1135,12 +1432,12 @@ public:
         return begin_setState(newstate, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_setState(::Ice::Int newstate, const ::Bomberloutre::Callback_GameInterface_setStatePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_setState(::Ice::Int newstate, const ::BomberLoutreInterface::Callback_GameInterface_setStatePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_setState(newstate, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_setState(::Ice::Int newstate, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameInterface_setStatePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_setState(::Ice::Int newstate, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameInterface_setStatePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_setState(newstate, &__ctx, __del, __cookie);
     }
@@ -1183,12 +1480,12 @@ public:
         return begin_setRoundCount(newcount, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_setRoundCount(::Ice::Int newcount, const ::Bomberloutre::Callback_GameInterface_setRoundCountPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_setRoundCount(::Ice::Int newcount, const ::BomberLoutreInterface::Callback_GameInterface_setRoundCountPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_setRoundCount(newcount, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_setRoundCount(::Ice::Int newcount, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameInterface_setRoundCountPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_setRoundCount(::Ice::Int newcount, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameInterface_setRoundCountPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_setRoundCount(newcount, &__ctx, __del, __cookie);
     }
@@ -1231,12 +1528,12 @@ public:
         return begin_kickPlayer(username, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_kickPlayer(const ::std::string& username, const ::Bomberloutre::Callback_GameInterface_kickPlayerPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_kickPlayer(const ::std::string& username, const ::BomberLoutreInterface::Callback_GameInterface_kickPlayerPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_kickPlayer(username, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_kickPlayer(const ::std::string& username, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameInterface_kickPlayerPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_kickPlayer(const ::std::string& username, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameInterface_kickPlayerPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_kickPlayer(username, &__ctx, __del, __cookie);
     }
@@ -1279,12 +1576,12 @@ public:
         return begin_invitePlayer(username, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_invitePlayer(const ::std::string& username, const ::Bomberloutre::Callback_GameInterface_invitePlayerPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_invitePlayer(const ::std::string& username, const ::BomberLoutreInterface::Callback_GameInterface_invitePlayerPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_invitePlayer(username, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_invitePlayer(const ::std::string& username, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameInterface_invitePlayerPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_invitePlayer(const ::std::string& username, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameInterface_invitePlayerPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_invitePlayer(username, &__ctx, __del, __cookie);
     }
@@ -1327,12 +1624,12 @@ public:
         return begin_addBot(&__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_addBot(const ::Bomberloutre::Callback_GameInterface_addBotPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_addBot(const ::BomberLoutreInterface::Callback_GameInterface_addBotPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_addBot(0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_addBot(const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameInterface_addBotPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_addBot(const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameInterface_addBotPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_addBot(&__ctx, __del, __cookie);
     }
@@ -1375,12 +1672,12 @@ public:
         return begin_removeBot(&__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_removeBot(const ::Bomberloutre::Callback_GameInterface_removeBotPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_removeBot(const ::BomberLoutreInterface::Callback_GameInterface_removeBotPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_removeBot(0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_removeBot(const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameInterface_removeBotPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_removeBot(const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameInterface_removeBotPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_removeBot(&__ctx, __del, __cookie);
     }
@@ -1423,12 +1720,12 @@ public:
         return begin_createMap(mode, mapSkin, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_createMap(const ::std::string& mode, const ::std::string& mapSkin, const ::Bomberloutre::Callback_GameInterface_createMapPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_createMap(const ::std::string& mode, const ::std::string& mapSkin, const ::BomberLoutreInterface::Callback_GameInterface_createMapPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_createMap(mode, mapSkin, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_createMap(const ::std::string& mode, const ::std::string& mapSkin, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameInterface_createMapPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_createMap(const ::std::string& mode, const ::std::string& mapSkin, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameInterface_createMapPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_createMap(mode, mapSkin, &__ctx, __del, __cookie);
     }
@@ -1471,12 +1768,12 @@ public:
         return begin_startMap(&__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_startMap(const ::Bomberloutre::Callback_GameInterface_startMapPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_startMap(const ::BomberLoutreInterface::Callback_GameInterface_startMapPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_startMap(0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_startMap(const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameInterface_startMapPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_startMap(const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameInterface_startMapPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_startMap(&__ctx, __del, __cookie);
     }
@@ -1519,12 +1816,12 @@ public:
         return begin_endMap(&__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_endMap(const ::Bomberloutre::Callback_GameInterface_endMapPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_endMap(const ::BomberLoutreInterface::Callback_GameInterface_endMapPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_endMap(0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_endMap(const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameInterface_endMapPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_endMap(const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameInterface_endMapPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_endMap(&__ctx, __del, __cookie);
     }
@@ -1567,12 +1864,12 @@ public:
         return begin_removeGame(&__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_removeGame(const ::Bomberloutre::Callback_GameInterface_removeGamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_removeGame(const ::BomberLoutreInterface::Callback_GameInterface_removeGamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_removeGame(0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_removeGame(const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameInterface_removeGamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_removeGame(const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameInterface_removeGamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_removeGame(&__ctx, __del, __cookie);
     }
@@ -1818,12 +2115,12 @@ public:
         return begin_newUserInRoom(username, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_newUserInRoom(const ::std::string& username, const ::Bomberloutre::Callback_GameWaitRoom_newUserInRoomPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_newUserInRoom(const ::std::string& username, const ::BomberLoutreInterface::Callback_GameWaitRoom_newUserInRoomPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_newUserInRoom(username, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_newUserInRoom(const ::std::string& username, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameWaitRoom_newUserInRoomPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_newUserInRoom(const ::std::string& username, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameWaitRoom_newUserInRoomPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_newUserInRoom(username, &__ctx, __del, __cookie);
     }
@@ -1866,12 +2163,12 @@ public:
         return begin_userLeftRoom(username, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_userLeftRoom(const ::std::string& username, const ::Bomberloutre::Callback_GameWaitRoom_userLeftRoomPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_userLeftRoom(const ::std::string& username, const ::BomberLoutreInterface::Callback_GameWaitRoom_userLeftRoomPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_userLeftRoom(username, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_userLeftRoom(const ::std::string& username, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameWaitRoom_userLeftRoomPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_userLeftRoom(const ::std::string& username, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameWaitRoom_userLeftRoomPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_userLeftRoom(username, &__ctx, __del, __cookie);
     }
@@ -1914,12 +2211,12 @@ public:
         return begin_allUsersReady(&__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_allUsersReady(const ::Bomberloutre::Callback_GameWaitRoom_allUsersReadyPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_allUsersReady(const ::BomberLoutreInterface::Callback_GameWaitRoom_allUsersReadyPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_allUsersReady(0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_allUsersReady(const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameWaitRoom_allUsersReadyPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_allUsersReady(const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameWaitRoom_allUsersReadyPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_allUsersReady(&__ctx, __del, __cookie);
     }
@@ -1962,12 +2259,12 @@ public:
         return begin_userReady(username, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_userReady(const ::std::string& username, const ::Bomberloutre::Callback_GameWaitRoom_userReadyPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_userReady(const ::std::string& username, const ::BomberLoutreInterface::Callback_GameWaitRoom_userReadyPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_userReady(username, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_userReady(const ::std::string& username, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameWaitRoom_userReadyPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_userReady(const ::std::string& username, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameWaitRoom_userReadyPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_userReady(username, &__ctx, __del, __cookie);
     }
@@ -1978,6 +2275,54 @@ private:
 
     void userReady(const ::std::string&, const ::Ice::Context*);
     ::Ice::AsyncResultPtr begin_userReady(const ::std::string&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    
+public:
+
+    void gameDataUpdated(const ::BomberLoutreInterface::GameData& g)
+    {
+        gameDataUpdated(g, 0);
+    }
+    void gameDataUpdated(const ::BomberLoutreInterface::GameData& g, const ::Ice::Context& __ctx)
+    {
+        gameDataUpdated(g, &__ctx);
+    }
+
+    ::Ice::AsyncResultPtr begin_gameDataUpdated(const ::BomberLoutreInterface::GameData& g)
+    {
+        return begin_gameDataUpdated(g, 0, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_gameDataUpdated(const ::BomberLoutreInterface::GameData& g, const ::Ice::Context& __ctx)
+    {
+        return begin_gameDataUpdated(g, &__ctx, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_gameDataUpdated(const ::BomberLoutreInterface::GameData& g, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_gameDataUpdated(g, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_gameDataUpdated(const ::BomberLoutreInterface::GameData& g, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_gameDataUpdated(g, &__ctx, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_gameDataUpdated(const ::BomberLoutreInterface::GameData& g, const ::BomberLoutreInterface::Callback_GameWaitRoom_gameDataUpdatedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_gameDataUpdated(g, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_gameDataUpdated(const ::BomberLoutreInterface::GameData& g, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameWaitRoom_gameDataUpdatedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_gameDataUpdated(g, &__ctx, __del, __cookie);
+    }
+
+    void end_gameDataUpdated(const ::Ice::AsyncResultPtr&);
+    
+private:
+
+    void gameDataUpdated(const ::BomberLoutreInterface::GameData&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_gameDataUpdated(const ::BomberLoutreInterface::GameData&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
 
@@ -2010,12 +2355,12 @@ public:
         return begin_gameStart(&__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_gameStart(const ::Bomberloutre::Callback_GameWaitRoom_gameStartPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_gameStart(const ::BomberLoutreInterface::Callback_GameWaitRoom_gameStartPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_gameStart(0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_gameStart(const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameWaitRoom_gameStartPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_gameStart(const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameWaitRoom_gameStartPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_gameStart(&__ctx, __del, __cookie);
     }
@@ -2058,12 +2403,12 @@ public:
         return begin_gameEnd(&__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_gameEnd(const ::Bomberloutre::Callback_GameWaitRoom_gameEndPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_gameEnd(const ::BomberLoutreInterface::Callback_GameWaitRoom_gameEndPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_gameEnd(0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_gameEnd(const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_GameWaitRoom_gameEndPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_gameEnd(const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameWaitRoom_gameEndPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_gameEnd(&__ctx, __del, __cookie);
     }
@@ -2309,12 +2654,12 @@ public:
         return begin_getId(&__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_getId(const ::Bomberloutre::Callback_MapInterface_getIdPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_getId(const ::BomberLoutreInterface::Callback_MapInterface_getIdPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_getId(0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_getId(const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_MapInterface_getIdPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_getId(const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_MapInterface_getIdPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_getId(&__ctx, __del, __cookie);
     }
@@ -2357,12 +2702,12 @@ public:
         return begin_getWidth(&__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_getWidth(const ::Bomberloutre::Callback_MapInterface_getWidthPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_getWidth(const ::BomberLoutreInterface::Callback_MapInterface_getWidthPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_getWidth(0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_getWidth(const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_MapInterface_getWidthPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_getWidth(const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_MapInterface_getWidthPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_getWidth(&__ctx, __del, __cookie);
     }
@@ -2405,12 +2750,12 @@ public:
         return begin_getHeight(&__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_getHeight(const ::Bomberloutre::Callback_MapInterface_getHeightPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_getHeight(const ::BomberLoutreInterface::Callback_MapInterface_getHeightPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_getHeight(0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_getHeight(const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_MapInterface_getHeightPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_getHeight(const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_MapInterface_getHeightPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_getHeight(&__ctx, __del, __cookie);
     }
@@ -2424,137 +2769,233 @@ private:
     
 public:
 
-    bool move(const ::Bomberloutre::Player& p, const ::Bomberloutre::Point& pt)
+    void moveUp(const ::BomberLoutreInterface::Player& p)
     {
-        return move(p, pt, 0);
+        moveUp(p, 0);
     }
-    bool move(const ::Bomberloutre::Player& p, const ::Bomberloutre::Point& pt, const ::Ice::Context& __ctx)
+    void moveUp(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx)
     {
-        return move(p, pt, &__ctx);
-    }
-
-    ::Ice::AsyncResultPtr begin_move(const ::Bomberloutre::Player& p, const ::Bomberloutre::Point& pt)
-    {
-        return begin_move(p, pt, 0, ::IceInternal::__dummyCallback, 0);
+        moveUp(p, &__ctx);
     }
 
-    ::Ice::AsyncResultPtr begin_move(const ::Bomberloutre::Player& p, const ::Bomberloutre::Point& pt, const ::Ice::Context& __ctx)
+    ::Ice::AsyncResultPtr begin_moveUp(const ::BomberLoutreInterface::Player& p)
     {
-        return begin_move(p, pt, &__ctx, ::IceInternal::__dummyCallback, 0);
+        return begin_moveUp(p, 0, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_move(const ::Bomberloutre::Player& p, const ::Bomberloutre::Point& pt, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_moveUp(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx)
     {
-        return begin_move(p, pt, 0, __del, __cookie);
+        return begin_moveUp(p, &__ctx, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_move(const ::Bomberloutre::Player& p, const ::Bomberloutre::Point& pt, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_moveUp(const ::BomberLoutreInterface::Player& p, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
-        return begin_move(p, pt, &__ctx, __del, __cookie);
+        return begin_moveUp(p, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_move(const ::Bomberloutre::Player& p, const ::Bomberloutre::Point& pt, const ::Bomberloutre::Callback_MapInterface_movePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_moveUp(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
-        return begin_move(p, pt, 0, __del, __cookie);
+        return begin_moveUp(p, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_move(const ::Bomberloutre::Player& p, const ::Bomberloutre::Point& pt, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_MapInterface_movePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_moveUp(const ::BomberLoutreInterface::Player& p, const ::BomberLoutreInterface::Callback_MapInterface_moveUpPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
-        return begin_move(p, pt, &__ctx, __del, __cookie);
+        return begin_moveUp(p, 0, __del, __cookie);
     }
 
-    bool end_move(const ::Ice::AsyncResultPtr&);
+    ::Ice::AsyncResultPtr begin_moveUp(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_MapInterface_moveUpPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_moveUp(p, &__ctx, __del, __cookie);
+    }
+
+    void end_moveUp(const ::Ice::AsyncResultPtr&);
     
 private:
 
-    bool move(const ::Bomberloutre::Player&, const ::Bomberloutre::Point&, const ::Ice::Context*);
-    ::Ice::AsyncResultPtr begin_move(const ::Bomberloutre::Player&, const ::Bomberloutre::Point&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    void moveUp(const ::BomberLoutreInterface::Player&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_moveUp(const ::BomberLoutreInterface::Player&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
 
-    void kickBomb(const ::Bomberloutre::Player& p)
+    void moveDown(const ::BomberLoutreInterface::Player& p)
     {
-        kickBomb(p, 0);
+        moveDown(p, 0);
     }
-    void kickBomb(const ::Bomberloutre::Player& p, const ::Ice::Context& __ctx)
+    void moveDown(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx)
     {
-        kickBomb(p, &__ctx);
-    }
-
-    ::Ice::AsyncResultPtr begin_kickBomb(const ::Bomberloutre::Player& p)
-    {
-        return begin_kickBomb(p, 0, ::IceInternal::__dummyCallback, 0);
+        moveDown(p, &__ctx);
     }
 
-    ::Ice::AsyncResultPtr begin_kickBomb(const ::Bomberloutre::Player& p, const ::Ice::Context& __ctx)
+    ::Ice::AsyncResultPtr begin_moveDown(const ::BomberLoutreInterface::Player& p)
     {
-        return begin_kickBomb(p, &__ctx, ::IceInternal::__dummyCallback, 0);
+        return begin_moveDown(p, 0, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_kickBomb(const ::Bomberloutre::Player& p, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_moveDown(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx)
     {
-        return begin_kickBomb(p, 0, __del, __cookie);
+        return begin_moveDown(p, &__ctx, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_kickBomb(const ::Bomberloutre::Player& p, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_moveDown(const ::BomberLoutreInterface::Player& p, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
-        return begin_kickBomb(p, &__ctx, __del, __cookie);
+        return begin_moveDown(p, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_kickBomb(const ::Bomberloutre::Player& p, const ::Bomberloutre::Callback_MapInterface_kickBombPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_moveDown(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
-        return begin_kickBomb(p, 0, __del, __cookie);
+        return begin_moveDown(p, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_kickBomb(const ::Bomberloutre::Player& p, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_MapInterface_kickBombPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_moveDown(const ::BomberLoutreInterface::Player& p, const ::BomberLoutreInterface::Callback_MapInterface_moveDownPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
-        return begin_kickBomb(p, &__ctx, __del, __cookie);
+        return begin_moveDown(p, 0, __del, __cookie);
     }
 
-    void end_kickBomb(const ::Ice::AsyncResultPtr&);
+    ::Ice::AsyncResultPtr begin_moveDown(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_MapInterface_moveDownPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_moveDown(p, &__ctx, __del, __cookie);
+    }
+
+    void end_moveDown(const ::Ice::AsyncResultPtr&);
     
 private:
 
-    void kickBomb(const ::Bomberloutre::Player&, const ::Ice::Context*);
-    ::Ice::AsyncResultPtr begin_kickBomb(const ::Bomberloutre::Player&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    void moveDown(const ::BomberLoutreInterface::Player&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_moveDown(const ::BomberLoutreInterface::Player&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
 
-    void dropBomb(const ::Bomberloutre::Player& p, const ::Bomberloutre::BombPtr& b)
+    void moveLeft(const ::BomberLoutreInterface::Player& p)
+    {
+        moveLeft(p, 0);
+    }
+    void moveLeft(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx)
+    {
+        moveLeft(p, &__ctx);
+    }
+
+    ::Ice::AsyncResultPtr begin_moveLeft(const ::BomberLoutreInterface::Player& p)
+    {
+        return begin_moveLeft(p, 0, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_moveLeft(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx)
+    {
+        return begin_moveLeft(p, &__ctx, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_moveLeft(const ::BomberLoutreInterface::Player& p, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_moveLeft(p, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_moveLeft(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_moveLeft(p, &__ctx, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_moveLeft(const ::BomberLoutreInterface::Player& p, const ::BomberLoutreInterface::Callback_MapInterface_moveLeftPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_moveLeft(p, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_moveLeft(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_MapInterface_moveLeftPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_moveLeft(p, &__ctx, __del, __cookie);
+    }
+
+    void end_moveLeft(const ::Ice::AsyncResultPtr&);
+    
+private:
+
+    void moveLeft(const ::BomberLoutreInterface::Player&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_moveLeft(const ::BomberLoutreInterface::Player&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    
+public:
+
+    void moveRight(const ::BomberLoutreInterface::Player& p)
+    {
+        moveRight(p, 0);
+    }
+    void moveRight(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx)
+    {
+        moveRight(p, &__ctx);
+    }
+
+    ::Ice::AsyncResultPtr begin_moveRight(const ::BomberLoutreInterface::Player& p)
+    {
+        return begin_moveRight(p, 0, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_moveRight(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx)
+    {
+        return begin_moveRight(p, &__ctx, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_moveRight(const ::BomberLoutreInterface::Player& p, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_moveRight(p, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_moveRight(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_moveRight(p, &__ctx, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_moveRight(const ::BomberLoutreInterface::Player& p, const ::BomberLoutreInterface::Callback_MapInterface_moveRightPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_moveRight(p, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_moveRight(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_MapInterface_moveRightPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_moveRight(p, &__ctx, __del, __cookie);
+    }
+
+    void end_moveRight(const ::Ice::AsyncResultPtr&);
+    
+private:
+
+    void moveRight(const ::BomberLoutreInterface::Player&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_moveRight(const ::BomberLoutreInterface::Player&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    
+public:
+
+    void dropBomb(const ::BomberLoutreInterface::Player& p, const ::BomberLoutreInterface::Bomb& b)
     {
         dropBomb(p, b, 0);
     }
-    void dropBomb(const ::Bomberloutre::Player& p, const ::Bomberloutre::BombPtr& b, const ::Ice::Context& __ctx)
+    void dropBomb(const ::BomberLoutreInterface::Player& p, const ::BomberLoutreInterface::Bomb& b, const ::Ice::Context& __ctx)
     {
         dropBomb(p, b, &__ctx);
     }
 
-    ::Ice::AsyncResultPtr begin_dropBomb(const ::Bomberloutre::Player& p, const ::Bomberloutre::BombPtr& b)
+    ::Ice::AsyncResultPtr begin_dropBomb(const ::BomberLoutreInterface::Player& p, const ::BomberLoutreInterface::Bomb& b)
     {
         return begin_dropBomb(p, b, 0, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_dropBomb(const ::Bomberloutre::Player& p, const ::Bomberloutre::BombPtr& b, const ::Ice::Context& __ctx)
+    ::Ice::AsyncResultPtr begin_dropBomb(const ::BomberLoutreInterface::Player& p, const ::BomberLoutreInterface::Bomb& b, const ::Ice::Context& __ctx)
     {
         return begin_dropBomb(p, b, &__ctx, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_dropBomb(const ::Bomberloutre::Player& p, const ::Bomberloutre::BombPtr& b, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_dropBomb(const ::BomberLoutreInterface::Player& p, const ::BomberLoutreInterface::Bomb& b, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_dropBomb(p, b, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_dropBomb(const ::Bomberloutre::Player& p, const ::Bomberloutre::BombPtr& b, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_dropBomb(const ::BomberLoutreInterface::Player& p, const ::BomberLoutreInterface::Bomb& b, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_dropBomb(p, b, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_dropBomb(const ::Bomberloutre::Player& p, const ::Bomberloutre::BombPtr& b, const ::Bomberloutre::Callback_MapInterface_dropBombPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_dropBomb(const ::BomberLoutreInterface::Player& p, const ::BomberLoutreInterface::Bomb& b, const ::BomberLoutreInterface::Callback_MapInterface_dropBombPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_dropBomb(p, b, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_dropBomb(const ::Bomberloutre::Player& p, const ::Bomberloutre::BombPtr& b, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_MapInterface_dropBombPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_dropBomb(const ::BomberLoutreInterface::Player& p, const ::BomberLoutreInterface::Bomb& b, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_MapInterface_dropBombPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_dropBomb(p, b, &__ctx, __del, __cookie);
     }
@@ -2563,8 +3004,8 @@ public:
     
 private:
 
-    void dropBomb(const ::Bomberloutre::Player&, const ::Bomberloutre::BombPtr&, const ::Ice::Context*);
-    ::Ice::AsyncResultPtr begin_dropBomb(const ::Bomberloutre::Player&, const ::Bomberloutre::BombPtr&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    void dropBomb(const ::BomberLoutreInterface::Player&, const ::BomberLoutreInterface::Bomb&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_dropBomb(const ::BomberLoutreInterface::Player&, const ::BomberLoutreInterface::Bomb&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
     
@@ -2771,41 +3212,41 @@ class MapObserver : virtual public ::IceProxy::Ice::Object
 {
 public:
 
-    void refreshMapItems(const ::Bomberloutre::MapItems& mi)
+    void refreshMapItems(const ::BomberLoutreInterface::MapItems& mi)
     {
         refreshMapItems(mi, 0);
     }
-    void refreshMapItems(const ::Bomberloutre::MapItems& mi, const ::Ice::Context& __ctx)
+    void refreshMapItems(const ::BomberLoutreInterface::MapItems& mi, const ::Ice::Context& __ctx)
     {
         refreshMapItems(mi, &__ctx);
     }
 
-    ::Ice::AsyncResultPtr begin_refreshMapItems(const ::Bomberloutre::MapItems& mi)
+    ::Ice::AsyncResultPtr begin_refreshMapItems(const ::BomberLoutreInterface::MapItems& mi)
     {
         return begin_refreshMapItems(mi, 0, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_refreshMapItems(const ::Bomberloutre::MapItems& mi, const ::Ice::Context& __ctx)
+    ::Ice::AsyncResultPtr begin_refreshMapItems(const ::BomberLoutreInterface::MapItems& mi, const ::Ice::Context& __ctx)
     {
         return begin_refreshMapItems(mi, &__ctx, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_refreshMapItems(const ::Bomberloutre::MapItems& mi, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_refreshMapItems(const ::BomberLoutreInterface::MapItems& mi, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_refreshMapItems(mi, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_refreshMapItems(const ::Bomberloutre::MapItems& mi, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_refreshMapItems(const ::BomberLoutreInterface::MapItems& mi, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_refreshMapItems(mi, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_refreshMapItems(const ::Bomberloutre::MapItems& mi, const ::Bomberloutre::Callback_MapObserver_refreshMapItemsPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_refreshMapItems(const ::BomberLoutreInterface::MapItems& mi, const ::BomberLoutreInterface::Callback_MapObserver_refreshMapItemsPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_refreshMapItems(mi, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_refreshMapItems(const ::Bomberloutre::MapItems& mi, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_MapObserver_refreshMapItemsPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_refreshMapItems(const ::BomberLoutreInterface::MapItems& mi, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_MapObserver_refreshMapItemsPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_refreshMapItems(mi, &__ctx, __del, __cookie);
     }
@@ -2814,46 +3255,46 @@ public:
     
 private:
 
-    void refreshMapItems(const ::Bomberloutre::MapItems&, const ::Ice::Context*);
-    ::Ice::AsyncResultPtr begin_refreshMapItems(const ::Bomberloutre::MapItems&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    void refreshMapItems(const ::BomberLoutreInterface::MapItems&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_refreshMapItems(const ::BomberLoutreInterface::MapItems&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
 
-    void refreshPlayers(const ::Bomberloutre::PlayerList& p)
+    void refreshPlayers(const ::BomberLoutreInterface::PlayerList& p)
     {
         refreshPlayers(p, 0);
     }
-    void refreshPlayers(const ::Bomberloutre::PlayerList& p, const ::Ice::Context& __ctx)
+    void refreshPlayers(const ::BomberLoutreInterface::PlayerList& p, const ::Ice::Context& __ctx)
     {
         refreshPlayers(p, &__ctx);
     }
 
-    ::Ice::AsyncResultPtr begin_refreshPlayers(const ::Bomberloutre::PlayerList& p)
+    ::Ice::AsyncResultPtr begin_refreshPlayers(const ::BomberLoutreInterface::PlayerList& p)
     {
         return begin_refreshPlayers(p, 0, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_refreshPlayers(const ::Bomberloutre::PlayerList& p, const ::Ice::Context& __ctx)
+    ::Ice::AsyncResultPtr begin_refreshPlayers(const ::BomberLoutreInterface::PlayerList& p, const ::Ice::Context& __ctx)
     {
         return begin_refreshPlayers(p, &__ctx, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_refreshPlayers(const ::Bomberloutre::PlayerList& p, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_refreshPlayers(const ::BomberLoutreInterface::PlayerList& p, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_refreshPlayers(p, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_refreshPlayers(const ::Bomberloutre::PlayerList& p, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_refreshPlayers(const ::BomberLoutreInterface::PlayerList& p, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_refreshPlayers(p, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_refreshPlayers(const ::Bomberloutre::PlayerList& p, const ::Bomberloutre::Callback_MapObserver_refreshPlayersPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_refreshPlayers(const ::BomberLoutreInterface::PlayerList& p, const ::BomberLoutreInterface::Callback_MapObserver_refreshPlayersPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_refreshPlayers(p, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_refreshPlayers(const ::Bomberloutre::PlayerList& p, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_MapObserver_refreshPlayersPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_refreshPlayers(const ::BomberLoutreInterface::PlayerList& p, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_MapObserver_refreshPlayersPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_refreshPlayers(p, &__ctx, __del, __cookie);
     }
@@ -2862,46 +3303,46 @@ public:
     
 private:
 
-    void refreshPlayers(const ::Bomberloutre::PlayerList&, const ::Ice::Context*);
-    ::Ice::AsyncResultPtr begin_refreshPlayers(const ::Bomberloutre::PlayerList&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    void refreshPlayers(const ::BomberLoutreInterface::PlayerList&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_refreshPlayers(const ::BomberLoutreInterface::PlayerList&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
 
-    void bombHasBeenPlanted(const ::Bomberloutre::BombPtr& b)
+    void bombHasBeenPlanted(const ::BomberLoutreInterface::Bomb& b)
     {
         bombHasBeenPlanted(b, 0);
     }
-    void bombHasBeenPlanted(const ::Bomberloutre::BombPtr& b, const ::Ice::Context& __ctx)
+    void bombHasBeenPlanted(const ::BomberLoutreInterface::Bomb& b, const ::Ice::Context& __ctx)
     {
         bombHasBeenPlanted(b, &__ctx);
     }
 
-    ::Ice::AsyncResultPtr begin_bombHasBeenPlanted(const ::Bomberloutre::BombPtr& b)
+    ::Ice::AsyncResultPtr begin_bombHasBeenPlanted(const ::BomberLoutreInterface::Bomb& b)
     {
         return begin_bombHasBeenPlanted(b, 0, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_bombHasBeenPlanted(const ::Bomberloutre::BombPtr& b, const ::Ice::Context& __ctx)
+    ::Ice::AsyncResultPtr begin_bombHasBeenPlanted(const ::BomberLoutreInterface::Bomb& b, const ::Ice::Context& __ctx)
     {
         return begin_bombHasBeenPlanted(b, &__ctx, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_bombHasBeenPlanted(const ::Bomberloutre::BombPtr& b, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_bombHasBeenPlanted(const ::BomberLoutreInterface::Bomb& b, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_bombHasBeenPlanted(b, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_bombHasBeenPlanted(const ::Bomberloutre::BombPtr& b, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_bombHasBeenPlanted(const ::BomberLoutreInterface::Bomb& b, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_bombHasBeenPlanted(b, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_bombHasBeenPlanted(const ::Bomberloutre::BombPtr& b, const ::Bomberloutre::Callback_MapObserver_bombHasBeenPlantedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_bombHasBeenPlanted(const ::BomberLoutreInterface::Bomb& b, const ::BomberLoutreInterface::Callback_MapObserver_bombHasBeenPlantedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_bombHasBeenPlanted(b, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_bombHasBeenPlanted(const ::Bomberloutre::BombPtr& b, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_MapObserver_bombHasBeenPlantedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_bombHasBeenPlanted(const ::BomberLoutreInterface::Bomb& b, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_MapObserver_bombHasBeenPlantedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_bombHasBeenPlanted(b, &__ctx, __del, __cookie);
     }
@@ -2910,46 +3351,46 @@ public:
     
 private:
 
-    void bombHasBeenPlanted(const ::Bomberloutre::BombPtr&, const ::Ice::Context*);
-    ::Ice::AsyncResultPtr begin_bombHasBeenPlanted(const ::Bomberloutre::BombPtr&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    void bombHasBeenPlanted(const ::BomberLoutreInterface::Bomb&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_bombHasBeenPlanted(const ::BomberLoutreInterface::Bomb&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
 
-    void bombExploded(const ::Bomberloutre::BombPtr& b)
+    void bombExploded(const ::BomberLoutreInterface::Bomb& b)
     {
         bombExploded(b, 0);
     }
-    void bombExploded(const ::Bomberloutre::BombPtr& b, const ::Ice::Context& __ctx)
+    void bombExploded(const ::BomberLoutreInterface::Bomb& b, const ::Ice::Context& __ctx)
     {
         bombExploded(b, &__ctx);
     }
 
-    ::Ice::AsyncResultPtr begin_bombExploded(const ::Bomberloutre::BombPtr& b)
+    ::Ice::AsyncResultPtr begin_bombExploded(const ::BomberLoutreInterface::Bomb& b)
     {
         return begin_bombExploded(b, 0, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_bombExploded(const ::Bomberloutre::BombPtr& b, const ::Ice::Context& __ctx)
+    ::Ice::AsyncResultPtr begin_bombExploded(const ::BomberLoutreInterface::Bomb& b, const ::Ice::Context& __ctx)
     {
         return begin_bombExploded(b, &__ctx, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_bombExploded(const ::Bomberloutre::BombPtr& b, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_bombExploded(const ::BomberLoutreInterface::Bomb& b, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_bombExploded(b, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_bombExploded(const ::Bomberloutre::BombPtr& b, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_bombExploded(const ::BomberLoutreInterface::Bomb& b, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_bombExploded(b, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_bombExploded(const ::Bomberloutre::BombPtr& b, const ::Bomberloutre::Callback_MapObserver_bombExplodedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_bombExploded(const ::BomberLoutreInterface::Bomb& b, const ::BomberLoutreInterface::Callback_MapObserver_bombExplodedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_bombExploded(b, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_bombExploded(const ::Bomberloutre::BombPtr& b, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_MapObserver_bombExplodedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_bombExploded(const ::BomberLoutreInterface::Bomb& b, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_MapObserver_bombExplodedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_bombExploded(b, &__ctx, __del, __cookie);
     }
@@ -2958,46 +3399,94 @@ public:
     
 private:
 
-    void bombExploded(const ::Bomberloutre::BombPtr&, const ::Ice::Context*);
-    ::Ice::AsyncResultPtr begin_bombExploded(const ::Bomberloutre::BombPtr&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    void bombExploded(const ::BomberLoutreInterface::Bomb&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_bombExploded(const ::BomberLoutreInterface::Bomb&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
 
-    void bonusesDropped(const ::Bomberloutre::Bonuses& b)
+    void bombKicked(const ::BomberLoutreInterface::Bomb& b, const ::BomberLoutreInterface::Point& dest)
+    {
+        bombKicked(b, dest, 0);
+    }
+    void bombKicked(const ::BomberLoutreInterface::Bomb& b, const ::BomberLoutreInterface::Point& dest, const ::Ice::Context& __ctx)
+    {
+        bombKicked(b, dest, &__ctx);
+    }
+
+    ::Ice::AsyncResultPtr begin_bombKicked(const ::BomberLoutreInterface::Bomb& b, const ::BomberLoutreInterface::Point& dest)
+    {
+        return begin_bombKicked(b, dest, 0, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_bombKicked(const ::BomberLoutreInterface::Bomb& b, const ::BomberLoutreInterface::Point& dest, const ::Ice::Context& __ctx)
+    {
+        return begin_bombKicked(b, dest, &__ctx, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_bombKicked(const ::BomberLoutreInterface::Bomb& b, const ::BomberLoutreInterface::Point& dest, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_bombKicked(b, dest, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_bombKicked(const ::BomberLoutreInterface::Bomb& b, const ::BomberLoutreInterface::Point& dest, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_bombKicked(b, dest, &__ctx, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_bombKicked(const ::BomberLoutreInterface::Bomb& b, const ::BomberLoutreInterface::Point& dest, const ::BomberLoutreInterface::Callback_MapObserver_bombKickedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_bombKicked(b, dest, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_bombKicked(const ::BomberLoutreInterface::Bomb& b, const ::BomberLoutreInterface::Point& dest, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_MapObserver_bombKickedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_bombKicked(b, dest, &__ctx, __del, __cookie);
+    }
+
+    void end_bombKicked(const ::Ice::AsyncResultPtr&);
+    
+private:
+
+    void bombKicked(const ::BomberLoutreInterface::Bomb&, const ::BomberLoutreInterface::Point&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_bombKicked(const ::BomberLoutreInterface::Bomb&, const ::BomberLoutreInterface::Point&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    
+public:
+
+    void bonusesDropped(const ::BomberLoutreInterface::Bonuses& b)
     {
         bonusesDropped(b, 0);
     }
-    void bonusesDropped(const ::Bomberloutre::Bonuses& b, const ::Ice::Context& __ctx)
+    void bonusesDropped(const ::BomberLoutreInterface::Bonuses& b, const ::Ice::Context& __ctx)
     {
         bonusesDropped(b, &__ctx);
     }
 
-    ::Ice::AsyncResultPtr begin_bonusesDropped(const ::Bomberloutre::Bonuses& b)
+    ::Ice::AsyncResultPtr begin_bonusesDropped(const ::BomberLoutreInterface::Bonuses& b)
     {
         return begin_bonusesDropped(b, 0, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_bonusesDropped(const ::Bomberloutre::Bonuses& b, const ::Ice::Context& __ctx)
+    ::Ice::AsyncResultPtr begin_bonusesDropped(const ::BomberLoutreInterface::Bonuses& b, const ::Ice::Context& __ctx)
     {
         return begin_bonusesDropped(b, &__ctx, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_bonusesDropped(const ::Bomberloutre::Bonuses& b, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_bonusesDropped(const ::BomberLoutreInterface::Bonuses& b, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_bonusesDropped(b, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_bonusesDropped(const ::Bomberloutre::Bonuses& b, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_bonusesDropped(const ::BomberLoutreInterface::Bonuses& b, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_bonusesDropped(b, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_bonusesDropped(const ::Bomberloutre::Bonuses& b, const ::Bomberloutre::Callback_MapObserver_bonusesDroppedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_bonusesDropped(const ::BomberLoutreInterface::Bonuses& b, const ::BomberLoutreInterface::Callback_MapObserver_bonusesDroppedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_bonusesDropped(b, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_bonusesDropped(const ::Bomberloutre::Bonuses& b, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_MapObserver_bonusesDroppedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_bonusesDropped(const ::BomberLoutreInterface::Bonuses& b, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_MapObserver_bonusesDroppedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_bonusesDropped(b, &__ctx, __del, __cookie);
     }
@@ -3006,8 +3495,56 @@ public:
     
 private:
 
-    void bonusesDropped(const ::Bomberloutre::Bonuses&, const ::Ice::Context*);
-    ::Ice::AsyncResultPtr begin_bonusesDropped(const ::Bomberloutre::Bonuses&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    void bonusesDropped(const ::BomberLoutreInterface::Bonuses&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_bonusesDropped(const ::BomberLoutreInterface::Bonuses&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    
+public:
+
+    void playerDied(const ::BomberLoutreInterface::Player& p)
+    {
+        playerDied(p, 0);
+    }
+    void playerDied(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx)
+    {
+        playerDied(p, &__ctx);
+    }
+
+    ::Ice::AsyncResultPtr begin_playerDied(const ::BomberLoutreInterface::Player& p)
+    {
+        return begin_playerDied(p, 0, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_playerDied(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx)
+    {
+        return begin_playerDied(p, &__ctx, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_playerDied(const ::BomberLoutreInterface::Player& p, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_playerDied(p, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_playerDied(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_playerDied(p, &__ctx, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_playerDied(const ::BomberLoutreInterface::Player& p, const ::BomberLoutreInterface::Callback_MapObserver_playerDiedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_playerDied(p, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_playerDied(const ::BomberLoutreInterface::Player& p, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_MapObserver_playerDiedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_playerDied(p, &__ctx, __del, __cookie);
+    }
+
+    void end_playerDied(const ::Ice::AsyncResultPtr&);
+    
+private:
+
+    void playerDied(const ::BomberLoutreInterface::Player&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_playerDied(const ::BomberLoutreInterface::Player&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
     
@@ -3214,11 +3751,11 @@ class ServerInterface : virtual public ::IceProxy::Ice::Object
 {
 public:
 
-    ::Bomberloutre::UserData connect(const ::std::string& login, const ::std::string& password)
+    ::BomberLoutreInterface::UserData connect(const ::std::string& login, const ::std::string& password)
     {
         return connect(login, password, 0);
     }
-    ::Bomberloutre::UserData connect(const ::std::string& login, const ::std::string& password, const ::Ice::Context& __ctx)
+    ::BomberLoutreInterface::UserData connect(const ::std::string& login, const ::std::string& password, const ::Ice::Context& __ctx)
     {
         return connect(login, password, &__ctx);
     }
@@ -3243,30 +3780,30 @@ public:
         return begin_connect(login, password, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_connect(const ::std::string& login, const ::std::string& password, const ::Bomberloutre::Callback_ServerInterface_connectPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_connect(const ::std::string& login, const ::std::string& password, const ::BomberLoutreInterface::Callback_ServerInterface_connectPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_connect(login, password, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_connect(const ::std::string& login, const ::std::string& password, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_ServerInterface_connectPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_connect(const ::std::string& login, const ::std::string& password, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_ServerInterface_connectPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_connect(login, password, &__ctx, __del, __cookie);
     }
 
-    ::Bomberloutre::UserData end_connect(const ::Ice::AsyncResultPtr&);
+    ::BomberLoutreInterface::UserData end_connect(const ::Ice::AsyncResultPtr&);
     
 private:
 
-    ::Bomberloutre::UserData connect(const ::std::string&, const ::std::string&, const ::Ice::Context*);
+    ::BomberLoutreInterface::UserData connect(const ::std::string&, const ::std::string&, const ::Ice::Context*);
     ::Ice::AsyncResultPtr begin_connect(const ::std::string&, const ::std::string&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
 
-    ::Bomberloutre::UserData createUser(const ::std::string& login, const ::std::string& password)
+    ::BomberLoutreInterface::UserData createUser(const ::std::string& login, const ::std::string& password)
     {
         return createUser(login, password, 0);
     }
-    ::Bomberloutre::UserData createUser(const ::std::string& login, const ::std::string& password, const ::Ice::Context& __ctx)
+    ::BomberLoutreInterface::UserData createUser(const ::std::string& login, const ::std::string& password, const ::Ice::Context& __ctx)
     {
         return createUser(login, password, &__ctx);
     }
@@ -3291,21 +3828,21 @@ public:
         return begin_createUser(login, password, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_createUser(const ::std::string& login, const ::std::string& password, const ::Bomberloutre::Callback_ServerInterface_createUserPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_createUser(const ::std::string& login, const ::std::string& password, const ::BomberLoutreInterface::Callback_ServerInterface_createUserPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_createUser(login, password, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_createUser(const ::std::string& login, const ::std::string& password, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_ServerInterface_createUserPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_createUser(const ::std::string& login, const ::std::string& password, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_ServerInterface_createUserPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_createUser(login, password, &__ctx, __del, __cookie);
     }
 
-    ::Bomberloutre::UserData end_createUser(const ::Ice::AsyncResultPtr&);
+    ::BomberLoutreInterface::UserData end_createUser(const ::Ice::AsyncResultPtr&);
     
 private:
 
-    ::Bomberloutre::UserData createUser(const ::std::string&, const ::std::string&, const ::Ice::Context*);
+    ::BomberLoutreInterface::UserData createUser(const ::std::string&, const ::std::string&, const ::Ice::Context*);
     ::Ice::AsyncResultPtr begin_createUser(const ::std::string&, const ::std::string&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
@@ -3339,12 +3876,12 @@ public:
         return begin_deleteUser(login, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_deleteUser(const ::std::string& login, const ::Bomberloutre::Callback_ServerInterface_deleteUserPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_deleteUser(const ::std::string& login, const ::BomberLoutreInterface::Callback_ServerInterface_deleteUserPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_deleteUser(login, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_deleteUser(const ::std::string& login, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_ServerInterface_deleteUserPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_deleteUser(const ::std::string& login, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_ServerInterface_deleteUserPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_deleteUser(login, &__ctx, __del, __cookie);
     }
@@ -3358,107 +3895,107 @@ private:
     
 public:
 
-    ::Bomberloutre::GameInterfacePrx addGame(const ::std::string& name, const ::Bomberloutre::GameWaitRoomPrx& room, const ::Bomberloutre::MapObserverPrx& mo)
+    ::BomberLoutreInterface::GameInterfacePrx addGame(const ::std::string& name, const ::BomberLoutreInterface::UserData& user, const ::BomberLoutreInterface::GameWaitRoomPrx& room, const ::BomberLoutreInterface::MapObserverPrx& mo)
     {
-        return addGame(name, room, mo, 0);
+        return addGame(name, user, room, mo, 0);
     }
-    ::Bomberloutre::GameInterfacePrx addGame(const ::std::string& name, const ::Bomberloutre::GameWaitRoomPrx& room, const ::Bomberloutre::MapObserverPrx& mo, const ::Ice::Context& __ctx)
+    ::BomberLoutreInterface::GameInterfacePrx addGame(const ::std::string& name, const ::BomberLoutreInterface::UserData& user, const ::BomberLoutreInterface::GameWaitRoomPrx& room, const ::BomberLoutreInterface::MapObserverPrx& mo, const ::Ice::Context& __ctx)
     {
-        return addGame(name, room, mo, &__ctx);
-    }
-
-    ::Ice::AsyncResultPtr begin_addGame(const ::std::string& name, const ::Bomberloutre::GameWaitRoomPrx& room, const ::Bomberloutre::MapObserverPrx& mo)
-    {
-        return begin_addGame(name, room, mo, 0, ::IceInternal::__dummyCallback, 0);
+        return addGame(name, user, room, mo, &__ctx);
     }
 
-    ::Ice::AsyncResultPtr begin_addGame(const ::std::string& name, const ::Bomberloutre::GameWaitRoomPrx& room, const ::Bomberloutre::MapObserverPrx& mo, const ::Ice::Context& __ctx)
+    ::Ice::AsyncResultPtr begin_addGame(const ::std::string& name, const ::BomberLoutreInterface::UserData& user, const ::BomberLoutreInterface::GameWaitRoomPrx& room, const ::BomberLoutreInterface::MapObserverPrx& mo)
     {
-        return begin_addGame(name, room, mo, &__ctx, ::IceInternal::__dummyCallback, 0);
+        return begin_addGame(name, user, room, mo, 0, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_addGame(const ::std::string& name, const ::Bomberloutre::GameWaitRoomPrx& room, const ::Bomberloutre::MapObserverPrx& mo, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_addGame(const ::std::string& name, const ::BomberLoutreInterface::UserData& user, const ::BomberLoutreInterface::GameWaitRoomPrx& room, const ::BomberLoutreInterface::MapObserverPrx& mo, const ::Ice::Context& __ctx)
     {
-        return begin_addGame(name, room, mo, 0, __del, __cookie);
+        return begin_addGame(name, user, room, mo, &__ctx, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_addGame(const ::std::string& name, const ::Bomberloutre::GameWaitRoomPrx& room, const ::Bomberloutre::MapObserverPrx& mo, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_addGame(const ::std::string& name, const ::BomberLoutreInterface::UserData& user, const ::BomberLoutreInterface::GameWaitRoomPrx& room, const ::BomberLoutreInterface::MapObserverPrx& mo, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
-        return begin_addGame(name, room, mo, &__ctx, __del, __cookie);
+        return begin_addGame(name, user, room, mo, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_addGame(const ::std::string& name, const ::Bomberloutre::GameWaitRoomPrx& room, const ::Bomberloutre::MapObserverPrx& mo, const ::Bomberloutre::Callback_ServerInterface_addGamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_addGame(const ::std::string& name, const ::BomberLoutreInterface::UserData& user, const ::BomberLoutreInterface::GameWaitRoomPrx& room, const ::BomberLoutreInterface::MapObserverPrx& mo, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
-        return begin_addGame(name, room, mo, 0, __del, __cookie);
+        return begin_addGame(name, user, room, mo, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_addGame(const ::std::string& name, const ::Bomberloutre::GameWaitRoomPrx& room, const ::Bomberloutre::MapObserverPrx& mo, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_ServerInterface_addGamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_addGame(const ::std::string& name, const ::BomberLoutreInterface::UserData& user, const ::BomberLoutreInterface::GameWaitRoomPrx& room, const ::BomberLoutreInterface::MapObserverPrx& mo, const ::BomberLoutreInterface::Callback_ServerInterface_addGamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
-        return begin_addGame(name, room, mo, &__ctx, __del, __cookie);
+        return begin_addGame(name, user, room, mo, 0, __del, __cookie);
     }
 
-    ::Bomberloutre::GameInterfacePrx end_addGame(const ::Ice::AsyncResultPtr&);
+    ::Ice::AsyncResultPtr begin_addGame(const ::std::string& name, const ::BomberLoutreInterface::UserData& user, const ::BomberLoutreInterface::GameWaitRoomPrx& room, const ::BomberLoutreInterface::MapObserverPrx& mo, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_ServerInterface_addGamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_addGame(name, user, room, mo, &__ctx, __del, __cookie);
+    }
+
+    ::BomberLoutreInterface::GameInterfacePrx end_addGame(const ::Ice::AsyncResultPtr&);
     
 private:
 
-    ::Bomberloutre::GameInterfacePrx addGame(const ::std::string&, const ::Bomberloutre::GameWaitRoomPrx&, const ::Bomberloutre::MapObserverPrx&, const ::Ice::Context*);
-    ::Ice::AsyncResultPtr begin_addGame(const ::std::string&, const ::Bomberloutre::GameWaitRoomPrx&, const ::Bomberloutre::MapObserverPrx&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    ::BomberLoutreInterface::GameInterfacePrx addGame(const ::std::string&, const ::BomberLoutreInterface::UserData&, const ::BomberLoutreInterface::GameWaitRoomPrx&, const ::BomberLoutreInterface::MapObserverPrx&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_addGame(const ::std::string&, const ::BomberLoutreInterface::UserData&, const ::BomberLoutreInterface::GameWaitRoomPrx&, const ::BomberLoutreInterface::MapObserverPrx&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
 
-    ::Bomberloutre::Map joinGame(const ::std::string& name, const ::Bomberloutre::GameWaitRoomPrx& room, const ::Bomberloutre::MapObserverPrx& mo)
+    ::BomberLoutreInterface::Map joinGame(const ::std::string& name, const ::BomberLoutreInterface::UserData& user, const ::BomberLoutreInterface::GameWaitRoomPrx& room, const ::BomberLoutreInterface::MapObserverPrx& mo)
     {
-        return joinGame(name, room, mo, 0);
+        return joinGame(name, user, room, mo, 0);
     }
-    ::Bomberloutre::Map joinGame(const ::std::string& name, const ::Bomberloutre::GameWaitRoomPrx& room, const ::Bomberloutre::MapObserverPrx& mo, const ::Ice::Context& __ctx)
+    ::BomberLoutreInterface::Map joinGame(const ::std::string& name, const ::BomberLoutreInterface::UserData& user, const ::BomberLoutreInterface::GameWaitRoomPrx& room, const ::BomberLoutreInterface::MapObserverPrx& mo, const ::Ice::Context& __ctx)
     {
-        return joinGame(name, room, mo, &__ctx);
-    }
-
-    ::Ice::AsyncResultPtr begin_joinGame(const ::std::string& name, const ::Bomberloutre::GameWaitRoomPrx& room, const ::Bomberloutre::MapObserverPrx& mo)
-    {
-        return begin_joinGame(name, room, mo, 0, ::IceInternal::__dummyCallback, 0);
+        return joinGame(name, user, room, mo, &__ctx);
     }
 
-    ::Ice::AsyncResultPtr begin_joinGame(const ::std::string& name, const ::Bomberloutre::GameWaitRoomPrx& room, const ::Bomberloutre::MapObserverPrx& mo, const ::Ice::Context& __ctx)
+    ::Ice::AsyncResultPtr begin_joinGame(const ::std::string& name, const ::BomberLoutreInterface::UserData& user, const ::BomberLoutreInterface::GameWaitRoomPrx& room, const ::BomberLoutreInterface::MapObserverPrx& mo)
     {
-        return begin_joinGame(name, room, mo, &__ctx, ::IceInternal::__dummyCallback, 0);
+        return begin_joinGame(name, user, room, mo, 0, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_joinGame(const ::std::string& name, const ::Bomberloutre::GameWaitRoomPrx& room, const ::Bomberloutre::MapObserverPrx& mo, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_joinGame(const ::std::string& name, const ::BomberLoutreInterface::UserData& user, const ::BomberLoutreInterface::GameWaitRoomPrx& room, const ::BomberLoutreInterface::MapObserverPrx& mo, const ::Ice::Context& __ctx)
     {
-        return begin_joinGame(name, room, mo, 0, __del, __cookie);
+        return begin_joinGame(name, user, room, mo, &__ctx, ::IceInternal::__dummyCallback, 0);
     }
 
-    ::Ice::AsyncResultPtr begin_joinGame(const ::std::string& name, const ::Bomberloutre::GameWaitRoomPrx& room, const ::Bomberloutre::MapObserverPrx& mo, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_joinGame(const ::std::string& name, const ::BomberLoutreInterface::UserData& user, const ::BomberLoutreInterface::GameWaitRoomPrx& room, const ::BomberLoutreInterface::MapObserverPrx& mo, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
-        return begin_joinGame(name, room, mo, &__ctx, __del, __cookie);
+        return begin_joinGame(name, user, room, mo, 0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_joinGame(const ::std::string& name, const ::Bomberloutre::GameWaitRoomPrx& room, const ::Bomberloutre::MapObserverPrx& mo, const ::Bomberloutre::Callback_ServerInterface_joinGamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_joinGame(const ::std::string& name, const ::BomberLoutreInterface::UserData& user, const ::BomberLoutreInterface::GameWaitRoomPrx& room, const ::BomberLoutreInterface::MapObserverPrx& mo, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
-        return begin_joinGame(name, room, mo, 0, __del, __cookie);
+        return begin_joinGame(name, user, room, mo, &__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_joinGame(const ::std::string& name, const ::Bomberloutre::GameWaitRoomPrx& room, const ::Bomberloutre::MapObserverPrx& mo, const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_ServerInterface_joinGamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_joinGame(const ::std::string& name, const ::BomberLoutreInterface::UserData& user, const ::BomberLoutreInterface::GameWaitRoomPrx& room, const ::BomberLoutreInterface::MapObserverPrx& mo, const ::BomberLoutreInterface::Callback_ServerInterface_joinGamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
-        return begin_joinGame(name, room, mo, &__ctx, __del, __cookie);
+        return begin_joinGame(name, user, room, mo, 0, __del, __cookie);
     }
 
-    ::Bomberloutre::Map end_joinGame(const ::Ice::AsyncResultPtr&);
+    ::Ice::AsyncResultPtr begin_joinGame(const ::std::string& name, const ::BomberLoutreInterface::UserData& user, const ::BomberLoutreInterface::GameWaitRoomPrx& room, const ::BomberLoutreInterface::MapObserverPrx& mo, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_ServerInterface_joinGamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_joinGame(name, user, room, mo, &__ctx, __del, __cookie);
+    }
+
+    ::BomberLoutreInterface::Map end_joinGame(const ::Ice::AsyncResultPtr&);
     
 private:
 
-    ::Bomberloutre::Map joinGame(const ::std::string&, const ::Bomberloutre::GameWaitRoomPrx&, const ::Bomberloutre::MapObserverPrx&, const ::Ice::Context*);
-    ::Ice::AsyncResultPtr begin_joinGame(const ::std::string&, const ::Bomberloutre::GameWaitRoomPrx&, const ::Bomberloutre::MapObserverPrx&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    ::BomberLoutreInterface::Map joinGame(const ::std::string&, const ::BomberLoutreInterface::UserData&, const ::BomberLoutreInterface::GameWaitRoomPrx&, const ::BomberLoutreInterface::MapObserverPrx&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_joinGame(const ::std::string&, const ::BomberLoutreInterface::UserData&, const ::BomberLoutreInterface::GameWaitRoomPrx&, const ::BomberLoutreInterface::MapObserverPrx&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
 
-    ::Bomberloutre::GameDataList getGameList()
+    ::BomberLoutreInterface::GameDataList getGameList()
     {
         return getGameList(0);
     }
-    ::Bomberloutre::GameDataList getGameList(const ::Ice::Context& __ctx)
+    ::BomberLoutreInterface::GameDataList getGameList(const ::Ice::Context& __ctx)
     {
         return getGameList(&__ctx);
     }
@@ -3483,30 +4020,30 @@ public:
         return begin_getGameList(&__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_getGameList(const ::Bomberloutre::Callback_ServerInterface_getGameListPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_getGameList(const ::BomberLoutreInterface::Callback_ServerInterface_getGameListPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_getGameList(0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_getGameList(const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_ServerInterface_getGameListPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_getGameList(const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_ServerInterface_getGameListPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_getGameList(&__ctx, __del, __cookie);
     }
 
-    ::Bomberloutre::GameDataList end_getGameList(const ::Ice::AsyncResultPtr&);
+    ::BomberLoutreInterface::GameDataList end_getGameList(const ::Ice::AsyncResultPtr&);
     
 private:
 
-    ::Bomberloutre::GameDataList getGameList(const ::Ice::Context*);
+    ::BomberLoutreInterface::GameDataList getGameList(const ::Ice::Context*);
     ::Ice::AsyncResultPtr begin_getGameList(const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
 
-    ::Bomberloutre::UserDataList getUserList()
+    ::BomberLoutreInterface::UserDataList getUserList()
     {
         return getUserList(0);
     }
-    ::Bomberloutre::UserDataList getUserList(const ::Ice::Context& __ctx)
+    ::BomberLoutreInterface::UserDataList getUserList(const ::Ice::Context& __ctx)
     {
         return getUserList(&__ctx);
     }
@@ -3531,21 +4068,21 @@ public:
         return begin_getUserList(&__ctx, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_getUserList(const ::Bomberloutre::Callback_ServerInterface_getUserListPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_getUserList(const ::BomberLoutreInterface::Callback_ServerInterface_getUserListPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_getUserList(0, __del, __cookie);
     }
 
-    ::Ice::AsyncResultPtr begin_getUserList(const ::Ice::Context& __ctx, const ::Bomberloutre::Callback_ServerInterface_getUserListPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    ::Ice::AsyncResultPtr begin_getUserList(const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_ServerInterface_getUserListPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
     {
         return begin_getUserList(&__ctx, __del, __cookie);
     }
 
-    ::Bomberloutre::UserDataList end_getUserList(const ::Ice::AsyncResultPtr&);
+    ::BomberLoutreInterface::UserDataList end_getUserList(const ::Ice::AsyncResultPtr&);
     
 private:
 
-    ::Bomberloutre::UserDataList getUserList(const ::Ice::Context*);
+    ::BomberLoutreInterface::UserDataList getUserList(const ::Ice::Context*);
     ::Ice::AsyncResultPtr begin_getUserList(const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
@@ -3756,8 +4293,15 @@ private:
 namespace IceDelegate
 {
 
-namespace Bomberloutre
+namespace BomberLoutreInterface
 {
+
+class GameUserInterface : virtual public ::IceDelegate::Ice::Object
+{
+public:
+
+    virtual void userReady(const ::BomberLoutreInterface::UserData&, const ::Ice::Context*) = 0;
+};
 
 class GameInterface : virtual public ::IceDelegate::Ice::Object
 {
@@ -3804,6 +4348,8 @@ public:
 
     virtual void userReady(const ::std::string&, const ::Ice::Context*) = 0;
 
+    virtual void gameDataUpdated(const ::BomberLoutreInterface::GameData&, const ::Ice::Context*) = 0;
+
     virtual void gameStart(const ::Ice::Context*) = 0;
 
     virtual void gameEnd(const ::Ice::Context*) = 0;
@@ -3819,45 +4365,53 @@ public:
 
     virtual ::Ice::Int getHeight(const ::Ice::Context*) = 0;
 
-    virtual bool move(const ::Bomberloutre::Player&, const ::Bomberloutre::Point&, const ::Ice::Context*) = 0;
+    virtual void moveUp(const ::BomberLoutreInterface::Player&, const ::Ice::Context*) = 0;
 
-    virtual void kickBomb(const ::Bomberloutre::Player&, const ::Ice::Context*) = 0;
+    virtual void moveDown(const ::BomberLoutreInterface::Player&, const ::Ice::Context*) = 0;
 
-    virtual void dropBomb(const ::Bomberloutre::Player&, const ::Bomberloutre::BombPtr&, const ::Ice::Context*) = 0;
+    virtual void moveLeft(const ::BomberLoutreInterface::Player&, const ::Ice::Context*) = 0;
+
+    virtual void moveRight(const ::BomberLoutreInterface::Player&, const ::Ice::Context*) = 0;
+
+    virtual void dropBomb(const ::BomberLoutreInterface::Player&, const ::BomberLoutreInterface::Bomb&, const ::Ice::Context*) = 0;
 };
 
 class MapObserver : virtual public ::IceDelegate::Ice::Object
 {
 public:
 
-    virtual void refreshMapItems(const ::Bomberloutre::MapItems&, const ::Ice::Context*) = 0;
+    virtual void refreshMapItems(const ::BomberLoutreInterface::MapItems&, const ::Ice::Context*) = 0;
 
-    virtual void refreshPlayers(const ::Bomberloutre::PlayerList&, const ::Ice::Context*) = 0;
+    virtual void refreshPlayers(const ::BomberLoutreInterface::PlayerList&, const ::Ice::Context*) = 0;
 
-    virtual void bombHasBeenPlanted(const ::Bomberloutre::BombPtr&, const ::Ice::Context*) = 0;
+    virtual void bombHasBeenPlanted(const ::BomberLoutreInterface::Bomb&, const ::Ice::Context*) = 0;
 
-    virtual void bombExploded(const ::Bomberloutre::BombPtr&, const ::Ice::Context*) = 0;
+    virtual void bombExploded(const ::BomberLoutreInterface::Bomb&, const ::Ice::Context*) = 0;
 
-    virtual void bonusesDropped(const ::Bomberloutre::Bonuses&, const ::Ice::Context*) = 0;
+    virtual void bombKicked(const ::BomberLoutreInterface::Bomb&, const ::BomberLoutreInterface::Point&, const ::Ice::Context*) = 0;
+
+    virtual void bonusesDropped(const ::BomberLoutreInterface::Bonuses&, const ::Ice::Context*) = 0;
+
+    virtual void playerDied(const ::BomberLoutreInterface::Player&, const ::Ice::Context*) = 0;
 };
 
 class ServerInterface : virtual public ::IceDelegate::Ice::Object
 {
 public:
 
-    virtual ::Bomberloutre::UserData connect(const ::std::string&, const ::std::string&, const ::Ice::Context*) = 0;
+    virtual ::BomberLoutreInterface::UserData connect(const ::std::string&, const ::std::string&, const ::Ice::Context*) = 0;
 
-    virtual ::Bomberloutre::UserData createUser(const ::std::string&, const ::std::string&, const ::Ice::Context*) = 0;
+    virtual ::BomberLoutreInterface::UserData createUser(const ::std::string&, const ::std::string&, const ::Ice::Context*) = 0;
 
     virtual bool deleteUser(const ::std::string&, const ::Ice::Context*) = 0;
 
-    virtual ::Bomberloutre::GameInterfacePrx addGame(const ::std::string&, const ::Bomberloutre::GameWaitRoomPrx&, const ::Bomberloutre::MapObserverPrx&, const ::Ice::Context*) = 0;
+    virtual ::BomberLoutreInterface::GameInterfacePrx addGame(const ::std::string&, const ::BomberLoutreInterface::UserData&, const ::BomberLoutreInterface::GameWaitRoomPrx&, const ::BomberLoutreInterface::MapObserverPrx&, const ::Ice::Context*) = 0;
 
-    virtual ::Bomberloutre::Map joinGame(const ::std::string&, const ::Bomberloutre::GameWaitRoomPrx&, const ::Bomberloutre::MapObserverPrx&, const ::Ice::Context*) = 0;
+    virtual ::BomberLoutreInterface::Map joinGame(const ::std::string&, const ::BomberLoutreInterface::UserData&, const ::BomberLoutreInterface::GameWaitRoomPrx&, const ::BomberLoutreInterface::MapObserverPrx&, const ::Ice::Context*) = 0;
 
-    virtual ::Bomberloutre::GameDataList getGameList(const ::Ice::Context*) = 0;
+    virtual ::BomberLoutreInterface::GameDataList getGameList(const ::Ice::Context*) = 0;
 
-    virtual ::Bomberloutre::UserDataList getUserList(const ::Ice::Context*) = 0;
+    virtual ::BomberLoutreInterface::UserDataList getUserList(const ::Ice::Context*) = 0;
 };
 
 }
@@ -3867,10 +4421,18 @@ public:
 namespace IceDelegateM
 {
 
-namespace Bomberloutre
+namespace BomberLoutreInterface
 {
 
-class GameInterface : virtual public ::IceDelegate::Bomberloutre::GameInterface,
+class GameUserInterface : virtual public ::IceDelegate::BomberLoutreInterface::GameUserInterface,
+                          virtual public ::IceDelegateM::Ice::Object
+{
+public:
+
+    virtual void userReady(const ::BomberLoutreInterface::UserData&, const ::Ice::Context*);
+};
+
+class GameInterface : virtual public ::IceDelegate::BomberLoutreInterface::GameInterface,
                       virtual public ::IceDelegateM::Ice::Object
 {
 public:
@@ -3904,7 +4466,7 @@ public:
     virtual bool removeGame(const ::Ice::Context*);
 };
 
-class GameWaitRoom : virtual public ::IceDelegate::Bomberloutre::GameWaitRoom,
+class GameWaitRoom : virtual public ::IceDelegate::BomberLoutreInterface::GameWaitRoom,
                      virtual public ::IceDelegateM::Ice::Object
 {
 public:
@@ -3917,12 +4479,14 @@ public:
 
     virtual void userReady(const ::std::string&, const ::Ice::Context*);
 
+    virtual void gameDataUpdated(const ::BomberLoutreInterface::GameData&, const ::Ice::Context*);
+
     virtual void gameStart(const ::Ice::Context*);
 
     virtual void gameEnd(const ::Ice::Context*);
 };
 
-class MapInterface : virtual public ::IceDelegate::Bomberloutre::MapInterface,
+class MapInterface : virtual public ::IceDelegate::BomberLoutreInterface::MapInterface,
                      virtual public ::IceDelegateM::Ice::Object
 {
 public:
@@ -3933,47 +4497,55 @@ public:
 
     virtual ::Ice::Int getHeight(const ::Ice::Context*);
 
-    virtual bool move(const ::Bomberloutre::Player&, const ::Bomberloutre::Point&, const ::Ice::Context*);
+    virtual void moveUp(const ::BomberLoutreInterface::Player&, const ::Ice::Context*);
 
-    virtual void kickBomb(const ::Bomberloutre::Player&, const ::Ice::Context*);
+    virtual void moveDown(const ::BomberLoutreInterface::Player&, const ::Ice::Context*);
 
-    virtual void dropBomb(const ::Bomberloutre::Player&, const ::Bomberloutre::BombPtr&, const ::Ice::Context*);
+    virtual void moveLeft(const ::BomberLoutreInterface::Player&, const ::Ice::Context*);
+
+    virtual void moveRight(const ::BomberLoutreInterface::Player&, const ::Ice::Context*);
+
+    virtual void dropBomb(const ::BomberLoutreInterface::Player&, const ::BomberLoutreInterface::Bomb&, const ::Ice::Context*);
 };
 
-class MapObserver : virtual public ::IceDelegate::Bomberloutre::MapObserver,
+class MapObserver : virtual public ::IceDelegate::BomberLoutreInterface::MapObserver,
                     virtual public ::IceDelegateM::Ice::Object
 {
 public:
 
-    virtual void refreshMapItems(const ::Bomberloutre::MapItems&, const ::Ice::Context*);
+    virtual void refreshMapItems(const ::BomberLoutreInterface::MapItems&, const ::Ice::Context*);
 
-    virtual void refreshPlayers(const ::Bomberloutre::PlayerList&, const ::Ice::Context*);
+    virtual void refreshPlayers(const ::BomberLoutreInterface::PlayerList&, const ::Ice::Context*);
 
-    virtual void bombHasBeenPlanted(const ::Bomberloutre::BombPtr&, const ::Ice::Context*);
+    virtual void bombHasBeenPlanted(const ::BomberLoutreInterface::Bomb&, const ::Ice::Context*);
 
-    virtual void bombExploded(const ::Bomberloutre::BombPtr&, const ::Ice::Context*);
+    virtual void bombExploded(const ::BomberLoutreInterface::Bomb&, const ::Ice::Context*);
 
-    virtual void bonusesDropped(const ::Bomberloutre::Bonuses&, const ::Ice::Context*);
+    virtual void bombKicked(const ::BomberLoutreInterface::Bomb&, const ::BomberLoutreInterface::Point&, const ::Ice::Context*);
+
+    virtual void bonusesDropped(const ::BomberLoutreInterface::Bonuses&, const ::Ice::Context*);
+
+    virtual void playerDied(const ::BomberLoutreInterface::Player&, const ::Ice::Context*);
 };
 
-class ServerInterface : virtual public ::IceDelegate::Bomberloutre::ServerInterface,
+class ServerInterface : virtual public ::IceDelegate::BomberLoutreInterface::ServerInterface,
                         virtual public ::IceDelegateM::Ice::Object
 {
 public:
 
-    virtual ::Bomberloutre::UserData connect(const ::std::string&, const ::std::string&, const ::Ice::Context*);
+    virtual ::BomberLoutreInterface::UserData connect(const ::std::string&, const ::std::string&, const ::Ice::Context*);
 
-    virtual ::Bomberloutre::UserData createUser(const ::std::string&, const ::std::string&, const ::Ice::Context*);
+    virtual ::BomberLoutreInterface::UserData createUser(const ::std::string&, const ::std::string&, const ::Ice::Context*);
 
     virtual bool deleteUser(const ::std::string&, const ::Ice::Context*);
 
-    virtual ::Bomberloutre::GameInterfacePrx addGame(const ::std::string&, const ::Bomberloutre::GameWaitRoomPrx&, const ::Bomberloutre::MapObserverPrx&, const ::Ice::Context*);
+    virtual ::BomberLoutreInterface::GameInterfacePrx addGame(const ::std::string&, const ::BomberLoutreInterface::UserData&, const ::BomberLoutreInterface::GameWaitRoomPrx&, const ::BomberLoutreInterface::MapObserverPrx&, const ::Ice::Context*);
 
-    virtual ::Bomberloutre::Map joinGame(const ::std::string&, const ::Bomberloutre::GameWaitRoomPrx&, const ::Bomberloutre::MapObserverPrx&, const ::Ice::Context*);
+    virtual ::BomberLoutreInterface::Map joinGame(const ::std::string&, const ::BomberLoutreInterface::UserData&, const ::BomberLoutreInterface::GameWaitRoomPrx&, const ::BomberLoutreInterface::MapObserverPrx&, const ::Ice::Context*);
 
-    virtual ::Bomberloutre::GameDataList getGameList(const ::Ice::Context*);
+    virtual ::BomberLoutreInterface::GameDataList getGameList(const ::Ice::Context*);
 
-    virtual ::Bomberloutre::UserDataList getUserList(const ::Ice::Context*);
+    virtual ::BomberLoutreInterface::UserDataList getUserList(const ::Ice::Context*);
 };
 
 }
@@ -3983,10 +4555,18 @@ public:
 namespace IceDelegateD
 {
 
-namespace Bomberloutre
+namespace BomberLoutreInterface
 {
 
-class GameInterface : virtual public ::IceDelegate::Bomberloutre::GameInterface,
+class GameUserInterface : virtual public ::IceDelegate::BomberLoutreInterface::GameUserInterface,
+                          virtual public ::IceDelegateD::Ice::Object
+{
+public:
+
+    virtual void userReady(const ::BomberLoutreInterface::UserData&, const ::Ice::Context*);
+};
+
+class GameInterface : virtual public ::IceDelegate::BomberLoutreInterface::GameInterface,
                       virtual public ::IceDelegateD::Ice::Object
 {
 public:
@@ -4020,7 +4600,7 @@ public:
     virtual bool removeGame(const ::Ice::Context*);
 };
 
-class GameWaitRoom : virtual public ::IceDelegate::Bomberloutre::GameWaitRoom,
+class GameWaitRoom : virtual public ::IceDelegate::BomberLoutreInterface::GameWaitRoom,
                      virtual public ::IceDelegateD::Ice::Object
 {
 public:
@@ -4033,12 +4613,14 @@ public:
 
     virtual void userReady(const ::std::string&, const ::Ice::Context*);
 
+    virtual void gameDataUpdated(const ::BomberLoutreInterface::GameData&, const ::Ice::Context*);
+
     virtual void gameStart(const ::Ice::Context*);
 
     virtual void gameEnd(const ::Ice::Context*);
 };
 
-class MapInterface : virtual public ::IceDelegate::Bomberloutre::MapInterface,
+class MapInterface : virtual public ::IceDelegate::BomberLoutreInterface::MapInterface,
                      virtual public ::IceDelegateD::Ice::Object
 {
 public:
@@ -4049,55 +4631,101 @@ public:
 
     virtual ::Ice::Int getHeight(const ::Ice::Context*);
 
-    virtual bool move(const ::Bomberloutre::Player&, const ::Bomberloutre::Point&, const ::Ice::Context*);
+    virtual void moveUp(const ::BomberLoutreInterface::Player&, const ::Ice::Context*);
 
-    virtual void kickBomb(const ::Bomberloutre::Player&, const ::Ice::Context*);
+    virtual void moveDown(const ::BomberLoutreInterface::Player&, const ::Ice::Context*);
 
-    virtual void dropBomb(const ::Bomberloutre::Player&, const ::Bomberloutre::BombPtr&, const ::Ice::Context*);
+    virtual void moveLeft(const ::BomberLoutreInterface::Player&, const ::Ice::Context*);
+
+    virtual void moveRight(const ::BomberLoutreInterface::Player&, const ::Ice::Context*);
+
+    virtual void dropBomb(const ::BomberLoutreInterface::Player&, const ::BomberLoutreInterface::Bomb&, const ::Ice::Context*);
 };
 
-class MapObserver : virtual public ::IceDelegate::Bomberloutre::MapObserver,
+class MapObserver : virtual public ::IceDelegate::BomberLoutreInterface::MapObserver,
                     virtual public ::IceDelegateD::Ice::Object
 {
 public:
 
-    virtual void refreshMapItems(const ::Bomberloutre::MapItems&, const ::Ice::Context*);
+    virtual void refreshMapItems(const ::BomberLoutreInterface::MapItems&, const ::Ice::Context*);
 
-    virtual void refreshPlayers(const ::Bomberloutre::PlayerList&, const ::Ice::Context*);
+    virtual void refreshPlayers(const ::BomberLoutreInterface::PlayerList&, const ::Ice::Context*);
 
-    virtual void bombHasBeenPlanted(const ::Bomberloutre::BombPtr&, const ::Ice::Context*);
+    virtual void bombHasBeenPlanted(const ::BomberLoutreInterface::Bomb&, const ::Ice::Context*);
 
-    virtual void bombExploded(const ::Bomberloutre::BombPtr&, const ::Ice::Context*);
+    virtual void bombExploded(const ::BomberLoutreInterface::Bomb&, const ::Ice::Context*);
 
-    virtual void bonusesDropped(const ::Bomberloutre::Bonuses&, const ::Ice::Context*);
+    virtual void bombKicked(const ::BomberLoutreInterface::Bomb&, const ::BomberLoutreInterface::Point&, const ::Ice::Context*);
+
+    virtual void bonusesDropped(const ::BomberLoutreInterface::Bonuses&, const ::Ice::Context*);
+
+    virtual void playerDied(const ::BomberLoutreInterface::Player&, const ::Ice::Context*);
 };
 
-class ServerInterface : virtual public ::IceDelegate::Bomberloutre::ServerInterface,
+class ServerInterface : virtual public ::IceDelegate::BomberLoutreInterface::ServerInterface,
                         virtual public ::IceDelegateD::Ice::Object
 {
 public:
 
-    virtual ::Bomberloutre::UserData connect(const ::std::string&, const ::std::string&, const ::Ice::Context*);
+    virtual ::BomberLoutreInterface::UserData connect(const ::std::string&, const ::std::string&, const ::Ice::Context*);
 
-    virtual ::Bomberloutre::UserData createUser(const ::std::string&, const ::std::string&, const ::Ice::Context*);
+    virtual ::BomberLoutreInterface::UserData createUser(const ::std::string&, const ::std::string&, const ::Ice::Context*);
 
     virtual bool deleteUser(const ::std::string&, const ::Ice::Context*);
 
-    virtual ::Bomberloutre::GameInterfacePrx addGame(const ::std::string&, const ::Bomberloutre::GameWaitRoomPrx&, const ::Bomberloutre::MapObserverPrx&, const ::Ice::Context*);
+    virtual ::BomberLoutreInterface::GameInterfacePrx addGame(const ::std::string&, const ::BomberLoutreInterface::UserData&, const ::BomberLoutreInterface::GameWaitRoomPrx&, const ::BomberLoutreInterface::MapObserverPrx&, const ::Ice::Context*);
 
-    virtual ::Bomberloutre::Map joinGame(const ::std::string&, const ::Bomberloutre::GameWaitRoomPrx&, const ::Bomberloutre::MapObserverPrx&, const ::Ice::Context*);
+    virtual ::BomberLoutreInterface::Map joinGame(const ::std::string&, const ::BomberLoutreInterface::UserData&, const ::BomberLoutreInterface::GameWaitRoomPrx&, const ::BomberLoutreInterface::MapObserverPrx&, const ::Ice::Context*);
 
-    virtual ::Bomberloutre::GameDataList getGameList(const ::Ice::Context*);
+    virtual ::BomberLoutreInterface::GameDataList getGameList(const ::Ice::Context*);
 
-    virtual ::Bomberloutre::UserDataList getUserList(const ::Ice::Context*);
+    virtual ::BomberLoutreInterface::UserDataList getUserList(const ::Ice::Context*);
 };
 
 }
 
 }
 
-namespace Bomberloutre
+namespace BomberLoutreInterface
 {
+
+class GameUserInterface : virtual public ::Ice::Object
+{
+public:
+
+    typedef GameUserInterfacePrx ProxyType;
+    typedef GameUserInterfacePtr PointerType;
+    
+    virtual ::Ice::ObjectPtr ice_clone() const;
+
+    virtual bool ice_isA(const ::std::string&, const ::Ice::Current& = ::Ice::Current()) const;
+    virtual ::std::vector< ::std::string> ice_ids(const ::Ice::Current& = ::Ice::Current()) const;
+    virtual const ::std::string& ice_id(const ::Ice::Current& = ::Ice::Current()) const;
+    static const ::std::string& ice_staticId();
+
+    virtual void userReady(const ::BomberLoutreInterface::UserData&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    ::Ice::DispatchStatus ___userReady(::IceInternal::Incoming&, const ::Ice::Current&);
+
+    virtual ::Ice::DispatchStatus __dispatch(::IceInternal::Incoming&, const ::Ice::Current&);
+
+    virtual void __write(::IceInternal::BasicStream*) const;
+    virtual void __read(::IceInternal::BasicStream*, bool);
+// COMPILERFIX: Stream API is not supported with VC++ 6
+#if !defined(_MSC_VER) || (_MSC_VER >= 1300)
+    virtual void __write(const ::Ice::OutputStreamPtr&) const;
+    virtual void __read(const ::Ice::InputStreamPtr&, bool);
+#endif
+};
+
+inline bool operator==(const GameUserInterface& l, const GameUserInterface& r)
+{
+    return static_cast<const ::Ice::Object&>(l) == static_cast<const ::Ice::Object&>(r);
+}
+
+inline bool operator<(const GameUserInterface& l, const GameUserInterface& r)
+{
+    return static_cast<const ::Ice::Object&>(l) < static_cast<const ::Ice::Object&>(r);
+}
 
 class GameInterface : virtual public ::Ice::Object
 {
@@ -4202,6 +4830,9 @@ public:
     virtual void userReady(const ::std::string&, const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___userReady(::IceInternal::Incoming&, const ::Ice::Current&);
 
+    virtual void gameDataUpdated(const ::BomberLoutreInterface::GameData&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    ::Ice::DispatchStatus ___gameDataUpdated(::IceInternal::Incoming&, const ::Ice::Current&);
+
     virtual void gameStart(const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___gameStart(::IceInternal::Incoming&, const ::Ice::Current&);
 
@@ -4252,13 +4883,19 @@ public:
     virtual ::Ice::Int getHeight(const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___getHeight(::IceInternal::Incoming&, const ::Ice::Current&);
 
-    virtual bool move(const ::Bomberloutre::Player&, const ::Bomberloutre::Point&, const ::Ice::Current& = ::Ice::Current()) = 0;
-    ::Ice::DispatchStatus ___move(::IceInternal::Incoming&, const ::Ice::Current&);
+    virtual void moveUp(const ::BomberLoutreInterface::Player&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    ::Ice::DispatchStatus ___moveUp(::IceInternal::Incoming&, const ::Ice::Current&);
 
-    virtual void kickBomb(const ::Bomberloutre::Player&, const ::Ice::Current& = ::Ice::Current()) = 0;
-    ::Ice::DispatchStatus ___kickBomb(::IceInternal::Incoming&, const ::Ice::Current&);
+    virtual void moveDown(const ::BomberLoutreInterface::Player&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    ::Ice::DispatchStatus ___moveDown(::IceInternal::Incoming&, const ::Ice::Current&);
 
-    virtual void dropBomb(const ::Bomberloutre::Player&, const ::Bomberloutre::BombPtr&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    virtual void moveLeft(const ::BomberLoutreInterface::Player&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    ::Ice::DispatchStatus ___moveLeft(::IceInternal::Incoming&, const ::Ice::Current&);
+
+    virtual void moveRight(const ::BomberLoutreInterface::Player&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    ::Ice::DispatchStatus ___moveRight(::IceInternal::Incoming&, const ::Ice::Current&);
+
+    virtual void dropBomb(const ::BomberLoutreInterface::Player&, const ::BomberLoutreInterface::Bomb&, const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___dropBomb(::IceInternal::Incoming&, const ::Ice::Current&);
 
     virtual ::Ice::DispatchStatus __dispatch(::IceInternal::Incoming&, const ::Ice::Current&);
@@ -4296,20 +4933,26 @@ public:
     virtual const ::std::string& ice_id(const ::Ice::Current& = ::Ice::Current()) const;
     static const ::std::string& ice_staticId();
 
-    virtual void refreshMapItems(const ::Bomberloutre::MapItems&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    virtual void refreshMapItems(const ::BomberLoutreInterface::MapItems&, const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___refreshMapItems(::IceInternal::Incoming&, const ::Ice::Current&);
 
-    virtual void refreshPlayers(const ::Bomberloutre::PlayerList&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    virtual void refreshPlayers(const ::BomberLoutreInterface::PlayerList&, const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___refreshPlayers(::IceInternal::Incoming&, const ::Ice::Current&);
 
-    virtual void bombHasBeenPlanted(const ::Bomberloutre::BombPtr&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    virtual void bombHasBeenPlanted(const ::BomberLoutreInterface::Bomb&, const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___bombHasBeenPlanted(::IceInternal::Incoming&, const ::Ice::Current&);
 
-    virtual void bombExploded(const ::Bomberloutre::BombPtr&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    virtual void bombExploded(const ::BomberLoutreInterface::Bomb&, const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___bombExploded(::IceInternal::Incoming&, const ::Ice::Current&);
 
-    virtual void bonusesDropped(const ::Bomberloutre::Bonuses&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    virtual void bombKicked(const ::BomberLoutreInterface::Bomb&, const ::BomberLoutreInterface::Point&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    ::Ice::DispatchStatus ___bombKicked(::IceInternal::Incoming&, const ::Ice::Current&);
+
+    virtual void bonusesDropped(const ::BomberLoutreInterface::Bonuses&, const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___bonusesDropped(::IceInternal::Incoming&, const ::Ice::Current&);
+
+    virtual void playerDied(const ::BomberLoutreInterface::Player&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    ::Ice::DispatchStatus ___playerDied(::IceInternal::Incoming&, const ::Ice::Current&);
 
     virtual ::Ice::DispatchStatus __dispatch(::IceInternal::Incoming&, const ::Ice::Current&);
 
@@ -4346,25 +4989,25 @@ public:
     virtual const ::std::string& ice_id(const ::Ice::Current& = ::Ice::Current()) const;
     static const ::std::string& ice_staticId();
 
-    virtual ::Bomberloutre::UserData connect(const ::std::string&, const ::std::string&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    virtual ::BomberLoutreInterface::UserData connect(const ::std::string&, const ::std::string&, const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___connect(::IceInternal::Incoming&, const ::Ice::Current&);
 
-    virtual ::Bomberloutre::UserData createUser(const ::std::string&, const ::std::string&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    virtual ::BomberLoutreInterface::UserData createUser(const ::std::string&, const ::std::string&, const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___createUser(::IceInternal::Incoming&, const ::Ice::Current&);
 
     virtual bool deleteUser(const ::std::string&, const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___deleteUser(::IceInternal::Incoming&, const ::Ice::Current&);
 
-    virtual ::Bomberloutre::GameInterfacePrx addGame(const ::std::string&, const ::Bomberloutre::GameWaitRoomPrx&, const ::Bomberloutre::MapObserverPrx&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    virtual ::BomberLoutreInterface::GameInterfacePrx addGame(const ::std::string&, const ::BomberLoutreInterface::UserData&, const ::BomberLoutreInterface::GameWaitRoomPrx&, const ::BomberLoutreInterface::MapObserverPrx&, const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___addGame(::IceInternal::Incoming&, const ::Ice::Current&);
 
-    virtual ::Bomberloutre::Map joinGame(const ::std::string&, const ::Bomberloutre::GameWaitRoomPrx&, const ::Bomberloutre::MapObserverPrx&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    virtual ::BomberLoutreInterface::Map joinGame(const ::std::string&, const ::BomberLoutreInterface::UserData&, const ::BomberLoutreInterface::GameWaitRoomPrx&, const ::BomberLoutreInterface::MapObserverPrx&, const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___joinGame(::IceInternal::Incoming&, const ::Ice::Current&);
 
-    virtual ::Bomberloutre::GameDataList getGameList(const ::Ice::Current& = ::Ice::Current()) = 0;
+    virtual ::BomberLoutreInterface::GameDataList getGameList(const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___getGameList(::IceInternal::Incoming&, const ::Ice::Current&);
 
-    virtual ::Bomberloutre::UserDataList getUserList(const ::Ice::Current& = ::Ice::Current()) = 0;
+    virtual ::BomberLoutreInterface::UserDataList getUserList(const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___getUserList(::IceInternal::Incoming&, const ::Ice::Current&);
 
     virtual ::Ice::DispatchStatus __dispatch(::IceInternal::Incoming&, const ::Ice::Current&);
@@ -4390,8 +5033,90 @@ inline bool operator<(const ServerInterface& l, const ServerInterface& r)
 
 }
 
-namespace Bomberloutre
+namespace BomberLoutreInterface
 {
+
+template<class T>
+class CallbackNC_GameUserInterface_userReady : public Callback_GameUserInterface_userReady_Base, public ::IceInternal::OnewayCallbackNC<T>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception&);
+    typedef void (T::*Sent)(bool);
+    typedef void (T::*Response)();
+
+    CallbackNC_GameUserInterface_userReady(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallbackNC<T>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T> Callback_GameUserInterface_userReadyPtr
+newCallback_GameUserInterface_userReady(const IceUtil::Handle<T>& instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameUserInterface_userReady<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_GameUserInterface_userReadyPtr
+newCallback_GameUserInterface_userReady(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameUserInterface_userReady<T>(instance, 0, excb, sentcb);
+}
+
+template<class T> Callback_GameUserInterface_userReadyPtr
+newCallback_GameUserInterface_userReady(T* instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameUserInterface_userReady<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_GameUserInterface_userReadyPtr
+newCallback_GameUserInterface_userReady(T* instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameUserInterface_userReady<T>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT>
+class Callback_GameUserInterface_userReady : public Callback_GameUserInterface_userReady_Base, public ::IceInternal::OnewayCallback<T, CT>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
+    typedef void (T::*Sent)(bool , const CT&);
+    typedef void (T::*Response)(const CT&);
+
+    Callback_GameUserInterface_userReady(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallback<T, CT>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T, typename CT> Callback_GameUserInterface_userReadyPtr
+newCallback_GameUserInterface_userReady(const IceUtil::Handle<T>& instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameUserInterface_userReady<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_GameUserInterface_userReadyPtr
+newCallback_GameUserInterface_userReady(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameUserInterface_userReady<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_GameUserInterface_userReadyPtr
+newCallback_GameUserInterface_userReady(T* instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameUserInterface_userReady<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_GameUserInterface_userReadyPtr
+newCallback_GameUserInterface_userReady(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameUserInterface_userReady<T, CT>(instance, 0, excb, sentcb);
+}
 
 template<class T>
 class CallbackNC_GameInterface_getName : public Callback_GameInterface_getName_Base, public ::IceInternal::TwowayCallbackNC<T>
@@ -4411,7 +5136,7 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::GameInterfacePrx __proxy = ::Bomberloutre::GameInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::GameInterfacePrx __proxy = ::BomberLoutreInterface::GameInterfacePrx::uncheckedCast(__result->getProxy());
         ::std::string __ret;
         try
         {
@@ -4469,7 +5194,7 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::GameInterfacePrx __proxy = ::Bomberloutre::GameInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::GameInterfacePrx __proxy = ::BomberLoutreInterface::GameInterfacePrx::uncheckedCast(__result->getProxy());
         ::std::string __ret;
         try
         {
@@ -4527,7 +5252,7 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::GameInterfacePrx __proxy = ::Bomberloutre::GameInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::GameInterfacePrx __proxy = ::BomberLoutreInterface::GameInterfacePrx::uncheckedCast(__result->getProxy());
         ::Ice::Int __ret;
         try
         {
@@ -4585,7 +5310,7 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::GameInterfacePrx __proxy = ::Bomberloutre::GameInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::GameInterfacePrx __proxy = ::BomberLoutreInterface::GameInterfacePrx::uncheckedCast(__result->getProxy());
         ::Ice::Int __ret;
         try
         {
@@ -4643,7 +5368,7 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::GameInterfacePrx __proxy = ::Bomberloutre::GameInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::GameInterfacePrx __proxy = ::BomberLoutreInterface::GameInterfacePrx::uncheckedCast(__result->getProxy());
         ::Ice::Int __ret;
         try
         {
@@ -4701,7 +5426,7 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::GameInterfacePrx __proxy = ::Bomberloutre::GameInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::GameInterfacePrx __proxy = ::BomberLoutreInterface::GameInterfacePrx::uncheckedCast(__result->getProxy());
         ::Ice::Int __ret;
         try
         {
@@ -5333,7 +6058,7 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::GameInterfacePrx __proxy = ::Bomberloutre::GameInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::GameInterfacePrx __proxy = ::BomberLoutreInterface::GameInterfacePrx::uncheckedCast(__result->getProxy());
         bool __ret;
         try
         {
@@ -5391,7 +6116,7 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::GameInterfacePrx __proxy = ::Bomberloutre::GameInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::GameInterfacePrx __proxy = ::BomberLoutreInterface::GameInterfacePrx::uncheckedCast(__result->getProxy());
         bool __ret;
         try
         {
@@ -5613,7 +6338,7 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::GameInterfacePrx __proxy = ::Bomberloutre::GameInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::GameInterfacePrx __proxy = ::BomberLoutreInterface::GameInterfacePrx::uncheckedCast(__result->getProxy());
         bool __ret;
         try
         {
@@ -5671,7 +6396,7 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::GameInterfacePrx __proxy = ::Bomberloutre::GameInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::GameInterfacePrx __proxy = ::BomberLoutreInterface::GameInterfacePrx::uncheckedCast(__result->getProxy());
         bool __ret;
         try
         {
@@ -6040,6 +6765,88 @@ newCallback_GameWaitRoom_userReady(T* instance, void (T::*excb)(const ::Ice::Exc
 }
 
 template<class T>
+class CallbackNC_GameWaitRoom_gameDataUpdated : public Callback_GameWaitRoom_gameDataUpdated_Base, public ::IceInternal::OnewayCallbackNC<T>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception&);
+    typedef void (T::*Sent)(bool);
+    typedef void (T::*Response)();
+
+    CallbackNC_GameWaitRoom_gameDataUpdated(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallbackNC<T>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T> Callback_GameWaitRoom_gameDataUpdatedPtr
+newCallback_GameWaitRoom_gameDataUpdated(const IceUtil::Handle<T>& instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameWaitRoom_gameDataUpdated<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_GameWaitRoom_gameDataUpdatedPtr
+newCallback_GameWaitRoom_gameDataUpdated(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameWaitRoom_gameDataUpdated<T>(instance, 0, excb, sentcb);
+}
+
+template<class T> Callback_GameWaitRoom_gameDataUpdatedPtr
+newCallback_GameWaitRoom_gameDataUpdated(T* instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameWaitRoom_gameDataUpdated<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_GameWaitRoom_gameDataUpdatedPtr
+newCallback_GameWaitRoom_gameDataUpdated(T* instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameWaitRoom_gameDataUpdated<T>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT>
+class Callback_GameWaitRoom_gameDataUpdated : public Callback_GameWaitRoom_gameDataUpdated_Base, public ::IceInternal::OnewayCallback<T, CT>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
+    typedef void (T::*Sent)(bool , const CT&);
+    typedef void (T::*Response)(const CT&);
+
+    Callback_GameWaitRoom_gameDataUpdated(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallback<T, CT>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T, typename CT> Callback_GameWaitRoom_gameDataUpdatedPtr
+newCallback_GameWaitRoom_gameDataUpdated(const IceUtil::Handle<T>& instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameWaitRoom_gameDataUpdated<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_GameWaitRoom_gameDataUpdatedPtr
+newCallback_GameWaitRoom_gameDataUpdated(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameWaitRoom_gameDataUpdated<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_GameWaitRoom_gameDataUpdatedPtr
+newCallback_GameWaitRoom_gameDataUpdated(T* instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameWaitRoom_gameDataUpdated<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_GameWaitRoom_gameDataUpdatedPtr
+newCallback_GameWaitRoom_gameDataUpdated(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameWaitRoom_gameDataUpdated<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T>
 class CallbackNC_GameWaitRoom_gameStart : public Callback_GameWaitRoom_gameStart_Base, public ::IceInternal::OnewayCallbackNC<T>
 {
 public:
@@ -6221,7 +7028,7 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::MapInterfacePrx __proxy = ::Bomberloutre::MapInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::MapInterfacePrx __proxy = ::BomberLoutreInterface::MapInterfacePrx::uncheckedCast(__result->getProxy());
         ::std::string __ret;
         try
         {
@@ -6279,7 +7086,7 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::MapInterfacePrx __proxy = ::Bomberloutre::MapInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::MapInterfacePrx __proxy = ::BomberLoutreInterface::MapInterfacePrx::uncheckedCast(__result->getProxy());
         ::std::string __ret;
         try
         {
@@ -6337,7 +7144,7 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::MapInterfacePrx __proxy = ::Bomberloutre::MapInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::MapInterfacePrx __proxy = ::BomberLoutreInterface::MapInterfacePrx::uncheckedCast(__result->getProxy());
         ::Ice::Int __ret;
         try
         {
@@ -6395,7 +7202,7 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::MapInterfacePrx __proxy = ::Bomberloutre::MapInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::MapInterfacePrx __proxy = ::BomberLoutreInterface::MapInterfacePrx::uncheckedCast(__result->getProxy());
         ::Ice::Int __ret;
         try
         {
@@ -6453,7 +7260,7 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::MapInterfacePrx __proxy = ::Bomberloutre::MapInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::MapInterfacePrx __proxy = ::BomberLoutreInterface::MapInterfacePrx::uncheckedCast(__result->getProxy());
         ::Ice::Int __ret;
         try
         {
@@ -6511,7 +7318,7 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::MapInterfacePrx __proxy = ::Bomberloutre::MapInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::MapInterfacePrx __proxy = ::BomberLoutreInterface::MapInterfacePrx::uncheckedCast(__result->getProxy());
         ::Ice::Int __ret;
         try
         {
@@ -6552,123 +7359,7 @@ newCallback_MapInterface_getHeight(T* instance, void (T::*cb)(::Ice::Int, const 
 }
 
 template<class T>
-class CallbackNC_MapInterface_move : public Callback_MapInterface_move_Base, public ::IceInternal::TwowayCallbackNC<T>
-{
-public:
-
-    typedef IceUtil::Handle<T> TPtr;
-
-    typedef void (T::*Exception)(const ::Ice::Exception&);
-    typedef void (T::*Sent)(bool);
-    typedef void (T::*Response)(bool);
-
-    CallbackNC_MapInterface_move(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
-        : ::IceInternal::TwowayCallbackNC<T>(obj, cb != 0, excb, sentcb), response(cb)
-    {
-    }
-
-    virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
-    {
-        ::Bomberloutre::MapInterfacePrx __proxy = ::Bomberloutre::MapInterfacePrx::uncheckedCast(__result->getProxy());
-        bool __ret;
-        try
-        {
-            __ret = __proxy->end_move(__result);
-        }
-        catch(::Ice::Exception& ex)
-        {
-#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
-            __exception(__result, ex);
-#else
-            ::IceInternal::CallbackNC<T>::__exception(__result, ex);
-#endif
-            return;
-        }
-        if(response)
-        {
-#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
-            (callback.get()->*response)(__ret);
-#else
-            (::IceInternal::CallbackNC<T>::callback.get()->*response)(__ret);
-#endif
-        }
-    }
-
-    Response response;
-};
-
-template<class T> Callback_MapInterface_movePtr
-newCallback_MapInterface_move(const IceUtil::Handle<T>& instance, void (T::*cb)(bool), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
-{
-    return new CallbackNC_MapInterface_move<T>(instance, cb, excb, sentcb);
-}
-
-template<class T> Callback_MapInterface_movePtr
-newCallback_MapInterface_move(T* instance, void (T::*cb)(bool), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
-{
-    return new CallbackNC_MapInterface_move<T>(instance, cb, excb, sentcb);
-}
-
-template<class T, typename CT>
-class Callback_MapInterface_move : public Callback_MapInterface_move_Base, public ::IceInternal::TwowayCallback<T, CT>
-{
-public:
-
-    typedef IceUtil::Handle<T> TPtr;
-
-    typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
-    typedef void (T::*Sent)(bool , const CT&);
-    typedef void (T::*Response)(bool, const CT&);
-
-    Callback_MapInterface_move(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
-        : ::IceInternal::TwowayCallback<T, CT>(obj, cb != 0, excb, sentcb), response(cb)
-    {
-    }
-
-    virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
-    {
-        ::Bomberloutre::MapInterfacePrx __proxy = ::Bomberloutre::MapInterfacePrx::uncheckedCast(__result->getProxy());
-        bool __ret;
-        try
-        {
-            __ret = __proxy->end_move(__result);
-        }
-        catch(::Ice::Exception& ex)
-        {
-#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
-            __exception(__result, ex);
-#else
-            ::IceInternal::Callback<T, CT>::__exception(__result, ex);
-#endif
-            return;
-        }
-        if(response)
-        {
-#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
-            (callback.get()->*response)(__ret, CT::dynamicCast(__result->getCookie()));
-#else
-            (::IceInternal::Callback<T, CT>::callback.get()->*response)(__ret, CT::dynamicCast(__result->getCookie()));
-#endif
-        }
-    }
-
-    Response response;
-};
-
-template<class T, typename CT> Callback_MapInterface_movePtr
-newCallback_MapInterface_move(const IceUtil::Handle<T>& instance, void (T::*cb)(bool, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
-{
-    return new Callback_MapInterface_move<T, CT>(instance, cb, excb, sentcb);
-}
-
-template<class T, typename CT> Callback_MapInterface_movePtr
-newCallback_MapInterface_move(T* instance, void (T::*cb)(bool, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
-{
-    return new Callback_MapInterface_move<T, CT>(instance, cb, excb, sentcb);
-}
-
-template<class T>
-class CallbackNC_MapInterface_kickBomb : public Callback_MapInterface_kickBomb_Base, public ::IceInternal::OnewayCallbackNC<T>
+class CallbackNC_MapInterface_moveUp : public Callback_MapInterface_moveUp_Base, public ::IceInternal::OnewayCallbackNC<T>
 {
 public:
 
@@ -6678,38 +7369,38 @@ public:
     typedef void (T::*Sent)(bool);
     typedef void (T::*Response)();
 
-    CallbackNC_MapInterface_kickBomb(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+    CallbackNC_MapInterface_moveUp(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
         : ::IceInternal::OnewayCallbackNC<T>(obj, cb, excb, sentcb)
     {
     }
 };
 
-template<class T> Callback_MapInterface_kickBombPtr
-newCallback_MapInterface_kickBomb(const IceUtil::Handle<T>& instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+template<class T> Callback_MapInterface_moveUpPtr
+newCallback_MapInterface_moveUp(const IceUtil::Handle<T>& instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
 {
-    return new CallbackNC_MapInterface_kickBomb<T>(instance, cb, excb, sentcb);
+    return new CallbackNC_MapInterface_moveUp<T>(instance, cb, excb, sentcb);
 }
 
-template<class T> Callback_MapInterface_kickBombPtr
-newCallback_MapInterface_kickBomb(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+template<class T> Callback_MapInterface_moveUpPtr
+newCallback_MapInterface_moveUp(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
 {
-    return new CallbackNC_MapInterface_kickBomb<T>(instance, 0, excb, sentcb);
+    return new CallbackNC_MapInterface_moveUp<T>(instance, 0, excb, sentcb);
 }
 
-template<class T> Callback_MapInterface_kickBombPtr
-newCallback_MapInterface_kickBomb(T* instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+template<class T> Callback_MapInterface_moveUpPtr
+newCallback_MapInterface_moveUp(T* instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
 {
-    return new CallbackNC_MapInterface_kickBomb<T>(instance, cb, excb, sentcb);
+    return new CallbackNC_MapInterface_moveUp<T>(instance, cb, excb, sentcb);
 }
 
-template<class T> Callback_MapInterface_kickBombPtr
-newCallback_MapInterface_kickBomb(T* instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+template<class T> Callback_MapInterface_moveUpPtr
+newCallback_MapInterface_moveUp(T* instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
 {
-    return new CallbackNC_MapInterface_kickBomb<T>(instance, 0, excb, sentcb);
+    return new CallbackNC_MapInterface_moveUp<T>(instance, 0, excb, sentcb);
 }
 
 template<class T, typename CT>
-class Callback_MapInterface_kickBomb : public Callback_MapInterface_kickBomb_Base, public ::IceInternal::OnewayCallback<T, CT>
+class Callback_MapInterface_moveUp : public Callback_MapInterface_moveUp_Base, public ::IceInternal::OnewayCallback<T, CT>
 {
 public:
 
@@ -6719,34 +7410,280 @@ public:
     typedef void (T::*Sent)(bool , const CT&);
     typedef void (T::*Response)(const CT&);
 
-    Callback_MapInterface_kickBomb(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+    Callback_MapInterface_moveUp(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
         : ::IceInternal::OnewayCallback<T, CT>(obj, cb, excb, sentcb)
     {
     }
 };
 
-template<class T, typename CT> Callback_MapInterface_kickBombPtr
-newCallback_MapInterface_kickBomb(const IceUtil::Handle<T>& instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+template<class T, typename CT> Callback_MapInterface_moveUpPtr
+newCallback_MapInterface_moveUp(const IceUtil::Handle<T>& instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
-    return new Callback_MapInterface_kickBomb<T, CT>(instance, cb, excb, sentcb);
+    return new Callback_MapInterface_moveUp<T, CT>(instance, cb, excb, sentcb);
 }
 
-template<class T, typename CT> Callback_MapInterface_kickBombPtr
-newCallback_MapInterface_kickBomb(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+template<class T, typename CT> Callback_MapInterface_moveUpPtr
+newCallback_MapInterface_moveUp(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
-    return new Callback_MapInterface_kickBomb<T, CT>(instance, 0, excb, sentcb);
+    return new Callback_MapInterface_moveUp<T, CT>(instance, 0, excb, sentcb);
 }
 
-template<class T, typename CT> Callback_MapInterface_kickBombPtr
-newCallback_MapInterface_kickBomb(T* instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+template<class T, typename CT> Callback_MapInterface_moveUpPtr
+newCallback_MapInterface_moveUp(T* instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
-    return new Callback_MapInterface_kickBomb<T, CT>(instance, cb, excb, sentcb);
+    return new Callback_MapInterface_moveUp<T, CT>(instance, cb, excb, sentcb);
 }
 
-template<class T, typename CT> Callback_MapInterface_kickBombPtr
-newCallback_MapInterface_kickBomb(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+template<class T, typename CT> Callback_MapInterface_moveUpPtr
+newCallback_MapInterface_moveUp(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
-    return new Callback_MapInterface_kickBomb<T, CT>(instance, 0, excb, sentcb);
+    return new Callback_MapInterface_moveUp<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T>
+class CallbackNC_MapInterface_moveDown : public Callback_MapInterface_moveDown_Base, public ::IceInternal::OnewayCallbackNC<T>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception&);
+    typedef void (T::*Sent)(bool);
+    typedef void (T::*Response)();
+
+    CallbackNC_MapInterface_moveDown(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallbackNC<T>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T> Callback_MapInterface_moveDownPtr
+newCallback_MapInterface_moveDown(const IceUtil::Handle<T>& instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapInterface_moveDown<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_MapInterface_moveDownPtr
+newCallback_MapInterface_moveDown(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapInterface_moveDown<T>(instance, 0, excb, sentcb);
+}
+
+template<class T> Callback_MapInterface_moveDownPtr
+newCallback_MapInterface_moveDown(T* instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapInterface_moveDown<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_MapInterface_moveDownPtr
+newCallback_MapInterface_moveDown(T* instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapInterface_moveDown<T>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT>
+class Callback_MapInterface_moveDown : public Callback_MapInterface_moveDown_Base, public ::IceInternal::OnewayCallback<T, CT>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
+    typedef void (T::*Sent)(bool , const CT&);
+    typedef void (T::*Response)(const CT&);
+
+    Callback_MapInterface_moveDown(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallback<T, CT>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T, typename CT> Callback_MapInterface_moveDownPtr
+newCallback_MapInterface_moveDown(const IceUtil::Handle<T>& instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapInterface_moveDown<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_MapInterface_moveDownPtr
+newCallback_MapInterface_moveDown(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapInterface_moveDown<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_MapInterface_moveDownPtr
+newCallback_MapInterface_moveDown(T* instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapInterface_moveDown<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_MapInterface_moveDownPtr
+newCallback_MapInterface_moveDown(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapInterface_moveDown<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T>
+class CallbackNC_MapInterface_moveLeft : public Callback_MapInterface_moveLeft_Base, public ::IceInternal::OnewayCallbackNC<T>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception&);
+    typedef void (T::*Sent)(bool);
+    typedef void (T::*Response)();
+
+    CallbackNC_MapInterface_moveLeft(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallbackNC<T>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T> Callback_MapInterface_moveLeftPtr
+newCallback_MapInterface_moveLeft(const IceUtil::Handle<T>& instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapInterface_moveLeft<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_MapInterface_moveLeftPtr
+newCallback_MapInterface_moveLeft(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapInterface_moveLeft<T>(instance, 0, excb, sentcb);
+}
+
+template<class T> Callback_MapInterface_moveLeftPtr
+newCallback_MapInterface_moveLeft(T* instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapInterface_moveLeft<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_MapInterface_moveLeftPtr
+newCallback_MapInterface_moveLeft(T* instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapInterface_moveLeft<T>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT>
+class Callback_MapInterface_moveLeft : public Callback_MapInterface_moveLeft_Base, public ::IceInternal::OnewayCallback<T, CT>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
+    typedef void (T::*Sent)(bool , const CT&);
+    typedef void (T::*Response)(const CT&);
+
+    Callback_MapInterface_moveLeft(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallback<T, CT>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T, typename CT> Callback_MapInterface_moveLeftPtr
+newCallback_MapInterface_moveLeft(const IceUtil::Handle<T>& instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapInterface_moveLeft<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_MapInterface_moveLeftPtr
+newCallback_MapInterface_moveLeft(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapInterface_moveLeft<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_MapInterface_moveLeftPtr
+newCallback_MapInterface_moveLeft(T* instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapInterface_moveLeft<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_MapInterface_moveLeftPtr
+newCallback_MapInterface_moveLeft(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapInterface_moveLeft<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T>
+class CallbackNC_MapInterface_moveRight : public Callback_MapInterface_moveRight_Base, public ::IceInternal::OnewayCallbackNC<T>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception&);
+    typedef void (T::*Sent)(bool);
+    typedef void (T::*Response)();
+
+    CallbackNC_MapInterface_moveRight(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallbackNC<T>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T> Callback_MapInterface_moveRightPtr
+newCallback_MapInterface_moveRight(const IceUtil::Handle<T>& instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapInterface_moveRight<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_MapInterface_moveRightPtr
+newCallback_MapInterface_moveRight(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapInterface_moveRight<T>(instance, 0, excb, sentcb);
+}
+
+template<class T> Callback_MapInterface_moveRightPtr
+newCallback_MapInterface_moveRight(T* instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapInterface_moveRight<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_MapInterface_moveRightPtr
+newCallback_MapInterface_moveRight(T* instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapInterface_moveRight<T>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT>
+class Callback_MapInterface_moveRight : public Callback_MapInterface_moveRight_Base, public ::IceInternal::OnewayCallback<T, CT>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
+    typedef void (T::*Sent)(bool , const CT&);
+    typedef void (T::*Response)(const CT&);
+
+    Callback_MapInterface_moveRight(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallback<T, CT>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T, typename CT> Callback_MapInterface_moveRightPtr
+newCallback_MapInterface_moveRight(const IceUtil::Handle<T>& instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapInterface_moveRight<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_MapInterface_moveRightPtr
+newCallback_MapInterface_moveRight(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapInterface_moveRight<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_MapInterface_moveRightPtr
+newCallback_MapInterface_moveRight(T* instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapInterface_moveRight<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_MapInterface_moveRightPtr
+newCallback_MapInterface_moveRight(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapInterface_moveRight<T, CT>(instance, 0, excb, sentcb);
 }
 
 template<class T>
@@ -7160,6 +8097,88 @@ newCallback_MapObserver_bombExploded(T* instance, void (T::*excb)(const ::Ice::E
 }
 
 template<class T>
+class CallbackNC_MapObserver_bombKicked : public Callback_MapObserver_bombKicked_Base, public ::IceInternal::OnewayCallbackNC<T>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception&);
+    typedef void (T::*Sent)(bool);
+    typedef void (T::*Response)();
+
+    CallbackNC_MapObserver_bombKicked(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallbackNC<T>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T> Callback_MapObserver_bombKickedPtr
+newCallback_MapObserver_bombKicked(const IceUtil::Handle<T>& instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapObserver_bombKicked<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_MapObserver_bombKickedPtr
+newCallback_MapObserver_bombKicked(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapObserver_bombKicked<T>(instance, 0, excb, sentcb);
+}
+
+template<class T> Callback_MapObserver_bombKickedPtr
+newCallback_MapObserver_bombKicked(T* instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapObserver_bombKicked<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_MapObserver_bombKickedPtr
+newCallback_MapObserver_bombKicked(T* instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapObserver_bombKicked<T>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT>
+class Callback_MapObserver_bombKicked : public Callback_MapObserver_bombKicked_Base, public ::IceInternal::OnewayCallback<T, CT>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
+    typedef void (T::*Sent)(bool , const CT&);
+    typedef void (T::*Response)(const CT&);
+
+    Callback_MapObserver_bombKicked(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallback<T, CT>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T, typename CT> Callback_MapObserver_bombKickedPtr
+newCallback_MapObserver_bombKicked(const IceUtil::Handle<T>& instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapObserver_bombKicked<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_MapObserver_bombKickedPtr
+newCallback_MapObserver_bombKicked(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapObserver_bombKicked<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_MapObserver_bombKickedPtr
+newCallback_MapObserver_bombKicked(T* instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapObserver_bombKicked<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_MapObserver_bombKickedPtr
+newCallback_MapObserver_bombKicked(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapObserver_bombKicked<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T>
 class CallbackNC_MapObserver_bonusesDropped : public Callback_MapObserver_bonusesDropped_Base, public ::IceInternal::OnewayCallbackNC<T>
 {
 public:
@@ -7242,6 +8261,88 @@ newCallback_MapObserver_bonusesDropped(T* instance, void (T::*excb)(const ::Ice:
 }
 
 template<class T>
+class CallbackNC_MapObserver_playerDied : public Callback_MapObserver_playerDied_Base, public ::IceInternal::OnewayCallbackNC<T>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception&);
+    typedef void (T::*Sent)(bool);
+    typedef void (T::*Response)();
+
+    CallbackNC_MapObserver_playerDied(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallbackNC<T>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T> Callback_MapObserver_playerDiedPtr
+newCallback_MapObserver_playerDied(const IceUtil::Handle<T>& instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapObserver_playerDied<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_MapObserver_playerDiedPtr
+newCallback_MapObserver_playerDied(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapObserver_playerDied<T>(instance, 0, excb, sentcb);
+}
+
+template<class T> Callback_MapObserver_playerDiedPtr
+newCallback_MapObserver_playerDied(T* instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapObserver_playerDied<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_MapObserver_playerDiedPtr
+newCallback_MapObserver_playerDied(T* instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_MapObserver_playerDied<T>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT>
+class Callback_MapObserver_playerDied : public Callback_MapObserver_playerDied_Base, public ::IceInternal::OnewayCallback<T, CT>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
+    typedef void (T::*Sent)(bool , const CT&);
+    typedef void (T::*Response)(const CT&);
+
+    Callback_MapObserver_playerDied(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallback<T, CT>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T, typename CT> Callback_MapObserver_playerDiedPtr
+newCallback_MapObserver_playerDied(const IceUtil::Handle<T>& instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapObserver_playerDied<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_MapObserver_playerDiedPtr
+newCallback_MapObserver_playerDied(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapObserver_playerDied<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_MapObserver_playerDiedPtr
+newCallback_MapObserver_playerDied(T* instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapObserver_playerDied<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_MapObserver_playerDiedPtr
+newCallback_MapObserver_playerDied(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_MapObserver_playerDied<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T>
 class CallbackNC_ServerInterface_connect : public Callback_ServerInterface_connect_Base, public ::IceInternal::TwowayCallbackNC<T>
 {
 public:
@@ -7250,7 +8351,7 @@ public:
 
     typedef void (T::*Exception)(const ::Ice::Exception&);
     typedef void (T::*Sent)(bool);
-    typedef void (T::*Response)(const ::Bomberloutre::UserData&);
+    typedef void (T::*Response)(const ::BomberLoutreInterface::UserData&);
 
     CallbackNC_ServerInterface_connect(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
         : ::IceInternal::TwowayCallbackNC<T>(obj, cb != 0, excb, sentcb), response(cb)
@@ -7259,8 +8360,8 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::ServerInterfacePrx __proxy = ::Bomberloutre::ServerInterfacePrx::uncheckedCast(__result->getProxy());
-        ::Bomberloutre::UserData __ret;
+        ::BomberLoutreInterface::ServerInterfacePrx __proxy = ::BomberLoutreInterface::ServerInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::UserData __ret;
         try
         {
             __ret = __proxy->end_connect(__result);
@@ -7288,13 +8389,13 @@ public:
 };
 
 template<class T> Callback_ServerInterface_connectPtr
-newCallback_ServerInterface_connect(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::Bomberloutre::UserData&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+newCallback_ServerInterface_connect(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::BomberLoutreInterface::UserData&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
 {
     return new CallbackNC_ServerInterface_connect<T>(instance, cb, excb, sentcb);
 }
 
 template<class T> Callback_ServerInterface_connectPtr
-newCallback_ServerInterface_connect(T* instance, void (T::*cb)(const ::Bomberloutre::UserData&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+newCallback_ServerInterface_connect(T* instance, void (T::*cb)(const ::BomberLoutreInterface::UserData&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
 {
     return new CallbackNC_ServerInterface_connect<T>(instance, cb, excb, sentcb);
 }
@@ -7308,7 +8409,7 @@ public:
 
     typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
     typedef void (T::*Sent)(bool , const CT&);
-    typedef void (T::*Response)(const ::Bomberloutre::UserData&, const CT&);
+    typedef void (T::*Response)(const ::BomberLoutreInterface::UserData&, const CT&);
 
     Callback_ServerInterface_connect(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
         : ::IceInternal::TwowayCallback<T, CT>(obj, cb != 0, excb, sentcb), response(cb)
@@ -7317,8 +8418,8 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::ServerInterfacePrx __proxy = ::Bomberloutre::ServerInterfacePrx::uncheckedCast(__result->getProxy());
-        ::Bomberloutre::UserData __ret;
+        ::BomberLoutreInterface::ServerInterfacePrx __proxy = ::BomberLoutreInterface::ServerInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::UserData __ret;
         try
         {
             __ret = __proxy->end_connect(__result);
@@ -7346,13 +8447,13 @@ public:
 };
 
 template<class T, typename CT> Callback_ServerInterface_connectPtr
-newCallback_ServerInterface_connect(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::Bomberloutre::UserData&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+newCallback_ServerInterface_connect(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::BomberLoutreInterface::UserData&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
     return new Callback_ServerInterface_connect<T, CT>(instance, cb, excb, sentcb);
 }
 
 template<class T, typename CT> Callback_ServerInterface_connectPtr
-newCallback_ServerInterface_connect(T* instance, void (T::*cb)(const ::Bomberloutre::UserData&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+newCallback_ServerInterface_connect(T* instance, void (T::*cb)(const ::BomberLoutreInterface::UserData&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
     return new Callback_ServerInterface_connect<T, CT>(instance, cb, excb, sentcb);
 }
@@ -7366,7 +8467,7 @@ public:
 
     typedef void (T::*Exception)(const ::Ice::Exception&);
     typedef void (T::*Sent)(bool);
-    typedef void (T::*Response)(const ::Bomberloutre::UserData&);
+    typedef void (T::*Response)(const ::BomberLoutreInterface::UserData&);
 
     CallbackNC_ServerInterface_createUser(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
         : ::IceInternal::TwowayCallbackNC<T>(obj, cb != 0, excb, sentcb), response(cb)
@@ -7375,8 +8476,8 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::ServerInterfacePrx __proxy = ::Bomberloutre::ServerInterfacePrx::uncheckedCast(__result->getProxy());
-        ::Bomberloutre::UserData __ret;
+        ::BomberLoutreInterface::ServerInterfacePrx __proxy = ::BomberLoutreInterface::ServerInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::UserData __ret;
         try
         {
             __ret = __proxy->end_createUser(__result);
@@ -7404,13 +8505,13 @@ public:
 };
 
 template<class T> Callback_ServerInterface_createUserPtr
-newCallback_ServerInterface_createUser(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::Bomberloutre::UserData&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+newCallback_ServerInterface_createUser(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::BomberLoutreInterface::UserData&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
 {
     return new CallbackNC_ServerInterface_createUser<T>(instance, cb, excb, sentcb);
 }
 
 template<class T> Callback_ServerInterface_createUserPtr
-newCallback_ServerInterface_createUser(T* instance, void (T::*cb)(const ::Bomberloutre::UserData&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+newCallback_ServerInterface_createUser(T* instance, void (T::*cb)(const ::BomberLoutreInterface::UserData&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
 {
     return new CallbackNC_ServerInterface_createUser<T>(instance, cb, excb, sentcb);
 }
@@ -7424,7 +8525,7 @@ public:
 
     typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
     typedef void (T::*Sent)(bool , const CT&);
-    typedef void (T::*Response)(const ::Bomberloutre::UserData&, const CT&);
+    typedef void (T::*Response)(const ::BomberLoutreInterface::UserData&, const CT&);
 
     Callback_ServerInterface_createUser(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
         : ::IceInternal::TwowayCallback<T, CT>(obj, cb != 0, excb, sentcb), response(cb)
@@ -7433,8 +8534,8 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::ServerInterfacePrx __proxy = ::Bomberloutre::ServerInterfacePrx::uncheckedCast(__result->getProxy());
-        ::Bomberloutre::UserData __ret;
+        ::BomberLoutreInterface::ServerInterfacePrx __proxy = ::BomberLoutreInterface::ServerInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::UserData __ret;
         try
         {
             __ret = __proxy->end_createUser(__result);
@@ -7462,13 +8563,13 @@ public:
 };
 
 template<class T, typename CT> Callback_ServerInterface_createUserPtr
-newCallback_ServerInterface_createUser(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::Bomberloutre::UserData&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+newCallback_ServerInterface_createUser(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::BomberLoutreInterface::UserData&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
     return new Callback_ServerInterface_createUser<T, CT>(instance, cb, excb, sentcb);
 }
 
 template<class T, typename CT> Callback_ServerInterface_createUserPtr
-newCallback_ServerInterface_createUser(T* instance, void (T::*cb)(const ::Bomberloutre::UserData&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+newCallback_ServerInterface_createUser(T* instance, void (T::*cb)(const ::BomberLoutreInterface::UserData&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
     return new Callback_ServerInterface_createUser<T, CT>(instance, cb, excb, sentcb);
 }
@@ -7491,7 +8592,7 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::ServerInterfacePrx __proxy = ::Bomberloutre::ServerInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::ServerInterfacePrx __proxy = ::BomberLoutreInterface::ServerInterfacePrx::uncheckedCast(__result->getProxy());
         bool __ret;
         try
         {
@@ -7549,7 +8650,7 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::ServerInterfacePrx __proxy = ::Bomberloutre::ServerInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::ServerInterfacePrx __proxy = ::BomberLoutreInterface::ServerInterfacePrx::uncheckedCast(__result->getProxy());
         bool __ret;
         try
         {
@@ -7598,7 +8699,7 @@ public:
 
     typedef void (T::*Exception)(const ::Ice::Exception&);
     typedef void (T::*Sent)(bool);
-    typedef void (T::*Response)(const ::Bomberloutre::GameInterfacePrx&);
+    typedef void (T::*Response)(const ::BomberLoutreInterface::GameInterfacePrx&);
 
     CallbackNC_ServerInterface_addGame(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
         : ::IceInternal::TwowayCallbackNC<T>(obj, cb != 0, excb, sentcb), response(cb)
@@ -7607,8 +8708,8 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::ServerInterfacePrx __proxy = ::Bomberloutre::ServerInterfacePrx::uncheckedCast(__result->getProxy());
-        ::Bomberloutre::GameInterfacePrx __ret;
+        ::BomberLoutreInterface::ServerInterfacePrx __proxy = ::BomberLoutreInterface::ServerInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::GameInterfacePrx __ret;
         try
         {
             __ret = __proxy->end_addGame(__result);
@@ -7636,13 +8737,13 @@ public:
 };
 
 template<class T> Callback_ServerInterface_addGamePtr
-newCallback_ServerInterface_addGame(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::Bomberloutre::GameInterfacePrx&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+newCallback_ServerInterface_addGame(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::BomberLoutreInterface::GameInterfacePrx&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
 {
     return new CallbackNC_ServerInterface_addGame<T>(instance, cb, excb, sentcb);
 }
 
 template<class T> Callback_ServerInterface_addGamePtr
-newCallback_ServerInterface_addGame(T* instance, void (T::*cb)(const ::Bomberloutre::GameInterfacePrx&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+newCallback_ServerInterface_addGame(T* instance, void (T::*cb)(const ::BomberLoutreInterface::GameInterfacePrx&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
 {
     return new CallbackNC_ServerInterface_addGame<T>(instance, cb, excb, sentcb);
 }
@@ -7656,7 +8757,7 @@ public:
 
     typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
     typedef void (T::*Sent)(bool , const CT&);
-    typedef void (T::*Response)(const ::Bomberloutre::GameInterfacePrx&, const CT&);
+    typedef void (T::*Response)(const ::BomberLoutreInterface::GameInterfacePrx&, const CT&);
 
     Callback_ServerInterface_addGame(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
         : ::IceInternal::TwowayCallback<T, CT>(obj, cb != 0, excb, sentcb), response(cb)
@@ -7665,8 +8766,8 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::ServerInterfacePrx __proxy = ::Bomberloutre::ServerInterfacePrx::uncheckedCast(__result->getProxy());
-        ::Bomberloutre::GameInterfacePrx __ret;
+        ::BomberLoutreInterface::ServerInterfacePrx __proxy = ::BomberLoutreInterface::ServerInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::GameInterfacePrx __ret;
         try
         {
             __ret = __proxy->end_addGame(__result);
@@ -7694,13 +8795,13 @@ public:
 };
 
 template<class T, typename CT> Callback_ServerInterface_addGamePtr
-newCallback_ServerInterface_addGame(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::Bomberloutre::GameInterfacePrx&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+newCallback_ServerInterface_addGame(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::BomberLoutreInterface::GameInterfacePrx&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
     return new Callback_ServerInterface_addGame<T, CT>(instance, cb, excb, sentcb);
 }
 
 template<class T, typename CT> Callback_ServerInterface_addGamePtr
-newCallback_ServerInterface_addGame(T* instance, void (T::*cb)(const ::Bomberloutre::GameInterfacePrx&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+newCallback_ServerInterface_addGame(T* instance, void (T::*cb)(const ::BomberLoutreInterface::GameInterfacePrx&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
     return new Callback_ServerInterface_addGame<T, CT>(instance, cb, excb, sentcb);
 }
@@ -7714,7 +8815,7 @@ public:
 
     typedef void (T::*Exception)(const ::Ice::Exception&);
     typedef void (T::*Sent)(bool);
-    typedef void (T::*Response)(const ::Bomberloutre::Map&);
+    typedef void (T::*Response)(const ::BomberLoutreInterface::Map&);
 
     CallbackNC_ServerInterface_joinGame(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
         : ::IceInternal::TwowayCallbackNC<T>(obj, cb != 0, excb, sentcb), response(cb)
@@ -7723,8 +8824,8 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::ServerInterfacePrx __proxy = ::Bomberloutre::ServerInterfacePrx::uncheckedCast(__result->getProxy());
-        ::Bomberloutre::Map __ret;
+        ::BomberLoutreInterface::ServerInterfacePrx __proxy = ::BomberLoutreInterface::ServerInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::Map __ret;
         try
         {
             __ret = __proxy->end_joinGame(__result);
@@ -7752,13 +8853,13 @@ public:
 };
 
 template<class T> Callback_ServerInterface_joinGamePtr
-newCallback_ServerInterface_joinGame(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::Bomberloutre::Map&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+newCallback_ServerInterface_joinGame(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::BomberLoutreInterface::Map&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
 {
     return new CallbackNC_ServerInterface_joinGame<T>(instance, cb, excb, sentcb);
 }
 
 template<class T> Callback_ServerInterface_joinGamePtr
-newCallback_ServerInterface_joinGame(T* instance, void (T::*cb)(const ::Bomberloutre::Map&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+newCallback_ServerInterface_joinGame(T* instance, void (T::*cb)(const ::BomberLoutreInterface::Map&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
 {
     return new CallbackNC_ServerInterface_joinGame<T>(instance, cb, excb, sentcb);
 }
@@ -7772,7 +8873,7 @@ public:
 
     typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
     typedef void (T::*Sent)(bool , const CT&);
-    typedef void (T::*Response)(const ::Bomberloutre::Map&, const CT&);
+    typedef void (T::*Response)(const ::BomberLoutreInterface::Map&, const CT&);
 
     Callback_ServerInterface_joinGame(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
         : ::IceInternal::TwowayCallback<T, CT>(obj, cb != 0, excb, sentcb), response(cb)
@@ -7781,8 +8882,8 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::ServerInterfacePrx __proxy = ::Bomberloutre::ServerInterfacePrx::uncheckedCast(__result->getProxy());
-        ::Bomberloutre::Map __ret;
+        ::BomberLoutreInterface::ServerInterfacePrx __proxy = ::BomberLoutreInterface::ServerInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::Map __ret;
         try
         {
             __ret = __proxy->end_joinGame(__result);
@@ -7810,13 +8911,13 @@ public:
 };
 
 template<class T, typename CT> Callback_ServerInterface_joinGamePtr
-newCallback_ServerInterface_joinGame(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::Bomberloutre::Map&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+newCallback_ServerInterface_joinGame(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::BomberLoutreInterface::Map&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
     return new Callback_ServerInterface_joinGame<T, CT>(instance, cb, excb, sentcb);
 }
 
 template<class T, typename CT> Callback_ServerInterface_joinGamePtr
-newCallback_ServerInterface_joinGame(T* instance, void (T::*cb)(const ::Bomberloutre::Map&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+newCallback_ServerInterface_joinGame(T* instance, void (T::*cb)(const ::BomberLoutreInterface::Map&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
     return new Callback_ServerInterface_joinGame<T, CT>(instance, cb, excb, sentcb);
 }
@@ -7830,7 +8931,7 @@ public:
 
     typedef void (T::*Exception)(const ::Ice::Exception&);
     typedef void (T::*Sent)(bool);
-    typedef void (T::*Response)(const ::Bomberloutre::GameDataList&);
+    typedef void (T::*Response)(const ::BomberLoutreInterface::GameDataList&);
 
     CallbackNC_ServerInterface_getGameList(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
         : ::IceInternal::TwowayCallbackNC<T>(obj, cb != 0, excb, sentcb), response(cb)
@@ -7839,8 +8940,8 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::ServerInterfacePrx __proxy = ::Bomberloutre::ServerInterfacePrx::uncheckedCast(__result->getProxy());
-        ::Bomberloutre::GameDataList __ret;
+        ::BomberLoutreInterface::ServerInterfacePrx __proxy = ::BomberLoutreInterface::ServerInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::GameDataList __ret;
         try
         {
             __ret = __proxy->end_getGameList(__result);
@@ -7868,13 +8969,13 @@ public:
 };
 
 template<class T> Callback_ServerInterface_getGameListPtr
-newCallback_ServerInterface_getGameList(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::Bomberloutre::GameDataList&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+newCallback_ServerInterface_getGameList(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::BomberLoutreInterface::GameDataList&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
 {
     return new CallbackNC_ServerInterface_getGameList<T>(instance, cb, excb, sentcb);
 }
 
 template<class T> Callback_ServerInterface_getGameListPtr
-newCallback_ServerInterface_getGameList(T* instance, void (T::*cb)(const ::Bomberloutre::GameDataList&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+newCallback_ServerInterface_getGameList(T* instance, void (T::*cb)(const ::BomberLoutreInterface::GameDataList&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
 {
     return new CallbackNC_ServerInterface_getGameList<T>(instance, cb, excb, sentcb);
 }
@@ -7888,7 +8989,7 @@ public:
 
     typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
     typedef void (T::*Sent)(bool , const CT&);
-    typedef void (T::*Response)(const ::Bomberloutre::GameDataList&, const CT&);
+    typedef void (T::*Response)(const ::BomberLoutreInterface::GameDataList&, const CT&);
 
     Callback_ServerInterface_getGameList(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
         : ::IceInternal::TwowayCallback<T, CT>(obj, cb != 0, excb, sentcb), response(cb)
@@ -7897,8 +8998,8 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::ServerInterfacePrx __proxy = ::Bomberloutre::ServerInterfacePrx::uncheckedCast(__result->getProxy());
-        ::Bomberloutre::GameDataList __ret;
+        ::BomberLoutreInterface::ServerInterfacePrx __proxy = ::BomberLoutreInterface::ServerInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::GameDataList __ret;
         try
         {
             __ret = __proxy->end_getGameList(__result);
@@ -7926,13 +9027,13 @@ public:
 };
 
 template<class T, typename CT> Callback_ServerInterface_getGameListPtr
-newCallback_ServerInterface_getGameList(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::Bomberloutre::GameDataList&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+newCallback_ServerInterface_getGameList(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::BomberLoutreInterface::GameDataList&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
     return new Callback_ServerInterface_getGameList<T, CT>(instance, cb, excb, sentcb);
 }
 
 template<class T, typename CT> Callback_ServerInterface_getGameListPtr
-newCallback_ServerInterface_getGameList(T* instance, void (T::*cb)(const ::Bomberloutre::GameDataList&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+newCallback_ServerInterface_getGameList(T* instance, void (T::*cb)(const ::BomberLoutreInterface::GameDataList&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
     return new Callback_ServerInterface_getGameList<T, CT>(instance, cb, excb, sentcb);
 }
@@ -7946,7 +9047,7 @@ public:
 
     typedef void (T::*Exception)(const ::Ice::Exception&);
     typedef void (T::*Sent)(bool);
-    typedef void (T::*Response)(const ::Bomberloutre::UserDataList&);
+    typedef void (T::*Response)(const ::BomberLoutreInterface::UserDataList&);
 
     CallbackNC_ServerInterface_getUserList(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
         : ::IceInternal::TwowayCallbackNC<T>(obj, cb != 0, excb, sentcb), response(cb)
@@ -7955,8 +9056,8 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::ServerInterfacePrx __proxy = ::Bomberloutre::ServerInterfacePrx::uncheckedCast(__result->getProxy());
-        ::Bomberloutre::UserDataList __ret;
+        ::BomberLoutreInterface::ServerInterfacePrx __proxy = ::BomberLoutreInterface::ServerInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::UserDataList __ret;
         try
         {
             __ret = __proxy->end_getUserList(__result);
@@ -7984,13 +9085,13 @@ public:
 };
 
 template<class T> Callback_ServerInterface_getUserListPtr
-newCallback_ServerInterface_getUserList(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::Bomberloutre::UserDataList&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+newCallback_ServerInterface_getUserList(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::BomberLoutreInterface::UserDataList&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
 {
     return new CallbackNC_ServerInterface_getUserList<T>(instance, cb, excb, sentcb);
 }
 
 template<class T> Callback_ServerInterface_getUserListPtr
-newCallback_ServerInterface_getUserList(T* instance, void (T::*cb)(const ::Bomberloutre::UserDataList&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+newCallback_ServerInterface_getUserList(T* instance, void (T::*cb)(const ::BomberLoutreInterface::UserDataList&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
 {
     return new CallbackNC_ServerInterface_getUserList<T>(instance, cb, excb, sentcb);
 }
@@ -8004,7 +9105,7 @@ public:
 
     typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
     typedef void (T::*Sent)(bool , const CT&);
-    typedef void (T::*Response)(const ::Bomberloutre::UserDataList&, const CT&);
+    typedef void (T::*Response)(const ::BomberLoutreInterface::UserDataList&, const CT&);
 
     Callback_ServerInterface_getUserList(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
         : ::IceInternal::TwowayCallback<T, CT>(obj, cb != 0, excb, sentcb), response(cb)
@@ -8013,8 +9114,8 @@ public:
 
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
-        ::Bomberloutre::ServerInterfacePrx __proxy = ::Bomberloutre::ServerInterfacePrx::uncheckedCast(__result->getProxy());
-        ::Bomberloutre::UserDataList __ret;
+        ::BomberLoutreInterface::ServerInterfacePrx __proxy = ::BomberLoutreInterface::ServerInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::UserDataList __ret;
         try
         {
             __ret = __proxy->end_getUserList(__result);
@@ -8042,13 +9143,13 @@ public:
 };
 
 template<class T, typename CT> Callback_ServerInterface_getUserListPtr
-newCallback_ServerInterface_getUserList(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::Bomberloutre::UserDataList&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+newCallback_ServerInterface_getUserList(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::BomberLoutreInterface::UserDataList&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
     return new Callback_ServerInterface_getUserList<T, CT>(instance, cb, excb, sentcb);
 }
 
 template<class T, typename CT> Callback_ServerInterface_getUserListPtr
-newCallback_ServerInterface_getUserList(T* instance, void (T::*cb)(const ::Bomberloutre::UserDataList&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+newCallback_ServerInterface_getUserList(T* instance, void (T::*cb)(const ::BomberLoutreInterface::UserDataList&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
     return new Callback_ServerInterface_getUserList<T, CT>(instance, cb, excb, sentcb);
 }
