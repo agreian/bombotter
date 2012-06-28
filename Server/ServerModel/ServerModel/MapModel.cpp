@@ -3,10 +3,15 @@
 #include "MapItem.h"
 #include "BombItem.h"
 
-/*MapModel::MapModel()
+MapModel::MapModel()
 {
 	//CODE TON PUTAIN DE BOT !
-}*/
+}
+
+MapModel::~MapModel()
+{
+	//CODE TON PUTAIN DE BOT !
+}
 
 bool MapModel::checkMove(PlayerModel p, Point arrive)
 {
@@ -26,7 +31,7 @@ void MapModel::createMapItem(string typeMapItem)
 	*/
 }
 
-void MapModel::dropBonus(MapItem* bonus)
+void MapModel::dropBonus(int bonus)
 {
 	/*
 	Pour le mode survival?

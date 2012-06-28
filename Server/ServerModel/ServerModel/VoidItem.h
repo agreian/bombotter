@@ -14,12 +14,14 @@ class VoidItem : public MapItem
 	// TODO : ajoutez ici vos méthodes pour cette classe.
 	public:
 		VoidItem();
+		VoidItem(MapModel* map);
 		~VoidItem();
 
 		bool isDestructible();
 		bool isWalkable();
 
 		/* GETTERS */
+		int getId();
 
 		/* SETTERS */
 

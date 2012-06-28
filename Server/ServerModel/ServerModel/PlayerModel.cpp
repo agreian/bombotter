@@ -15,7 +15,7 @@ PlayerModel::PlayerModel(int newWitdh, int newHeight)
 	this->height = newHeight;
 }
 
-void PlayerModel::addBonus(Bonus b)
+void PlayerModel::addBonus(Bonus* b)
 {
 	
 }

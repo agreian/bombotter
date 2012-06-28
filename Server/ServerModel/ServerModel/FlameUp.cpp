@@ -2,9 +2,14 @@
 
 #include "FlameUp.h"
 
-FlameUp::FlameUp()
+/*FlameUp::FlameUp()
 {
-	this->power++;
+	this->power = 1;
+}*/
+
+FlameUp::FlameUp(MapModel* map):Bonus(map)
+{
+	this->power = 1;
 }
 
 FlameUp::~FlameUp()
@@ -12,3 +17,7 @@ FlameUp::~FlameUp()
 	/*Trololo */
 }
 
+int FlameUp::getId()
+{
+	return MapModel::MapItemCode::FlameUpCode;
+}

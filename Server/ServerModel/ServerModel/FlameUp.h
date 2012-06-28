@@ -13,9 +13,11 @@ class FlameUp : public Bonus
 {
 	// TODO : ajoutez ici vos méthodes pour cette classe.
 	public:
-		FlameUp();
+		//FlameUp();
+		FlameUp(MapModel* map);
 		~FlameUp();
 		/* GETTERS */
+		int getId();
 
 		/* SETTERS */
 };

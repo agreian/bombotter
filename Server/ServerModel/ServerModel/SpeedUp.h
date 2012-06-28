@@ -13,9 +13,11 @@ class SpeedUp : public Bonus
 {
 	// TODO : ajoutez ici vos méthodes pour cette classe.
 	public:
-		SpeedUp();
+		//SpeedUp();
+		SpeedUp(MapModel* map);
 		~SpeedUp();
 		/* GETTERS */
+		int getId();
 
 		/* SETTERS */
 };

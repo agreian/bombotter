@@ -1,10 +1,15 @@
 #include "stdafx.h"
 
 #include "RockItem.h"
-
+/*
 RockItem::RockItem()
 {
-	/*Trololo */
+	
+}*/
+
+RockItem::RockItem(MapModel* map):MapItem(map,false,false)
+{
+
 }
 
 RockItem::~RockItem()
@@ -12,12 +17,7 @@ RockItem::~RockItem()
 	/*Trololo */
 }
 
-bool RockItem::isDestructible() 
+int RockItem::getId()
 {
-	return false;
-}
-
-bool RockItem::isWalkable()
-{
-	return false;
+	return MapModel::MapItemCode::RockItemCode;
 }
