@@ -19,3 +19,7 @@ int BombUp::getId()
 	return MapModel::BombUpCode;
 }
 
+int BombUp::getBomb()
+{
+	return this->bomb;
+}

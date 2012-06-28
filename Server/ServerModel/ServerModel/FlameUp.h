@@ -17,6 +17,7 @@ class FlameUp : public Bonus
 		~FlameUp();
 		/* GETTERS */
 		int getId();
+		int getPower();
 
 		/* SETTERS */
 };

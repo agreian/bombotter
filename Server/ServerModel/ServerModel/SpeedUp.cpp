@@ -19,3 +19,8 @@ int SpeedUp::getId()
 {
 	return MapModel::SpeedUpCode;
 }
+
+int SpeedUp::getSpeed()
+{
+	return this->speed;
+}
