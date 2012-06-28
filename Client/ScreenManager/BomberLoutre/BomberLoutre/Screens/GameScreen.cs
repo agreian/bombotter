@@ -165,165 +165,11 @@ namespace BomberLoutre.Screens
 
             for (int i = 1; i <= bomb.BombPower; ++i)
             {
-                #region explosion to right
-                if (!Map.IsObstacle((int)bomb.CellPosition.X + i, (int)bomb.CellPosition.Y) && !right)
-                {
-                    if (((int)bomb.CellPosition.X + i) <= Config.MapSize.X)
-                        flameList.Add(new Flame((int)bomb.CellPosition.X + i, (int)bomb.CellPosition.Y, this, GameRef, true));
-
-                    if (Map.IsBomb((int)bomb.CellPosition.X + i, (int)bomb.CellPosition.Y) && !right)
-                    {
-                        for (int j = 0; j < bombList.Count; ++j)
-                        {
-                            if ((bombList[j].CellPosition.X == (bomb.CellPosition.X + i) && bombList[j].CellPosition.Y == bomb.CellPosition.Y))
-                            {
-                                BOOM(bombList[j]);
-                                right = true;
-                            }
-                        }
-                    }
-                }
-
-                else
-                {
-                    // Utiliser une hashmap ou similaire plus tard pour éviter le parcours de la liste
-                    if (Map.IsBox((int)bomb.CellPosition.X + i, (int)bomb.CellPosition.Y) && !right)
-                    {
-                        for (int j = 0; j < boxList.Count; ++j)
-                        {
-                            if ((boxList[j].cellPosition.X == (bomb.CellPosition.X + i) && boxList[j].cellPosition.Y == bomb.CellPosition.Y))
-                            {
-                                boxList.RemoveAt(j);
-                                Map.RemoveBox((int)bomb.CellPosition.X + i, (int)bomb.CellPosition.Y);
-                                AddRandomBonus((int)bomb.CellPosition.X + i, (int)bomb.CellPosition.Y);
-                            }
-                        }
-                    }
-
-                    right = true;
-                }
-
-                #endregion
-
-                #region explosion to bottom
-                if (!Map.IsObstacle((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y + i) && !bottom)
-                {
-                    if (((int)bomb.CellPosition.Y + i) <= Config.MapSize.Y)
-                    flameList.Add(new Flame((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y + i, this, GameRef));
-
-                    if (Map.IsBomb((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y + i) && !bottom)
-                    {
-                        for (int j = 0; j < bombList.Count; ++j)
-                        {
-                            if ((bombList[j].CellPosition.X == (bomb.CellPosition.X) && bombList[j].CellPosition.Y == bomb.CellPosition.Y + i))
-                            {
-                                BOOM(bombList[j]);
-                                bottom = true;
-                            }
-                        }
-                    }
-                }
-
-                else
-                {
-                    // Utiliser une hashmap ou similaire plus tard pour éviter le parcours de la liste
-                    if (Map.IsBox((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y + i) && !bottom)
-                    {
-                        for (int j = 0; j < boxList.Count; ++j)
-                        {
-                            if ((boxList[j].cellPosition.X == (bomb.CellPosition.X) && boxList[j].cellPosition.Y == bomb.CellPosition.Y + i))
-                            {
-                                boxList.RemoveAt(j);
-                                Map.RemoveBox((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y + i);
-                                AddRandomBonus((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y + i);
-                            }
-                        }
-                    }
-
-                    bottom = true;
-                }
-                #endregion
-
-                #region explosion to left
-                if (!Map.IsObstacle((int)bomb.CellPosition.X - i, (int)bomb.CellPosition.Y) && !left)
-                {
-                    if (((int)bomb.CellPosition.X - i) > 0)
-                    flameList.Add(new Flame((int)bomb.CellPosition.X - i, (int)bomb.CellPosition.Y, this, GameRef, true));
-
-                    if (Map.IsBomb((int)bomb.CellPosition.X - i, (int)bomb.CellPosition.Y) && !left)
-                    {
-                        for (int j = 0; j < bombList.Count; ++j)
-                        {
-                            if ((bombList[j].CellPosition.X == (bomb.CellPosition.X - i) && bombList[j].CellPosition.Y == bomb.CellPosition.Y))
-                            {
-                                BOOM(bombList[j]);
-                                left = true;
-                            }
-                        }
-                    }
-                }
-
-                else
-                {
-                    // Utiliser une hashmap ou similaire plus tard pour éviter le parcours de la liste
-                    if (Map.IsBox((int)bomb.CellPosition.X - i, (int)bomb.CellPosition.Y) && !left)
-                    {
-                        for (int j = 0; j < boxList.Count; ++j)
-                        {
-                            if ((boxList[j].cellPosition.X == (bomb.CellPosition.X - i) && boxList[j].cellPosition.Y == bomb.CellPosition.Y))
-                            {
-                                boxList.RemoveAt(j);
-                                Map.RemoveBox((int)bomb.CellPosition.X - i, (int)bomb.CellPosition.Y);
-                                AddRandomBonus((int)bomb.CellPosition.X - i, (int)bomb.CellPosition.Y);
-                            }
-                        }
-                    }
-
-                    left = true;
-                }
-                #endregion
-
-                #region explosion to top
-
-                if (!Map.IsObstacle((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y - i) && !top)
-                {
-                    if(((int)bomb.CellPosition.Y - i) > 0)
-                    flameList.Add(new Flame((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y - i, this, GameRef));
-
-                    if (Map.IsBomb((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y - i) && !top)
-                    {
-                        for (int j = 0; j < bombList.Count; ++j)
-                        {
-                            if ((bombList[j].CellPosition.X == (bomb.CellPosition.X) && bombList[j].CellPosition.Y == bomb.CellPosition.Y - i))
-                            {
-                                BOOM(bombList[j]);
-                                top = true;
-                            }
-                        }
-                    }
-                }
-
-                else
-                {
-                    // Utiliser une hashmap ou similaire plus tard pour éviter le parcours de la liste
-                    if (Map.IsBox((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y - i) && !top)
-                    {
-                        for (int j = 0; j < boxList.Count; ++j)
-                        {
-                            if ((boxList[j].cellPosition.X == (bomb.CellPosition.X) && boxList[j].cellPosition.Y == bomb.CellPosition.Y - i))
-                            {
-                                boxList.RemoveAt(j);
-                                Map.RemoveBox((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y - i);
-                                AddRandomBonus((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y - i);
-                            }
-                        }
-                    }
-
-                    top = true;
-                }
-                #endregion
+                right = ComputeExplosion(bomb, i, 0, right);
+                bottom = ComputeExplosion(bomb, 0, i, bottom);
+                left = ComputeExplosion(bomb, -i, 0, left);
+                top = ComputeExplosion(bomb, 0, -i, top);
             }
-
 
             bombList.Remove(bomb);
             bombExplosionSound.Play();
@@ -332,6 +178,54 @@ namespace BomberLoutre.Screens
         public void RemoveFlame(Flame flame)
         {
             flameList.Remove(flame);
+        }
+
+        public bool ComputeExplosion(Bomb bomb, int xOffset, int yOffset, bool stop)
+        {
+            bool rotateFlame = (xOffset != 0) ? true : false;
+            if (!Map.IsObstacle((int)bomb.CellPosition.X + xOffset, (int)bomb.CellPosition.Y + yOffset) && !stop)
+            {
+                if ((int)bomb.CellPosition.X + xOffset <= Config.MapSize.X && (int)bomb.CellPosition.X + xOffset > 0)
+                {
+                    if ((int)bomb.CellPosition.Y + yOffset <= Config.MapSize.Y && (int)bomb.CellPosition.Y + yOffset > 0)
+                    {
+                        flameList.Add(new Flame((int)bomb.CellPosition.X + xOffset, (int)bomb.CellPosition.Y + yOffset, this, GameRef, rotateFlame));
+                    }
+                }
+
+                if (Map.IsBomb((int)bomb.CellPosition.X + xOffset, (int)bomb.CellPosition.Y + yOffset) && !stop)
+                {
+                    for (int j = 0; j < bombList.Count; ++j)
+                    {
+                        if ((bombList[j].CellPosition.X == (bomb.CellPosition.X + xOffset) && bombList[j].CellPosition.Y == bomb.CellPosition.Y + yOffset))
+                        {
+                            BOOM(bombList[j]);
+                            stop = true;
+                        }
+                    }
+                }
+            }
+
+            else
+            {
+                // Utiliser une hashmap ou similaire plus tard pour éviter le parcours de la liste
+                if (Map.IsBox((int)bomb.CellPosition.X + xOffset, (int)bomb.CellPosition.Y + yOffset) && !stop)
+                {
+                    for (int j = 0; j < boxList.Count; ++j)
+                    {
+                        if ((boxList[j].cellPosition.X == (bomb.CellPosition.X + xOffset) && boxList[j].cellPosition.Y == bomb.CellPosition.Y + yOffset))
+                        {
+                            boxList.RemoveAt(j);
+                            Map.RemoveBox((int)bomb.CellPosition.X + xOffset, (int)bomb.CellPosition.Y + yOffset);
+                            AddRandomBonus((int)bomb.CellPosition.X + xOffset, (int)bomb.CellPosition.Y + yOffset);
+                        }
+                    }
+                }
+
+                stop = true;
+            }
+
+            return stop;
         }
         #endregion
     }
