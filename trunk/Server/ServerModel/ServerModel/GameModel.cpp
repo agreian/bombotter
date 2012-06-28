@@ -16,25 +16,11 @@ GameModel::GameModel(UserModel* creator, ::Ice::ObjectAdapterPtr obj)
 	this->gameCreator = creator;
 }
 
-void GameModel::addBot()
-{
-	/* Créer un UserModel avec isBot à true ! (classe à modifier)
-	Puis ajouter à la liste des players le bot en question
-	 */
-	UserModel* user = UserModel::CreateUser("bot1", "pwdBot1", true);
-	this->addUser(user);
-}
-
 void GameModel::addUser(UserModel* newUser) 
 {
 	if (listUser.size() >= 4)
 		throw std::exception("La partie est complète (4 participants)");
 	listUser.push_back(newUser);
-}
-
-void GameModel::removeBot()
-{
-	/* Pas important pour l'instant : on ajoute les bots au moment du lancement de la partie -> donc le nombre de places libres et ensuite on ne les retire plus */
 }
 
 bool GameModel::createGame(string name)
@@ -47,20 +33,26 @@ void GameModel::createMap(string mod, string mapSkin)
 
 }
 
-void GameModel::startMap()
-{}
+void GameModel::addRoom(BomberLoutreInterface::MapObserverPrx room)
+{
+	this->currentRoom = room;
+}
 
-void GameModel::endMap()
-{}
+void GameModel::addMapObserver(BomberLoutreInterface::MapObserverPrx obs)
+{
+	this->currentObserver = obs;
+}
 
-/*void GameModel::kickPlayer(string name)
-{}
+//Vérifier avec Daniel si on peut passer tous les paramètres d'un coup au lieu de faire de la recopie champs par champs.
+void GameModel::addPlayer(BomberLoutreInterface::UserData us) // But : récupérer depuis la liste des Users connectés au serveur
+{
+	
+}
 
-void GameModel::render()
-{}
-
-void GameModel::invitePlayer(string gamerTag)
-{}*/
+BomberLoutreInterface::GameInterfacePrx GameModel::getProxy()
+{
+	return this->giProxy;
+}
 
 /* GETTERS */
 string GameModel::getName()
@@ -68,14 +60,25 @@ string GameModel::getName()
 	return this->name;
 }
 
-int GameModel::getNbRound()
+int GameModel::getRoundCount()
 {
-	return this->nbRound;
+	return->nbRound;
 }
 
 int GameModel::getState()
 {
 	return this->state;
+}
+
+//Vérifier le champs "map"
+BomberLoutreInterface::Map GameModel::getMap()
+{
+	return this->BomberLoutreInterface::Map m;
+}
+
+int GameModel::getPlayerCount()
+{
+	return listUser.size();
 }
 
 /* SETTERS */

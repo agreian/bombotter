@@ -8,40 +8,59 @@
 
 #include <Ice/Ice.h>
 
+#include "Bomberloutre.h"
+
 class UserModel;
 
 using namespace std;
 
-class GameModel
+class GameModel : public ::BomberLoutreInterface::GameInterface
 {
 	public:
 		//GameModel();
 		GameModel(UserModel* creator, ::Ice::ObjectAdapterPtr obj);
 		~GameModel();
-		void addBot();
+
+		/* à conserver ? */
 		void addUser(UserModel* newUser);
-		void removeBot();
 		bool createGame(string name);
-		void createMap(string mod, string mapSkin);
-		void startMap();
-		void endMap();
-		/*
- 		Dans Gamewait room ????? VAZ Y !!
-		void invitePlayer(string gamerTag);
-		void kickPlayer(string name);
-		void render();*/
+		void addRoom(BomberLoutreInterface::GameWaitRoomPrx room);
+		void addMapObserver(BomberLoutreInterface::MapObserverPrx obs);
+		void addPlayer(BomberLoutreInterface::UserData us);
+		BomberLoutreInterface::Map getMap();
+		BomberLoutreInterface::GameInterfacePrx getProxy();
+
+		virtual ::std::string getName(const ::Ice::Current& = ::Ice::Current());
+		virtual ::Ice::Int getState(const ::Ice::Current& = ::Ice::Current());
+		virtual ::Ice::Int getRoundCount(const ::Ice::Current& = ::Ice::Current());
+		virtual void setName(const ::std::string&, const ::Ice::Current& = ::Ice::Current());
+		virtual void setState(::Ice::Int, const ::Ice::Current& = ::Ice::Current());
+		virtual void setRoundCount(::Ice::Int, const ::Ice::Current& = ::Ice::Current());
+		virtual void kickPlayer(const ::std::string&, const ::Ice::Current& = ::Ice::Current());
+		virtual void invitePlayer(const ::std::string&, const ::Ice::Current& = ::Ice::Current());
+		virtual void addBot(const ::Ice::Current& = ::Ice::Current());
+		virtual void removeBot(const ::Ice::Current& = ::Ice::Current());
+		virtual ::BomberLoutreInterface::MapNameList getMapList(const ::Ice::Current& = ::Ice::Current());
+		virtual ::std::string createMap(const ::std::string&, const ::std::string&, const ::Ice::Current& = ::Ice::Current());
+		virtual void startMap(const ::Ice::Current& = ::Ice::Current());
+		virtual void endMap(const ::Ice::Current& = ::Ice::Current());
+		virtual bool removeGame(const ::Ice::Current& = ::Ice::Current());
 
 		/* GETTERS */
 		string getName();
-		int getNbRound();
 		int getState();
+		int getRoundCount();
+		int getPlayerCount();
 
 		/* SETTERS */
 		void setName(string newName);
 		void setNbRound(int newNbRound);
 		void setState(int newState);
 
-	private:
+	private:		
+		BomberLoutreInterface::GameWaitRoomPrx currentRoom;
+		BomberLoutreInterface::MapObserverPrx currentObserver;
+		BomberLoutreInterface::GameInterfacePrx giProxy;
 		vector<UserModel*> listUser;
 		UserModel* gameCreator;
 		string name;

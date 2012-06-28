@@ -58,7 +58,7 @@ BomberLoutreInterface::UserData
 ServerModel::createUser(const std::string& login, const std::string& password, const Ice::Current&)
 {
 	BomberLoutreInterface::UserData us;
-	UserModel* newuser = UserModel::CreateUser(login,password);
+	UserModel* newuser = UserModel::CreateUser(login,password, false);
 	m_currentUsers.push_back(newuser);
 	us.gameTag = "Bomber"+login;
 	return us;
