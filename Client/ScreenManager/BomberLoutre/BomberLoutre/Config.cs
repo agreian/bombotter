@@ -10,6 +10,9 @@ namespace BomberLoutre
         public static int OtterWidth = 64;
         public static int OtterHeight = 72;
 
+        public static int ExplosionDelay = 2; // s
+        public static int BurningDelay = 500; // ms
+
         public static Point MapSize = new Point(13, 11);
         public static int TileWidth = 60;
         public static int TileHeight = 60;

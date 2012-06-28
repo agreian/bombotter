@@ -73,7 +73,7 @@ namespace BomberLoutre.Components
             bombDropped = false;
 
             isAlive = true;
-            bombPower = 1;
+            bombPower = 4;
             bombNumber = 1;
             bombAvailable = 1;
             canKick = false;

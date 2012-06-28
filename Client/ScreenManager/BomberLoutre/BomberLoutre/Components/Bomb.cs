@@ -33,6 +33,7 @@ namespace BomberLoutre.Components
             // Calcul de la case exacte, pour insérer la bombe au centre celle-ci
             CellPosition = Map.PointToVector((int)position.X+1, (int)position.Y+1);
             Vector2 perfectPosition = new Vector2((CellPosition.X * Config.TileWidth) + Config.MapLayer.X, (CellPosition.Y * Config.TileHeight) + Config.MapLayer.Y);
+            CellPosition = Map.PointToVector((int)perfectPosition.X, (int)perfectPosition.Y); // On met à jour avec la bonne case
             Sprite = new BombSprite(spriteTexture, perfectPosition);
         }
         #endregion
@@ -41,7 +42,7 @@ namespace BomberLoutre.Components
         public void Update(GameTime gameTime)
         {
             Timer += gameTime.ElapsedGameTime;
-            if (Timer.Seconds >= 2) GameScreen.BOOM(this);
+            if (Timer.Seconds >= Config.ExplosionDelay) GameScreen.BOOM(this);
             Sprite.Update(gameTime);
         }
 
