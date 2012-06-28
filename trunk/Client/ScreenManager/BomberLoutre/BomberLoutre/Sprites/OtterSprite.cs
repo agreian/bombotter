@@ -102,9 +102,9 @@ namespace BomberLoutre.Sprites
 
                     else // La case vers laquelle on se dirige est bloquante mais on veut pouvoir pousser la taupe dans le guichet ;D
                     {
-                        if (!(X < (test.X + Config.TileWidth)))
+                        if (!(X  > (test.X - Config.TileWidth*2)))
                         {
-                            direction = Vector2.Normalize(new Vector2(-1, 0));
+                            direction = Vector2.Normalize(new Vector2(1, 0));
                             SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
                         }
                     }
