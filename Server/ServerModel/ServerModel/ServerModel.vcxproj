@@ -133,7 +133,6 @@
   <ItemGroup>
     <None Include="..\..\interface\Bomberloutre.ice" />
     <None Include="..\..\interface\Bomberloutre_map_item.ice" />
-    <None Include="app.ico" />
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
