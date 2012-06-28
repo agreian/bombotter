@@ -4,16 +4,16 @@
 // MapModel.h
 #include "string.h"
 #include <iostream>
-#include "MapModel.h"
+#include "MapItem.h"
+#include "BombItem.h"
+#include "PlayerModel.h"
+#include "Point.h"
 
 using namespace System;
 using namespace std;
 
 class MapModel
 {
-	MapModel();
-	~MapModel();
-	
 	private :
 		string id;
 		
@@ -22,12 +22,15 @@ class MapModel
 		int width;
 		
 	public :
+		/*MapModel();
+		~MapModel();*/
 		bool checkMove(PlayerModel p, Point arrive);
-		void dropBonus(MapItem bonus);
+		void dropBonus(MapItem* bonus);
+		// Factory à Map Item
 		void createMapItem(string typeMapItem);
-		void handleExplode(Bomb b);
+		void handleExplode(BombItem* b);
 		void loapMap(string id);
-		void render();
+		virtual void render() = 0;
 };
 
 #endif

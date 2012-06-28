@@ -85,15 +85,23 @@
     <ClInclude Include="Bomberloutre.h" />
     <ClInclude Include="Bomberloutre_map_item.h" />
     <ClInclude Include="BombItem.h" />
+    <ClInclude Include="BombUp.h" />
     <ClInclude Include="Bonus.h" />
     <ClInclude Include="BotPlayerModel.h" />
     <ClInclude Include="BoxItem.h" />
+    <ClInclude Include="FlameUp.h" />
     <ClInclude Include="GameModel.h" />
+    <ClInclude Include="Kicker.h" />
+    <ClInclude Include="MapClassic.h" />
+    <ClInclude Include="MapFogOfWar.h" />
     <ClInclude Include="MapItem.h" />
     <ClInclude Include="MapModel.h" />
+    <ClInclude Include="MapSurvival.h" />
     <ClInclude Include="PlayerModel.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="RockItem.h" />
     <ClInclude Include="ServerModel.h" />
+    <ClInclude Include="SpeedUp.h" />
     <ClInclude Include="UserModel.h" />
     <ClInclude Include="VoidItem.h" />
   </ItemGroup>
@@ -102,14 +110,23 @@
     <ClCompile Include="Bomberloutre.cpp" />
     <ClCompile Include="Bomberloutre_map_item.cpp" />
     <ClCompile Include="BombItem.cpp" />
+    <ClCompile Include="BombUp.cpp" />
     <ClCompile Include="Bonus.cpp" />
     <ClCompile Include="BotPlayerModel.cpp" />
     <ClCompile Include="BoxItem.cpp" />
+    <ClCompile Include="FlameUp.cpp" />
     <ClCompile Include="GameModel.cpp" />
+    <ClCompile Include="Kicker.cpp" />
+    <ClCompile Include="MapClassic.cpp" />
+    <ClCompile Include="MapFogOfWar.cpp" />
     <ClCompile Include="MapItem.cpp" />
+    <ClCompile Include="MapModel.cpp" />
+    <ClCompile Include="MapSurvival.cpp" />
     <ClCompile Include="PlayerModel.cpp" />
+    <ClCompile Include="Point.cpp" />
     <ClCompile Include="RockItem.cpp" />
     <ClCompile Include="ServerModel.cpp" />
+    <ClCompile Include="SpeedUp.cpp" />
     <ClCompile Include="UserModel.cpp" />
     <ClCompile Include="VoidItem.cpp" />
   </ItemGroup>
