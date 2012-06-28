@@ -4,3 +4,30 @@
 
 #include "ServerModel.h"
 
+ServerModel::ServerModel()
+{
+}
+
+ServerModel::~ServerModel()
+{
+}
+
+ServerModel::addGame(string name)
+{
+}
+
+ServerModel::getListGame()
+{
+}
+
+ServerModel::getListUser()
+{
+}
+
+ServerModel::removeGame(string name)
+{
+}
+
+ServerModel::sendInvitationToPlayer(PlayerModel player, Game g)
+{
+}

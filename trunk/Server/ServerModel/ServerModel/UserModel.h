@@ -29,13 +29,13 @@ class UserModel
 		/* SETTERS */
 
 	private:
-		string login;
 		/*
 		/briefOLOZ default name displayed in game
 		*/
 		string gameTag;
-		string password;
-
+        string login;
+        string password;
+        
 		/* Game information */
 		int nbGame;
 		int nbWin;
