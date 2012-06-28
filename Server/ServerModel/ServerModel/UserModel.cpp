@@ -73,4 +73,5 @@ void UserModel::joinGame(GameModel* game)
 bool UserModel::save()
 {
 	//save user information : nbWin, nbkill ....
+	return true;
 }
