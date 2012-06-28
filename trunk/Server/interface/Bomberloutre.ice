@@ -23,6 +23,7 @@ module BomberLoutreInterface
 	{
 		string getCreatorName();
 		void userReady(UserData u);
+		void leaveGame(UserData u);
 	};
 
 	struct GameData
