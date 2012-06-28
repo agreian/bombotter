@@ -88,11 +88,11 @@ namespace BomberLoutre.Sprites
 
                 if (SpritePosition.X < (Config.MapLayer.Width + Config.MapLayer.X - Config.OtterWidth))
                 {
-                    if (!Map.IsObstacle((int)CellPosition.X + 1, (int)CellPosition.Y))
+                    if (!Map.IsObstacle((int)CellPosition.X + 1, (int)CellPosition.Y) && !Map.IsBomb((int)CellPosition.X + 1, (int)CellPosition.Y))
                     {
                         direction = Vector2.Normalize(new Vector2(1, 0));
                         SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * (SpriteSpeed);
-                        
+
                         // Contournement
                         if ((SpritePosition.Y - Config.MapLayer.Y) > ((CellPosition.Y * Config.TileHeight) - Config.TileHeight - Config.TileHeight/5))
                         {
@@ -118,10 +118,11 @@ namespace BomberLoutre.Sprites
 
                 if (SpritePosition.X > Config.MapLayer.X)
                 {
-                    if (!Map.IsObstacle((int)CellPosition.X - 1, (int)CellPosition.Y))
+                    if (!Map.IsObstacle((int)CellPosition.X - 1, (int)CellPosition.Y) && !Map.IsBomb((int)CellPosition.X - 1, (int)CellPosition.Y))
                     {
                         direction = Vector2.Normalize(new Vector2(-1, 0));
                         SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
+                        
 
                         // Contournement
                         if ((SpritePosition.Y - Config.MapLayer.Y) > ((CellPosition.Y * Config.TileHeight) - Config.TileHeight - Config.TileHeight/5))
@@ -149,10 +150,11 @@ namespace BomberLoutre.Sprites
 
                 if (SpritePosition.Y < (Config.MapLayer.Height + Config.MapLayer.Y - Config.OtterHeight))
                 {
-                    if (!Map.IsObstacle((int)CellPosition.X, (int)CellPosition.Y + 1))
+                    if (!Map.IsObstacle((int)CellPosition.X, (int)CellPosition.Y + 1) && !Map.IsBomb((int)CellPosition.X, (int)CellPosition.Y + 1))
                     {
                         direction = Vector2.Normalize(new Vector2(0, 1));
                         SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
+                        
 
                         // Contournement
                         if ((SpritePosition.X - Config.MapLayer.X + Config.OtterWidth / 2) > ((CellPosition.X * Config.TileWidth) - Config.TileWidth / 4))
@@ -179,7 +181,7 @@ namespace BomberLoutre.Sprites
 
                 if (SpritePosition.Y > Config.MapLayer.Y)
                 {
-                    if (!Map.IsObstacle((int)CellPosition.X, (int)CellPosition.Y - 1))
+                    if (!Map.IsObstacle((int)CellPosition.X, (int)CellPosition.Y - 1) && !Map.IsBomb((int)CellPosition.X, (int)CellPosition.Y - 1))
                     {
                         direction = Vector2.Normalize(new Vector2(0, -1));
                         SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
