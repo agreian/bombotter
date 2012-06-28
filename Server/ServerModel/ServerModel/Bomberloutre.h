@@ -818,6 +818,9 @@ public:
 namespace BomberLoutreInterface
 {
 
+class Callback_GameUserInterface_getCreatorName_Base : virtual public ::IceInternal::CallbackBase { };
+typedef ::IceUtil::Handle< Callback_GameUserInterface_getCreatorName_Base> Callback_GameUserInterface_getCreatorNamePtr;
+
 class Callback_GameUserInterface_userReady_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_GameUserInterface_userReady_Base> Callback_GameUserInterface_userReadyPtr;
 
@@ -963,6 +966,54 @@ namespace BomberLoutreInterface
 
 class GameUserInterface : virtual public ::IceProxy::Ice::Object
 {
+public:
+
+    ::std::string getCreatorName()
+    {
+        return getCreatorName(0);
+    }
+    ::std::string getCreatorName(const ::Ice::Context& __ctx)
+    {
+        return getCreatorName(&__ctx);
+    }
+
+    ::Ice::AsyncResultPtr begin_getCreatorName()
+    {
+        return begin_getCreatorName(0, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_getCreatorName(const ::Ice::Context& __ctx)
+    {
+        return begin_getCreatorName(&__ctx, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_getCreatorName(const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_getCreatorName(0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_getCreatorName(const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_getCreatorName(&__ctx, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_getCreatorName(const ::BomberLoutreInterface::Callback_GameUserInterface_getCreatorNamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_getCreatorName(0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_getCreatorName(const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameUserInterface_getCreatorNamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_getCreatorName(&__ctx, __del, __cookie);
+    }
+
+    ::std::string end_getCreatorName(const ::Ice::AsyncResultPtr&);
+    
+private:
+
+    ::std::string getCreatorName(const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_getCreatorName(const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    
 public:
 
     void userReady(const ::BomberLoutreInterface::UserData& u)
@@ -4353,6 +4404,8 @@ class GameUserInterface : virtual public ::IceDelegate::Ice::Object
 {
 public:
 
+    virtual ::std::string getCreatorName(const ::Ice::Context*) = 0;
+
     virtual void userReady(const ::BomberLoutreInterface::UserData&, const ::Ice::Context*) = 0;
 };
 
@@ -4483,6 +4536,8 @@ class GameUserInterface : virtual public ::IceDelegate::BomberLoutreInterface::G
                           virtual public ::IceDelegateM::Ice::Object
 {
 public:
+
+    virtual ::std::string getCreatorName(const ::Ice::Context*);
 
     virtual void userReady(const ::BomberLoutreInterface::UserData&, const ::Ice::Context*);
 };
@@ -4619,6 +4674,8 @@ class GameUserInterface : virtual public ::IceDelegate::BomberLoutreInterface::G
                           virtual public ::IceDelegateD::Ice::Object
 {
 public:
+
+    virtual ::std::string getCreatorName(const ::Ice::Context*);
 
     virtual void userReady(const ::BomberLoutreInterface::UserData&, const ::Ice::Context*);
 };
@@ -4761,6 +4818,9 @@ public:
     virtual ::std::vector< ::std::string> ice_ids(const ::Ice::Current& = ::Ice::Current()) const;
     virtual const ::std::string& ice_id(const ::Ice::Current& = ::Ice::Current()) const;
     static const ::std::string& ice_staticId();
+
+    virtual ::std::string getCreatorName(const ::Ice::Current& = ::Ice::Current()) = 0;
+    ::Ice::DispatchStatus ___getCreatorName(::IceInternal::Incoming&, const ::Ice::Current&);
 
     virtual void userReady(const ::BomberLoutreInterface::UserData&, const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___userReady(::IceInternal::Incoming&, const ::Ice::Current&);
@@ -5097,6 +5157,122 @@ inline bool operator<(const ServerInterface& l, const ServerInterface& r)
 
 namespace BomberLoutreInterface
 {
+
+template<class T>
+class CallbackNC_GameUserInterface_getCreatorName : public Callback_GameUserInterface_getCreatorName_Base, public ::IceInternal::TwowayCallbackNC<T>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception&);
+    typedef void (T::*Sent)(bool);
+    typedef void (T::*Response)(const ::std::string&);
+
+    CallbackNC_GameUserInterface_getCreatorName(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::TwowayCallbackNC<T>(obj, cb != 0, excb, sentcb), response(cb)
+    {
+    }
+
+    virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
+    {
+        ::BomberLoutreInterface::GameUserInterfacePrx __proxy = ::BomberLoutreInterface::GameUserInterfacePrx::uncheckedCast(__result->getProxy());
+        ::std::string __ret;
+        try
+        {
+            __ret = __proxy->end_getCreatorName(__result);
+        }
+        catch(::Ice::Exception& ex)
+        {
+#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+            __exception(__result, ex);
+#else
+            ::IceInternal::CallbackNC<T>::__exception(__result, ex);
+#endif
+            return;
+        }
+        if(response)
+        {
+#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+            (callback.get()->*response)(__ret);
+#else
+            (::IceInternal::CallbackNC<T>::callback.get()->*response)(__ret);
+#endif
+        }
+    }
+
+    Response response;
+};
+
+template<class T> Callback_GameUserInterface_getCreatorNamePtr
+newCallback_GameUserInterface_getCreatorName(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::std::string&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameUserInterface_getCreatorName<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_GameUserInterface_getCreatorNamePtr
+newCallback_GameUserInterface_getCreatorName(T* instance, void (T::*cb)(const ::std::string&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameUserInterface_getCreatorName<T>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT>
+class Callback_GameUserInterface_getCreatorName : public Callback_GameUserInterface_getCreatorName_Base, public ::IceInternal::TwowayCallback<T, CT>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
+    typedef void (T::*Sent)(bool , const CT&);
+    typedef void (T::*Response)(const ::std::string&, const CT&);
+
+    Callback_GameUserInterface_getCreatorName(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::TwowayCallback<T, CT>(obj, cb != 0, excb, sentcb), response(cb)
+    {
+    }
+
+    virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
+    {
+        ::BomberLoutreInterface::GameUserInterfacePrx __proxy = ::BomberLoutreInterface::GameUserInterfacePrx::uncheckedCast(__result->getProxy());
+        ::std::string __ret;
+        try
+        {
+            __ret = __proxy->end_getCreatorName(__result);
+        }
+        catch(::Ice::Exception& ex)
+        {
+#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+            __exception(__result, ex);
+#else
+            ::IceInternal::Callback<T, CT>::__exception(__result, ex);
+#endif
+            return;
+        }
+        if(response)
+        {
+#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+            (callback.get()->*response)(__ret, CT::dynamicCast(__result->getCookie()));
+#else
+            (::IceInternal::Callback<T, CT>::callback.get()->*response)(__ret, CT::dynamicCast(__result->getCookie()));
+#endif
+        }
+    }
+
+    Response response;
+};
+
+template<class T, typename CT> Callback_GameUserInterface_getCreatorNamePtr
+newCallback_GameUserInterface_getCreatorName(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::std::string&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameUserInterface_getCreatorName<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_GameUserInterface_getCreatorNamePtr
+newCallback_GameUserInterface_getCreatorName(T* instance, void (T::*cb)(const ::std::string&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameUserInterface_getCreatorName<T, CT>(instance, cb, excb, sentcb);
+}
 
 template<class T>
 class CallbackNC_GameUserInterface_userReady : public Callback_GameUserInterface_userReady_Base, public ::IceInternal::OnewayCallbackNC<T>
