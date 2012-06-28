@@ -18,8 +18,11 @@ class Bonus
 
 		/* SETTERS */
 
-	private:
-		/* Game information */
+		/* Chgment en protected. A conserver ? */
+	protected:
+		/* Réellement besoin ? -> On ne met pas directement à jour les caractéristiques du player ?  */
+		/* TRES SUREMENT oui mais à vérifier ! */
+		/* Speed int ? Pas plutot un double (avoir une notion de multiplicateur *1.4 pa rexemple) */
 		int bomb;
 		bool kick;
 		int power;
