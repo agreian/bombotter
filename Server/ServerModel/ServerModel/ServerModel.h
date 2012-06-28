@@ -2,12 +2,19 @@
 
 #pragma once
 
-using namespace System;
+using namespace std;
 
-namespace ServerModel {
-
-	public ref class Class1
-	{
-		// TODO: ajoutez ici vos méthodes pour cette classe.
-	};
-}
+class ServerModel
+{
+    // TODO: ajoutez ici vos méthodes pour cette classe.
+    public :
+        ServerModel()
+        ~ServerModel()
+        
+        void addGame(string name);
+        void getListGame();
+        void getListUser();
+        void removeGame(string name);
+        void sendInvitationToPlayer(PlayerModel player, Game g);
+    
+};
