@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "Kicker.h"
 /*
 Kicker::Kicker()
@@ -20,6 +18,6 @@ Kicker::~Kicker()
 
 int Kicker::getId()
 {
-	return MapModel::MapItemCode::KickerCode;
+	return MapModel::KickerCode;
 }
 

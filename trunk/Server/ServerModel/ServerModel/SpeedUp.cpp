@@ -17,5 +17,5 @@ SpeedUp::~SpeedUp()
 
 int SpeedUp::getId()
 {
-	return MapModel::MapItemCode::SpeedUpCode;
+	return MapModel::SpeedUpCode;
 }

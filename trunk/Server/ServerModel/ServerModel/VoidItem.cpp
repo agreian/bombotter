@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "VoidItem.h"
 
 /*VoidItem::VoidItem()
@@ -20,7 +18,7 @@ VoidItem::~VoidItem()
 
 int VoidItem::getId()
 {
-	return MapModel::MapItemCode::VoidItemCode;
+	return MapModel::VoidItemCode;
 }
 /*
 bool VoidItem::isDestructible() 
