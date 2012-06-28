@@ -24,6 +24,7 @@ namespace BomberLoutre.Screens
         List<Bonus>     bonusList;
         List<Box>       boxList;
         List<Rock>      rockList;
+        List<Flame>     flameList;
 
         string mapName;
         Map MapZone;
@@ -37,6 +38,7 @@ namespace BomberLoutre.Screens
             bonusList = new List<Bonus>();
             boxList = new List<Box>();
             rockList = new List<Rock>();
+            flameList = new List<Flame>();
         }
         #endregion
 
@@ -90,6 +92,7 @@ namespace BomberLoutre.Screens
 
             for(i = 0; i < Config.PlayerNumber; ++i)    playerList[i].Update(gameTime);
             for (i = 0; i < bombList.Count; ++i)        bombList[i].Update(gameTime);
+            for (i = 0; i < flameList.Count; ++i)       flameList[i].Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -101,11 +104,12 @@ namespace BomberLoutre.Screens
 
             GameRef.spriteBatch.Begin();
 
-            for (i = 0; i < bombList.Count; ++i) { bombList[i].Draw(gameTime); GameRef.spriteBatch.DrawString(this.BigFont, bombList[i].Timer.ToString(), new Vector2(bombList[i].Sprite.SpritePosition.X, bombList[i].Sprite.SpritePosition.Y+10), Color.Red);  }
+            for (i = 0; i < bombList.Count; ++i)        bombList[i].Draw(gameTime);
             for (i = 0; i < bonusList.Count; ++i)       bonusList[i].Draw(gameTime);
             for (i = 0; i < boxList.Count; ++i)         boxList[i].Draw(gameTime);
             for (i = 0; i < rockList.Count; ++i)        rockList[i].Draw(gameTime);
             for (i = 0; i < Config.PlayerNumber; ++i)   playerList[i].Draw(gameTime);
+            for (i = 0; i < flameList.Count; ++i)       flameList[i].Draw(gameTime);
 
             GameRef.spriteBatch.DrawString(this.MidFont, String.Format("({0} : {1})", playerList[0].Sprite.SpritePosition.X - Config.MapLayer.X, playerList[0].Sprite.SpritePosition.Y - Config.MapLayer.Y), new Vector2(30, 30), Color.Red);
             GameRef.spriteBatch.DrawString(this.MidFont, String.Format("({0} : {1})", playerList[0].Sprite.CellPosition.X, playerList[0].Sprite.CellPosition.Y), new Vector2(30, 60), Color.Red);
@@ -133,10 +137,55 @@ namespace BomberLoutre.Screens
             rockList.Add(rock);
         }
 
-        public void BOOM(Bomb Bomb)
+        public void BOOM(Bomb bomb)
         {
-            Map.RemoveWall((int)Bomb.CellPosition.X, (int)Bomb.CellPosition.Y);
-            bombList.Remove(Bomb);
+            Map.RemoveWall((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y);
+
+            bool right = false, top = false, left = false, bottom = false;
+            // + flamme centrale 
+
+            for (int i = 1; i <= bomb.BombPower; ++i)
+            {
+                if (!Map.IsWall((int)bomb.CellPosition.X + i, (int)bomb.CellPosition.Y) && !right)
+                {
+                    if (((int)bomb.CellPosition.X + i) <= Config.MapSize.X)
+                    flameList.Add(new Flame((int)bomb.CellPosition.X + i, (int)bomb.CellPosition.Y, this, GameRef));
+                }
+
+                else right = true;
+
+                if (!Map.IsWall((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y + i) && !top)
+                {
+                    if (((int)bomb.CellPosition.Y + i) <= Config.MapSize.Y)
+                    flameList.Add(new Flame((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y + i, this, GameRef));
+                }
+
+                else top = true;
+
+                if (!Map.IsWall((int)bomb.CellPosition.X - i, (int)bomb.CellPosition.Y) && !left)
+                {
+                    if (((int)bomb.CellPosition.X - i) > 0)
+                    flameList.Add(new Flame((int)bomb.CellPosition.X - i, (int)bomb.CellPosition.Y, this, GameRef));
+                }
+
+                else left = true;
+
+                if (!Map.IsWall((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y - i) && !bottom)
+                {
+                    if(((int)bomb.CellPosition.Y - i) > 0)
+                    flameList.Add(new Flame((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y - i, this, GameRef));
+                }
+
+                else bottom = true;
+            }
+
+            bombList.Remove(bomb);
+            bombExplosionSound.Play();
+        }
+
+        public void RemoveFlame(Flame flame)
+        {
+            flameList.Remove(flame);
         }
         #endregion
     }

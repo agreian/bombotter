@@ -114,12 +114,12 @@ namespace BomberLoutre.World
 
         public static void SetWall(int x, int y)
         {
-            walls[x, y] = true;
+            walls[x-1, y-1] = true;
         }
 
         public static void RemoveWall(int x, int y)
         {
-            walls[x, y] = false;
+            walls[x-1, y-1] = false;
         }
     }
 }

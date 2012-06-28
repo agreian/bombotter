@@ -111,6 +111,7 @@
     <Compile Include="Components\Bomb.cs" />
     <Compile Include="Components\Bonus.cs" />
     <Compile Include="Components\Box.cs" />
+    <Compile Include="Components\Flame.cs" />
     <Compile Include="Components\Rock.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Components\Player.cs" />
