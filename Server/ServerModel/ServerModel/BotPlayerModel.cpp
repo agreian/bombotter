@@ -6,7 +6,7 @@ const float criticalLimit = 0.0f;
 
 BotPlayerModel::BotPlayerModel()
 {
-	//CODE TON PUTAIN DE BOT !
+	
 }
 
 
@@ -319,7 +319,7 @@ void BotPlayerModel::findExplosions()
 		{
 			if (this->map->logicalMap[i][j] == MapModel::BombItemCode)
 			{
-				simulateExplosion(i,j,(BombItem*)(this->map->map[i][j]->)getTimer());
+				simulateExplosion(i,j,(BombItem*)(this->map->map[i][j])->getTimer());
 			}
 		}
 }
