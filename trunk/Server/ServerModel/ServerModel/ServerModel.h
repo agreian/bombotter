@@ -9,7 +9,7 @@
 #include "Bomberloutre.h"
 
 class ServerModel : 
-	public ::Bomberloutre::ServerInterface
+	public ::BomberLoutreInterface::ServerInterface
 {
 	public :
 		ServerModel();
@@ -22,25 +22,25 @@ class ServerModel :
 		void removeGame(std::string name);
 		void sendInvitationToPlayer(PlayerModel player, Game g);
 		
-		virtual Bomberloutre::UserData 
+		virtual BomberLoutreInterface::UserData 
 		connect(const std::string&, const std::string&, const Ice::Current& = ::Ice::Current());
 		
-		virtual Bomberloutre::UserData
+		virtual BomberLoutreInterface::UserData
 		createUser(const std::string&, const std::string&, const Ice::Current& = ::Ice::Current());
 		
 		virtual bool 
 		deleteUser(const std::string&, const Ice::Current& = ::Ice::Current());
 		
-		virtual Bomberloutre::GameInterfacePrx
-		addGame(const std::string&, const ::Bomberloutre::GameWaitRoomPrx&, const ::Bomberloutre::MapObserverPrx&, const Ice::Current& = ::Ice::Current());
+		virtual BomberLoutreInterface::GameInterfacePrx
+		addGame(const std::string&, const ::BomberLoutreInterface::GameWaitRoomPrx&, const ::BomberLoutreInterface::MapObserverPrx&, const Ice::Current& = ::Ice::Current());
 		
-		virtual Bomberloutre::Map 
-		joinGame(const std::string&, const ::Bomberloutre::GameWaitRoomPrx&, const ::Bomberloutre::MapObserverPrx&, const Ice::Current& = ::Ice::Current());
+		virtual BomberLoutreInterface::Map 
+		joinGame(const std::string&, const ::BomberLoutreInterface::GameWaitRoomPrx&, const ::BomberLoutreInterface::MapObserverPrx&, const Ice::Current& = ::Ice::Current());
 		
-		virtual Bomberloutre::GameDataList 
+		virtual BomberLoutreInterface::GameDataList 
 		getGameList(const Ice::Current& = ::Ice::Current());
 		
-		virtual Bomberloutre::UserDataList 
+		virtual BomberLoutreInterface::UserDataList 
 		getUserList(const Ice::Current& = ::Ice::Current());
 	
 	private:
