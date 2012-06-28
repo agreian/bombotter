@@ -13,7 +13,7 @@ namespace BomberLoutre.Sprites
         public BombSprite(Texture2D texture, Vector2 position) : base(texture, position)
         {
             SpriteWidth = 60;
-            SpriteHeight = 60;
+            SpriteHeight = 40;
             interval = 150f;
             timer = 0;
         }

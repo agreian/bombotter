@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using BomberLoutre.Sprites;
+﻿using BomberLoutre.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using BomberLoutre.Controls;
 using BomberLoutre.Screens;
+using BomberLoutre.World;
 
 namespace BomberLoutre.Components
 {
@@ -135,6 +134,8 @@ namespace BomberLoutre.Components
             //Bomb newBomb = new Bomb(id, new Vector2(Sprite.SpritePosition.X - Config.OtterWidth / 2, Sprite.SpritePosition.Y - Config.OtterHeight / 3), GameRef);
             Bomb newBomb = new Bomb(id, bombPosition, bombPower, GameRef, gameScreen);
             gameScreen.AddBomb(newBomb);
+
+            Sprite.CellPosition = Map.PointToVector((int)newBomb.Sprite.SpritePosition.X, (int)newBomb.Sprite.SpritePosition.Y);
         }
 
 
