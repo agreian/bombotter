@@ -42,20 +42,20 @@ void BotPlayerModel::initParam()
 		delta = relativeY-posY;
 		if(delta > 0)
 		{
-			target = this->dirRight;
+			target = PlayerModel::dirRight;
 			this->displacement = delta;
 		} else {
-			target = this->dirLeft;
+			target = PlayerModel::dirLeft;
 			this->displacement = -delta;
 		}
 	} else {
 		delta = relativeX-posX;
 		if(delta > 0)
 		{
-			target = this->dirDown;
+			target = PlayerModel::dirDown;
 			this->displacement = delta;
 		} else {
-			target = this->dirUp;
+			target = PlayerModel::dirUp;
 			this->displacement = -delta;
 		}
 	}
@@ -86,10 +86,10 @@ void BotPlayerModel::findWays()
 	{
 		switch (target)
 		{
-			case dirLeft: x0--; break;
-			case dirRight: x0++; break;
-			case dirUp: y0--; break;
-			case dirDown: y0++; break;
+			case PlayerModel::dirLeft: x0--; break;
+			case PlayerModel::dirRight: x0++; break;
+			case PlayerModel::dirUp: y0--; break;
+			case PlayerModel::dirDown: y0++; break;
 		}
 		if (target>=0 && target<=3 && this->map->logicalMap[x0][y0] == MapModel::BombItemCode)
 			testMovability(x0,y0,1, true);
@@ -153,7 +153,7 @@ void BotPlayerModel::findActions()
 					//////////////////////////////////////////////////
 					this->resultMap[i][j] = 100-this->wayMap[i][j];
 
-					if (this->bombs < this->nbBomb)
+					if (this->nbBombUsed < this->nbBomb)
 					{
 						// lot of things to explode => bonus points
 						int ect = explosingCount(i,j,this->flamePower);
@@ -222,7 +222,7 @@ int BotPlayerModel::explosingCount(int posx, int posy, int range)
 	int result = 0;
 
 	//  4 directions exploding
-	for (int dir = BotPlayerModel::dirLeft; dir <= BotPlayerModel::dirDown; dir++)
+	for (int dir = PlayerModel::dirLeft; dir <= PlayerModel::dirDown; dir++)
 	{
 		bool goOut = false;
 		int distance = 1;
@@ -232,10 +232,10 @@ int BotPlayerModel::explosingCount(int posx, int posy, int range)
 			int x0=posx, y0=posy;
 			switch (dir)
 			{
-			case BotPlayerModel::dirLeft: x0-=distance; break;
-			case BotPlayerModel::dirRight: x0+=distance; break;
-			case BotPlayerModel::dirUp: y0+=distance; break;
-			case BotPlayerModel::dirDown: y0-=distance; break;
+			case PlayerModel::dirLeft: x0-=distance; break;
+			case PlayerModel::dirRight: x0+=distance; break;
+			case PlayerModel::dirUp: y0+=distance; break;
+			case PlayerModel::dirDown: y0-=distance; break;
 			}
 
 			switch (this->map->logicalMap[x0][y0])
@@ -263,7 +263,7 @@ int BotPlayerModel::killingCount(int posx, int posy, int range)
 	int result = 0;
 
 	//  4 directions exploding
-	for (int dir = dirLeft; dir <= dirDown; dir++)
+	for (int dir = PlayerModel::dirLeft; dir <= PlayerModel::dirDown; dir++)
 	{
 		bool goOut = false;
 		int distance = 1;
@@ -273,10 +273,10 @@ int BotPlayerModel::killingCount(int posx, int posy, int range)
 			int x0=posx, y0=posy;
 			switch (dir)
 			{
-			case dirLeft: x0-=distance; break;
-			case dirRight: x0+=distance; break;
-			case dirUp: y0+=distance; break;
-			case dirDown: y0-=distance; break;
+			case PlayerModel::dirLeft: x0-=distance; break;
+			case PlayerModel::dirRight: x0+=distance; break;
+			case PlayerModel::dirUp: y0+=distance; break;
+			case PlayerModel::dirDown: y0-=distance; break;
 			}
 
 			switch (this->map->logicalMap[x0][y0])
@@ -319,7 +319,7 @@ void BotPlayerModel::findExplosions()
 		{
 			if (this->map->logicalMap[i][j] == MapModel::BombItemCode)
 			{
-				simulateExplosion(i,j, this->map->map[i][j]->getTimer());
+				simulateExplosion(i,j,(BombItem*)(this->map->map[i][j]->)getTimer());
 			}
 		}
 }
@@ -330,7 +330,7 @@ void BotPlayerModel::simulateExplosion(int posx, int posy, float expDelay)
 	int range = this->rangeMap[posx][posy];
 
 	//  4 directions exploding
-	for (int dir=dirLeft; dir<= dirDown; dir++)
+	for (int dir=PlayerModel::dirLeft; dir<= PlayerModel::dirDown; dir++)
 	{
 		bool goOut = false;
 		int distance = 1;
@@ -340,17 +340,17 @@ void BotPlayerModel::simulateExplosion(int posx, int posy, float expDelay)
 			int x0=posx, y0=posy;
 			switch (dir)
 			{
-				case dirLeft: x0-=distance; break;
-				case dirRight: x0+=distance; break;
-				case dirUp: y0+=distance; break;
-				case dirDown: y0-=distance; break;
+				case PlayerModel::dirLeft: x0-=distance; break;
+				case PlayerModel::dirRight: x0+=distance; break;
+				case PlayerModel::dirUp: y0+=distance; break;
+				case PlayerModel::dirDown: y0-=distance; break;
 			}
 
 			switch (this->map->logicalMap[x0][y0])
 			{
 				case MapModel::VoidItemCode: this->delayMap[x0][y0] = expDelay; break;
 				case MapModel::RockItemCode: goOut=true; break;
-				case MapModel::ExplodingItemCode: if (this->delayMap[x0][y0] > expDelay)this->delayMap[x0][y0] = expDelay; break;
+				case MapModel::ExplosionItemCode: if (this->delayMap[x0][y0] > expDelay)this->delayMap[x0][y0] = expDelay; break;
 				case MapModel::BoxItemCode:  goOut=true; break;
 				case MapModel::FlameUpCode: 
 				case MapModel::GoldenFlameCode:  
@@ -462,10 +462,10 @@ void BotPlayerModel::doBestAction()
 			{
 				switch (target)
 				{
-					case dirLeft: moveRight = true; break;
-					case dirRight: moveLeft = true; break;
-					case dirUp: moveDown = true; break;
-					case dirDown: moveUp = true; break;
+					case PlayerModel::dirLeft: moveRight = true; break;
+					case PlayerModel::dirRight: moveLeft = true; break;
+					case PlayerModel::dirUp: moveDown = true; break;
+					case PlayerModel::dirDown: moveUp = true; break;
 				}
 			} else {
 				tx=-1;
@@ -493,30 +493,30 @@ void BotPlayerModel::doBestAction()
 				tx = -1;
 				this->resultMap[tx][ty]=-5000;
 			} else if (mtx>x) {
-				if (this->target==dirUp && displacement > 12)
+				if (this->target==PlayerModel::dirUp && displacement > 12)
 					moveDown = true;
-				else if (this->target==dirDown && displacement > 12)
+				else if (this->target==PlayerModel::dirDown && displacement > 12)
 					moveUp = true;
 				else
 					moveRight = true;		
 			} else if (mtx<x) {
-				if (this->target == dirUp && displacement > 12)
+				if (this->target == PlayerModel::dirUp && displacement > 12)
 					moveDown = true;
-				else if (this->target == dirDown && displacement > 12)
+				else if (this->target == PlayerModel::dirDown && displacement > 12)
 					moveUp = true;
 				else
 					moveLeft = true;	
 			} else if (mty>y) {
-				if (this->target==dirLeft && displacement > 12)
+				if (this->target==PlayerModel::dirLeft && displacement > 12)
 					moveRight=true;
-				else if (this->target==dirRight && displacement > 12)
+				else if (this->target==PlayerModel::dirRight && displacement > 12)
 					moveLeft=true;
 				else
 					moveUp=true;
 			} else if (mty<y) {
-				if (this->target == dirLeft && displacement > 12)
+				if (this->target == PlayerModel::dirLeft && displacement > 12)
 					moveRight=true;
-				else if (this->target == dirRight && displacement > 12)
+				else if (this->target == PlayerModel::dirRight && displacement > 12)
 					moveLeft = true;
 				else
 					moveDown = true;
@@ -609,36 +609,36 @@ void BotPlayerModel::goOutDanger()
 
 		if (mtx>x) 
 		{
-			if (this->target==dirUp && displacement > 12)
+			if (this->target==PlayerModel::dirUp && displacement > 12)
 				moveDown=true;
-			else if (this->target==dirDown && displacement > 12)
+			else if (this->target==PlayerModel::dirDown && displacement > 12)
 				moveUp=true;
 			else
 				moveRight=true;		
 		}
 		else if (mtx<x)
 		{
-			if (this->target==dirUp && displacement > 12)
+			if (this->target==PlayerModel::dirUp && displacement > 12)
 				moveDown = true;
-			else if (this->target==dirDown && displacement > 12)
+			else if (this->target==PlayerModel::dirDown && displacement > 12)
 				moveUp = true;
 			else
 				moveLeft = true;	
 		}
 		else if (mty>y) 
 		{
-			if (this->target==dirLeft && displacement > 12)
+			if (this->target==PlayerModel::dirLeft && displacement > 12)
 				moveRight=true;
-			else if (this->target==dirRight && displacement > 12)
+			else if (this->target==PlayerModel::dirRight && displacement > 12)
 				moveLeft=true;
 			else
 				moveUp=true;
 		}
 		else if (mty<y) 
 		{
-			if (this->target==dirLeft && displacement > 12)
+			if (this->target==PlayerModel::dirLeft && displacement > 12)
 				moveRight=true;
-			else if (this->target==dirRight && displacement > 12)
+			else if (this->target==PlayerModel::dirRight && displacement > 12)
 				moveLeft=true;
 			else
 				moveDown=true;
@@ -890,10 +890,10 @@ bool BotPlayerModel::isInDanger()
 	int x0=x, y0=y;
 	switch (this->target)
 	{
-		case dirDown: y0--; break;
-		case dirUp: y0++; break;
-		case dirLeft: x0--; break;
-		case dirRight: x0++; break;
+		case PlayerModel::dirDown: y0--; break;
+		case PlayerModel::dirUp: y0++; break;
+		case PlayerModel::dirLeft: x0--; break;
+		case PlayerModel::dirRight: x0++; break;
 	}
 	if (this->delayMap[x0][y0]<dangerLimit || this->map->logicalMap[x0][y0] == MapModel::BombItemCode) return true;
 
