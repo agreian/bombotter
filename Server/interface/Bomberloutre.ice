@@ -34,6 +34,7 @@ module BomberLoutreInterface
 	};
 	sequence<GameData> GameDataList;
 	
+	sequence<string> MapNameList;
 	interface GameInterface
 	{
 		string getName();
@@ -50,7 +51,8 @@ module BomberLoutreInterface
 		void addBot();
 		void removeBot();
 
-		bool createMap(string mode, string mapSkin);
+		MapNameList getMapList();
+		string createMap(string mode, string mapSkin);
 		
 		void startMap();
 		void endMap();
