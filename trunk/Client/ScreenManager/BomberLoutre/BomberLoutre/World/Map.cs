@@ -111,5 +111,15 @@ namespace BomberLoutre.World
             if (x < 1 || x > 13 || y < 1 || y > 11) return false; // On dit qu'il n'y a pas collision mais le joueur sera bloqué par les limites de la zone-map
             return walls[x-1, y-1];
         }
+
+        public static void SetWall(int x, int y)
+        {
+            walls[x, y] = true;
+        }
+
+        public static void RemoveWall(int x, int y)
+        {
+            walls[x, y] = false;
+        }
     }
 }

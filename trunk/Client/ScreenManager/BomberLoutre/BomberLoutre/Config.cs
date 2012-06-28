@@ -22,6 +22,8 @@ namespace BomberLoutre
             new Point(1, MapSize.Y - 2),
             new Point(MapSize.X - 2, 1),
         };
+
+        public enum LookDirection { Up, Down, Left, Right };
         
         public static bool DisplayName = true;
 

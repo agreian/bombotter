@@ -36,6 +36,7 @@ namespace BomberLoutre.Screens
         public override void Initialize()
         {
             menuPosition = new Vector2(50, 70);
+            Config.IndexResolution = 0;
 
             // Initialisation de l'IndexResolution pour être directement sur la bonne résolution dans le menu Option
             for (int i = 0; i < Config.Resolutions.GetLength(0) - 1; ++i)

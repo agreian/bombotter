@@ -115,9 +115,29 @@ namespace BomberLoutre.Components
 
         private void DropBomb()
         {
-            // Un p'tit offset out of nowhere à rendre plus précis (peut-être :D ?)
-            gameScreen.AddBomb(new Bomb(id, new Vector2(Sprite.SpritePosition.X - Config.OtterWidth / 2, Sprite.SpritePosition.Y - Config.OtterHeight/3), GameRef));
+            Vector2 bombPosition = new Vector2(Sprite.SpritePosition.X - Config.OtterWidth / 2, Sprite.SpritePosition.Y - Config.OtterHeight / 3);
+                        
+            switch (Sprite.LookDirection)
+            {
+                case Config.LookDirection.Up:
+                    break;
+
+                case Config.LookDirection.Down:
+                    break;
+
+                case Config.LookDirection.Left:
+                    break;
+
+                case Config.LookDirection.Right:
+                    break;
+            }
+
+            //Bomb newBomb = new Bomb(id, new Vector2(Sprite.SpritePosition.X - Config.OtterWidth / 2, Sprite.SpritePosition.Y - Config.OtterHeight / 3), GameRef);
+            Bomb newBomb = new Bomb(id, bombPosition, bombPower, GameRef, gameScreen);
+            gameScreen.AddBomb(newBomb);
         }
+
+
         #endregion
     }
 }
