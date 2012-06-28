@@ -2,11 +2,10 @@
 #define BOMB_ITEM_HEADER
 
 // BombItem.h
-#include "string.h"
+#include <string>
 #include <iostream>
 #include "MapItem.h"
 
-using namespace System;
 using namespace std;
 
 class BombItem : public MapItem

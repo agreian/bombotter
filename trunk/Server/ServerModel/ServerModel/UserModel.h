@@ -12,7 +12,7 @@ class UserModel
 {
 	// TODO : ajoutez ici vos méthodes pour cette classe.
 	public:
-		/* Throw Bomberloutre::BadLoginException, Bomberloutre::BadPwdException */
+		/* Throw ::BomberLoutreInterface::BadLoginException, ::BomberLoutreInterface::BadPwdException */
 		static UserModel* Connect(string login, string password);
 		/* Throw UserAlreadyExistException */
 		static UserModel* CreateUser(string login, string password) ;
@@ -47,6 +47,7 @@ class UserModel
 		/* Game information */
 		int nbGame;
 		int nbWin;
+		int nbLoose;
 		int nbDraw;
 		int nbKill;
 		int nbDeath;

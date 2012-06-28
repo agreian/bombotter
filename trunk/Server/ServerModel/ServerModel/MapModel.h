@@ -2,12 +2,12 @@
 #define MAP_MODEL_HEADER
 
 // MapModel.h
-#include "string.h"
+#include <string>
 #include <iostream>
-#include "Point.h"
 #include <vector>
 
-using namespace System;
+#include "Bomberloutre.h"
+
 using namespace std;
 
 class MapItem;
@@ -38,14 +38,14 @@ class MapModel
 		MapModel();	
 		MapModel(int _height, int _width);		
 		~MapModel();
-		bool checkMove(PlayerModel* p, Point arrive);
+		bool checkMove(PlayerModel* p, ::BomberLoutreInterface::Point arrive);
 		void dropBonus(MapItem* bonus);
 		void addPlayer(PlayerModel* newPlayer);
-		void dropBonus(int bonusItemCode, Point p);
+		void dropBonus(int bonusItemCode, ::BomberLoutreInterface::Point p);
 		void handleExplode(BombItem* b);
 		void dropBomb(PlayerModel *p);
 		// Factory à Map Item
-		void createMapItem(int typeMapItem, Point p, PlayerModel *player);
+		void createMapItem(int typeMapItem, ::BomberLoutreInterface::Point p, PlayerModel *player);
 		void loapMap(string id);
 		virtual void render() = 0;
 		

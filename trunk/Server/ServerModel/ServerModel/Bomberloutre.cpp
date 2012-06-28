@@ -80,6 +80,8 @@ static const ::std::string __BomberLoutreInterface__GameWaitRoom__gameStart_name
 
 static const ::std::string __BomberLoutreInterface__GameWaitRoom__gameEnd_name = "gameEnd";
 
+static const ::std::string __BomberLoutreInterface__GameWaitRoom__gameResults_name = "gameResults";
+
 static const ::std::string __BomberLoutreInterface__MapInterface__getId_name = "getId";
 
 static const ::std::string __BomberLoutreInterface__MapInterface__getWidth_name = "getWidth";
@@ -2120,6 +2122,64 @@ void
 IceProxy::BomberLoutreInterface::GameWaitRoom::end_gameEnd(const ::Ice::AsyncResultPtr& __result)
 {
     __end(__result, __BomberLoutreInterface__GameWaitRoom__gameEnd_name);
+}
+
+void
+IceProxy::BomberLoutreInterface::GameWaitRoom::gameResults(const ::BomberLoutreInterface::Player& winner, const ::BomberLoutreInterface::PlayerList& others, const ::Ice::Context* __ctx)
+{
+    int __cnt = 0;
+    while(true)
+    {
+        ::IceInternal::Handle< ::IceDelegate::Ice::Object> __delBase;
+        try
+        {
+            __delBase = __getDelegate(false);
+            ::IceDelegate::BomberLoutreInterface::GameWaitRoom* __del = dynamic_cast< ::IceDelegate::BomberLoutreInterface::GameWaitRoom*>(__delBase.get());
+            __del->gameResults(winner, others, __ctx);
+            return;
+        }
+        catch(const ::IceInternal::LocalExceptionWrapper& __ex)
+        {
+            __handleExceptionWrapper(__delBase, __ex);
+        }
+        catch(const ::Ice::LocalException& __ex)
+        {
+            __handleException(__delBase, __ex, true, __cnt);
+        }
+    }
+}
+
+::Ice::AsyncResultPtr
+IceProxy::BomberLoutreInterface::GameWaitRoom::begin_gameResults(const ::BomberLoutreInterface::Player& winner, const ::BomberLoutreInterface::PlayerList& others, const ::Ice::Context* __ctx, const ::IceInternal::CallbackBasePtr& __del, const ::Ice::LocalObjectPtr& __cookie)
+{
+    ::IceInternal::OutgoingAsyncPtr __result = new ::IceInternal::OutgoingAsync(this, __BomberLoutreInterface__GameWaitRoom__gameResults_name, __del, __cookie);
+    try
+    {
+        __result->__prepare(__BomberLoutreInterface__GameWaitRoom__gameResults_name, ::Ice::Normal, __ctx);
+        ::IceInternal::BasicStream* __os = __result->__getOs();
+        winner.__write(__os);
+        if(others.size() == 0)
+        {
+            __os->writeSize(0);
+        }
+        else
+        {
+            ::BomberLoutreInterface::__writePlayerList(__os, &others[0], &others[0] + others.size());
+        }
+        __os->endWriteEncaps();
+        __result->__send(true);
+    }
+    catch(const ::Ice::LocalException& __ex)
+    {
+        __result->__exceptionAsync(__ex);
+    }
+    return __result;
+}
+
+void
+IceProxy::BomberLoutreInterface::GameWaitRoom::end_gameResults(const ::Ice::AsyncResultPtr& __result)
+{
+    __end(__result, __BomberLoutreInterface__GameWaitRoom__gameResults_name);
 }
 
 const ::std::string&
@@ -4280,6 +4340,53 @@ void
 IceDelegateM::BomberLoutreInterface::GameWaitRoom::gameEnd(const ::Ice::Context* __context)
 {
     ::IceInternal::Outgoing __og(__handler.get(), __BomberLoutreInterface__GameWaitRoom__gameEnd_name, ::Ice::Normal, __context);
+    bool __ok = __og.invoke();
+    if(!__og.is()->b.empty())
+    {
+        try
+        {
+            if(!__ok)
+            {
+                try
+                {
+                    __og.throwUserException();
+                }
+                catch(const ::Ice::UserException& __ex)
+                {
+                    ::Ice::UnknownUserException __uue(__FILE__, __LINE__, __ex.ice_name());
+                    throw __uue;
+                }
+            }
+            __og.is()->skipEmptyEncaps();
+        }
+        catch(const ::Ice::LocalException& __ex)
+        {
+            throw ::IceInternal::LocalExceptionWrapper(__ex, false);
+        }
+    }
+}
+
+void
+IceDelegateM::BomberLoutreInterface::GameWaitRoom::gameResults(const ::BomberLoutreInterface::Player& winner, const ::BomberLoutreInterface::PlayerList& others, const ::Ice::Context* __context)
+{
+    ::IceInternal::Outgoing __og(__handler.get(), __BomberLoutreInterface__GameWaitRoom__gameResults_name, ::Ice::Normal, __context);
+    try
+    {
+        ::IceInternal::BasicStream* __os = __og.os();
+        winner.__write(__os);
+        if(others.size() == 0)
+        {
+            __os->writeSize(0);
+        }
+        else
+        {
+            ::BomberLoutreInterface::__writePlayerList(__os, &others[0], &others[0] + others.size());
+        }
+    }
+    catch(const ::Ice::LocalException& __ex)
+    {
+        __og.abort(__ex);
+    }
     bool __ok = __og.invoke();
     if(!__og.is()->b.empty())
     {
@@ -6590,6 +6697,72 @@ IceDelegateD::BomberLoutreInterface::GameWaitRoom::gameEnd(const ::Ice::Context*
     }
 }
 
+void
+IceDelegateD::BomberLoutreInterface::GameWaitRoom::gameResults(const ::BomberLoutreInterface::Player& winner, const ::BomberLoutreInterface::PlayerList& others, const ::Ice::Context* __context)
+{
+    class _DirectI : public ::IceInternal::Direct
+    {
+    public:
+
+        _DirectI(const ::BomberLoutreInterface::Player& winner, const ::BomberLoutreInterface::PlayerList& others, const ::Ice::Current& __current) : 
+            ::IceInternal::Direct(__current),
+            _m_winner(winner),
+            _m_others(others)
+        {
+        }
+        
+        virtual ::Ice::DispatchStatus
+        run(::Ice::Object* object)
+        {
+            ::BomberLoutreInterface::GameWaitRoom* servant = dynamic_cast< ::BomberLoutreInterface::GameWaitRoom*>(object);
+            if(!servant)
+            {
+                throw ::Ice::OperationNotExistException(__FILE__, __LINE__, _current.id, _current.facet, _current.operation);
+            }
+            servant->gameResults(_m_winner, _m_others, _current);
+            return ::Ice::DispatchOK;
+        }
+        
+    private:
+        
+        const ::BomberLoutreInterface::Player& _m_winner;
+        const ::BomberLoutreInterface::PlayerList& _m_others;
+    };
+    
+    ::Ice::Current __current;
+    __initCurrent(__current, __BomberLoutreInterface__GameWaitRoom__gameResults_name, ::Ice::Normal, __context);
+    try
+    {
+        _DirectI __direct(winner, others, __current);
+        try
+        {
+            __direct.servant()->__collocDispatch(__direct);
+        }
+        catch(...)
+        {
+            __direct.destroy();
+            throw;
+        }
+        __direct.destroy();
+    }
+    catch(const ::Ice::SystemException&)
+    {
+        throw;
+    }
+    catch(const ::IceInternal::LocalExceptionWrapper&)
+    {
+        throw;
+    }
+    catch(const ::std::exception& __ex)
+    {
+        ::IceInternal::LocalExceptionWrapper::throwWrapper(__ex);
+    }
+    catch(...)
+    {
+        throw ::IceInternal::LocalExceptionWrapper(::Ice::UnknownException(__FILE__, __LINE__, "unknown c++ exception"), false);
+    }
+}
+
 ::std::string
 IceDelegateD::BomberLoutreInterface::MapInterface::getId(const ::Ice::Context* __context)
 {
@@ -8720,11 +8893,27 @@ BomberLoutreInterface::GameWaitRoom::___gameEnd(::IceInternal::Incoming& __inS, 
     return ::Ice::DispatchOK;
 }
 
+::Ice::DispatchStatus
+BomberLoutreInterface::GameWaitRoom::___gameResults(::IceInternal::Incoming& __inS, const ::Ice::Current& __current)
+{
+    __checkMode(::Ice::Normal, __current.mode);
+    ::IceInternal::BasicStream* __is = __inS.is();
+    __is->startReadEncaps();
+    ::BomberLoutreInterface::Player winner;
+    ::BomberLoutreInterface::PlayerList others;
+    winner.__read(__is);
+    ::BomberLoutreInterface::__readPlayerList(__is, others);
+    __is->endReadEncaps();
+    gameResults(winner, others, __current);
+    return ::Ice::DispatchOK;
+}
+
 static ::std::string __BomberLoutreInterface__GameWaitRoom_all[] =
 {
     "allUsersReady",
     "gameDataUpdated",
     "gameEnd",
+    "gameResults",
     "gameStart",
     "ice_id",
     "ice_ids",
@@ -8738,7 +8927,7 @@ static ::std::string __BomberLoutreInterface__GameWaitRoom_all[] =
 ::Ice::DispatchStatus
 BomberLoutreInterface::GameWaitRoom::__dispatch(::IceInternal::Incoming& in, const ::Ice::Current& current)
 {
-    ::std::pair< ::std::string*, ::std::string*> r = ::std::equal_range(__BomberLoutreInterface__GameWaitRoom_all, __BomberLoutreInterface__GameWaitRoom_all + 11, current.operation);
+    ::std::pair< ::std::string*, ::std::string*> r = ::std::equal_range(__BomberLoutreInterface__GameWaitRoom_all, __BomberLoutreInterface__GameWaitRoom_all + 12, current.operation);
     if(r.first == r.second)
     {
         throw ::Ice::OperationNotExistException(__FILE__, __LINE__, current.id, current.facet, current.operation);
@@ -8760,33 +8949,37 @@ BomberLoutreInterface::GameWaitRoom::__dispatch(::IceInternal::Incoming& in, con
         }
         case 3:
         {
-            return ___gameStart(in, current);
+            return ___gameResults(in, current);
         }
         case 4:
         {
-            return ___ice_id(in, current);
+            return ___gameStart(in, current);
         }
         case 5:
         {
-            return ___ice_ids(in, current);
+            return ___ice_id(in, current);
         }
         case 6:
         {
-            return ___ice_isA(in, current);
+            return ___ice_ids(in, current);
         }
         case 7:
         {
-            return ___ice_ping(in, current);
+            return ___ice_isA(in, current);
         }
         case 8:
         {
-            return ___newUserInRoom(in, current);
+            return ___ice_ping(in, current);
         }
         case 9:
         {
-            return ___userLeftRoom(in, current);
+            return ___newUserInRoom(in, current);
         }
         case 10:
+        {
+            return ___userLeftRoom(in, current);
+        }
+        case 11:
         {
             return ___userReady(in, current);
         }

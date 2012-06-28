@@ -17,9 +17,9 @@ UserModel* UserModel::Connect(string login, string password)
 	bool badLogin = false, badPwd = false;
 	/* Rechercher dans la base de données */
 	if (badLogin)
-		throw Bomberloutre::BadLoginException("BOLOSS");
+		throw ::BomberLoutreInterface::BadLoginException("BOLOSS");
 	if (badPwd)
-		throw Bomberloutre::BadPasswordException("Retente ta chance");
+		throw ::BomberLoutreInterface::BadPasswordException("Retente ta chance");
 	
 	return user;
 }
@@ -30,7 +30,7 @@ UserModel* UserModel::CreateUser(string login, string password)
 	bool userExist = false;
 	/* Si l'utilisateur existe deja : */
 	if (userExist)
-		throw Bomberloutre::UserException("L'utilisateur existe déjà : sois créatif et trouve un autre pseudo.... VICTIME!");
+		throw ::BomberLoutreInterface::UserException("L'utilisateur existe déjà : sois créatif et trouve un autre pseudo.... VICTIME!");
 
 	/* Maj de la bdd : création du user avec des params par dé */
 	return user;
@@ -70,7 +70,7 @@ void UserModel::joinGame(GameModel* game)
 	game->addUser(this);
 }
 
-void UserModel::save()
+bool UserModel::save()
 {
 	//save user information : nbWin, nbkill ....
 }

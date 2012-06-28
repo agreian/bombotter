@@ -74,7 +74,7 @@ void PlayerModel::die(PlayerModel* player)
 		
 void PlayerModel::dropBomb()
 {
-	this->map->poserBombe(this);
+	this->map->deposeBombe(this);
 }
 
 void PlayerModel::addKill(int nb)

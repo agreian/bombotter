@@ -2,12 +2,11 @@
 #define BOT_PLAYER_MODEL_HEADER
 
 // BotPlayerModel.h
-#include "string.h"
+#include <string>
 #include <iostream>
 #include "PlayerModel.h"
 #include "MapModel.h"
 
-using namespace System;
 using namespace std;
 
 const int actionMove = 0;

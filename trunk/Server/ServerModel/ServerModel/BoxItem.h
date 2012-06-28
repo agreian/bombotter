@@ -2,11 +2,10 @@
 #define BOX_ITEM_HEADER
 
 // BoxItem.h
-#include "string.h"
+#include <string>
 #include <iostream>
 #include "MapItem.h"
 
-using namespace System;
 using namespace std;
 
 class BoxItem : public MapItem

@@ -2,11 +2,10 @@
 #define FLAME_UP_HEADER
 
 // FlameUp.h
-#include "string.h"
+#include <string>
 #include <iostream>
 #include "Bonus.h"
 
-using namespace System;
 using namespace std;
 
 class FlameUp : public Bonus

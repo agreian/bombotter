@@ -38,7 +38,7 @@ void MapModel::addPlayer(PlayerModel* newPlayer)
 	}
 }
 
-bool MapModel::checkMove(PlayerModel* p, Point arrive)
+bool MapModel::checkMove(PlayerModel* p, ::BomberLoutreInterface::Point arrive)
 {
 
 	int posXPlayer, posYPlayer, minX, maxX, minY, maxY, bordX1, bordY1, bordX0, bordY0;

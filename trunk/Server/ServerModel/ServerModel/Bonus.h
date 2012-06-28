@@ -3,11 +3,10 @@
 
 
 // Bonus.h
-#include "string.h"
+#include <string>
 #include <iostream>
 #include "MapItem.h"
 
-using namespace System;
 using namespace std;
 
 class Bonus : public MapItem
