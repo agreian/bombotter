@@ -7,7 +7,7 @@
 	
 }*/
 
-FlameItem::FlameItem(MapModel* map, PlayerModel* player, int posX, int posY):MapItem(map,true,false)
+FlameItem::FlameItem(MapModel* map, PlayerModel* player):MapItem(map,true,false)
 {
 	this->player = player;
 	this->timer = 1.0;
