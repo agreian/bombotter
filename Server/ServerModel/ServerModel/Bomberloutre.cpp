@@ -58,6 +58,8 @@ static const ::std::string __BomberLoutreInterface__GameInterface__addBot_name =
 
 static const ::std::string __BomberLoutreInterface__GameInterface__removeBot_name = "removeBot";
 
+static const ::std::string __BomberLoutreInterface__GameInterface__getMapList_name = "getMapList";
+
 static const ::std::string __BomberLoutreInterface__GameInterface__createMap_name = "createMap";
 
 static const ::std::string __BomberLoutreInterface__GameInterface__startMap_name = "startMap";
@@ -79,8 +81,6 @@ static const ::std::string __BomberLoutreInterface__GameWaitRoom__gameDataUpdate
 static const ::std::string __BomberLoutreInterface__GameWaitRoom__gameStart_name = "gameStart";
 
 static const ::std::string __BomberLoutreInterface__GameWaitRoom__gameEnd_name = "gameEnd";
-
-static const ::std::string __BomberLoutreInterface__GameWaitRoom__gameResults_name = "gameResults";
 
 static const ::std::string __BomberLoutreInterface__MapInterface__getId_name = "getId";
 
@@ -1519,7 +1519,74 @@ IceProxy::BomberLoutreInterface::GameInterface::end_removeBot(const ::Ice::Async
     __end(__result, __BomberLoutreInterface__GameInterface__removeBot_name);
 }
 
-bool
+::BomberLoutreInterface::MapNameList
+IceProxy::BomberLoutreInterface::GameInterface::getMapList(const ::Ice::Context* __ctx)
+{
+    int __cnt = 0;
+    while(true)
+    {
+        ::IceInternal::Handle< ::IceDelegate::Ice::Object> __delBase;
+        try
+        {
+            __checkTwowayOnly(__BomberLoutreInterface__GameInterface__getMapList_name);
+            __delBase = __getDelegate(false);
+            ::IceDelegate::BomberLoutreInterface::GameInterface* __del = dynamic_cast< ::IceDelegate::BomberLoutreInterface::GameInterface*>(__delBase.get());
+            return __del->getMapList(__ctx);
+        }
+        catch(const ::IceInternal::LocalExceptionWrapper& __ex)
+        {
+            __handleExceptionWrapper(__delBase, __ex);
+        }
+        catch(const ::Ice::LocalException& __ex)
+        {
+            __handleException(__delBase, __ex, true, __cnt);
+        }
+    }
+}
+
+::Ice::AsyncResultPtr
+IceProxy::BomberLoutreInterface::GameInterface::begin_getMapList(const ::Ice::Context* __ctx, const ::IceInternal::CallbackBasePtr& __del, const ::Ice::LocalObjectPtr& __cookie)
+{
+    __checkAsyncTwowayOnly(__BomberLoutreInterface__GameInterface__getMapList_name);
+    ::IceInternal::OutgoingAsyncPtr __result = new ::IceInternal::OutgoingAsync(this, __BomberLoutreInterface__GameInterface__getMapList_name, __del, __cookie);
+    try
+    {
+        __result->__prepare(__BomberLoutreInterface__GameInterface__getMapList_name, ::Ice::Normal, __ctx);
+        ::IceInternal::BasicStream* __os = __result->__getOs();
+        __os->endWriteEncaps();
+        __result->__send(true);
+    }
+    catch(const ::Ice::LocalException& __ex)
+    {
+        __result->__exceptionAsync(__ex);
+    }
+    return __result;
+}
+
+::BomberLoutreInterface::MapNameList
+IceProxy::BomberLoutreInterface::GameInterface::end_getMapList(const ::Ice::AsyncResultPtr& __result)
+{
+    ::Ice::AsyncResult::__check(__result, this, __BomberLoutreInterface__GameInterface__getMapList_name);
+    ::BomberLoutreInterface::MapNameList __ret;
+    if(!__result->__wait())
+    {
+        try
+        {
+            __result->__throwUserException();
+        }
+        catch(const ::Ice::UserException& __ex)
+        {
+            throw ::Ice::UnknownUserException(__FILE__, __LINE__, __ex.ice_name());
+        }
+    }
+    ::IceInternal::BasicStream* __is = __result->__getIs();
+    __is->startReadEncaps();
+    __is->read(__ret);
+    __is->endReadEncaps();
+    return __ret;
+}
+
+::std::string
 IceProxy::BomberLoutreInterface::GameInterface::createMap(const ::std::string& mode, const ::std::string& mapSkin, const ::Ice::Context* __ctx)
 {
     int __cnt = 0;
@@ -1565,11 +1632,11 @@ IceProxy::BomberLoutreInterface::GameInterface::begin_createMap(const ::std::str
     return __result;
 }
 
-bool
+::std::string
 IceProxy::BomberLoutreInterface::GameInterface::end_createMap(const ::Ice::AsyncResultPtr& __result)
 {
     ::Ice::AsyncResult::__check(__result, this, __BomberLoutreInterface__GameInterface__createMap_name);
-    bool __ret;
+    ::std::string __ret;
     if(!__result->__wait())
     {
         try
@@ -2122,64 +2189,6 @@ void
 IceProxy::BomberLoutreInterface::GameWaitRoom::end_gameEnd(const ::Ice::AsyncResultPtr& __result)
 {
     __end(__result, __BomberLoutreInterface__GameWaitRoom__gameEnd_name);
-}
-
-void
-IceProxy::BomberLoutreInterface::GameWaitRoom::gameResults(const ::BomberLoutreInterface::Player& winner, const ::BomberLoutreInterface::PlayerList& others, const ::Ice::Context* __ctx)
-{
-    int __cnt = 0;
-    while(true)
-    {
-        ::IceInternal::Handle< ::IceDelegate::Ice::Object> __delBase;
-        try
-        {
-            __delBase = __getDelegate(false);
-            ::IceDelegate::BomberLoutreInterface::GameWaitRoom* __del = dynamic_cast< ::IceDelegate::BomberLoutreInterface::GameWaitRoom*>(__delBase.get());
-            __del->gameResults(winner, others, __ctx);
-            return;
-        }
-        catch(const ::IceInternal::LocalExceptionWrapper& __ex)
-        {
-            __handleExceptionWrapper(__delBase, __ex);
-        }
-        catch(const ::Ice::LocalException& __ex)
-        {
-            __handleException(__delBase, __ex, true, __cnt);
-        }
-    }
-}
-
-::Ice::AsyncResultPtr
-IceProxy::BomberLoutreInterface::GameWaitRoom::begin_gameResults(const ::BomberLoutreInterface::Player& winner, const ::BomberLoutreInterface::PlayerList& others, const ::Ice::Context* __ctx, const ::IceInternal::CallbackBasePtr& __del, const ::Ice::LocalObjectPtr& __cookie)
-{
-    ::IceInternal::OutgoingAsyncPtr __result = new ::IceInternal::OutgoingAsync(this, __BomberLoutreInterface__GameWaitRoom__gameResults_name, __del, __cookie);
-    try
-    {
-        __result->__prepare(__BomberLoutreInterface__GameWaitRoom__gameResults_name, ::Ice::Normal, __ctx);
-        ::IceInternal::BasicStream* __os = __result->__getOs();
-        winner.__write(__os);
-        if(others.size() == 0)
-        {
-            __os->writeSize(0);
-        }
-        else
-        {
-            ::BomberLoutreInterface::__writePlayerList(__os, &others[0], &others[0] + others.size());
-        }
-        __os->endWriteEncaps();
-        __result->__send(true);
-    }
-    catch(const ::Ice::LocalException& __ex)
-    {
-        __result->__exceptionAsync(__ex);
-    }
-    return __result;
-}
-
-void
-IceProxy::BomberLoutreInterface::GameWaitRoom::end_gameResults(const ::Ice::AsyncResultPtr& __result)
-{
-    __end(__result, __BomberLoutreInterface__GameWaitRoom__gameResults_name);
 }
 
 const ::std::string&
@@ -3986,7 +3995,39 @@ IceDelegateM::BomberLoutreInterface::GameInterface::removeBot(const ::Ice::Conte
     }
 }
 
-bool
+::BomberLoutreInterface::MapNameList
+IceDelegateM::BomberLoutreInterface::GameInterface::getMapList(const ::Ice::Context* __context)
+{
+    ::IceInternal::Outgoing __og(__handler.get(), __BomberLoutreInterface__GameInterface__getMapList_name, ::Ice::Normal, __context);
+    bool __ok = __og.invoke();
+    ::BomberLoutreInterface::MapNameList __ret;
+    try
+    {
+        if(!__ok)
+        {
+            try
+            {
+                __og.throwUserException();
+            }
+            catch(const ::Ice::UserException& __ex)
+            {
+                ::Ice::UnknownUserException __uue(__FILE__, __LINE__, __ex.ice_name());
+                throw __uue;
+            }
+        }
+        ::IceInternal::BasicStream* __is = __og.is();
+        __is->startReadEncaps();
+        __is->read(__ret);
+        __is->endReadEncaps();
+        return __ret;
+    }
+    catch(const ::Ice::LocalException& __ex)
+    {
+        throw ::IceInternal::LocalExceptionWrapper(__ex, false);
+    }
+}
+
+::std::string
 IceDelegateM::BomberLoutreInterface::GameInterface::createMap(const ::std::string& mode, const ::std::string& mapSkin, const ::Ice::Context* __context)
 {
     ::IceInternal::Outgoing __og(__handler.get(), __BomberLoutreInterface__GameInterface__createMap_name, ::Ice::Normal, __context);
@@ -4001,7 +4042,7 @@ IceDelegateM::BomberLoutreInterface::GameInterface::createMap(const ::std::strin
         __og.abort(__ex);
     }
     bool __ok = __og.invoke();
-    bool __ret;
+    ::std::string __ret;
     try
     {
         if(!__ok)
@@ -4340,53 +4381,6 @@ void
 IceDelegateM::BomberLoutreInterface::GameWaitRoom::gameEnd(const ::Ice::Context* __context)
 {
     ::IceInternal::Outgoing __og(__handler.get(), __BomberLoutreInterface__GameWaitRoom__gameEnd_name, ::Ice::Normal, __context);
-    bool __ok = __og.invoke();
-    if(!__og.is()->b.empty())
-    {
-        try
-        {
-            if(!__ok)
-            {
-                try
-                {
-                    __og.throwUserException();
-                }
-                catch(const ::Ice::UserException& __ex)
-                {
-                    ::Ice::UnknownUserException __uue(__FILE__, __LINE__, __ex.ice_name());
-                    throw __uue;
-                }
-            }
-            __og.is()->skipEmptyEncaps();
-        }
-        catch(const ::Ice::LocalException& __ex)
-        {
-            throw ::IceInternal::LocalExceptionWrapper(__ex, false);
-        }
-    }
-}
-
-void
-IceDelegateM::BomberLoutreInterface::GameWaitRoom::gameResults(const ::BomberLoutreInterface::Player& winner, const ::BomberLoutreInterface::PlayerList& others, const ::Ice::Context* __context)
-{
-    ::IceInternal::Outgoing __og(__handler.get(), __BomberLoutreInterface__GameWaitRoom__gameResults_name, ::Ice::Normal, __context);
-    try
-    {
-        ::IceInternal::BasicStream* __os = __og.os();
-        winner.__write(__os);
-        if(others.size() == 0)
-        {
-            __os->writeSize(0);
-        }
-        else
-        {
-            ::BomberLoutreInterface::__writePlayerList(__os, &others[0], &others[0] + others.size());
-        }
-    }
-    catch(const ::Ice::LocalException& __ex)
-    {
-        __og.abort(__ex);
-    }
     bool __ok = __og.invoke();
     if(!__og.is()->b.empty())
     {
@@ -5995,14 +5989,80 @@ IceDelegateD::BomberLoutreInterface::GameInterface::removeBot(const ::Ice::Conte
     }
 }
 
-bool
+::BomberLoutreInterface::MapNameList
+IceDelegateD::BomberLoutreInterface::GameInterface::getMapList(const ::Ice::Context* __context)
+{
+    class _DirectI : public ::IceInternal::Direct
+    {
+    public:
+
+        _DirectI(::BomberLoutreInterface::MapNameList& __result, const ::Ice::Current& __current) : 
+            ::IceInternal::Direct(__current),
+            _result(__result)
+        {
+        }
+        
+        virtual ::Ice::DispatchStatus
+        run(::Ice::Object* object)
+        {
+            ::BomberLoutreInterface::GameInterface* servant = dynamic_cast< ::BomberLoutreInterface::GameInterface*>(object);
+            if(!servant)
+            {
+                throw ::Ice::OperationNotExistException(__FILE__, __LINE__, _current.id, _current.facet, _current.operation);
+            }
+            _result = servant->getMapList(_current);
+            return ::Ice::DispatchOK;
+        }
+        
+    private:
+        
+        ::BomberLoutreInterface::MapNameList& _result;
+    };
+    
+    ::Ice::Current __current;
+    __initCurrent(__current, __BomberLoutreInterface__GameInterface__getMapList_name, ::Ice::Normal, __context);
+    ::BomberLoutreInterface::MapNameList __result;
+    try
+    {
+        _DirectI __direct(__result, __current);
+        try
+        {
+            __direct.servant()->__collocDispatch(__direct);
+        }
+        catch(...)
+        {
+            __direct.destroy();
+            throw;
+        }
+        __direct.destroy();
+    }
+    catch(const ::Ice::SystemException&)
+    {
+        throw;
+    }
+    catch(const ::IceInternal::LocalExceptionWrapper&)
+    {
+        throw;
+    }
+    catch(const ::std::exception& __ex)
+    {
+        ::IceInternal::LocalExceptionWrapper::throwWrapper(__ex);
+    }
+    catch(...)
+    {
+        throw ::IceInternal::LocalExceptionWrapper(::Ice::UnknownException(__FILE__, __LINE__, "unknown c++ exception"), false);
+    }
+    return __result;
+}
+
+::std::string
 IceDelegateD::BomberLoutreInterface::GameInterface::createMap(const ::std::string& mode, const ::std::string& mapSkin, const ::Ice::Context* __context)
 {
     class _DirectI : public ::IceInternal::Direct
     {
     public:
 
-        _DirectI(bool& __result, const ::std::string& mode, const ::std::string& mapSkin, const ::Ice::Current& __current) : 
+        _DirectI(::std::string& __result, const ::std::string& mode, const ::std::string& mapSkin, const ::Ice::Current& __current) : 
             ::IceInternal::Direct(__current),
             _result(__result),
             _m_mode(mode),
@@ -6024,14 +6084,14 @@ IceDelegateD::BomberLoutreInterface::GameInterface::createMap(const ::std::strin
         
     private:
         
-        bool& _result;
+        ::std::string& _result;
         const ::std::string& _m_mode;
         const ::std::string& _m_mapSkin;
     };
     
     ::Ice::Current __current;
     __initCurrent(__current, __BomberLoutreInterface__GameInterface__createMap_name, ::Ice::Normal, __context);
-    bool __result;
+    ::std::string __result;
     try
     {
         _DirectI __direct(__result, mode, mapSkin, __current);
@@ -6668,72 +6728,6 @@ IceDelegateD::BomberLoutreInterface::GameWaitRoom::gameEnd(const ::Ice::Context*
     try
     {
         _DirectI __direct(__current);
-        try
-        {
-            __direct.servant()->__collocDispatch(__direct);
-        }
-        catch(...)
-        {
-            __direct.destroy();
-            throw;
-        }
-        __direct.destroy();
-    }
-    catch(const ::Ice::SystemException&)
-    {
-        throw;
-    }
-    catch(const ::IceInternal::LocalExceptionWrapper&)
-    {
-        throw;
-    }
-    catch(const ::std::exception& __ex)
-    {
-        ::IceInternal::LocalExceptionWrapper::throwWrapper(__ex);
-    }
-    catch(...)
-    {
-        throw ::IceInternal::LocalExceptionWrapper(::Ice::UnknownException(__FILE__, __LINE__, "unknown c++ exception"), false);
-    }
-}
-
-void
-IceDelegateD::BomberLoutreInterface::GameWaitRoom::gameResults(const ::BomberLoutreInterface::Player& winner, const ::BomberLoutreInterface::PlayerList& others, const ::Ice::Context* __context)
-{
-    class _DirectI : public ::IceInternal::Direct
-    {
-    public:
-
-        _DirectI(const ::BomberLoutreInterface::Player& winner, const ::BomberLoutreInterface::PlayerList& others, const ::Ice::Current& __current) : 
-            ::IceInternal::Direct(__current),
-            _m_winner(winner),
-            _m_others(others)
-        {
-        }
-        
-        virtual ::Ice::DispatchStatus
-        run(::Ice::Object* object)
-        {
-            ::BomberLoutreInterface::GameWaitRoom* servant = dynamic_cast< ::BomberLoutreInterface::GameWaitRoom*>(object);
-            if(!servant)
-            {
-                throw ::Ice::OperationNotExistException(__FILE__, __LINE__, _current.id, _current.facet, _current.operation);
-            }
-            servant->gameResults(_m_winner, _m_others, _current);
-            return ::Ice::DispatchOK;
-        }
-        
-    private:
-        
-        const ::BomberLoutreInterface::Player& _m_winner;
-        const ::BomberLoutreInterface::PlayerList& _m_others;
-    };
-    
-    ::Ice::Current __current;
-    __initCurrent(__current, __BomberLoutreInterface__GameWaitRoom__gameResults_name, ::Ice::Normal, __context);
-    try
-    {
-        _DirectI __direct(winner, others, __current);
         try
         {
             __direct.servant()->__collocDispatch(__direct);
@@ -8560,6 +8554,24 @@ BomberLoutreInterface::GameInterface::___removeBot(::IceInternal::Incoming& __in
 }
 
 ::Ice::DispatchStatus
+BomberLoutreInterface::GameInterface::___getMapList(::IceInternal::Incoming& __inS, const ::Ice::Current& __current)
+{
+    __checkMode(::Ice::Normal, __current.mode);
+    __inS.is()->skipEmptyEncaps();
+    ::IceInternal::BasicStream* __os = __inS.os();
+    ::BomberLoutreInterface::MapNameList __ret = getMapList(__current);
+    if(__ret.size() == 0)
+    {
+        __os->writeSize(0);
+    }
+    else
+    {
+        __os->write(&__ret[0], &__ret[0] + __ret.size());
+    }
+    return ::Ice::DispatchOK;
+}
+
+::Ice::DispatchStatus
 BomberLoutreInterface::GameInterface::___createMap(::IceInternal::Incoming& __inS, const ::Ice::Current& __current)
 {
     __checkMode(::Ice::Normal, __current.mode);
@@ -8571,7 +8583,7 @@ BomberLoutreInterface::GameInterface::___createMap(::IceInternal::Incoming& __in
     __is->read(mapSkin);
     __is->endReadEncaps();
     ::IceInternal::BasicStream* __os = __inS.os();
-    bool __ret = createMap(mode, mapSkin, __current);
+    ::std::string __ret = createMap(mode, mapSkin, __current);
     __os->write(__ret);
     return ::Ice::DispatchOK;
 }
@@ -8610,6 +8622,7 @@ static ::std::string __BomberLoutreInterface__GameInterface_all[] =
     "addBot",
     "createMap",
     "endMap",
+    "getMapList",
     "getName",
     "getRoundCount",
     "getState",
@@ -8630,7 +8643,7 @@ static ::std::string __BomberLoutreInterface__GameInterface_all[] =
 ::Ice::DispatchStatus
 BomberLoutreInterface::GameInterface::__dispatch(::IceInternal::Incoming& in, const ::Ice::Current& current)
 {
-    ::std::pair< ::std::string*, ::std::string*> r = ::std::equal_range(__BomberLoutreInterface__GameInterface_all, __BomberLoutreInterface__GameInterface_all + 18, current.operation);
+    ::std::pair< ::std::string*, ::std::string*> r = ::std::equal_range(__BomberLoutreInterface__GameInterface_all, __BomberLoutreInterface__GameInterface_all + 19, current.operation);
     if(r.first == r.second)
     {
         throw ::Ice::OperationNotExistException(__FILE__, __LINE__, current.id, current.facet, current.operation);
@@ -8652,61 +8665,65 @@ BomberLoutreInterface::GameInterface::__dispatch(::IceInternal::Incoming& in, co
         }
         case 3:
         {
-            return ___getName(in, current);
+            return ___getMapList(in, current);
         }
         case 4:
         {
-            return ___getRoundCount(in, current);
+            return ___getName(in, current);
         }
         case 5:
         {
-            return ___getState(in, current);
+            return ___getRoundCount(in, current);
         }
         case 6:
         {
-            return ___ice_id(in, current);
+            return ___getState(in, current);
         }
         case 7:
         {
-            return ___ice_ids(in, current);
+            return ___ice_id(in, current);
         }
         case 8:
         {
-            return ___ice_isA(in, current);
+            return ___ice_ids(in, current);
         }
         case 9:
         {
-            return ___ice_ping(in, current);
+            return ___ice_isA(in, current);
         }
         case 10:
         {
-            return ___invitePlayer(in, current);
+            return ___ice_ping(in, current);
         }
         case 11:
         {
-            return ___kickPlayer(in, current);
+            return ___invitePlayer(in, current);
         }
         case 12:
         {
-            return ___removeBot(in, current);
+            return ___kickPlayer(in, current);
         }
         case 13:
         {
-            return ___removeGame(in, current);
+            return ___removeBot(in, current);
         }
         case 14:
         {
-            return ___setName(in, current);
+            return ___removeGame(in, current);
         }
         case 15:
         {
-            return ___setRoundCount(in, current);
+            return ___setName(in, current);
         }
         case 16:
         {
-            return ___setState(in, current);
+            return ___setRoundCount(in, current);
         }
         case 17:
+        {
+            return ___setState(in, current);
+        }
+        case 18:
         {
             return ___startMap(in, current);
         }
@@ -8893,27 +8910,11 @@ BomberLoutreInterface::GameWaitRoom::___gameEnd(::IceInternal::Incoming& __inS, 
     return ::Ice::DispatchOK;
 }
 
-::Ice::DispatchStatus
-BomberLoutreInterface::GameWaitRoom::___gameResults(::IceInternal::Incoming& __inS, const ::Ice::Current& __current)
-{
-    __checkMode(::Ice::Normal, __current.mode);
-    ::IceInternal::BasicStream* __is = __inS.is();
-    __is->startReadEncaps();
-    ::BomberLoutreInterface::Player winner;
-    ::BomberLoutreInterface::PlayerList others;
-    winner.__read(__is);
-    ::BomberLoutreInterface::__readPlayerList(__is, others);
-    __is->endReadEncaps();
-    gameResults(winner, others, __current);
-    return ::Ice::DispatchOK;
-}
-
 static ::std::string __BomberLoutreInterface__GameWaitRoom_all[] =
 {
     "allUsersReady",
     "gameDataUpdated",
     "gameEnd",
-    "gameResults",
     "gameStart",
     "ice_id",
     "ice_ids",
@@ -8927,7 +8928,7 @@ static ::std::string __BomberLoutreInterface__GameWaitRoom_all[] =
 ::Ice::DispatchStatus
 BomberLoutreInterface::GameWaitRoom::__dispatch(::IceInternal::Incoming& in, const ::Ice::Current& current)
 {
-    ::std::pair< ::std::string*, ::std::string*> r = ::std::equal_range(__BomberLoutreInterface__GameWaitRoom_all, __BomberLoutreInterface__GameWaitRoom_all + 12, current.operation);
+    ::std::pair< ::std::string*, ::std::string*> r = ::std::equal_range(__BomberLoutreInterface__GameWaitRoom_all, __BomberLoutreInterface__GameWaitRoom_all + 11, current.operation);
     if(r.first == r.second)
     {
         throw ::Ice::OperationNotExistException(__FILE__, __LINE__, current.id, current.facet, current.operation);
@@ -8949,37 +8950,33 @@ BomberLoutreInterface::GameWaitRoom::__dispatch(::IceInternal::Incoming& in, con
         }
         case 3:
         {
-            return ___gameResults(in, current);
+            return ___gameStart(in, current);
         }
         case 4:
         {
-            return ___gameStart(in, current);
+            return ___ice_id(in, current);
         }
         case 5:
         {
-            return ___ice_id(in, current);
+            return ___ice_ids(in, current);
         }
         case 6:
         {
-            return ___ice_ids(in, current);
+            return ___ice_isA(in, current);
         }
         case 7:
         {
-            return ___ice_isA(in, current);
+            return ___ice_ping(in, current);
         }
         case 8:
         {
-            return ___ice_ping(in, current);
+            return ___newUserInRoom(in, current);
         }
         case 9:
         {
-            return ___newUserInRoom(in, current);
-        }
-        case 10:
-        {
             return ___userLeftRoom(in, current);
         }
-        case 11:
+        case 10:
         {
             return ___userReady(in, current);
         }

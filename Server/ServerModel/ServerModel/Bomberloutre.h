@@ -18,8 +18,8 @@
 // </auto-generated>
 //
 
-#ifndef __C__Users_Florent_Documents_Visual_Studio_2010_Projects_BomberLoutre_Server_ServerModel_ServerModel_Bomberloutre_h__
-#define __C__Users_Florent_Documents_Visual_Studio_2010_Projects_BomberLoutre_Server_ServerModel_ServerModel_Bomberloutre_h__
+#ifndef __C__Users_Simon_Desktop_bombotter_Server_ServerModel_ServerModel_Bomberloutre_h__
+#define __C__Users_Simon_Desktop_bombotter_Server_ServerModel_ServerModel_Bomberloutre_h__
 
 #include <Ice/LocalObjectF.h>
 #include <Ice/ProxyF.h>
@@ -415,6 +415,8 @@ struct GameData
 typedef ::std::vector< ::BomberLoutreInterface::GameData> GameDataList;
 void __writeGameDataList(::IceInternal::BasicStream*, const ::BomberLoutreInterface::GameData*, const ::BomberLoutreInterface::GameData*);
 void __readGameDataList(::IceInternal::BasicStream*, GameDataList&);
+
+typedef ::std::vector< ::std::string> MapNameList;
 
 struct Player
 {
@@ -849,6 +851,9 @@ typedef ::IceUtil::Handle< Callback_GameInterface_addBot_Base> Callback_GameInte
 class Callback_GameInterface_removeBot_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_GameInterface_removeBot_Base> Callback_GameInterface_removeBotPtr;
 
+class Callback_GameInterface_getMapList_Base : virtual public ::IceInternal::CallbackBase { };
+typedef ::IceUtil::Handle< Callback_GameInterface_getMapList_Base> Callback_GameInterface_getMapListPtr;
+
 class Callback_GameInterface_createMap_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_GameInterface_createMap_Base> Callback_GameInterface_createMapPtr;
 
@@ -881,9 +886,6 @@ typedef ::IceUtil::Handle< Callback_GameWaitRoom_gameStart_Base> Callback_GameWa
 
 class Callback_GameWaitRoom_gameEnd_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_GameWaitRoom_gameEnd_Base> Callback_GameWaitRoom_gameEndPtr;
-
-class Callback_GameWaitRoom_gameResults_Base : virtual public ::IceInternal::CallbackBase { };
-typedef ::IceUtil::Handle< Callback_GameWaitRoom_gameResults_Base> Callback_GameWaitRoom_gameResultsPtr;
 
 class Callback_MapInterface_getId_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_MapInterface_getId_Base> Callback_MapInterface_getIdPtr;
@@ -1694,11 +1696,59 @@ private:
     
 public:
 
-    bool createMap(const ::std::string& mode, const ::std::string& mapSkin)
+    ::BomberLoutreInterface::MapNameList getMapList()
+    {
+        return getMapList(0);
+    }
+    ::BomberLoutreInterface::MapNameList getMapList(const ::Ice::Context& __ctx)
+    {
+        return getMapList(&__ctx);
+    }
+
+    ::Ice::AsyncResultPtr begin_getMapList()
+    {
+        return begin_getMapList(0, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_getMapList(const ::Ice::Context& __ctx)
+    {
+        return begin_getMapList(&__ctx, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_getMapList(const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_getMapList(0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_getMapList(const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_getMapList(&__ctx, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_getMapList(const ::BomberLoutreInterface::Callback_GameInterface_getMapListPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_getMapList(0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_getMapList(const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameInterface_getMapListPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_getMapList(&__ctx, __del, __cookie);
+    }
+
+    ::BomberLoutreInterface::MapNameList end_getMapList(const ::Ice::AsyncResultPtr&);
+    
+private:
+
+    ::BomberLoutreInterface::MapNameList getMapList(const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_getMapList(const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    
+public:
+
+    ::std::string createMap(const ::std::string& mode, const ::std::string& mapSkin)
     {
         return createMap(mode, mapSkin, 0);
     }
-    bool createMap(const ::std::string& mode, const ::std::string& mapSkin, const ::Ice::Context& __ctx)
+    ::std::string createMap(const ::std::string& mode, const ::std::string& mapSkin, const ::Ice::Context& __ctx)
     {
         return createMap(mode, mapSkin, &__ctx);
     }
@@ -1733,11 +1783,11 @@ public:
         return begin_createMap(mode, mapSkin, &__ctx, __del, __cookie);
     }
 
-    bool end_createMap(const ::Ice::AsyncResultPtr&);
+    ::std::string end_createMap(const ::Ice::AsyncResultPtr&);
     
 private:
 
-    bool createMap(const ::std::string&, const ::std::string&, const ::Ice::Context*);
+    ::std::string createMap(const ::std::string&, const ::std::string&, const ::Ice::Context*);
     ::Ice::AsyncResultPtr begin_createMap(const ::std::string&, const ::std::string&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
@@ -2422,54 +2472,6 @@ private:
 
     void gameEnd(const ::Ice::Context*);
     ::Ice::AsyncResultPtr begin_gameEnd(const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
-    
-public:
-
-    void gameResults(const ::BomberLoutreInterface::Player& winner, const ::BomberLoutreInterface::PlayerList& others)
-    {
-        gameResults(winner, others, 0);
-    }
-    void gameResults(const ::BomberLoutreInterface::Player& winner, const ::BomberLoutreInterface::PlayerList& others, const ::Ice::Context& __ctx)
-    {
-        gameResults(winner, others, &__ctx);
-    }
-
-    ::Ice::AsyncResultPtr begin_gameResults(const ::BomberLoutreInterface::Player& winner, const ::BomberLoutreInterface::PlayerList& others)
-    {
-        return begin_gameResults(winner, others, 0, ::IceInternal::__dummyCallback, 0);
-    }
-
-    ::Ice::AsyncResultPtr begin_gameResults(const ::BomberLoutreInterface::Player& winner, const ::BomberLoutreInterface::PlayerList& others, const ::Ice::Context& __ctx)
-    {
-        return begin_gameResults(winner, others, &__ctx, ::IceInternal::__dummyCallback, 0);
-    }
-
-    ::Ice::AsyncResultPtr begin_gameResults(const ::BomberLoutreInterface::Player& winner, const ::BomberLoutreInterface::PlayerList& others, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
-    {
-        return begin_gameResults(winner, others, 0, __del, __cookie);
-    }
-
-    ::Ice::AsyncResultPtr begin_gameResults(const ::BomberLoutreInterface::Player& winner, const ::BomberLoutreInterface::PlayerList& others, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
-    {
-        return begin_gameResults(winner, others, &__ctx, __del, __cookie);
-    }
-
-    ::Ice::AsyncResultPtr begin_gameResults(const ::BomberLoutreInterface::Player& winner, const ::BomberLoutreInterface::PlayerList& others, const ::BomberLoutreInterface::Callback_GameWaitRoom_gameResultsPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
-    {
-        return begin_gameResults(winner, others, 0, __del, __cookie);
-    }
-
-    ::Ice::AsyncResultPtr begin_gameResults(const ::BomberLoutreInterface::Player& winner, const ::BomberLoutreInterface::PlayerList& others, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameWaitRoom_gameResultsPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
-    {
-        return begin_gameResults(winner, others, &__ctx, __del, __cookie);
-    }
-
-    void end_gameResults(const ::Ice::AsyncResultPtr&);
-    
-private:
-
-    void gameResults(const ::BomberLoutreInterface::Player&, const ::BomberLoutreInterface::PlayerList&, const ::Ice::Context*);
-    ::Ice::AsyncResultPtr begin_gameResults(const ::BomberLoutreInterface::Player&, const ::BomberLoutreInterface::PlayerList&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
     
@@ -4378,7 +4380,9 @@ public:
 
     virtual void removeBot(const ::Ice::Context*) = 0;
 
-    virtual bool createMap(const ::std::string&, const ::std::string&, const ::Ice::Context*) = 0;
+    virtual ::BomberLoutreInterface::MapNameList getMapList(const ::Ice::Context*) = 0;
+
+    virtual ::std::string createMap(const ::std::string&, const ::std::string&, const ::Ice::Context*) = 0;
 
     virtual void startMap(const ::Ice::Context*) = 0;
 
@@ -4404,8 +4408,6 @@ public:
     virtual void gameStart(const ::Ice::Context*) = 0;
 
     virtual void gameEnd(const ::Ice::Context*) = 0;
-
-    virtual void gameResults(const ::BomberLoutreInterface::Player&, const ::BomberLoutreInterface::PlayerList&, const ::Ice::Context*) = 0;
 };
 
 class MapInterface : virtual public ::IceDelegate::Ice::Object
@@ -4510,7 +4512,9 @@ public:
 
     virtual void removeBot(const ::Ice::Context*);
 
-    virtual bool createMap(const ::std::string&, const ::std::string&, const ::Ice::Context*);
+    virtual ::BomberLoutreInterface::MapNameList getMapList(const ::Ice::Context*);
+
+    virtual ::std::string createMap(const ::std::string&, const ::std::string&, const ::Ice::Context*);
 
     virtual void startMap(const ::Ice::Context*);
 
@@ -4537,8 +4541,6 @@ public:
     virtual void gameStart(const ::Ice::Context*);
 
     virtual void gameEnd(const ::Ice::Context*);
-
-    virtual void gameResults(const ::BomberLoutreInterface::Player&, const ::BomberLoutreInterface::PlayerList&, const ::Ice::Context*);
 };
 
 class MapInterface : virtual public ::IceDelegate::BomberLoutreInterface::MapInterface,
@@ -4646,7 +4648,9 @@ public:
 
     virtual void removeBot(const ::Ice::Context*);
 
-    virtual bool createMap(const ::std::string&, const ::std::string&, const ::Ice::Context*);
+    virtual ::BomberLoutreInterface::MapNameList getMapList(const ::Ice::Context*);
+
+    virtual ::std::string createMap(const ::std::string&, const ::std::string&, const ::Ice::Context*);
 
     virtual void startMap(const ::Ice::Context*);
 
@@ -4673,8 +4677,6 @@ public:
     virtual void gameStart(const ::Ice::Context*);
 
     virtual void gameEnd(const ::Ice::Context*);
-
-    virtual void gameResults(const ::BomberLoutreInterface::Player&, const ::BomberLoutreInterface::PlayerList&, const ::Ice::Context*);
 };
 
 class MapInterface : virtual public ::IceDelegate::BomberLoutreInterface::MapInterface,
@@ -4828,7 +4830,10 @@ public:
     virtual void removeBot(const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___removeBot(::IceInternal::Incoming&, const ::Ice::Current&);
 
-    virtual bool createMap(const ::std::string&, const ::std::string&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    virtual ::BomberLoutreInterface::MapNameList getMapList(const ::Ice::Current& = ::Ice::Current()) = 0;
+    ::Ice::DispatchStatus ___getMapList(::IceInternal::Incoming&, const ::Ice::Current&);
+
+    virtual ::std::string createMap(const ::std::string&, const ::std::string&, const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___createMap(::IceInternal::Incoming&, const ::Ice::Current&);
 
     virtual void startMap(const ::Ice::Current& = ::Ice::Current()) = 0;
@@ -4895,9 +4900,6 @@ public:
 
     virtual void gameEnd(const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___gameEnd(::IceInternal::Incoming&, const ::Ice::Current&);
-
-    virtual void gameResults(const ::BomberLoutreInterface::Player&, const ::BomberLoutreInterface::PlayerList&, const ::Ice::Current& = ::Ice::Current()) = 0;
-    ::Ice::DispatchStatus ___gameResults(::IceInternal::Incoming&, const ::Ice::Current&);
 
     virtual ::Ice::DispatchStatus __dispatch(::IceInternal::Incoming&, const ::Ice::Current&);
 
@@ -6101,6 +6103,122 @@ newCallback_GameInterface_removeBot(T* instance, void (T::*excb)(const ::Ice::Ex
 }
 
 template<class T>
+class CallbackNC_GameInterface_getMapList : public Callback_GameInterface_getMapList_Base, public ::IceInternal::TwowayCallbackNC<T>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception&);
+    typedef void (T::*Sent)(bool);
+    typedef void (T::*Response)(const ::BomberLoutreInterface::MapNameList&);
+
+    CallbackNC_GameInterface_getMapList(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::TwowayCallbackNC<T>(obj, cb != 0, excb, sentcb), response(cb)
+    {
+    }
+
+    virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
+    {
+        ::BomberLoutreInterface::GameInterfacePrx __proxy = ::BomberLoutreInterface::GameInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::MapNameList __ret;
+        try
+        {
+            __ret = __proxy->end_getMapList(__result);
+        }
+        catch(::Ice::Exception& ex)
+        {
+#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+            __exception(__result, ex);
+#else
+            ::IceInternal::CallbackNC<T>::__exception(__result, ex);
+#endif
+            return;
+        }
+        if(response)
+        {
+#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+            (callback.get()->*response)(__ret);
+#else
+            (::IceInternal::CallbackNC<T>::callback.get()->*response)(__ret);
+#endif
+        }
+    }
+
+    Response response;
+};
+
+template<class T> Callback_GameInterface_getMapListPtr
+newCallback_GameInterface_getMapList(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::BomberLoutreInterface::MapNameList&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameInterface_getMapList<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_GameInterface_getMapListPtr
+newCallback_GameInterface_getMapList(T* instance, void (T::*cb)(const ::BomberLoutreInterface::MapNameList&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameInterface_getMapList<T>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT>
+class Callback_GameInterface_getMapList : public Callback_GameInterface_getMapList_Base, public ::IceInternal::TwowayCallback<T, CT>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
+    typedef void (T::*Sent)(bool , const CT&);
+    typedef void (T::*Response)(const ::BomberLoutreInterface::MapNameList&, const CT&);
+
+    Callback_GameInterface_getMapList(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::TwowayCallback<T, CT>(obj, cb != 0, excb, sentcb), response(cb)
+    {
+    }
+
+    virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
+    {
+        ::BomberLoutreInterface::GameInterfacePrx __proxy = ::BomberLoutreInterface::GameInterfacePrx::uncheckedCast(__result->getProxy());
+        ::BomberLoutreInterface::MapNameList __ret;
+        try
+        {
+            __ret = __proxy->end_getMapList(__result);
+        }
+        catch(::Ice::Exception& ex)
+        {
+#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+            __exception(__result, ex);
+#else
+            ::IceInternal::Callback<T, CT>::__exception(__result, ex);
+#endif
+            return;
+        }
+        if(response)
+        {
+#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
+            (callback.get()->*response)(__ret, CT::dynamicCast(__result->getCookie()));
+#else
+            (::IceInternal::Callback<T, CT>::callback.get()->*response)(__ret, CT::dynamicCast(__result->getCookie()));
+#endif
+        }
+    }
+
+    Response response;
+};
+
+template<class T, typename CT> Callback_GameInterface_getMapListPtr
+newCallback_GameInterface_getMapList(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::BomberLoutreInterface::MapNameList&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameInterface_getMapList<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_GameInterface_getMapListPtr
+newCallback_GameInterface_getMapList(T* instance, void (T::*cb)(const ::BomberLoutreInterface::MapNameList&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameInterface_getMapList<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T>
 class CallbackNC_GameInterface_createMap : public Callback_GameInterface_createMap_Base, public ::IceInternal::TwowayCallbackNC<T>
 {
 public:
@@ -6109,7 +6227,7 @@ public:
 
     typedef void (T::*Exception)(const ::Ice::Exception&);
     typedef void (T::*Sent)(bool);
-    typedef void (T::*Response)(bool);
+    typedef void (T::*Response)(const ::std::string&);
 
     CallbackNC_GameInterface_createMap(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
         : ::IceInternal::TwowayCallbackNC<T>(obj, cb != 0, excb, sentcb), response(cb)
@@ -6119,7 +6237,7 @@ public:
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
         ::BomberLoutreInterface::GameInterfacePrx __proxy = ::BomberLoutreInterface::GameInterfacePrx::uncheckedCast(__result->getProxy());
-        bool __ret;
+        ::std::string __ret;
         try
         {
             __ret = __proxy->end_createMap(__result);
@@ -6147,13 +6265,13 @@ public:
 };
 
 template<class T> Callback_GameInterface_createMapPtr
-newCallback_GameInterface_createMap(const IceUtil::Handle<T>& instance, void (T::*cb)(bool), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+newCallback_GameInterface_createMap(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::std::string&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
 {
     return new CallbackNC_GameInterface_createMap<T>(instance, cb, excb, sentcb);
 }
 
 template<class T> Callback_GameInterface_createMapPtr
-newCallback_GameInterface_createMap(T* instance, void (T::*cb)(bool), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+newCallback_GameInterface_createMap(T* instance, void (T::*cb)(const ::std::string&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
 {
     return new CallbackNC_GameInterface_createMap<T>(instance, cb, excb, sentcb);
 }
@@ -6167,7 +6285,7 @@ public:
 
     typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
     typedef void (T::*Sent)(bool , const CT&);
-    typedef void (T::*Response)(bool, const CT&);
+    typedef void (T::*Response)(const ::std::string&, const CT&);
 
     Callback_GameInterface_createMap(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
         : ::IceInternal::TwowayCallback<T, CT>(obj, cb != 0, excb, sentcb), response(cb)
@@ -6177,7 +6295,7 @@ public:
     virtual void __completed(const ::Ice::AsyncResultPtr& __result) const
     {
         ::BomberLoutreInterface::GameInterfacePrx __proxy = ::BomberLoutreInterface::GameInterfacePrx::uncheckedCast(__result->getProxy());
-        bool __ret;
+        ::std::string __ret;
         try
         {
             __ret = __proxy->end_createMap(__result);
@@ -6205,13 +6323,13 @@ public:
 };
 
 template<class T, typename CT> Callback_GameInterface_createMapPtr
-newCallback_GameInterface_createMap(const IceUtil::Handle<T>& instance, void (T::*cb)(bool, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+newCallback_GameInterface_createMap(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::std::string&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
     return new Callback_GameInterface_createMap<T, CT>(instance, cb, excb, sentcb);
 }
 
 template<class T, typename CT> Callback_GameInterface_createMapPtr
-newCallback_GameInterface_createMap(T* instance, void (T::*cb)(bool, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+newCallback_GameInterface_createMap(T* instance, void (T::*cb)(const ::std::string&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
     return new Callback_GameInterface_createMap<T, CT>(instance, cb, excb, sentcb);
 }
@@ -7068,88 +7186,6 @@ template<class T, typename CT> Callback_GameWaitRoom_gameEndPtr
 newCallback_GameWaitRoom_gameEnd(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
     return new Callback_GameWaitRoom_gameEnd<T, CT>(instance, 0, excb, sentcb);
-}
-
-template<class T>
-class CallbackNC_GameWaitRoom_gameResults : public Callback_GameWaitRoom_gameResults_Base, public ::IceInternal::OnewayCallbackNC<T>
-{
-public:
-
-    typedef IceUtil::Handle<T> TPtr;
-
-    typedef void (T::*Exception)(const ::Ice::Exception&);
-    typedef void (T::*Sent)(bool);
-    typedef void (T::*Response)();
-
-    CallbackNC_GameWaitRoom_gameResults(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
-        : ::IceInternal::OnewayCallbackNC<T>(obj, cb, excb, sentcb)
-    {
-    }
-};
-
-template<class T> Callback_GameWaitRoom_gameResultsPtr
-newCallback_GameWaitRoom_gameResults(const IceUtil::Handle<T>& instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
-{
-    return new CallbackNC_GameWaitRoom_gameResults<T>(instance, cb, excb, sentcb);
-}
-
-template<class T> Callback_GameWaitRoom_gameResultsPtr
-newCallback_GameWaitRoom_gameResults(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
-{
-    return new CallbackNC_GameWaitRoom_gameResults<T>(instance, 0, excb, sentcb);
-}
-
-template<class T> Callback_GameWaitRoom_gameResultsPtr
-newCallback_GameWaitRoom_gameResults(T* instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
-{
-    return new CallbackNC_GameWaitRoom_gameResults<T>(instance, cb, excb, sentcb);
-}
-
-template<class T> Callback_GameWaitRoom_gameResultsPtr
-newCallback_GameWaitRoom_gameResults(T* instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
-{
-    return new CallbackNC_GameWaitRoom_gameResults<T>(instance, 0, excb, sentcb);
-}
-
-template<class T, typename CT>
-class Callback_GameWaitRoom_gameResults : public Callback_GameWaitRoom_gameResults_Base, public ::IceInternal::OnewayCallback<T, CT>
-{
-public:
-
-    typedef IceUtil::Handle<T> TPtr;
-
-    typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
-    typedef void (T::*Sent)(bool , const CT&);
-    typedef void (T::*Response)(const CT&);
-
-    Callback_GameWaitRoom_gameResults(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
-        : ::IceInternal::OnewayCallback<T, CT>(obj, cb, excb, sentcb)
-    {
-    }
-};
-
-template<class T, typename CT> Callback_GameWaitRoom_gameResultsPtr
-newCallback_GameWaitRoom_gameResults(const IceUtil::Handle<T>& instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
-{
-    return new Callback_GameWaitRoom_gameResults<T, CT>(instance, cb, excb, sentcb);
-}
-
-template<class T, typename CT> Callback_GameWaitRoom_gameResultsPtr
-newCallback_GameWaitRoom_gameResults(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
-{
-    return new Callback_GameWaitRoom_gameResults<T, CT>(instance, 0, excb, sentcb);
-}
-
-template<class T, typename CT> Callback_GameWaitRoom_gameResultsPtr
-newCallback_GameWaitRoom_gameResults(T* instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
-{
-    return new Callback_GameWaitRoom_gameResults<T, CT>(instance, cb, excb, sentcb);
-}
-
-template<class T, typename CT> Callback_GameWaitRoom_gameResultsPtr
-newCallback_GameWaitRoom_gameResults(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
-{
-    return new Callback_GameWaitRoom_gameResults<T, CT>(instance, 0, excb, sentcb);
 }
 
 template<class T>

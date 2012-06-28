@@ -18,8 +18,8 @@
 // </auto-generated>
 //
 
-#ifndef __C__Users_Florent_Documents_Visual_Studio_2010_Projects_BomberLoutre_Server_ServerModel_ServerModel_Bomberloutre_map_item_h__
-#define __C__Users_Florent_Documents_Visual_Studio_2010_Projects_BomberLoutre_Server_ServerModel_ServerModel_Bomberloutre_map_item_h__
+#ifndef __C__Users_Simon_Desktop_bombotter_Server_ServerModel_ServerModel_Bomberloutre_map_item_h__
+#define __C__Users_Simon_Desktop_bombotter_Server_ServerModel_ServerModel_Bomberloutre_map_item_h__
 
 #include <Ice/LocalObjectF.h>
 #include <Ice/ProxyF.h>
