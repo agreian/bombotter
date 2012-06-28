@@ -13,7 +13,7 @@ class FlameItem : public MapItem
 	// TODO : ajoutez ici vos méthodes pour cette classe.
 	public:
 		//FlameItem();
-		FlameItem(MapModel* map, PlayerModel* player, int posX,int posY);
+		FlameItem(MapModel* map, PlayerModel* player);
 		~FlameItem();
 
 		/* GETTERS */
