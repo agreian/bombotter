@@ -5,7 +5,7 @@
 	
 }*/
 
-PlayerModel::PlayerModel(MapModel* map, int width, int height, int flamePower,bool invincible,	bool invisibility,	bool kicker,	int nbBomb,	int nbDeath, int nbKill, int posX, int posY, int speed, bool alive)
+PlayerModel::PlayerModel(MapModel* map, UserModel* user, int width, int height, int flamePower,bool invincible,	bool invisibility,	bool kicker,	int nbBomb,	int nbDeath, int nbKill, int posX, int posY, int speed, bool alive,int nbSuicide, int nbBombUsed)
 {
 	this->width = width;
 	this->height = height;
@@ -21,10 +21,13 @@ PlayerModel::PlayerModel(MapModel* map, int width, int height, int flamePower,bo
 	this->posY = posY;
 	this->speed = speed;
 	this->alive = alive;
+	this->nbSuicide = nbSuicide;
+	this->nbBombUsed = nbBombUsed;
+	this->user = user;
 }
 
 
-PlayerModel::PlayerModel(MapModel* map, int newWidth, int newHeight)
+PlayerModel::PlayerModel(MapModel* map, UserModel* user,  int newWidth, int newHeight)
 {
 	this->width = newWidth;
 	this->height = newHeight;
@@ -40,6 +43,9 @@ PlayerModel::PlayerModel(MapModel* map, int newWidth, int newHeight)
 	this->posY = 0;
 	this->speed = 1;
 	this->alive = true;
+	this->nbSuicide = 0;
+	this->nbBombUsed = 0;
+	this->user = user;
 }
 
 void PlayerModel::addBonus(Bonus* b)
@@ -51,64 +57,101 @@ bool PlayerModel::hasBonus(Bonus* b)
 {
 	vector<Bonus*>::iterator it;
 
-	  for ( it=this->bonuses.begin() ; it < this->bonuses.end(); it++ )
-	  {
-		  if(*it=b) return true;
-	  }
-	  return false;		
+	for ( it=this->bonuses.begin() ; it < this->bonuses.end(); it++ )
+	{
+		if(*it == b) return true;
+	}
+	return false;		
 }
 
-void PlayerModel::die(BombItem* bomb)
+void PlayerModel::die(PlayerModel* player)
 {
-	
+	this->alive = false;
+	this->nbDeath++;
+	if( player==this) this->nbSuicide++;
+	else player->addKill(1);
 }
 
-void PlayerModel::draw()
-{
-	
-}
 		
 void PlayerModel::dropBomb()
 {
-	
+	this->map->poserBombe(this);
 }
 
-void PlayerModel::kickBomb()
-{
-	
-}
 
 void PlayerModel::dropBonus()
 {
 	
 }
 		
-void PlayerModel::win()
-{
-	
-}
 
-void PlayerModel::loose()
-{
-	
-}
 
 void PlayerModel::moveUp()
 {
-	
+	this->posY -= this->speed*1;
 }
 
 void PlayerModel::moveDown()
 {
-	
+	this->posY += this->speed*1;
 }
 
 void PlayerModel::moveLeft()
 {
-	
+	this->posX -= this->speed*1;
 }
 
 void PlayerModel::moveRight()
 {
-	
+	this->posX += this->speed*1;
+}
+
+int PlayerModel::getPosX()
+{
+	return this->posX;
+}
+
+int PlayerModel::getPosY()
+{
+	return this->posY;
+}
+
+int PlayerModel::getNbBomb()
+{
+	return this->nbBomb;
+}
+
+void PlayerModel::incNbBomb()
+{
+	this->nbBomb++;
+}
+
+void PlayerModel::decNbBomb()
+{
+	this->nbBomb--;
+}
+
+int PlayerModel::getNbBombUsed()
+{
+	return this->nbBombUsed;
+}
+
+void PlayerModel::incNbBombUsed()
+{
+	this->nbBombUsed++;
+}
+
+void PlayerModel::decNbBombUsed()
+{
+	this->nbBombUsed--;
+}
+
+bool PlayerModel::getKicker()
+{
+	return this->kicker;
+}
+
+bool PlayerModel::isAlive()
+{
+	return this->alive;
 }
