@@ -67,7 +67,7 @@ bool UserModel::deleteUser()
 
 void UserModel::joinGame(GameModel* game)
 {
-	this->gameTag = game->name;
+	game->addUser(this);
 }
 
 void UserModel::save()
