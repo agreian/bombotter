@@ -100,7 +100,7 @@ namespace BomberLoutre.Components
 
         private void CheckBombing()
         {
-            if (InputHandler.KeyDown(Properties.App.Default.KeySpace))
+            if (InputHandler.Maintained("Space", PlayerIndex.One))
             {
                 if (!bombDropped)
                 {

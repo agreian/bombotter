@@ -53,7 +53,7 @@ namespace BomberLoutre.Screens
         {
             ControlManager.Update(gameTime, PlayerIndex.One);
 
-            if (InputHandler.KeyPressed(Keys.Enter))
+            if (InputHandler.Pushed("Enter", PlayerIndex.One))
             {
                 StateManager.PushState(GameRef.OptionScreen);
                 counter = 0;

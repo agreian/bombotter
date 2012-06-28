@@ -55,7 +55,7 @@ namespace BomberLoutre.Screens
             if (CheckIfReplayMusic())
                 MediaPlayer.Play(GameRef.Content.Load<Song>("Audio/Musics/Title"));
 
-            if (InputHandler.KeyPressed(Keys.Enter))
+            if (InputHandler.Pushed("Enter", PlayerIndex.One))
             {
                 if (!enableMenu)
                     enableMenu = true;
@@ -80,14 +80,14 @@ namespace BomberLoutre.Screens
                 }
             }
 
-            if (InputHandler.KeyPressed(Keys.Up))
+            if (InputHandler.Pushed("Up", PlayerIndex.One))
             {
                 if (indexMenu <= 0)
                     indexMenu = menuString.Length - 1;
                 else
                     indexMenu--;
             }
-            else if (InputHandler.KeyPressed(Keys.Down))
+            else if (InputHandler.Pushed("Down", PlayerIndex.One))
             {
                 indexMenu = (indexMenu + 1) % menuString.Length;
             }
@@ -98,6 +98,7 @@ namespace BomberLoutre.Screens
         public override void Draw(GameTime gameTime)
         {
             GameRef.spriteBatch.Begin();
+
             base.Draw(gameTime);
 
             GameRef.spriteBatch.Draw(backgroundImage, new Rectangle(0, 0, GameRef.graphics.PreferredBackBufferWidth, GameRef.graphics.PreferredBackBufferHeight), Color.White);
@@ -116,6 +117,12 @@ namespace BomberLoutre.Screens
                             menuPosition.Y + this.BigFont.MeasureString(menuString[i]).Y * i - this.BigFont.MeasureString(menuString[i]).Y / 2), textColor);
                 }
             }
+
+            if (InputHandler.xboxPadState.IsConnected)
+            {
+                GameRef.spriteBatch.DrawString(this.SmallFont, "Manette connectée", new Vector2(0, 0), Color.Red);
+            }
+
 
             GameRef.spriteBatch.End();
         }

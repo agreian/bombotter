@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 using BomberLoutre.World;
+using BomberLoutre.Controls;
 
 namespace BomberLoutre.Sprites
 {
@@ -81,7 +82,7 @@ namespace BomberLoutre.Sprites
 
             Vector2 test = Map.CellToVector((int)CellPosition.X, (int)CellPosition.Y);
 
-            if (currentKBState.IsKeyDown(Properties.App.Default.KeyRight) == true)
+            if (InputHandler.Maintained("Right", PlayerIndex.One))
             {
                 AnimateRight(gameTime);
                 LookDirection = Config.LookDirection.Right;
@@ -102,7 +103,8 @@ namespace BomberLoutre.Sprites
 
                     else // La case vers laquelle on se dirige est bloquante mais on veut pouvoir pousser la taupe dans le guichet ;D
                     {
-                        if (!(X  > (test.X - Config.TileWidth*2)))
+                        // Tant que le bord droit de la loutre n'a pas dépassé le bord gauche de la cellule bloquante...
+                        if (!(SpritePosition.X + Config.OtterWidth > (CellPosition.X * Config.TileWidth + Config.MapLayer.X)))
                         {
                             direction = Vector2.Normalize(new Vector2(1, 0));
                             SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
@@ -111,7 +113,7 @@ namespace BomberLoutre.Sprites
                 }
             }
 
-            else if (currentKBState.IsKeyDown(Properties.App.Default.KeyLeft) == true)
+            else if (InputHandler.Maintained("Left", PlayerIndex.One))
             {
                 AnimateLeft(gameTime);
                 LookDirection = Config.LookDirection.Left;
@@ -133,7 +135,8 @@ namespace BomberLoutre.Sprites
 
                     else // La case vers laquelle on se dirige est bloquante mais on veut pouvoir pousser la taupe dans le guichet ;D
                     {
-                        if (!(X + Config.OtterWidth < (test.X - Config.TileWidth)))
+                        // Tant que le bord gauche de la loutre n'a pas dépassé le bord droit de la caisse bloquante
+                        if (!(SpritePosition.X + Config.OtterWidth < (CellPosition.X * Config.TileWidth + Config.MapLayer.X)))
                         {
                             direction = Vector2.Normalize(new Vector2(-1, 0));
                             SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
@@ -143,7 +146,7 @@ namespace BomberLoutre.Sprites
 
             }
 
-            else if (currentKBState.IsKeyDown(Properties.App.Default.KeyDown) == true)
+            else if (InputHandler.Maintained("Down", PlayerIndex.One))
             {
                 AnimateDown(gameTime);
                 LookDirection = Config.LookDirection.Down;
@@ -165,7 +168,8 @@ namespace BomberLoutre.Sprites
 
                     else
                     {
-                        if (!((Y + Config.OtterHeight / 2) > (test.Y - Config.TileHeight / 2)))
+                        // Tant que les pieds de la loutre n'ont pas atteint le bord haut de la case bloquante...
+                        if (!(SpritePosition.Y + Config.OtterHeight + (Config.OtterHeight - Config.TileHeight) > (CellPosition.Y * Config.TileHeight + Config.TileHeight)))
                         {
                             direction = Vector2.Normalize(new Vector2(0, 1));
                             SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
@@ -174,7 +178,7 @@ namespace BomberLoutre.Sprites
                 }
             }
 
-            else if (currentKBState.IsKeyDown(Properties.App.Default.KeyUp) == true)
+            else if (InputHandler.Maintained("Up", PlayerIndex.One))
             {
                 AnimateUp(gameTime);
                 LookDirection = Config.LookDirection.Up;
@@ -195,7 +199,8 @@ namespace BomberLoutre.Sprites
 
                     else // La case vers laquelle on se dirige est bloquante mais on veut pouvoir pousser la taupe dans le guichet ;D
                     {
-                        if (!(Y < (test.Y - Config.TileHeight)))
+                        // Tant que le sommet de la loutre n'a pas touché le bord inférieur de la case bloquante...
+                        if (!(SpritePosition.Y + (Config.OtterHeight - Config.TileHeight) < CellPosition.Y*Config.TileHeight))
                         {
                             direction = Vector2.Normalize(new Vector2(0, -1));
                             SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
