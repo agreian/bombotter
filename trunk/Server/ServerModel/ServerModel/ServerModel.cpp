@@ -81,10 +81,11 @@ ServerModel::deleteUser(const std::string& login, const Ice::Current&)
 
 BomberLoutreInterface::GameInterfacePrx
 ServerModel::addGame(const std::string& name, 
+	const BomberLoutreInterface::UserData & us,
 	const ::BomberLoutreInterface::GameWaitRoomPrx& room, 
 	const ::BomberLoutreInterface::MapObserverPrx& mapobs, const Ice::Current&)
 {
-	GameModel* newGame = new GameModel(m_adapter); // Add constructor
+	GameModel* newGame = new GameModel(m_adapter,us); // Add constructor
 	m_currentGames.push_back(newGame);
 	newGame->addRoom(room);
 	newGame->addMapObserver(mapobs);
@@ -94,6 +95,7 @@ ServerModel::addGame(const std::string& name,
 
 BomberLoutreInterface::Map 
 ServerModel::joinGame(const std::string& name, 
+	const BomberLoutreInterface::UserData & us,
 	const ::BomberLoutreInterface::GameWaitRoomPrx& room, 
 	const ::BomberLoutreInterface::MapObserverPrx& mapobs, const Ice::Current&)
 {
@@ -108,6 +110,7 @@ ServerModel::joinGame(const std::string& name,
 
 	if(curGame != NULL)
 	{
+		curGame->addPlayer(us);
 		curGame->addRoom(room);
 		curGame->addMapObserver(mapobs);
 		BomberLoutreInterface::Map m = curGame->getMap();
@@ -123,11 +126,11 @@ ServerModel::getGameList(const Ice::Current&)
 	for(std::vector<GameModel*>::iterator i=m_currentGames.begin();i!=m_currentGames.end();++i)
 	{
 		::BomberLoutreInterface::GameData gd;
-		gd.name = (*i)->getName();
-		gd.roundCount = (*i)->getRoundCount();
-		gd.state = (*i)->getState();
-		gd.playerCount = (*i)->getPlayerCount();
-		gd.gameui = (*i)->getUserProxy();
+		gd.name			= (*i)->getName();
+		gd.roundCount	= (*i)->getRoundCount();
+		gd.state		= (*i)->getState();
+		gd.playerCount	= (*i)->getPlayerCount();
+		gd.gameui		= (*i)->getUserProxy();
 		list.push_back(gd);
 	}
 	return list;
@@ -140,12 +143,12 @@ ServerModel::getUserList(const Ice::Current&)
 	for(std::vector<UserModel*>::iterator i=m_currentUsers.begin();i!=m_currentUsers.end();++i)
 	{
 		::BomberLoutreInterface::UserData ud;
-		ud.gameTag = (*i)->getGameTag();
-		ud.gameCount = (*i)->getGameCount();
-		ud.winCount = (*i)->getWinCount();
-		ud.drawCount = (*i)->getDrawCount();
-		ud.killCount = (*i)->getKillCount();
-		ud.deathCount = (*i)->getDeathCount();
+		ud.gameTag		= (*i)->getGameTag();
+		ud.gameCount	= (*i)->getGameCount();
+		ud.winCount		= (*i)->getWinCount();
+		ud.drawCount	= (*i)->getDrawCount();
+		ud.killCount	= (*i)->getKillCount();
+		ud.deathCount	= (*i)->getDeathCount();
 		ud.suicideCount = (*i)->getSuicideCount();
 		list.push_back(ud);
 	}
