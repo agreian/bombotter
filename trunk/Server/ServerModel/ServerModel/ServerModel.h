@@ -39,6 +39,9 @@ class ServerModel :
 		
 		virtual BomberLoutreInterface::UserDataList 
 		getUserList(const Ice::Current& = ::Ice::Current());
+
+		void loadMap(const std::string dossier);
+		std::string* getMap(const std::string mapName);
 	
 	private:
 		ServerModel();
@@ -47,6 +50,7 @@ class ServerModel :
 		std::vector<UserModel*> m_currentUsers;
 
 		::Ice::ObjectAdapterPtr m_adapter;
+		std::vector<string[5]> mapFiles;
 };
 
 #endif

@@ -1,5 +1,8 @@
 #include "ServerModel.h"
+#include <boost/filesystem.hpp>
+#include <fstream>
 
+using namespace std;
 ServerModel::ServerModel() : m_adapter(NULL)
 {}
 
@@ -153,4 +156,63 @@ ServerModel::getUserList(const Ice::Current&)
 		list.push_back(ud);
 	}
 	return list;
+}
+
+
+void ServerModel::loadMap(const std::string dossier)
+{
+	string fileContent[5];
+	boost::filesystem::path path(dossier);
+	if(!boost::filesystem::exists(path)) {
+		std::cout << "Invalid path!" << std::endl;
+		return;
+	}
+
+	if(boost::filesystem::is_directory(path)) {
+		for(boost::filesystem::directory_iterator it(path), end; it != end; ++it) {
+			if(boost::filesystem::is_regular_file(it->status())) {				
+				
+				fstream fs(it->path().string());
+				if(fs)  
+				{
+					string contenu; 
+					int cpt = 1;
+										
+					fileContent[0] = "";
+					while(!fs.eof())
+					{
+						getline(fs, contenu);  
+						if(contenu[0] != '#') 
+						{
+							fileContent[0] +=contenu;
+						}
+						else
+						{
+							if(cpt==4) contenu = contenu.substr(6,contenu.length());
+							fileContent[cpt] = contenu;
+							cpt++;
+						}
+
+					}	
+					this->mapFiles.push_back(fileContent);
+					fs.close();
+				}
+				else
+				{
+					cerr << "Impossible d'ouvrir le fichier !" << endl;
+				}
+			}
+		}
+	}
+}
+
+std::string* ServerModel::getMap(const std::string mapName)
+{
+	vector<string[5]>::iterator it;
+
+	for ( it=this->mapFiles.begin() ; it < this->mapFiles.end(); it++ )
+	{
+		if(*it[4] == mapName) return *it;
+	}
+	return NULL;
 }
