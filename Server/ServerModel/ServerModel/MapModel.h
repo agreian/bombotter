@@ -13,6 +13,8 @@ using namespace std;
 class MapItem;
 class PlayerModel;
 class BombItem;
+class BoxItem;
+class VoidItem;
 
 #define MAPHEIGHT 11
 #define MAPWIDTH 13
@@ -20,11 +22,13 @@ class BombItem;
 const int height = 60;
 const int width = 60;
 
-class MapModel
+class MapModel :
+	public ::BomberLoutreInterface::MapInterface
 {
 	private :
 		string id;
 		bool testCase(int x, int y, PlayerModel* p);
+		void dropBonus(::BomberLoutreInterface::Point P);
 		
 	protected :
 		int height;
@@ -38,8 +42,9 @@ class MapModel
 		MapModel();	
 		MapModel(int _height, int _width);		
 		~MapModel();
-		bool checkMove(PlayerModel* p, ::BomberLoutreInterface::Point arrive);
-		void dropBonus(MapItem* bonus);
+		void checkMove(PlayerModel* p, ::BomberLoutreInterface::Point arrive);
+		void dropBonus(BoxItem* bonus);
+		void dropBonus(VoidItem* voidItem);
 		void addPlayer(PlayerModel* newPlayer);
 		void dropBonus(int bonusItemCode, ::BomberLoutreInterface::Point p);
 		void handleExplode(BombItem* b);
@@ -47,27 +52,41 @@ class MapModel
 		// Factory à Map Item
 		void createMapItem(int typeMapItem, ::BomberLoutreInterface::Point p, PlayerModel *player);
 		void loapMap(string id);
-		virtual void render() = 0;
+		//virtual void render() = 0;
 		
+		virtual ::std::string getId(const ::Ice::Current& = ::Ice::Current());
 
+		virtual ::Ice::Int getWidth(const ::Ice::Current& = ::Ice::Current());
 
-	enum MapItemCode
-	{
-		VoidItemCode = 0,
-		BoxItemCode = 1,
-		RockItemCode = 2,
-		BombItemCode = 3,
-		ExplosionItemCode = 4,
+		virtual ::Ice::Int getHeight(const ::Ice::Current& = ::Ice::Current());
+ 
+		virtual void moveUp(const ::BomberLoutreInterface::Player&, const ::Ice::Current& = ::Ice::Current());
 
-		FlameUpCode = 10,
-		GoldenFlameCode = 11,
-		BombUpCode = 12,
-		SpeedUpCode = 13,
-		KickerCode = 14,
-		InvisibleItemCode = 15,
-		InvincibleItemCode = 16,
-		ShieldItemCode = 17,
-	};
+		virtual void moveDown(const ::BomberLoutreInterface::Player&, const ::Ice::Current& = ::Ice::Current());
+ 
+		virtual void moveLeft(const ::BomberLoutreInterface::Player&, const ::Ice::Current& = ::Ice::Current());
+
+		virtual void moveRight(const ::BomberLoutreInterface::Player&, const ::Ice::Current& = ::Ice::Current());
+ 
+		virtual void dropBomb(const ::BomberLoutreInterface::Player&, const ::BomberLoutreInterface::Bomb&, const ::Ice::Current& = ::Ice::Current());
+
+		enum MapItemCode
+		{
+			VoidItemCode = 0,
+			BoxItemCode = 1,
+			RockItemCode = 2,
+			BombItemCode = 3,
+			ExplosionItemCode = 4,
+
+			FlameUpCode = 10,
+			GoldenFlameCode = 11,
+			BombUpCode = 12,
+			SpeedUpCode = 13,
+			KickerCode = 14,
+			InvisibleItemCode = 15,
+			InvincibleItemCode = 16,
+			ShieldItemCode = 17,
+		};
 		
 };
 

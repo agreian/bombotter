@@ -57,7 +57,9 @@ class PlayerModel
 		void moveLeft();
 		void moveRight();
 
-		/* GETTERS */
+		/* GETTERS && SETTER*/
+		void setPosX(int x);
+		void setPosY(int y);
 		int getPosX();
 		int getPosY();
 		int getNbBomb();
@@ -70,6 +72,7 @@ class PlayerModel
 		bool isAlive();
 		int getDir();
 		int getPower();
+		string getGameTag();
 };
 
 #endif

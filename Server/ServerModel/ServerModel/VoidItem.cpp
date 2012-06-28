@@ -7,7 +7,7 @@
 
 VoidItem::VoidItem(MapModel* map):MapItem(map, false, true)
 {
-	
+	this->dropChances = 0.10;
 }
 
 
@@ -20,14 +20,8 @@ int VoidItem::getId()
 {
 	return MapModel::VoidItemCode;
 }
-/*
-bool VoidItem::isDestructible() 
-{
-	return false;
-}
 
-bool VoidItem::isWalkable()
+float VoidItem::getDropChances()
 {
-	return true;
+	return this->dropChances;
 }
-*/
