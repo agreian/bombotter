@@ -117,6 +117,7 @@ namespace BomberLoutre.Screens
 
             GameRef.spriteBatch.DrawString(this.MidFont, String.Format("({0} : {1})", playerList[0].Sprite.SpritePosition.X - Config.MapLayer.X, playerList[0].Sprite.SpritePosition.Y - Config.MapLayer.Y), new Vector2(30, 30), Color.Red);
             GameRef.spriteBatch.DrawString(this.MidFont, String.Format("({0} : {1})", playerList[0].Sprite.CellPosition.X, playerList[0].Sprite.CellPosition.Y), new Vector2(30, 60), Color.Red);
+            
  
             GameRef.spriteBatch.End();
             base.Draw(gameTime);
@@ -145,7 +146,7 @@ namespace BomberLoutre.Screens
         {
             Bonus randomBonus;
             string[] types = new string[] { "powerUp", "powerUpGold", "canKick", "speedUp", "bombUp" };
-            int randomNumber = randomizer.Next(10);
+            int randomNumber = randomizer.Next(15);
 
             if (randomNumber < 5)
             {

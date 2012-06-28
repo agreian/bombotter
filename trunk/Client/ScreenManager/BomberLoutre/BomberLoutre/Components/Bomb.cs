@@ -42,6 +42,7 @@ namespace BomberLoutre.Components
         public void Update(GameTime gameTime)
         {
             Timer += gameTime.ElapsedGameTime;
+            if (Timer.Seconds > 0) Sprite.DestroyingSoon = true;
             if (Timer.Seconds >= Config.ExplosionDelay) GameScreen.BOOM(this);
             Sprite.Update(gameTime);
         }
