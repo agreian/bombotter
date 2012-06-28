@@ -10,6 +10,10 @@
 #include "BombUp.h"
 #include "SpeedUp.h"
 #include "Kicker.h"
+#include "Bomberloutre.h"
+#include <time.h>
+#include <iostream>
+#include <fstream>
 
 MapModel::MapModel(int _height, int _width)
 {
@@ -38,14 +42,14 @@ void MapModel::addPlayer(PlayerModel* newPlayer)
 	}
 }
 
-bool MapModel::checkMove(PlayerModel* p, ::BomberLoutreInterface::Point arrive)
+void MapModel::checkMove(PlayerModel* p, ::BomberLoutreInterface::Point arrive)
 {
 
 	int posXPlayer, posYPlayer, minX, maxX, minY, maxY, bordX1, bordY1, bordX0, bordY0;
-	bool retour;
+	bool valid = true;
 
-	posXPlayer = p->getPosX();
-	posYPlayer = p->getPosY();
+	posXPlayer = arrive.x;
+	posYPlayer = arrive.y;
 
 	minX = posXPlayer + 7;
 	maxX = posXPlayer + 57;
@@ -81,11 +85,16 @@ bool MapModel::checkMove(PlayerModel* p, ::BomberLoutreInterface::Point arrive)
 	}
 	if(this->testCase(bordX0, bordY0, p))
 	{
-		return this->testCase(bordX1, bordY1, p);
+		valid = this->testCase(bordX1, bordY1, p);
 	} else {
-		return false;
+		valid = false;
 	}
-	return true;
+
+	if(valid)
+	{
+		p->setPosX(arrive.x);
+		p->setPosY(arrive.y);
+	}
 }
 
 bool MapModel::testCase(int bordX, int bordY, PlayerModel* p)
@@ -111,13 +120,13 @@ bool MapModel::testCase(int bordX, int bordY, PlayerModel* p)
 	case InvisibleItemCode:
 	case InvincibleItemCode:
 	case ShieldItemCode:
-		p->addBonus(this->map[bordY][bordX]);
+		p->addBonus((Bonus*)this->map[bordY][bordX]);
 		break;
 	}
 	return true;
 }
 
-void MapModel::createMapItem(int typeMapItem, Point p, PlayerModel *player)
+void MapModel::createMapItem(int typeMapItem, ::BomberLoutreInterface::Point p, PlayerModel *player)
 {
 	switch(typeMapItem)
 	{
@@ -169,9 +178,92 @@ void MapModel::createMapItem(int typeMapItem, Point p, PlayerModel *player)
 	}
 }
 
-void MapModel::dropBonus(int bonusItemCode, Point p)
+void MapModel::dropBonus(BoxItem* box)
 {
-	this->createMapItem(bonusItemCode, p, NULL);
+	bool find = false;
+	::BomberLoutreInterface::Point position;
+
+	position.x = 0;
+	position.y =0;
+
+	for(int i = 0; i < MAPHEIGHT; i++)
+	{
+		for(int j = 0; i < MAPWIDTH; i++)
+		{
+			if(this->map[j][i] == box)
+			{
+				position.x = i;
+				position.y= j;
+				find = true;
+			}
+		}
+	}
+	if(find)
+	{
+		float randomDrop;
+		srand(time(NULL));
+		randomDrop = rand() / float(RAND_MAX);
+
+		if( randomDrop <= box->getDropChances())
+		{
+			this->dropBonus(position);
+		}
+	}
+}
+
+void MapModel::dropBonus(VoidItem* voidItem)
+{
+	bool find = false;
+	::BomberLoutreInterface::Point position;
+	position.x = 0;
+	position.y =0;
+
+	for(int i = 0; i < MAPHEIGHT; i++)
+	{
+		for(int j = 0; i < MAPWIDTH; i++)
+		{
+			if(this->map[j][i] == voidItem)
+			{				
+				position.x = i;
+				position.y = j;
+				find = true;
+			}
+		}
+	}
+	if(find)
+	{
+		float randomDrop;
+		int randomItem, itemCode;
+		srand(time(NULL));
+		randomDrop = rand() / float(RAND_MAX);
+
+		if( randomDrop <= voidItem->getDropChances())
+		{
+			this->dropBonus(position);
+		}
+	}
+}
+
+void MapModel::dropBonus(::BomberLoutreInterface::Point p)
+{
+	int randomItem, itemCode;
+	randomItem = (rand() / float(RAND_MAX)) * 4 +1;
+	switch(randomItem)
+	{
+		case 1:
+			itemCode = MapModel::FlameUpCode;
+			break;
+		case 2:
+			itemCode = MapModel::BombUpCode;
+			break;
+		case 3:
+			itemCode = MapModel::SpeedUpCode;
+			break;
+		case 4:
+			itemCode = MapModel::KickerCode;
+			break;
+	}
+	this->createMapItem(itemCode, p, NULL);
 }
 
 void MapModel::handleExplode(BombItem* b)
@@ -181,14 +273,19 @@ void MapModel::handleExplode(BombItem* b)
 	int posYPlayer;
 	int maxX, minX, maxY, minY;
 	int range = b->getPower();
-	Point position = Point(0,0);
+	::BomberLoutreInterface::Point position;
+	
+	position.x = 0;
+	position.y = 0;
+
 	for(int i = 0; i < MAPHEIGHT; i++)
 	{
 		for(int j = 0; i < MAPWIDTH; i++)
 		{
 			if(this->logicalMap[j][i] == BombItemCode)
 			{
-				position = Point(i,j);
+				position.x = i;
+				position.y = j;
 				find = true;
 			}
 		}
@@ -200,6 +297,7 @@ void MapModel::handleExplode(BombItem* b)
 		{
 			bool goOut = false;
 			int distance = 1;
+			::BomberLoutreInterface::Point pp;
 
 			while (distance<=range && !goOut)
 			{
@@ -214,10 +312,18 @@ void MapModel::handleExplode(BombItem* b)
 
 				switch (this->logicalMap[y0][x0])
 				{
-					case VoidItemCode: this->createMapItem(ExplosionItemCode, Point(x0,y0), b->getPlayer()); break;
+					case VoidItemCode:
+						pp.x = x0;
+						pp.y = y0;
+						this->createMapItem(ExplosionItemCode, pp, b->getPlayer()); 
+						break;
 					case RockItemCode: goOut=true; break;
-					case ExplosionItemCode: this->createMapItem(ExplosionItemCode, Point(x0,y0), b->getPlayer()); break;
-					case BoxItemCode: this->map[y0][x0]->disappears(); goOut=true; break;
+					case ExplosionItemCode: 
+						pp.x = x0;
+						pp.y = y0;
+						this->createMapItem(ExplosionItemCode, pp, b->getPlayer());
+						break;
+					case BoxItemCode: ((BoxItem*)(this->map[y0][x0]))->disappears(); goOut=true; break;
 					case FlameUpCode: 
 					case GoldenFlameCode: 
 					case BombUpCode:  
@@ -225,7 +331,11 @@ void MapModel::handleExplode(BombItem* b)
 					case KickerCode: 
 					case InvisibleItemCode:  
 					case InvincibleItemCode: 
-					case ShieldItemCode:  this->createMapItem(ExplosionItemCode, Point(x0,y0), b->getPlayer());break;
+					case ShieldItemCode:   
+						pp.x = x0;
+						pp.y = y0;
+						this->createMapItem(ExplosionItemCode, pp, b->getPlayer());
+						break;
 					case BombItemCode: this->handleExplode((BombItem*)this->map[y0][x0]); break;
 				}
 				minX = x0 * this->height;
@@ -278,7 +388,10 @@ void MapModel::dropBomb(PlayerModel *p)
 	case InvisibleItemCode:
 	case InvincibleItemCode:
 	case ShieldItemCode:
-		this->createMapItem(BombItemCode, Point(posXPlayer, posYPlayer), p);
+		::BomberLoutreInterface::Point point;
+		point.x = posXPlayer;
+		point.y = posYPlayer;
+		this->createMapItem(BombItemCode, point, p);
 		p->incNbBombUsed();
 		break;
 	}
@@ -287,5 +400,114 @@ void MapModel::dropBomb(PlayerModel *p)
 
 void MapModel::loapMap(string id)
 {
-	/* Charger un fichier Map pour créer notre matrice initiale : voir parseur de Jérémy ?  */
+	FILE * pFile;
+	  	pFile = fopen (id,"rw");
+  	char currentChar;
+  	int ligne = 0, colonne = 0;
+  	if (pFile!=NULL)
+  	{
+    	do
+    	{
+      		currentChar = fgetc(pFile);
+      	    switch(currentChar)
+      	    {
+      	    	case ';':
+      	    	{
+      	    		++colonne;
+      	    	}break;
+      	    	case '\n':
+      	    	{
+      	    		++ligne;
+      	    		colonne=0;
+      	    	}break;
+      	    	case '\r':
+      	    	break;
+      	    	case ' ':
+      	    	break;
+      	    	case '#':
+      	    	break;
+      	    	default:
+      	    	{
+					::BomberLoutreInterface::Point position;
+					position.x = ligne;
+					position.y = colonne;
+      	    		createMapItem(currentChar, position, NULL);
+      	    	}break;
+      	    }
+    	}while (currentChar != EOF && currentChar != '#');	
+    	
+    	fclose (pFile);
+  	}
+  	else
+  		cout << "Unable to open file"; 
+}
+
+::std::string MapModel::getId(const ::Ice::Current&)
+{
+	return this->id;
+}
+
+::Ice::Int MapModel::getWidth(const ::Ice::Current&)
+{
+	return width;
+}
+
+::Ice::Int MapModel::getHeight(const ::Ice::Current&)
+{
+	return height;
+}
+ 
+void MapModel::moveUp(const ::BomberLoutreInterface::Player& p, const ::Ice::Current&)
+{
+	for(std::vector<PlayerModel*>::iterator i=listPlayer.begin();i!=listPlayer.end();++i)
+	{
+		if((*i)->getGameTag() == p.related.gameTag )
+		{
+			(*i)->moveUp();
+		}
+	}
+}
+
+void MapModel::moveDown(const ::BomberLoutreInterface::Player& p, const ::Ice::Current&)
+{
+	for(std::vector<PlayerModel*>::iterator i=listPlayer.begin();i!=listPlayer.end();++i)
+	{
+		if((*i)->getGameTag() == p.related.gameTag )
+		{
+			(*i)->moveDown();
+		}
+	}
+}
+ 
+void MapModel::moveLeft(const ::BomberLoutreInterface::Player& p, const ::Ice::Current&)
+{
+	for(std::vector<PlayerModel*>::iterator i=listPlayer.begin();i!=listPlayer.end();++i)
+	{
+		if((*i)->getGameTag() == p.related.gameTag )
+		{
+			(*i)->moveLeft();
+		}
+	}
+}
+
+void MapModel::moveRight(const ::BomberLoutreInterface::Player& p, const ::Ice::Current&)
+{
+	for(std::vector<PlayerModel*>::iterator i=listPlayer.begin();i!=listPlayer.end();++i)
+	{
+		if((*i)->getGameTag() == p.related.gameTag )
+		{
+			(*i)->moveRight();
+		}
+	}
+}
+ 
+void MapModel::dropBomb(const ::BomberLoutreInterface::Player& p, const ::BomberLoutreInterface::Bomb& b, const ::Ice::Current&)
+{
+	for(std::vector<PlayerModel*>::iterator i=listPlayer.begin();i!=listPlayer.end();++i)
+	{
+		if((*i)->getGameTag() == p.related.gameTag )
+		{
+			(*i)->dropBomb();
+		}
+	}
 }

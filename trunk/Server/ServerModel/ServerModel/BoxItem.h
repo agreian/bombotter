@@ -12,15 +12,12 @@ class BoxItem : public MapItem
 {
 	// TODO : ajoutez ici vos méthodes pour cette classe.
 	public:
-		//BoxItem();
 		BoxItem(MapModel* map);
 		~BoxItem();
 
 		int getId();
-		void appears();
+		float getDropChances();
 		void disappears();
-		/*bool isDestructible();
-		bool isWalkable();*/
 		/* GETTERS */
 
 		/* SETTERS */

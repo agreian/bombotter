@@ -74,7 +74,7 @@ void PlayerModel::die(PlayerModel* player)
 		
 void PlayerModel::dropBomb()
 {
-	this->map->deposeBombe(this);
+	this->map->dropBomb(this);
 }
 
 void PlayerModel::addKill(int nb)
@@ -92,25 +92,47 @@ void PlayerModel::dropBonus()
 void PlayerModel::moveUp()
 {
 	this->dir = PlayerModel::dirUp;
-	this->posY -= this->speed*1;
+	::BomberLoutreInterface::Point position;
+	position.x = this->posX;
+	position.y = this->posY-this->speed;
+	this->map->checkMove(this, position);
 }
 
 void PlayerModel::moveDown()
 {
 	this->dir = PlayerModel::dirDown;
-	this->posY += this->speed*1;
+	::BomberLoutreInterface::Point position;
+	position.x = this->posX;
+	position.y = this->posY+this->speed;
+	this->map->checkMove(this, position);
 }
 
 void PlayerModel::moveLeft()
 {
 	this->dir = PlayerModel::dirLeft;
-	this->posX -= this->speed*1;
+	::BomberLoutreInterface::Point position;
+	position.x = (this->posX-this->speed);
+	position.y = this->posY;
+	this->map->checkMove(this, position);
 }
 
 void PlayerModel::moveRight()
 {
 	this->dir = PlayerModel::dirRight;
-	this->posX += this->speed*1;
+	::BomberLoutreInterface::Point position;
+	position.x = this->posX+this->speed;
+	position.y = this->posY;
+	this->map->checkMove(this, position);
+}
+
+void PlayerModel::setPosX(int x)
+{
+	this->posX = x;
+}
+
+void PlayerModel::setPosY(int y)
+{
+	this->posY = y;
 }
 
 int PlayerModel::getPosX()
@@ -170,5 +192,10 @@ int PlayerModel::getDir()
 
 int PlayerModel::getPower()
 {
-	return this->power;
+	return this->flamePower;
+}
+
+string PlayerModel::getGameTag()
+{
+	return this->user->getGameTag();
 }

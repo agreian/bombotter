@@ -21,6 +21,7 @@ class VoidItem : public MapItem
 
 		/* GETTERS */
 		int getId();
+		float getDropChances();
 
 		/* SETTERS */
 
