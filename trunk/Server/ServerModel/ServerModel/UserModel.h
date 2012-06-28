@@ -15,7 +15,7 @@ class UserModel
 		/* Throw ::BomberLoutreInterface::BadLoginException, ::BomberLoutreInterface::BadPwdException */
 		static UserModel* Connect(string login, string password);
 		/* Throw UserAlreadyExistException */
-		static UserModel* CreateUser(string login, string password) ;
+		static UserModel* CreateUser(string login, string password, bool isBot) ;
 		void addWin(int nbKill, int nbDeath, int nbSuicide);
 		void addLoose(int nbKill, int nbDeath, int nbSuicide);
 		void addDraw(int nbKill, int nbDeath, int nbSuicide);

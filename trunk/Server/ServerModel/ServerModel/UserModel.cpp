@@ -24,7 +24,7 @@ UserModel* UserModel::Connect(string login, string password)
 	return user;
 }
 
-UserModel* UserModel::CreateUser(string login, string password)
+UserModel* UserModel::CreateUser(string login, string password, bool isBot)
 {
 	UserModel* user = NULL;
 	bool userExist = false;
