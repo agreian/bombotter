@@ -14,7 +14,9 @@ namespace BomberLoutre.World
         GameScreen GameScreen;
         string mapFileName;
         static byte[,] matrix;
-        static bool[,] walls; 
+        static bool[,] walls;
+        static bool[,] boxes;
+        static bool[,] bombs; 
 
         public Map(BomberLoutre gameRef, string fileName, GameScreen gameScreen) : base(gameRef)
         {
@@ -23,6 +25,8 @@ namespace BomberLoutre.World
             GameScreen = gameScreen;
             matrix = new byte[13, 11];
             walls = new bool[13, 11];
+            boxes = new bool[13, 11];
+            bombs = new bool[13, 11];
         }
 
         public override void Initialize()
@@ -45,7 +49,8 @@ namespace BomberLoutre.World
                     for (int j = 0; j < 13; ++j) // On va attribuer chacune des 13 colonnes de la ligne courante
                     {
                         matrix[j, i] = byte.Parse(splits[j]);
-                        if (matrix[j, i] != 0) walls[j, i] = true;
+                        if (matrix[j, i] == 2) walls[j, i] = true;
+                        if (matrix[j, i] == 1) boxes[j, i] = true;
                     }
                 }
 
@@ -112,14 +117,37 @@ namespace BomberLoutre.World
             return walls[x-1, y-1];
         }
 
-        public static void SetWall(int x, int y)
+        public static bool IsBox(int x, int y)
         {
-            walls[x-1, y-1] = true;
+            if (x < 1 || x > 13 || y < 1 || y > 11) return false; // On dit qu'il n'y a pas collision mais le joueur sera bloqué par les limites de la zone-map
+            return boxes[x - 1, y - 1];
         }
 
-        public static void RemoveWall(int x, int y)
+        public static bool IsBomb(int x, int y)
         {
-            walls[x-1, y-1] = false;
+            if (x < 1 || x > 13 || y < 1 || y > 11) return false; // On dit qu'il n'y a pas collision mais le joueur sera bloqué par les limites de la zone-map
+            return bombs[x - 1, y - 1];
+        }
+
+        public static bool IsObstacle(int x, int y)
+        {
+            if (x < 1 || x > 13 || y < 1 || y > 11) return false;
+            return walls[x - 1, y - 1] || boxes[x - 1, y - 1];
+        }
+
+        public static void SetBomb(int x, int y)
+        {
+            bombs[x-1, y-1] = true;
+        }
+
+        public static void RemoveBomb(int x, int y)
+        {
+            bombs[x-1, y-1] = false;
+        }
+
+        public static void RemoveBox(int x, int y)
+        {
+            boxes[x - 1, y - 1] = false;
         }
     }
 }
