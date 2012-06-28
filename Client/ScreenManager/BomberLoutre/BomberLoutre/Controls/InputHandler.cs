@@ -17,6 +17,7 @@ namespace BomberLoutre.Controls
 
         static GamePadState[] gamePadStates;
         static GamePadState[] lastGamePadStates;
+        public static GamePadState xboxPadState;
 
         #endregion
 
@@ -78,6 +79,8 @@ namespace BomberLoutre.Controls
             lastGamePadStates = (GamePadState[])gamePadStates.Clone();
             foreach (PlayerIndex index in Enum.GetValues(typeof(PlayerIndex)))
                 gamePadStates[(int)index] = GamePad.GetState(index);
+
+            xboxPadState = gamePadStates[(int) PlayerIndex.One];
 
             base.Update(gameTime);
         }

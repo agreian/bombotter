@@ -50,7 +50,7 @@ namespace BomberLoutre.Screens
 
         public override void Initialize()
         {
-            mapName = "map1.map";
+            mapName = "map3.map";
             MapZone = new Map(GameRef, mapName, this);
             GameRef.Components.Add(MapZone);    // Ajoute la Map aux "Components", = instance qui vont appeler successivement Ctor()/Initialize()/LoadContent()
 
@@ -169,7 +169,7 @@ namespace BomberLoutre.Screens
                 if (!Map.IsObstacle((int)bomb.CellPosition.X + i, (int)bomb.CellPosition.Y) && !right)
                 {
                     if (((int)bomb.CellPosition.X + i) <= Config.MapSize.X)
-                        flameList.Add(new Flame((int)bomb.CellPosition.X + i, (int)bomb.CellPosition.Y, this, GameRef));
+                        flameList.Add(new Flame((int)bomb.CellPosition.X + i, (int)bomb.CellPosition.Y, this, GameRef, true));
 
                     if (Map.IsBomb((int)bomb.CellPosition.X + i, (int)bomb.CellPosition.Y) && !right)
                     {
@@ -248,7 +248,7 @@ namespace BomberLoutre.Screens
                 if (!Map.IsObstacle((int)bomb.CellPosition.X - i, (int)bomb.CellPosition.Y) && !left)
                 {
                     if (((int)bomb.CellPosition.X - i) > 0)
-                    flameList.Add(new Flame((int)bomb.CellPosition.X - i, (int)bomb.CellPosition.Y, this, GameRef));
+                    flameList.Add(new Flame((int)bomb.CellPosition.X - i, (int)bomb.CellPosition.Y, this, GameRef, true));
 
                     if (Map.IsBomb((int)bomb.CellPosition.X - i, (int)bomb.CellPosition.Y) && !left)
                     {
