@@ -9,17 +9,18 @@ namespace BomberLoutre.Components
     {
         private BomberLoutre GameRef;
         public Sprite Sprite { get; protected set; }
-        private Vector2 cellPosition;
+        public Vector2 cellPosition { get; set; }
         private Texture2D spriteTexture;
 
         #region Constructor
-        public Box(BomberLoutre gameRef, Vector2 position)
+        public Box(BomberLoutre gameRef, Vector2 cell)
         {
             GameRef = gameRef;
             spriteTexture = GameRef.Content.Load<Texture2D>("Graphics/Sprites/caseSprite");
+            cellPosition = cell;
 
-            cellPosition = Map.CellToVector((int)position.X, (int)position.Y);
-            Sprite = new Sprite(spriteTexture, Config.TileWidth, Config.TileHeight, cellPosition);
+            Vector2 perfectPosition = Map.CellToVector((int)cell.X, (int)cell.Y);
+            Sprite = new Sprite(spriteTexture, Config.TileWidth, Config.TileHeight, perfectPosition);
         }
         #endregion
 

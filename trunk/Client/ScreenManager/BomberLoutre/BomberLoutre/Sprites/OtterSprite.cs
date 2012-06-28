@@ -30,7 +30,7 @@ namespace BomberLoutre.Sprites
             SpritePosition = position;
             facing = true; // Par défaut, la Sprite est de face. Si elle monte, elle sera de dos
 
-            SpriteSpeed = 0.2f;
+            SpriteSpeed = 0.3f;
             interval = 80f;
 
             SpriteWidth = Config.OtterWidth;
@@ -88,7 +88,7 @@ namespace BomberLoutre.Sprites
 
                 if (SpritePosition.X < (Config.MapLayer.Width + Config.MapLayer.X - Config.OtterWidth))
                 {
-                    if (!Map.IsWall((int) CellPosition.X + 1, (int) CellPosition.Y))
+                    if (!Map.IsObstacle((int)CellPosition.X + 1, (int)CellPosition.Y))
                     {
                         direction = Vector2.Normalize(new Vector2(1, 0));
                         SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * (SpriteSpeed);
@@ -117,7 +117,7 @@ namespace BomberLoutre.Sprites
 
                 if (SpritePosition.X > Config.MapLayer.X)
                 {
-                    if (!Map.IsWall((int)CellPosition.X - 1, (int)CellPosition.Y))
+                    if (!Map.IsObstacle((int)CellPosition.X - 1, (int)CellPosition.Y))
                     {
                         direction = Vector2.Normalize(new Vector2(-1, 0));
                         SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
@@ -148,7 +148,7 @@ namespace BomberLoutre.Sprites
 
                 if (SpritePosition.Y < (Config.MapLayer.Height + Config.MapLayer.Y - Config.OtterHeight))
                 {
-                    if (!Map.IsWall((int)CellPosition.X, (int)CellPosition.Y + 1))
+                    if (!Map.IsObstacle((int)CellPosition.X, (int)CellPosition.Y + 1))
                     {
                         direction = Vector2.Normalize(new Vector2(0, 1));
                         SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
@@ -178,7 +178,7 @@ namespace BomberLoutre.Sprites
 
                 if (SpritePosition.Y > Config.MapLayer.Y)
                 {
-                    if (!Map.IsWall((int)CellPosition.X, (int)CellPosition.Y - 1))
+                    if (!Map.IsObstacle((int)CellPosition.X, (int)CellPosition.Y - 1))
                     {
                         direction = Vector2.Normalize(new Vector2(0, -1));
                         SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
