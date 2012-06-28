@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "BombUp.h"
 
 /*BombUp::BombUp()
@@ -18,6 +16,6 @@ BombUp::~BombUp()
 
 int BombUp::getId()
 {
-	return MapModel::MapItemCode::BombUpCode;
+	return MapModel::BombUpCode;
 }
 

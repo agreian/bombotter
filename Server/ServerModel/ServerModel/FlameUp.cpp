@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "FlameUp.h"
 
 /*FlameUp::FlameUp()
@@ -19,5 +17,5 @@ FlameUp::~FlameUp()
 
 int FlameUp::getId()
 {
-	return MapModel::MapItemCode::FlameUpCode;
+	return MapModel::FlameUpCode;
 }

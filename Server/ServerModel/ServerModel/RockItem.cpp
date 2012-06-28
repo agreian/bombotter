@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "RockItem.h"
 /*
 RockItem::RockItem()
@@ -19,5 +17,5 @@ RockItem::~RockItem()
 
 int RockItem::getId()
 {
-	return MapModel::MapItemCode::RockItemCode;
+	return MapModel::RockItemCode;
 }

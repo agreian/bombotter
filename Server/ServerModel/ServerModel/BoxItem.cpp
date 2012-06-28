@@ -67,5 +67,5 @@ void BoxItem::disappears()
 
 int BoxItem::getId()
 {
-	return MapModel::MapItemCode::BoxItemCode;
+	return MapModel::BoxItemCode;
 }
