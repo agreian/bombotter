@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "BombItem.h"
 
 /*BombItem::BombItem()
@@ -7,11 +5,11 @@
 	
 }*/
 
-BombItem::BombItem(MapModel* map, PlayerModel* player, int power, int timer):MapItem(map,true,false)
+BombItem::BombItem(MapModel* map, PlayerModel* player, int power):MapItem(map,true,false)
 {
 	this->player = player;
 	this->power = power;
-	this->timer = timer;
+	this->timer = 3.0;
 }
 BombItem::~BombItem()
 {
@@ -28,7 +26,7 @@ int BombItem::getPower()
 	return this->power;
 }
 
-int BombItem::getTimer()
+float BombItem::getTimer()
 {
 	return this->timer;
 }
@@ -40,7 +38,7 @@ PlayerModel* BombItem::getPlayer()
 
 int BombItem::getId()
 {
-	return MapModel::MapItemCode::BombItemCode;
+	return MapModel::BombItemCode;
 }
 
 /*
