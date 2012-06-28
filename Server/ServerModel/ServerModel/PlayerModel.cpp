@@ -66,6 +66,7 @@ bool PlayerModel::hasBonus(Bonus* b)
 
 void PlayerModel::die(PlayerModel* player)
 {
+	this->map->playerDied(this);
 	this->alive = false;
 	this->nbDeath++;
 	if( player==this) this->nbSuicide++;
@@ -198,4 +199,17 @@ int PlayerModel::getPower()
 string PlayerModel::getGameTag()
 {
 	return this->user->getGameTag();
+}
+
+int PlayerModel::getNbDeath()
+{
+	return this->nbDeath;
+}
+int PlayerModel::getNbSuicide()
+{
+	return this->nbSuicide;
+}
+int PlayerModel::getNbKill()
+{
+	return this->nbKill;
 }

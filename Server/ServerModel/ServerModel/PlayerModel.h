@@ -73,6 +73,9 @@ class PlayerModel
 		int getDir();
 		int getPower();
 		string getGameTag();
+		int getNbDeath();
+		int getNbSuicide();
+		int getNbKill();
 };
 
 #endif
