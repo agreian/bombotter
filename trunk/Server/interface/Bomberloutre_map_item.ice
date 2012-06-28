@@ -1,66 +1,41 @@
 #ifndef __BOMBERLOUTRE_OBJECT__
 #define __BOMBERLOUTRE_OBJECT__
 
-module Bomberloutre
+module BomberLoutreInterface
 {
 /* This file contains pure data structures */
 
-class MapItem
+struct MapItem
 {
-	int x;
-	int y;
+	int i;
+	int j;
 	
 	bool destructible;
 	bool walkable;
 };
-
 sequence<MapItem> MapItems;
 
-class Bomb extends MapItem
+struct Bomb
 {
+	int i;
+	int j;
+	
 	int power;
 	int timer;
 };
-
 sequence<Bomb> Bombs;
 
-class Empty extends MapItem
+struct Bonus
 {
+	int i;
+	int j;
 	
-};
-
-class Box extends MapItem
-{
-
-};
-
-class Rock extends MapItem
-{
-	
-};
-
-class Bonus extends MapItem
-{
 	int bomb;
 	bool kick;
 	int power;
 	int speed;
 };
-
 sequence<Bonus> Bonuses;
-
-/* ---------- BONUS ---------- */
-class Kicker extends Bonus
-{};
-
-class FlameUp extends Bonus
-{};
-
-class SpeedUp extends Bonus
-{};
-
-class BombUp extends Bonus
-{};
 
 };
 
