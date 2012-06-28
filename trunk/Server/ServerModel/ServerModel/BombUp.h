@@ -18,6 +18,7 @@ class BombUp : public Bonus
 
 		/* GETTERS */
 		int getId();
+		int getBomb();
 		/* SETTERS */
 };
 

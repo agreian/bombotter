@@ -17,6 +17,7 @@ class Kicker : public Bonus
 		~Kicker();
 		/* GETTERS */
 		int getId();
+		bool getKick();
 		/* SETTERS */
 };
 

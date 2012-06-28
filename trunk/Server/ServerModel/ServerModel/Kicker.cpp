@@ -21,3 +21,7 @@ int Kicker::getId()
 	return MapModel::KickerCode;
 }
 
+bool Kicker::getKick()
+{
+	return this->kick;
+}

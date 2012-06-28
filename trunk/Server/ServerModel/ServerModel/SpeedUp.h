@@ -17,6 +17,7 @@ class SpeedUp : public Bonus
 		~SpeedUp();
 		/* GETTERS */
 		int getId();
+		int getSpeed();
 
 		/* SETTERS */
 };

@@ -19,3 +19,8 @@ int FlameUp::getId()
 {
 	return MapModel::FlameUpCode;
 }
+
+int FlameUp::getPower()
+{
+	return this->power;
+}
