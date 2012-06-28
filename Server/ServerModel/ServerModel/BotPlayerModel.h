@@ -26,7 +26,7 @@ private:
 	enum playerStateId { stateStanding, stateMoving, stateDead, stateOut };
 	int dir;
 	int target;
-	enum playerDirectionId { dirLeft=0, dirRight=1, dirUp=2, dirDown=3 };
+	
 	int x, y, goalX, goalY;
 	bool moveLeft, moveRight, moveUp, moveDown;
 	bool oldMoveDown, oldMoveUp, oldMoveLeft, oldMoveRight;
