@@ -2,11 +2,10 @@
 #define BOMB_UP_HEADER
 
 // BombUp.h
-#include "string.h"
+#include <string>
 #include <iostream>
 #include "Bonus.h"
 
-using namespace System;
 using namespace std;
 
 class BombUp : public Bonus

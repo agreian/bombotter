@@ -2,11 +2,10 @@
 #define VOID_ITEM_HEADER
 
 // VoidItem.h
-#include "string.h"
+#include <string>
 #include <iostream>
 #include "MapItem.h"
 
-using namespace System;
 using namespace std;
 
 class VoidItem : public MapItem

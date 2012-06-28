@@ -12,7 +12,7 @@ int ServerApplication::run(int argc, char** argv)
 	
 	m_adapter = communicator()->createObjectAdapter("BomberloutreServer");
 	
-	m_server = new BomberServer(m_adapter);
+	m_server = new ServerModel(m_adapter);
 	m_adapter->add(m_server,communicator()->stringToIdentity("BomberServer"));
 	
 	m_adapter->activate();

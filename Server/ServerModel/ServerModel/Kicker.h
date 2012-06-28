@@ -2,11 +2,10 @@
 #define KICKER_HEADER
 
 // Kicker.h
-#include "string.h"
+#include <string>
 #include <iostream>
 #include "Bonus.h"
 
-using namespace System;
 using namespace std;
 
 class Kicker : public Bonus

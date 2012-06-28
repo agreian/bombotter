@@ -2,11 +2,10 @@
 #define MAP_ITEM_HEADER
 
 // MapItem.h
-#include "string.h"
+#include <string>
 #include <iostream>
 #include "MapModel.h"
 
-using namespace System;
 using namespace std;
 
 

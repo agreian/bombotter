@@ -2,11 +2,10 @@
 #define MAP_CLASSIC_HEADER
 
 // MapClassic.h
-#include "string.h"
+#include <string>
 #include <iostream>
 #include "MapModel.h"
 
-using namespace System;
 using namespace std;
 
 class MapClassic : public MapModel

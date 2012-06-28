@@ -4,8 +4,8 @@
 #include <Ice/Ice.h>
 #include <IceUtil/IceUtil.h>
 
-#include "Bomberloutre.hpp"
-#include "BomberServer.hpp"
+#include "Bomberloutre.h"
+#include "ServerModel.h"
 
 class ServerApplication : public Ice::Application
 {
@@ -19,7 +19,7 @@ public:
 	
 private:
 	::Ice::ObjectAdapterPtr m_adapter;
-	BomberServer*	m_server;
+	ServerModel*	m_server;
 };
 
 #endif

@@ -8,7 +8,6 @@
 #include "UserModel.h"
 #include <vector>
 
-using namespace System;
 using namespace std;
 
 class MapModel;
