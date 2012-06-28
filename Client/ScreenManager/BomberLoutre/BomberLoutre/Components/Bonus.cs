@@ -13,7 +13,7 @@ namespace BomberLoutre.Components
         protected Texture2D Texture;
         public string Type { get; set; }
 
-        public Bonus(BomberLoutre gameRef, Vector2 position, string type)
+        public Bonus(BomberLoutre gameRef, Vector2 cellule, string type)
         {
             GameRef = gameRef;
             SourceRectangle = new Rectangle(0, 0, Config.TileWidth, Config.TileHeight);
@@ -39,7 +39,7 @@ namespace BomberLoutre.Components
 
             }
 
-            Vector2 perfectPosition = Map.CellToVector((int)position.X, (int)position.Y);
+            Vector2 perfectPosition = Map.CellToVector((int)cellule.X, (int)cellule.Y);
             
             Sprite = new Sprite(Texture, Config.TileWidth, Config.TileHeight, perfectPosition);
         }

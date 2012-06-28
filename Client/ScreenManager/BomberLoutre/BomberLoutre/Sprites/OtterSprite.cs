@@ -92,7 +92,8 @@ namespace BomberLoutre.Sprites
                     {
                         direction = Vector2.Normalize(new Vector2(1, 0));
                         SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * (SpriteSpeed);
-
+                        
+                        // Contournement
                         if ((SpritePosition.Y - Config.MapLayer.Y) > ((CellPosition.Y * Config.TileHeight) - Config.TileHeight - Config.TileHeight/5))
                         {
                             SpritePosition = new Vector2(SpritePosition.X, SpritePosition.Y - 3);

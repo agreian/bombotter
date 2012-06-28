@@ -28,6 +28,8 @@ namespace BomberLoutre.Screens
 
         string mapName;
         Map MapZone;
+
+        Random randomizer;
         #endregion
 
         #region Constructor region
@@ -39,6 +41,8 @@ namespace BomberLoutre.Screens
             boxList = new List<Box>();
             rockList = new List<Rock>();
             flameList = new List<Flame>();
+
+            randomizer = new Random();
         }
         #endregion
 
@@ -137,6 +141,19 @@ namespace BomberLoutre.Screens
             rockList.Add(rock);
         }
 
+        public void AddRandomBonus(int x, int y)
+        {
+            Bonus randomBonus;
+            string[] types = new string[] { "powerUp", "powerUpGold", "canKick", "speedUp", "bombUp" };
+            int randomNumber = randomizer.Next(10);
+
+            if (randomNumber < 5)
+            {
+                randomBonus = new Bonus(GameRef, new Vector2(x, y), types[(randomNumber)]);
+                bonusList.Add(randomBonus);
+            }
+        }
+
         public void BOOM(Bomb bomb)
         {
             Map.RemoveBomb((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y);
@@ -177,6 +194,7 @@ namespace BomberLoutre.Screens
                             {
                                 boxList.RemoveAt(j);
                                 Map.RemoveBox((int)bomb.CellPosition.X + i, (int)bomb.CellPosition.Y);
+                                AddRandomBonus((int)bomb.CellPosition.X + i, (int)bomb.CellPosition.Y);
                             }
                         }
                     }
@@ -216,6 +234,7 @@ namespace BomberLoutre.Screens
                             {
                                 boxList.RemoveAt(j);
                                 Map.RemoveBox((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y + i);
+                                AddRandomBonus((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y + i);
                             }
                         }
                     }
@@ -254,6 +273,7 @@ namespace BomberLoutre.Screens
                             {
                                 boxList.RemoveAt(j);
                                 Map.RemoveBox((int)bomb.CellPosition.X - i, (int)bomb.CellPosition.Y);
+                                AddRandomBonus((int)bomb.CellPosition.X - i, (int)bomb.CellPosition.Y);
                             }
                         }
                     }
@@ -293,6 +313,7 @@ namespace BomberLoutre.Screens
                             {
                                 boxList.RemoveAt(j);
                                 Map.RemoveBox((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y - i);
+                                AddRandomBonus((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y - i);
                             }
                         }
                     }
