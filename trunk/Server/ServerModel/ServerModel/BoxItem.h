@@ -17,12 +17,12 @@ class BoxItem : public MapItem
 		BoxItem(MapModel* map);
 		~BoxItem();
 
+		int getId();
 		void appears();
 		void disappears();
 		/*bool isDestructible();
 		bool isWalkable();*/
 		/* GETTERS */
-		int getId();
 
 		/* SETTERS */
 

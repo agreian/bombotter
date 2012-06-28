@@ -49,16 +49,16 @@ void BoxItem::disappears()
 		switch(randomItem)
 		{
 			case 1:
-				itemCode = MapModel::MapItemCode::FlameUpCode;
+				itemCode = MapModel::FlameUpCode;
 				break;
 			case 2:
-				itemCode = MapModel::MapItemCode::BombUpCode;
+				itemCode = MapModel::BombUpCode;
 				break;
 			case 3:
-				itemCode = MapModel::MapItemCode::SpeedUpCode;
+				itemCode = MapModel::SpeedUpCode;
 				break;
 			case 4:
-				itemCode = MapModel::MapItemCode::KickerCode;
+				itemCode = MapModel::KickerCode;
 				break;
 		}
 		this->map->dropBonus(itemCode);
