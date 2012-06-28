@@ -33,6 +33,9 @@ namespace BomberLoutre.Components
                 case "speedUp":
                     Texture = gameRef.Content.Load<Texture2D>("Graphics/Bonus/boots");
                 break;
+                case "bombUp":
+                    Texture = gameRef.Content.Load<Texture2D>("Graphics/Bonus/bombUp");
+                break;
 
             }
 

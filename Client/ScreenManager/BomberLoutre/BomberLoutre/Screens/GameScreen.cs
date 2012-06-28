@@ -101,7 +101,7 @@ namespace BomberLoutre.Screens
 
             GameRef.spriteBatch.Begin();
 
-            for (i = 0; i < bombList.Count; ++i)        bombList[i].Draw(gameTime);
+            for (i = 0; i < bombList.Count; ++i) { bombList[i].Draw(gameTime); GameRef.spriteBatch.DrawString(this.BigFont, bombList[i].Timer.ToString(), new Vector2(bombList[i].Sprite.SpritePosition.X, bombList[i].Sprite.SpritePosition.Y+10), Color.Red);  }
             for (i = 0; i < bonusList.Count; ++i)       bonusList[i].Draw(gameTime);
             for (i = 0; i < boxList.Count; ++i)         boxList[i].Draw(gameTime);
             for (i = 0; i < rockList.Count; ++i)        rockList[i].Draw(gameTime);
@@ -120,6 +120,7 @@ namespace BomberLoutre.Screens
         public void AddBomb(Bomb bomb)
         {
             bombList.Add(bomb);
+            Map.SetWall((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y);
         }
 
         public void AddBox(Box box)
@@ -130,6 +131,12 @@ namespace BomberLoutre.Screens
         public void AddRock(Rock rock)
         {
             rockList.Add(rock);
+        }
+
+        public void BOOM(Bomb Bomb)
+        {
+            Map.RemoveWall((int)Bomb.CellPosition.X, (int)Bomb.CellPosition.Y);
+            bombList.Remove(Bomb);
         }
         #endregion
     }

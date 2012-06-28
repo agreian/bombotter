@@ -17,6 +17,10 @@ namespace BomberLoutre.Sprites
         public Boolean facing { get; set; }
         private Point cellOffset;
 
+        private int X, Y;
+
+        public Config.LookDirection LookDirection { get; set; }
+
         KeyboardState currentKBState;
         KeyboardState previousKBState;
 
@@ -74,26 +78,42 @@ namespace BomberLoutre.Sprites
                 cellOffset.X = Config.OtterWidth / 4; 
                 cellOffset.Y = Config.OtterHeight / 2;
             }
-            
-            if (currentKBState.IsKeyDown(Keys.Right) == true)
+
+            Vector2 test = Map.CellToVector((int)CellPosition.X, (int)CellPosition.Y);
+
+            if (currentKBState.IsKeyDown(Properties.App.Default.KeyRight) == true)
             {
                 AnimateRight(gameTime);
-                cellOffset.X = (Config.OtterWidth - Config.TileWidth);
+                LookDirection = Config.LookDirection.Right;
 
                 if (SpritePosition.X < (Config.MapLayer.Width + Config.MapLayer.X - Config.OtterWidth))
                 {
                     if (!Map.IsWall((int) CellPosition.X + 1, (int) CellPosition.Y))
                     {
                         direction = Vector2.Normalize(new Vector2(1, 0));
-                        SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
+                        SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * (SpriteSpeed);
+
+                        if ((SpritePosition.Y - Config.MapLayer.Y) > ((CellPosition.Y * Config.TileHeight) - Config.TileHeight - Config.TileHeight/5))
+                        {
+                            SpritePosition = new Vector2(SpritePosition.X, SpritePosition.Y - 3);
+                        }
+                    }
+
+                    else // La case vers laquelle on se dirige est bloquante mais on veut pouvoir pousser la taupe dans le guichet ;D
+                    {
+                        if (!(X < (test.X + Config.TileWidth)))
+                        {
+                            direction = Vector2.Normalize(new Vector2(-1, 0));
+                            SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
+                        }
                     }
                 }
             }
 
-            else if (currentKBState.IsKeyDown(Keys.Left) == true)
+            else if (currentKBState.IsKeyDown(Properties.App.Default.KeyLeft) == true)
             {
                 AnimateLeft(gameTime);
-                cellOffset.X = Config.OtterWidth;
+                LookDirection = Config.LookDirection.Left;
 
                 if (SpritePosition.X > Config.MapLayer.X)
                 {
@@ -101,14 +121,30 @@ namespace BomberLoutre.Sprites
                     {
                         direction = Vector2.Normalize(new Vector2(-1, 0));
                         SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
+
+                        // Contournement
+                        if ((SpritePosition.Y - Config.MapLayer.Y) > ((CellPosition.Y * Config.TileHeight) - Config.TileHeight - Config.TileHeight/5))
+                        {
+                            SpritePosition = new Vector2(SpritePosition.X, SpritePosition.Y - 3);
+                        }
+                    }
+
+                    else // La case vers laquelle on se dirige est bloquante mais on veut pouvoir pousser la taupe dans le guichet ;D
+                    {
+                        if (!(X + Config.OtterWidth < (test.X - Config.TileWidth)))
+                        {
+                            direction = Vector2.Normalize(new Vector2(-1, 0));
+                            SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
+                        }
                     }
                 }
+
             }
 
-            else if (currentKBState.IsKeyDown(Keys.Down) == true)
+            else if (currentKBState.IsKeyDown(Properties.App.Default.KeyDown) == true)
             {
                 AnimateDown(gameTime);
-                cellOffset.Y = Config.OtterHeight - Config.TileHeight;
+                LookDirection = Config.LookDirection.Down;
 
                 if (SpritePosition.Y < (Config.MapLayer.Height + Config.MapLayer.Y - Config.OtterHeight))
                 {
@@ -116,20 +152,51 @@ namespace BomberLoutre.Sprites
                     {
                         direction = Vector2.Normalize(new Vector2(0, 1));
                         SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
+
+                        // Contournement
+                        if ((SpritePosition.X - Config.MapLayer.X + Config.OtterWidth / 2) > ((CellPosition.X * Config.TileWidth) - Config.TileWidth / 4))
+                        {
+                            SpritePosition = new Vector2(SpritePosition.X - 3, SpritePosition.Y);
+                        }
+                    }
+
+                    else
+                    {
+                        if (!((Y + Config.OtterHeight / 2) > (test.Y - Config.TileHeight / 2)))
+                        {
+                            direction = Vector2.Normalize(new Vector2(0, 1));
+                            SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
+                        }
                     }
                 }
             }
 
-            else if (currentKBState.IsKeyDown(Keys.Up) == true)
+            else if (currentKBState.IsKeyDown(Properties.App.Default.KeyUp) == true)
             {
                 AnimateUp(gameTime);
-                cellOffset.Y = Config.OtterHeight;
+                LookDirection = Config.LookDirection.Up;
+
                 if (SpritePosition.Y > Config.MapLayer.Y)
                 {
                     if (!Map.IsWall((int)CellPosition.X, (int)CellPosition.Y - 1))
                     {
                         direction = Vector2.Normalize(new Vector2(0, -1));
                         SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
+
+                        // Contournement
+                        if ((SpritePosition.X - Config.MapLayer.X + Config.OtterWidth / 2) > ((CellPosition.X * Config.TileWidth) - Config.TileWidth / 4))
+                        {
+                            SpritePosition = new Vector2(SpritePosition.X - 3, SpritePosition.Y);
+                        }
+                    }
+
+                    else // La case vers laquelle on se dirige est bloquante mais on veut pouvoir pousser la taupe dans le guichet ;D
+                    {
+                        if (!(Y < (test.Y - Config.TileHeight)))
+                        {
+                            direction = Vector2.Normalize(new Vector2(0, -1));
+                            SpritePosition += direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * SpriteSpeed;
+                        }
                     }
                 }
             }
@@ -141,11 +208,13 @@ namespace BomberLoutre.Sprites
             }
             
             CellPosition = Map.PointToVector((int)(SpritePosition.X + cellOffset.X), (int)(SpritePosition.Y + cellOffset.Y));
+
+            X = (int) SpritePosition.X - Config.MapLayer.X;
+            Y = (int) SpritePosition.Y - Config.MapLayer.Y;
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            //spriteBatch.Draw(SpriteTexture, SpritePosition, sourceRect, Color.White, 0f, origin, 1.0f, SpriteEffects.None, 0);
             spriteBatch.Draw(SpriteTexture, SpritePosition, sourceRect, Color.White);
         }
 
