@@ -4,9 +4,11 @@
 // MapItem.h
 #include "string.h"
 #include <iostream>
+#include "MapModel.h"
 
 using namespace System;
 using namespace std;
+
 
 class MapItem
 {
@@ -17,11 +19,13 @@ class MapItem
 
 		virtual bool isDestructible() = 0;
 		virtual bool isWalkable() = 0;
+		virtual int getId() = 0;
 		/* GETTERS */
 
 		/* SETTERS */
 
 	protected:
+		MapModel* map;
 		bool destructible;
 		bool walkable;
 };
