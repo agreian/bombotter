@@ -9,6 +9,10 @@ ServerModel::ServerModel(::Ice::ObjectAdapterPtr a) : m_adapter(a)
 
 ServerModel::~ServerModel()
 {
+	for(std::vector<UserModel*>::iterator i=m_currentUsers.begin();i!=m_currentUsers.end();++i)
+	{
+		delete (*i);
+	}
 }
 
 ServerModel::addGame(string name)
@@ -36,7 +40,12 @@ ServerModel::connect(const std::string& login, const std::string& password, cons
 {
 	BomberLoutreInterface::UserData us;
 	std::cout << login << " " << password << std::endl;
-	us.gameTag = "meuh";
+	us.gameTag = "Bomber"+login;
+
+	UserModel* newuser = new UserModel(login,password);
+	newuser->setGameTag(us.gameTag);
+	m_currentUsers.push_back(newuser);
+	// TODO: Check user existence in list
 	return us;
 }
 
@@ -44,12 +53,27 @@ BomberLoutreInterface::UserData
 ServerModel::createUser(const std::string& login, const std::string& password, const Ice::Current&)
 {
 	BomberLoutreInterface::UserData us;
+	us.gameTag = "Bomber"+login;
+	// TODO: Verify login existence
+	UserModel* newuser = new UserModel(login,password);
+	newuser->setGameTag(us.gameTag);
+	m_currentUsers.push_back(newuser);
 	return us;
 }
 
 bool 
 ServerModel::deleteUser(const std::string& login, const Ice::Current&)
 {
+	// Delete user with login in Server UserList
+	for(std::vector<UserModel*>::iterator i=m_currentUsers.begin();i!=m_currentUsers.end();++i)
+	{
+		if((*i)->getLogin() == login)
+		{
+			delete (*i);
+			m_currentUsers.erase(i);
+			return true;
+		}
+	}
 	return false;
 }
 
