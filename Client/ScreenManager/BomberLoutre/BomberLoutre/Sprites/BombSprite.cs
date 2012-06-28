@@ -8,11 +8,12 @@ namespace BomberLoutre.Sprites
         public int currentFrame { get; set; }
         public float timer { get; set; }
         public float interval { get; set; }
+        public bool DestroyingSoon { get; set; }
 
         public BombSprite(Texture2D texture, Vector2 position) : base(texture, position)
         {
             SpriteWidth = 60;
-            SpriteHeight = 40;
+            SpriteHeight = 60;
             interval = 150f;
             timer = 0;
         }
@@ -25,9 +26,20 @@ namespace BomberLoutre.Sprites
             {
                 currentFrame++;
 
-                if(currentFrame > 3)
+                if (!DestroyingSoon)
                 {
-                    currentFrame = 0;
+                    if (currentFrame > 3)
+                    {
+                        currentFrame = 0;
+                    }
+                }
+
+                else
+                {
+                    if (currentFrame > 7)
+                    {
+                        currentFrame = 4;
+                    }
                 }
 
                 sourceRect = new Rectangle(currentFrame * SpriteWidth, 0, SpriteWidth, SpriteHeight);
@@ -39,6 +51,5 @@ namespace BomberLoutre.Sprites
         {
             spriteBatch.Draw(SpriteTexture, SpritePosition, sourceRect, Color.White);
         }
-
     }
 }
