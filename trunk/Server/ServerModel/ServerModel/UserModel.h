@@ -25,6 +25,13 @@ class UserModel
 		
 		/* GETTERS */
 		std::string getLogin() { return login; }
+		std::string getGameTag() { return gameTag; }
+		int getGameCount() { return nbGame; }
+		int getWinCount() { return nbWin; }
+		int getDrawCount() { return nbDraw; }
+		int getKillCount() { return nbKill; }
+		int getDeathCount() { return nbDeath; }
+		int getSuicideCount() { return nbSuicide; }
 
 		/* SETTERS */
 		void setGameTag(const std::string & gt) { gameTag = gt; }
