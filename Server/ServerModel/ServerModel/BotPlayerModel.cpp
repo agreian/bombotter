@@ -350,7 +350,7 @@ void BotPlayerModel::simulateExplosion(int posx, int posy, float expDelay)
 			{
 				case MapModel::VoidItemCode: this->delayMap[x0][y0] = expDelay; break;
 				case MapModel::RockItemCode: goOut=true; break;
-				case MapModel::ExplosionItemCode: if (this->delayMap[x0][y0] > expDelay)this->delayMap[x0][y0] = expDelay; break;
+				case MapModel::FlameItemCode: if (this->delayMap[x0][y0] > expDelay)this->delayMap[x0][y0] = expDelay; break;
 				case MapModel::BoxItemCode:  goOut=true; break;
 				case MapModel::FlameUpCode: 
 				case MapModel::GoldenFlameCode:  
