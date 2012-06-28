@@ -1,17 +1,17 @@
 #include "BDD.h"
 #include <iostream>
 
-Database::Database(char* filename)
+BDD::BDD(char* filename)
 {
 	database = NULL;
 	open(filename);
 }
 
-Database::~Database()
+BDD::~BDD()
 {
 }
 
-bool Database::open(char* filename)
+bool BDD::open(char* filename)
 {
 	if(sqlite3_open(filename, &database) == SQLITE_OK)
 		return true;
@@ -19,7 +19,7 @@ bool Database::open(char* filename)
 	return false;   
 }
 
-vector<vector<string> > Database::query(char* query)
+vector<vector<string> > BDD::query(char* query)
 {
 	sqlite3_stmt *statement;
 	vector<vector<string> > results;
@@ -56,7 +56,7 @@ vector<vector<string> > Database::query(char* query)
 	return results;  
 }
 
-void Database::close()
+void BDD::close()
 {
 	sqlite3_close(database);   
 }
