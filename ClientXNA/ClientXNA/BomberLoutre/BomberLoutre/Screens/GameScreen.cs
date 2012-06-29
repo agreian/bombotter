@@ -55,7 +55,7 @@ namespace BomberLoutre.Screens
             GameRef.Components.Add(MapZone);    // Ajoute la Map aux "Components", = instance qui vont appeler successivement Ctor()/Initialize()/LoadContent()
 
             for (int i = 0; i < Config.PlayerNumber; ++i)
-                playerList.Add(new Player(i, GameRef, new Vector2(Config.MapLayer.X, Config.MapLayer.Y), 0, this));
+                playerList.Add(new Player(i, GameRef, new Vector2(Config.PlayerPosition[i, 0], Config.PlayerPosition[i, 1]), 0, this));
 
 
             /* Ajout de Bonus au pif

@@ -6,7 +6,8 @@ namespace BomberLoutre
 {
     static class Config
     {
-        public static int PlayerNumber = 1; // Nombre de joueur 
+        public static int PlayerNumber = 4;
+        
         public static int OtterWidth = 64;
         public static int OtterHeight = 72;
 
@@ -46,6 +47,9 @@ namespace BomberLoutre
         public const string MusicOptionString = "Musique";
         public const string SoundOptionString = "Sons";
         public const string BackOptionString = "Retour";
+
+        public static int[,] PlayerPosition = new int[,] { { 0 + MapLayer.X, 0 + MapLayer.Y }, { 0 + MapLayer.X, MapSize.Y * TileHeight - OtterHeight + MapLayer.Y }, { MapSize.X * TileWidth - OtterWidth + MapLayer.X, 0 + MapLayer.Y }, { MapSize.X * TileWidth - OtterWidth + MapLayer.X, MapSize.Y * TileHeight - OtterHeight + MapLayer.Y } };
+
 
         public static void UpdateMapLayer()
         {
