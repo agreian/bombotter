@@ -63,11 +63,7 @@
   <ItemGroup>
     <Reference Include="Ice, Version=3.4.2.0, Culture=neutral, PublicKeyToken=cdd571ade22f2f16, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Debug\Ice.dll</HintPath>
-    </Reference>
-    <Reference Include="IceInterface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Debug\IceInterface.dll</HintPath>
+      <HintPath>..\..\..\Ressources\Ice.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
@@ -99,13 +95,11 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
-    <Reference Include="Nuclex.Input, Version=4.0.0.0, Culture=neutral, PublicKeyToken=96bb577564343f16, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Debug\Nuclex.Input.dll</HintPath>
+    <Reference Include="Nuclex.Input">
+      <HintPath>..\..\..\Ressources\Nuclex.Input.dll</HintPath>
     </Reference>
-    <Reference Include="Nuclex.UserInterface, Version=4.0.0.0, Culture=neutral, PublicKeyToken=96bb577564343f16, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Debug\Nuclex.UserInterface.dll</HintPath>
+    <Reference Include="Nuclex.UserInterface">
+      <HintPath>..\..\..\Ressources\Nuclex.UserInterface.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>False</Private>
@@ -176,6 +170,10 @@
     <Content Include="ico.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\IceInterface\IceInterface\IceInterface.csproj">
+      <Project>{C5D39F89-317B-4A25-8280-8C8B58D9FC2C}</Project>
+      <Name>IceInterface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BomberLoutreContent\BomberLoutreContent.contentproj">
       <Name>BomberLoutreContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
