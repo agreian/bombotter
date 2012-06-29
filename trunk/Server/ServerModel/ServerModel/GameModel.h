@@ -20,8 +20,6 @@ class GameModel :
 	GameModel(ServerModel* server, UserModel* creator);
 	GameModel(ServerModel* server, UserModel* creator, ::Ice::ObjectAdapterPtr a);
 		~GameModel();
-
-	std::string createMapLocal(std::string id, std::string mode);
 		MapModel* map;
 	//void invitePlayer(string gametag);
 	//void kickPlayer(string name);
@@ -50,7 +48,7 @@ class GameModel :
 	::BomberLoutreInterface::GameInterfacePrx getProxy() { return m_proxy; }
 	
 
-		void createMap(std::string id, std::string mod);
+	std::string createMapLocal(std::string id, std::string mod);
 		void addRoom(BomberLoutreInterface::GameWaitRoomPrx room);
 		void addMapObserver(BomberLoutreInterface::MapObserverPrx obs);
 
