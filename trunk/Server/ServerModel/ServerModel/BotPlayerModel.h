@@ -5,8 +5,9 @@
 #include <string>
 #include <iostream>
 #include "PlayerModel.h"
-#include "MapModel.h"
-#include "UserModel.h"
+
+class MapModel;
+class UserModel;
 
 using namespace std;
 
@@ -29,7 +30,7 @@ private:
 	int target;
 	
 	int x, y, goalX, goalY;
-	bool moveLeft, moveRight, moveUp, moveDown;
+	bool _moveLeft, _moveRight, _moveUp, _moveDown;
 	bool oldMoveDown, oldMoveUp, oldMoveLeft, oldMoveRight;
 	// test maps used for the IA
 	int wayMap[MAPWIDTH][MAPHEIGHT];
