@@ -30,11 +30,8 @@ namespace BomberLoutre.Components
             BombPower = power;
             Timer = new TimeSpan(0, 0, 0);
 
-            // Calcul de la case exacte, pour insérer la bombe au centre celle-ci
-            CellPosition = Map.PointToVector((int)position.X+1, (int)position.Y+1);
-            Vector2 perfectPosition = new Vector2((CellPosition.X * Config.TileWidth) + Config.MapLayer.X, (CellPosition.Y * Config.TileHeight) + Config.MapLayer.Y);
-            CellPosition = Map.PointToVector((int)perfectPosition.X, (int)perfectPosition.Y); // On met à jour avec la bonne case
-            Sprite = new BombSprite(spriteTexture, perfectPosition);
+            CellPosition = Map.PointToVector((int)position.X, (int)position.Y); // Position en Cellule
+            Sprite = new BombSprite(spriteTexture, position);
         }
         #endregion
 

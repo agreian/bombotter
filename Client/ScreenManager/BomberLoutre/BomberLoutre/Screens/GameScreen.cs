@@ -88,7 +88,7 @@ namespace BomberLoutre.Screens
 
             ControlManager.Update(gameTime, PlayerIndex.One);            
 
-            if (InputHandler.KeyDown(Keys.Escape))
+            if (InputHandler.Maintained("Escape", PlayerIndex.One))
             {
                 StateManager.PushState(GameRef.TitleScreen);
                 MediaPlayer.Stop();
@@ -104,7 +104,9 @@ namespace BomberLoutre.Screens
         public override void Draw(GameTime gameTime)
         {
             int i;
-            MapZone.Draw(gameTime);
+
+            MapZone.Draw(gameTime); // Dessin de la map
+
 
             GameRef.spriteBatch.Begin();
 
@@ -172,7 +174,7 @@ namespace BomberLoutre.Screens
             }
 
             bombList.Remove(bomb);
-            bombExplosionSound.Play();
+            PlaySoundEffect(bombExplosionSound);
         }
 
         public void RemoveFlame(Flame flame)
@@ -226,6 +228,12 @@ namespace BomberLoutre.Screens
             }
 
             return stop;
+        }
+
+        public void PlaySoundEffect(SoundEffect sound)
+        {
+            if (Properties.App.Default.SoundState)
+                sound.Play();
         }
         #endregion
     }
