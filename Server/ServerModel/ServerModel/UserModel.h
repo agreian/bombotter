@@ -55,7 +55,7 @@ class UserModel
 			
 		/* Private user constructor (called by Connect or CreateUser */
 		UserModel();
-		UserModel(string log, string pwd);
+		UserModel(string log, string pwd, bool isBot = false);
 		/* Save new information of the user : new Game Tag, updates of Win, Lose or Draw number */
 		bool save();
 };

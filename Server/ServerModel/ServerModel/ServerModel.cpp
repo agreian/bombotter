@@ -88,7 +88,16 @@ ServerModel::addGame(const std::string& name,
 	const ::BomberLoutreInterface::GameWaitRoomPrx& room, 
 	const ::BomberLoutreInterface::MapObserverPrx& mapobs, const Ice::Current&)
 {
-	GameModel* newGame = new GameModel(m_adapter,us); // Add constructor
+	UserModel* user = NULL;
+	for(std::vector<UserModel*>::iterator i=m_currentUsers.begin();i!=m_currentUsers.end();++i)
+	{
+		if((*i)->getGameTag() == us.gameTag)
+		{
+			user = (*i);
+			break;
+		}
+	}
+	GameModel* newGame = new GameModel(this,user,m_adapter); // Add constructor
 	m_currentGames.push_back(newGame);
 	newGame->addRoom(room);
 	newGame->addMapObserver(mapobs);
@@ -111,13 +120,25 @@ ServerModel::joinGame(const std::string& name,
 		}
 	}
 
+	UserModel* user = NULL;
+	for(std::vector<UserModel*>::iterator i=m_currentUsers.begin();i!=m_currentUsers.end();++i)
+	{
+		if((*i)->getGameTag() == us.gameTag)
+		{
+			user = (*i);
+			break;
+		}
+	}
+
 	if(curGame != NULL)
 	{
-		curGame->addPlayer(us);
+		curGame->addUser(user);
 		curGame->addRoom(room);
 		curGame->addMapObserver(mapobs);
-		BomberLoutreInterface::Map m = curGame->getMap();
-		return m;
+		MapModel* m = curGame->getMap();
+		::BomberLoutreInterface::Map ret;
+		/* TODO remplir ret */
+		return ret;
 	}
 	throw std::exception();
 }
@@ -129,11 +150,11 @@ ServerModel::getGameList(const Ice::Current&)
 	for(std::vector<GameModel*>::iterator i=m_currentGames.begin();i!=m_currentGames.end();++i)
 	{
 		::BomberLoutreInterface::GameData gd;
-		gd.name			= (*i)->getName();
-		gd.roundCount	= (*i)->getRoundCount();
+		gd.name			= (*i)->getNameLocal();
+		gd.roundCount	= (*i)->getRoundCountLocal();
 		gd.state		= (*i)->getState();
-		gd.playerCount	= (*i)->getPlayerCount();
-		gd.gameui		= (*i)->getUserProxy();
+		gd.playerCount	= (*i)->getPlayerCountLocal();
+		gd.gameui		= (*i)->getProxy()->ice_twoway();
 		list.push_back(gd);
 	}
 	return list;
