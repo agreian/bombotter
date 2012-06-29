@@ -36,7 +36,7 @@ class UserModel
 		/* SETTERS */
 		void setGameTag(const std::string & gt) { gameTag = gt; }
 
-	private:
+	//private:
 		/*
 		/briefOLOZ default name displayed in game
 		*/
