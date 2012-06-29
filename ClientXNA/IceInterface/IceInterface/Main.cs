@@ -156,6 +156,12 @@ namespace BomberLoutre.IceInterface
         public static void CreateGame(string name)
         {
             GameInterfacePrx = BomberLoutre.IceInterface.Main.ServerInterfacePrx.addGame(name, CurrentUser, CurrentGameWaitRoomPrx, CurrentMapObserverPrx);
+
+        }
+
+        public static void CreateMap()
+        {
+            GameInterfacePrx.createMap(string.Empty, CurrentMap.id);
         }
 
         public static void LaunchGame()
@@ -165,7 +171,9 @@ namespace BomberLoutre.IceInterface
                 GameInterfacePrx.addBot();
             }
 
-            GameInterfacePrx.startMap();
+            //GameInterfacePrx.startMap();
+
+            CreateMap();
         }
 
         public static void ImReady()
