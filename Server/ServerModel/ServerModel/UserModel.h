@@ -46,6 +46,7 @@ class UserModel
         string password;
         
 		/* Game information */
+		bool isBot;
 		int nbGame;
 		int nbWin;
 		int nbLoose;

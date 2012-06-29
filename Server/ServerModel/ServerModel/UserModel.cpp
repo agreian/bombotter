@@ -17,6 +17,7 @@ UserModel::UserModel(string log, string pwd, bool isBot)
 	this->nbKill = 0;
 	this->nbDeath = 0;
 	this->nbSuicide = 0;
+	this->isBot = isBot;
 }
 
 void UserModel::setAttributes(vector<vector<string>> data)
@@ -47,7 +48,7 @@ UserModel* UserModel::Connect(string login, string password)
 {
 	UserModel* user = new UserModel(login, password, false);
 	vector<vector<string>> results;
-
+	
 	results = user->db->selectUser(user);
 
 	if(results.size()==0)
