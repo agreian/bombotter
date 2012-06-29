@@ -3,14 +3,14 @@
 #include "UserModel.h"
 #include "MapModel.h"
 
-GameModel::GameModel(ServerModel* server, UserModel* creator) : m_server(server), m_creator(creator)
+GameModel::GameModel(ServerModel* server, UserModel* creator) : m_server(server), m_creator(creator), m_userReadyCount(0)
 { /* Something to do ? */ }
 	
-GameModel::GameModel(ServerModel* server, UserModel* creator, ::Ice::ObjectAdapterPtr a) : m_server(server), m_creator(creator), m_adapter(a)
+GameModel::GameModel(ServerModel* server, UserModel* creator, ::Ice::ObjectAdapterPtr a) : m_server(server), m_creator(creator), m_adapter(a), m_userReadyCount(0)
 {
-	::Ice::Identity id;
-	id.name = "Game";
-	m_proxy = BomberLoutreInterface::GameInterfacePrx::checkedCast(m_adapter->add(this,id));
+	m_proxy = BomberLoutreInterface::GameInterfacePrx::checkedCast(
+		m_adapter->add(this,m_adapter->getCommunicator()->stringToIdentity(m_name))
+		);
 }
 
 void GameModel::addBotLocal()
@@ -46,12 +46,12 @@ std::string GameModel::createMapLocal(std::string id, std::string mode)
 	return "";
 }
 
-void GameModel::startMap()
+void GameModel::mapStart()
 {
 	// TODO : launch the game...
 }
 
-void GameModel::endMap()
+void GameModel::mapEnd()
 {
 	// TODO : clean the map and notify the client
 }
@@ -65,7 +65,7 @@ void GameModel::addMapObserver(BomberLoutreInterface::MapObserverPrx obs)
 {
 	if(m_map != NULL)
 	{
-		//m_map->addObserver(obs);
+		m_map->addObserver(obs);
 }
 }
 
@@ -98,6 +98,9 @@ void GameModel::removeBot(const ::Ice::Current&)
 ::BomberLoutreInterface::MapNameList GameModel::getMapList(const ::Ice::Current&)
 {
 	// Ask list to server
+	::BomberLoutreInterface::MapNameList list;
+	// TODO
+	return list;
 }
 
 ::std::string GameModel::createMap(const ::std::string& id, const ::std::string& mode, const ::Ice::Current&)
@@ -107,15 +110,76 @@ void GameModel::removeBot(const ::Ice::Current&)
 
 void GameModel::startMap(const ::Ice::Current&)
 {
-
+	this->mapStart();
+	for(::std::vector< ::BomberLoutreInterface::GameWaitRoomPrx >::iterator i=m_listRooms.begin();i!=m_listRooms.end();++i)
+	{
+		(*i)->gameStart();
+	}
 }
 
 void GameModel::endMap(const ::Ice::Current&)
 {
-
+	this->mapEnd();
+	for(::std::vector< ::BomberLoutreInterface::GameWaitRoomPrx >::iterator i=m_listRooms.begin();i!=m_listRooms.end();++i)
+	{
+		(*i)->gameEnd();
+	}
 }
 
 bool GameModel::removeGame(const ::Ice::Current&)
 {
 	return false;
+}
+
+::std::string GameModel::getCreatorName(const ::Ice::Current&)
+{
+	return this->m_creator->getLogin();
+}
+
+void GameModel::userReady(const ::BomberLoutreInterface::UserData& us, const ::Ice::Current&)
+{
+	UserModel* user = NULL;
+	for(std::vector<UserModel*>::iterator i=m_listUsers.begin();i!=m_listUsers.end();++i)
+	{
+		if((*i)->getGameTag() == us.gameTag)
+		{
+			user = (*i);
+			break;
+		}
+	}
+
+	if(user != NULL)
+	{
+		for(::std::vector< ::BomberLoutreInterface::GameWaitRoomPrx >::iterator i=m_listRooms.begin();i!=m_listRooms.end();++i)
+		{
+			(*i)->userReady(user->getGameTag());
+			m_userReadyCount++;
+			if(m_userReadyCount == 4)
+			{
+				(*i)->allUsersReady();
+			}
+		}
+	}
+}
+
+void GameModel::leaveGame(const ::BomberLoutreInterface::UserData& us, const ::Ice::Current&)
+{
+	UserModel* user = NULL;
+	for(std::vector<UserModel*>::iterator i=m_listUsers.begin();i!=m_listUsers.end();++i)
+	{
+		if((*i)->getGameTag() == us.gameTag)
+		{
+			m_listUsers.erase(i);
+			break;
+		}
+	}
+
+	m_userReadyCount--;
+	if(m_userReadyCount < 0)
+		m_userReadyCount = 0;
+}
+
+::BomberLoutreInterface::MapInterfacePrx GameModel::getMapInterface(const ::Ice::Current&)
+{
+	return this->getMap()->getInterfacePrx();
 }

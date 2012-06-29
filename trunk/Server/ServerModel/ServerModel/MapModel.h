@@ -6,6 +6,8 @@
 #include <iostream>
 #include <vector>
 
+#include <Ice/Ice.h>
+
 #include "Bomberloutre.h"
 #include "GameModel.h"
 
@@ -30,6 +32,9 @@ class MapModel :
 {
 	private :
 		string id;
+		::BomberLoutreInterface::MapInterfacePrx m_proxy;
+		::Ice::ObjectAdapterPtr m_adapter;
+
 		bool testCase(int x, int y, PlayerModel* p);
 		void dropBonus(::BomberLoutreInterface::Point P);
 		
@@ -41,11 +46,12 @@ class MapModel :
 		int logicalMap[MAPWIDTH][MAPHEIGHT]; //Contein MapItem code
 		MapItem* map[MAPWIDTH][MAPHEIGHT];
 		vector<PlayerModel*> listPlayer;
-		vector< ::BomberLoutreInterface::MapObserverPrx> observers;
+		vector< ::BomberLoutreInterface::MapObserverPrx > observers;
 		GameModel* game;
 	
-		MapModel();	
+		MapModel();
 		MapModel(GameModel* _game, string logicalMap);
+		MapModel(GameModel* _game, string logicalMap, ::Ice::ObjectAdapterPtr a);
 		~MapModel();
 		void checkMove(PlayerModel* p, ::BomberLoutreInterface::Point arrive);
 		void dropBonus(BoxItem* bonus);
@@ -59,6 +65,8 @@ class MapModel :
 		void createMapItem(int typeMapItem, ::BomberLoutreInterface::Point p, PlayerModel *player);
 		void loadMap(string logicalMap);
 		//virtual void render() = 0;
+		void addObserver(::BomberLoutreInterface::MapObserverPrx obs);
+		::BomberLoutreInterface::MapInterfacePrx getInterfacePrx() { return m_proxy; }
 		
 		virtual ::std::string getId(const ::Ice::Current& = ::Ice::Current());
 		virtual ::Ice::Int getWidth(const ::Ice::Current& = ::Ice::Current());
@@ -68,6 +76,7 @@ class MapModel :
 		virtual void moveLeft(const ::BomberLoutreInterface::Player&, const ::Ice::Current& = ::Ice::Current());
 		virtual void moveRight(const ::BomberLoutreInterface::Player&, const ::Ice::Current& = ::Ice::Current());
 		virtual void dropBomb(const ::BomberLoutreInterface::Player&, const ::BomberLoutreInterface::Bomb&, const ::Ice::Current& = ::Ice::Current());
+
 		void bombKicked(BombItem* b, int x, int y, ::BomberLoutreInterface::Point p);
 		void bombExploded(BombItem* b, int x, int y);
 		void bombHasBeenPlanted(BombItem* b, int x, int y);

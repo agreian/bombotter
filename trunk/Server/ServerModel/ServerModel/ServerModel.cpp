@@ -135,9 +135,25 @@ ServerModel::joinGame(const std::string& name,
 		curGame->addUser(user);
 		curGame->addRoom(room);
 		curGame->addMapObserver(mapobs);
-		MapModel* m = curGame->getMap();
 		::BomberLoutreInterface::Map ret;
-		/* TODO remplir ret */
+		ret.id = curGame->getMap()->getId();
+		::BomberLoutreInterface::MapItems items;
+		for(unsigned int i=0;i<MAPWIDTH;i++)
+		{
+			for(unsigned int j=0;j<MAPHEIGHT;j++)
+			{
+				::BomberLoutreInterface::MapItem mi;
+				mi.i = i;
+				mi.j = j;
+				mi.destructible = curGame->getMap()->map[i][j]->isDestructible();
+				mi.walkable = curGame->getMap()->map[i][j]->isWalkable();
+
+				items.push_back(mi);
+			}
+		}
+		ret.items = items;
+		// TODO
+		ret.mi = curGame->getMap()->getInterfacePrx();
 		return ret;
 	}
 	throw std::exception();
@@ -154,7 +170,6 @@ ServerModel::getGameList(const Ice::Current&)
 		gd.roundCount	= (*i)->getRoundCountLocal();
 		gd.state		= (*i)->getState();
 		gd.playerCount	= (*i)->getPlayerCountLocal();
-		gd.gameui		= (*i)->getProxy()->ice_twoway();
 		list.push_back(gd);
 	}
 	return list;
@@ -179,6 +194,17 @@ ServerModel::getUserList(const Ice::Current&)
 	return list;
 }
 
+BomberLoutreInterface::GameInterfacePrx 
+ServerModel::getUserInterface(const BomberLoutreInterface::GameData & gd,const Ice::Current &)
+{
+	for(std::vector< GameModel*>::iterator i=m_currentGames.begin();i!=m_currentGames.end();++i)
+	{
+		if((*i)->getName() == gd.name)
+		{
+			return (*i)->getProxy();
+		}
+	}
+}
 
 void ServerModel::loadMap(const std::string dossier)
 {

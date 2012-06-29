@@ -21,10 +21,17 @@ MapModel::MapModel()
 	this->width = 60;
 }
 
-MapModel::MapModel(GameModel* _game, string logicalMap)
+MapModel::MapModel(GameModel* _game, string logicalMap) : game(_game)
 {
-	this->game = _game;
 	this->loadMap(logicalMap);
+}
+
+MapModel::MapModel(GameModel* _game, string logicalMap, ::Ice::ObjectAdapterPtr a) : game(_game), m_adapter(a)
+{
+	this->loadMap(logicalMap);
+	this->m_proxy = ::BomberLoutreInterface::MapInterfacePrx::checkedCast(
+		m_adapter->add(this,m_adapter->getCommunicator()->stringToIdentity(id))
+		);
 }
 
 MapModel::~MapModel()
@@ -443,7 +450,7 @@ void MapModel::loadMap(string logicalMap)
 {
   	char currentChar;
   	int ligne = 0, colonne = 0;
-	for(int i=0; i < logicalMap.length(); i++)
+	for(unsigned int i=0; i < logicalMap.length(); i++)
 	{
       	currentChar = logicalMap[i];
       	switch(currentChar)
@@ -472,6 +479,11 @@ void MapModel::loadMap(string logicalMap)
       	    }break;
       	}
 	}  	
+}
+
+void MapModel::addObserver(::BomberLoutreInterface::MapObserverPrx obs)
+{
+	observers.push_back(obs);
 }
 
 ::std::string MapModel::getId(const ::Ice::Current&)
