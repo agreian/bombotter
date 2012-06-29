@@ -38,6 +38,7 @@ UserModel* UserModel::CreateUser(string login, string password, bool isBot)
 
 void UserModel::addWin(int nbKill, int nbDeath, int nbSuicide)
 {
+	this->nbGame++;
 	this->nbWin++;
 	this->nbKill += nbKill;
 	this->nbDeath += nbDeath;
@@ -46,6 +47,7 @@ void UserModel::addWin(int nbKill, int nbDeath, int nbSuicide)
 
 void UserModel::addLoose(int nbKill, int nbDeath, int nbSuicide)
 {
+	this->nbGame++;
 	this->nbLoose++;
 	this->nbKill += nbKill;
 	this->nbDeath += nbDeath;
@@ -54,6 +56,7 @@ void UserModel::addLoose(int nbKill, int nbDeath, int nbSuicide)
 
 void UserModel::addDraw(int nbKill, int nbDeath, int nbSuicide)
 {
+	this->nbGame++;
 	this->nbDraw++;
 	this->nbKill += nbKill;
 	this->nbDeath += nbDeath;
