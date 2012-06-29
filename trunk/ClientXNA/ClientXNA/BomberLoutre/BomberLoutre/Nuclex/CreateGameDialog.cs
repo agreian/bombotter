@@ -29,7 +29,10 @@ namespace Nuclex.UserInterface.Demo
             {
                 BomberLoutre.IceInterface.Main.CreateGame(this.gameNameEntryBox.Text);
 
-                MapCreated(this, this.gameNameEntryBox.Text);
+                if (MapCreated != null)
+                {
+                    MapCreated(this, this.gameNameEntryBox.Text);
+                }
             }
         }
 
