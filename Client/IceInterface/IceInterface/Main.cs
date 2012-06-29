@@ -8,9 +8,6 @@ namespace BomberLoutre.IceInterface
 {
     public static class Main
     {
-        //internal MapInterfacePrx mapInterfacePrx;
-        //internal ServerInterfacePrx serverInterfacePrx;
-
         private static ServerInterfacePrx ServerInterfacePrx
         {
             get;
@@ -173,13 +170,6 @@ namespace BomberLoutre.IceInterface
         {
             CurrentGameData.gameui.userReady(CurrentUser);
         }
-
-        //void moveUp(Player p);
-        //void moveDown(Player p);
-        //void moveLeft(Player p);
-        //void moveRight(Player p);
-
-        //void dropBomb(Player p, Bomb b);
 
         public static void MoveUp()
         {
