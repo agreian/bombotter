@@ -32,6 +32,7 @@ void ServerModel::removeGame(std::string name)
 BomberLoutreInterface::UserData 
 ServerModel::connect(const std::string& login, const std::string& password, const Ice::Current&)
 {
+	std::cout << "ServerModel::connect BEGIN" << std::endl;
 	BomberLoutreInterface::UserData us;
 	
 	if(login == "tamere")
@@ -54,6 +55,7 @@ ServerModel::connect(const std::string& login, const std::string& password, cons
 		throw ::BomberLoutreInterface::BadLoginException();
 	}
 	m_currentUsers.push_back(um);
+	std::cout << "ServerModel::connect END" << std::endl;
 	return us;
 }
 
@@ -88,6 +90,7 @@ ServerModel::addGame(const std::string& name,
 	const ::BomberLoutreInterface::GameWaitRoomPrx& room, 
 	const ::BomberLoutreInterface::MapObserverPrx& mapobs, const Ice::Current&)
 {
+	std::cout << "ServerModel::addGame BEGIN" << std::endl;
 	UserModel* user = NULL;
 	for(std::vector<UserModel*>::iterator i=m_currentUsers.begin();i!=m_currentUsers.end();++i)
 	{
@@ -102,6 +105,7 @@ ServerModel::addGame(const std::string& name,
 	newGame->addRoom(room);
 	newGame->addMapObserver(mapobs);
 	BomberLoutreInterface::GameInterfacePrx p = newGame->getProxy();
+	std::cout << "ServerModel::addGame END" << std::endl;
 	return p;
 }
 
@@ -111,6 +115,7 @@ ServerModel::joinGame(const std::string& name,
 	const ::BomberLoutreInterface::GameWaitRoomPrx& room, 
 	const ::BomberLoutreInterface::MapObserverPrx& mapobs, const Ice::Current&)
 {
+	std::cout << "ServerModel::joinGame BEGIN" << std::endl;
 	GameModel* curGame = NULL;
 	for(std::vector<GameModel*>::iterator i=m_currentGames.begin();i!=m_currentGames.end();++i)
 	{
@@ -154,14 +159,17 @@ ServerModel::joinGame(const std::string& name,
 		ret.items = items;
 		// TODO
 		ret.mi = curGame->getMap()->getInterfacePrx();
+		std::cout << "ServerModel::joinGame END" << std::endl;
 		return ret;
 	}
+	std::cout << "ServerModel::joinGame END Exception" << std::endl;
 	throw std::exception();
 }
 
 BomberLoutreInterface::GameDataList 
 ServerModel::getGameList(const Ice::Current&)
 {
+	std::cout << "ServerModel::getGameList BEGIN" << std::endl;
 	BomberLoutreInterface::GameDataList list;
 	for(std::vector<GameModel*>::iterator i=m_currentGames.begin();i!=m_currentGames.end();++i)
 	{
@@ -172,12 +180,14 @@ ServerModel::getGameList(const Ice::Current&)
 		gd.playerCount	= (*i)->getPlayerCountLocal();
 		list.push_back(gd);
 	}
+	std::cout << "ServerModel::getGameList END " << list.size() << std::endl;
 	return list;
 }
 
 BomberLoutreInterface::UserDataList 
 ServerModel::getUserList(const Ice::Current&)
 {
+	std::cout << "ServerModel::getUserList BEGIN" << std::endl;
 	BomberLoutreInterface::UserDataList list;
 	for(std::vector<UserModel*>::iterator i=m_currentUsers.begin();i!=m_currentUsers.end();++i)
 	{
@@ -191,6 +201,7 @@ ServerModel::getUserList(const Ice::Current&)
 		ud.suicideCount = (*i)->getSuicideCount();
 		list.push_back(ud);
 	}
+	std::cout << "ServerModel::getUserList END " << list.size() << std::endl;
 	return list;
 }
 
