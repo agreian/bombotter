@@ -134,7 +134,12 @@ void GameModel::removeBot(const ::Ice::Current&)
 
 ::std::string GameModel::createMap(const ::std::string& id, const ::std::string& mode, const ::Ice::Current&)
 {
-	return this->createMapLocal(id,mode);
+	std::string s =  this->createMapLocal(id,mode);
+	for(::std::vector< ::BomberLoutreInterface::GameWaitRoomPrx >::iterator i=m_listRooms.begin();i!=m_listRooms.end();++i)
+	{
+		(*i)->newMapDefined(s);
+	}	
+	return s;
 }
 
 void GameModel::startMap(const ::Ice::Current&)

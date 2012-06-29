@@ -54,7 +54,8 @@ UserModel* UserModel::Connect(string login, string password)
 	if(results.size()==0)
 	{
 		delete (user);
-		throw ::BomberLoutreInterface::BadLoginException("Mauvais login");
+		//throw ::BomberLoutreInterface::BadLoginException();
+		throw std::exception();
 	}
 	else
 	{
@@ -62,7 +63,8 @@ UserModel* UserModel::Connect(string login, string password)
 		if(std::strcmp(user->password.c_str(),password.c_str()) != 0)
 		{
 			delete (user);
-			throw ::BomberLoutreInterface::BadPasswordException("Mauvais password");
+			//throw ::BomberLoutreInterface::BadPasswordException();
+			throw std::exception();
 		}
 	}
 
@@ -79,7 +81,9 @@ UserModel* UserModel::CreateUser(string login, string password, bool isBot)
 	if (result.size())
 	{
 		delete(user);
-		throw ::BomberLoutreInterface::UserException("L'utilisateur existe déjà : sois créatif et trouve un autre pseudo.... VICTIME!");
+		//throw ::BomberLoutreInterface::UserException("L'utilisateur existe déjà : sois créatif et trouve un autre pseudo.... VICTIME!");
+		//throw ::BomberLoutreInterface::UserAlreadyExistsException();
+		throw std::exception();
 	}
 	else
 	{

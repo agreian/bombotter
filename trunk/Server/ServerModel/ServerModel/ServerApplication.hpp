@@ -15,7 +15,6 @@ public:
 	virtual ~BomberServerApplication();
 	
 	virtual int run(int argc, char** argv);
-	virtual void interruptCallback(int);
 	
 private:
 	::Ice::ObjectAdapterPtr m_adapter;
