@@ -32,6 +32,8 @@ namespace BomberLoutre
         public GuiManager nuclexGui;
         public InputManager nuclexInput;
 
+        private Texture2D backgroundImage;
+
         public BomberLoutreGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -88,6 +90,7 @@ namespace BomberLoutre
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            backgroundImage = Content.Load<Texture2D>("Graphics/Screens/Title");
 
             // TODO: use this.Content to load your game content here
         }
@@ -112,8 +115,6 @@ namespace BomberLoutre
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
-
             base.Update(gameTime);
         }
 
@@ -123,9 +124,10 @@ namespace BomberLoutre
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.DarkGray);
-
-            // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            spriteBatch.Draw(backgroundImage, new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), Color.White);
+            spriteBatch.End();
+            //GraphicsDevice.Clear(Color.DarkGray);
 
             base.Draw(gameTime);
         }
