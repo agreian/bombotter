@@ -87,7 +87,7 @@ namespace BomberLoutre.IceInterface
             try
             {
                 ic = Ice.Util.initialize();
-                Ice.ObjectPrx obj = ic.stringToProxy("BomberServer: tcp -p 10001 -h 192.168.0.2");
+                Ice.ObjectPrx obj = ic.stringToProxy("BomberServer: tcp -p 10001 -h 192.168.1.1");
 
                 ServerInterfacePrx = ServerInterfacePrxHelper.checkedCast(obj);
             }
@@ -104,29 +104,34 @@ namespace BomberLoutre.IceInterface
                 Ice.ObjectAdapter adapter = ic.createObjectAdapterWithEndpoints("BomberClient", "tcp");
                 Ice.Object obj = CurrentMapObserver;
                 Ice.ObjectPrx objPrx = adapter.add(obj, ic.stringToIdentity("BomberClient"));
-                MapObserverPrx mapObserverPrx = MapObserverPrxHelper.checkedCast(objPrx);
+                CurrentMapObserverPrx = MapObserverPrxHelper.checkedCast(objPrx);
                 obj = CurrentGameWaitRoom;
-                objPrx = adapter.add(obj, ic.stringToIdentity("BomberClient"));
-                GameWaitRoomPrx gameWaitRoomPrx = GameWaitRoomPrxHelper.checkedCast(objPrx);
+                objPrx = adapter.add(obj, ic.stringToIdentity("BomberClient2"));
+                CurrentGameWaitRoomPrx = GameWaitRoomPrxHelper.checkedCast(objPrx);
 
                 adapter.activate();
-                ic.waitForShutdown();
+                //ic.waitForShutdown();
             }
             catch (Exception e)
             {
                 Console.Error.WriteLine(e);
             }
-            if (ic != null)
-            {
-                try
-                {
-                    ic.destroy();
-                }
-                catch (Exception e)
-                {
-                    Console.Error.WriteLine(e);
-                }
-            }
+            //if (ic != null)
+            //{
+            //    try
+            //    {
+            //        ic.destroy();
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        Console.Error.WriteLine(e);
+            //    }
+            //}
+        }
+
+        public static string GetPartyName()
+        {
+            return GameInterfacePrx.getName();
         }
 
         public static UserData Connection(string login, string password)

@@ -35,6 +35,10 @@ namespace Nuclex.UserInterface.Demo
 
         void createGameButton_Pressed(object sender, EventArgs e)
         {
+            BomberLoutre.IceInterface.Main.CreateGame(string.Format("Partie {0}", DateTime.Now));
+
+                
+
             if (CreateGame != null)
                 CreateGame(this);
         }

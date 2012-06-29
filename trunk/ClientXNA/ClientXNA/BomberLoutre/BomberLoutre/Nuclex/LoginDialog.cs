@@ -25,6 +25,9 @@ namespace Nuclex.UserInterface.Demo
             Width = (float) 310;
             Height = (float) 200;
             InitializeComponent();
+
+            this.loginTextBox.Text = "paul";
+            this.passwordTextBox.Text = "paulpwd";
         }
 
         /// <summary>Called when the user clicks on the okay button</summary>
