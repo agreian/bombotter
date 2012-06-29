@@ -206,7 +206,7 @@ ServerModel::getUserList(const Ice::Current&)
 }
 
 BomberLoutreInterface::GameInterfacePrx 
-ServerModel::getUserInterface(const BomberLoutreInterface::GameData & gd,const Ice::Current &)
+ServerModel::getUserInterface(const ::BomberLoutreInterface::GameData & gd,const Ice::Current &)
 {
 	for(std::vector< GameModel*>::iterator i=m_currentGames.begin();i!=m_currentGames.end();++i)
 	{
@@ -215,6 +215,7 @@ ServerModel::getUserInterface(const BomberLoutreInterface::GameData & gd,const I
 			return (*i)->getProxy();
 		}
 	}
+	throw std::exception();
 }
 
 void ServerModel::loadMap(const std::string dossier)

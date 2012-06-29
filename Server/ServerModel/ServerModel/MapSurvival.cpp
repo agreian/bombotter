@@ -5,6 +5,9 @@ MapSurvival::MapSurvival()
 
 }
 
+MapSurvival::~MapSurvival()
+{}
+
 void MapSurvival::render()
 {
 	/* AFFICHAGE Classique (même si mode différent -> pertinence de l'héritage? 
