@@ -46,7 +46,7 @@ class ServerModel :
 		getUserList(const Ice::Current& = ::Ice::Current());
 
 		void loadMap(const std::string dossier);
-		std::string* getMap(const std::string mapName);
+		std::vector<string> getMap(const std::string mapName)
 
 		BomberLoutreInterface::GameInterfacePrx 
 		getUserInterface(const BomberLoutreInterface::GameData &,const Ice::Current & = ::Ice::Current());
@@ -58,7 +58,7 @@ class ServerModel :
 		std::vector<UserModel*> m_currentUsers;
 
 		::Ice::ObjectAdapterPtr m_adapter;
-		std::vector< std::string[5] > mapFiles;
+		std::vector<vector<string>> mapFiles;
 };
 
 #endif
