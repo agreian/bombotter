@@ -21,10 +21,10 @@ MapModel::MapModel()
 	this->width = 60;
 }
 
-MapModel::MapModel(int _height, int _width)
+MapModel::MapModel(GameModel* _game, string logicalMap)
 {
-	this->height = _height;
-	this->width = _width;
+	this->game = _game;
+	this->loadMap(logicalMap);
 }
 
 MapModel::~MapModel()
@@ -118,6 +118,7 @@ bool MapModel::testCase(int bordX, int bordY, PlayerModel* p)
 	case FlameItemCode:
 		p->die(((FlameItem*)(this->map[bordY][bordX]))->getPlayer());
 		((FlameItem*)(this->map[bordY][bordX]))->getPlayer()->addKill(1);
+		playerDied(p);
 		break;
 	case FlameUpCode:
 	case GoldenFlameCode:
@@ -127,7 +128,8 @@ bool MapModel::testCase(int bordX, int bordY, PlayerModel* p)
 	case InvisibleItemCode:
 	case InvincibleItemCode:
 	case ShieldItemCode:
-		p->addBonus((Bonus*)this->map[bordY][bordX]);
+		p->addBonus((Bonus*)(this->map[bordY][bordX]));
+		this->bonusDisappeared((Bonus*)(this->map[bordY][bordX]),bordX ,bordY);
 		break;
 	}
 	return true;
@@ -213,7 +215,7 @@ void MapModel::dropBonus(BoxItem* box)
 	if(find)
 	{
 		float randomDrop;
-		srand(time(NULL));
+		srand((int)time(NULL));
 		randomDrop = rand() / float(RAND_MAX);
 
 		if( randomDrop <= box->getDropChances())
@@ -245,7 +247,7 @@ void MapModel::dropBonus(VoidItem* voidItem)
 	if(find)
 	{
 		float randomDrop;
-		srand(time(NULL));
+		srand((int)time(NULL));
 		randomDrop = rand() / float(RAND_MAX);
 
 		if( randomDrop <= voidItem->getDropChances())
@@ -293,7 +295,7 @@ void MapModel::handleExplode(BombItem* b)
 	{
 		for(int j = 0; i < MAPWIDTH; i++)
 		{
-			if(this->logicalMap[j][i] == BombItemCode)
+			if(this->map[j][i] == b)
 			{
 				position.x = i;
 				position.y = j;
@@ -346,6 +348,7 @@ void MapModel::handleExplode(BombItem* b)
 					case ShieldItemCode:   
 						pp.x = x0;
 						pp.y = y0;
+						this->bonusDisappeared((Bonus*)(this->map[y0][x0]), x0, y0);
 						this->createMapItem(FlameItemCode, pp, b->getPlayer());
 						break;
 					case BombItemCode: this->handleExplode((BombItem*)this->map[y0][x0]); break;
@@ -368,12 +371,38 @@ void MapModel::handleExplode(BombItem* b)
 						{
 							(*i)->die(b->getPlayer());
 							b->getPlayer()->addKill(1);
+							playerDied((*i));
 						}
 					}
 				}
 				distance++;
 			}
 		}
+	}
+}
+
+void MapModel::handleBurn(FlameItem* b)
+{
+	bool find = false;
+	::BomberLoutreInterface::Point position;
+	position.x = 0;
+	position.y = 0;
+
+	for(int i = 0; i < MAPHEIGHT; i++)
+	{
+		for(int j = 0; i < MAPWIDTH; i++)
+		{
+			if(this->map[j][i] == b)
+			{
+				position.x = i;
+				position.y = j;
+				find = true;
+			}
+		}
+	}
+	if(find)
+	{
+		this->createMapItem(FlameItemCode, position, NULL);
 	}
 }
 
@@ -410,48 +439,39 @@ void MapModel::dropBomb(PlayerModel *p)
 
 }
 
-void MapModel::loapMap(string id)
+void MapModel::loadMap(string logicalMap)
 {
-	FILE * pFile;
-	pFile = fopen (id.c_str(),"rw");
   	char currentChar;
   	int ligne = 0, colonne = 0;
-  	if (pFile!=NULL)
-  	{
-    	do
-    	{
-      		currentChar = fgetc(pFile);
-      	    switch(currentChar)
+	for(int i=0; i < logicalMap.length(); i++)
+	{
+      	currentChar = logicalMap[i];
+      	switch(currentChar)
+      	{
+      	    case ';':
       	    {
-      	    	case ';':
-      	    	{
-      	    		++colonne;
-      	    	}break;
-      	    	case '\n':
-      	    	{
-      	    		++ligne;
-      	    		colonne=0;
-      	    	}break;
-      	    	case '\r':
-      	    	break;
-      	    	case ' ':
-      	    	break;
-      	    	case '#':
-      	    	break;
-      	    	default:
-      	    	{
-					::BomberLoutreInterface::Point position;
-					position.x = ligne;
-					position.y = colonne;
-      	    		createMapItem(currentChar, position, NULL);
-      	    	}break;
-      	    }
-    	}while (currentChar != EOF && currentChar != '#');	
-    	
-    	fclose (pFile);
-  	}
-  	else
-  		cout << "Unable to open file"; 
+      	    	++colonne;
+      	    }break;
+      	    case '\n':
+      	    {
+      	    	++ligne;
+      	    	colonne=0;
+      	    }break;
+      	    case '\r':
+      	    break;
+      	    case ' ':
+      	    break;
+      	    case '#':
+      	    break;
+      	    default:
+      	    {
+				::BomberLoutreInterface::Point position;
+				position.x = ligne;
+				position.y = colonne;
+      	    	createMapItem(currentChar, position, NULL);
+      	    }break;
+      	}
+	}  	
 }
 
 ::std::string MapModel::getId(const ::Ice::Current&)
@@ -537,13 +557,28 @@ void MapModel::bombHasBeenPlanted(BombItem* b, int x, int y)
 	}
 }
 
+void MapModel::bonusDisappeared(Bonus* bonus, int x, int y)
+{
+	::BomberLoutreInterface::Bonus b;
+	b.i = x;
+	b.j = y;
+	b.power = bonus->getPower();
+	b.kick = bonus->getKick();
+	b.bomb = bonus->getBomb();
+	b.speed = bonus->getSpeed();
+	for(std::vector< ::BomberLoutreInterface::MapObserverPrx>::iterator i=observers.begin();i!=observers.end();++i)
+	{
+		(*i)->bonusDisappeared(b);
+	}
+}
+
 void MapModel::bombExploded(BombItem* b, int x, int y)
 {
 	::BomberLoutreInterface::Bomb bomb;
 	bomb.i = x;
 	bomb.j = y;
-	bomb.power = b->getPower();
-	bomb.timer = b->getTimer();
+	bomb.power = (int)b->getPower();
+	bomb.timer = (int)b->getTimer();
 	for(std::vector< ::BomberLoutreInterface::MapObserverPrx>::iterator i=observers.begin();i!=observers.end();++i)
 	{
 		(*i)->bombExploded(bomb);
@@ -623,5 +658,85 @@ void MapModel::playerDied(PlayerModel* p)
 	for(std::vector< ::BomberLoutreInterface::MapObserverPrx>::iterator i=observers.begin();i!=observers.end();++i)
 	{
 		(*i)->playerDied(player);
+	}
+
+	if(this->testWin())
+	{
+		this->mapEnd();
+	}
+}
+
+bool MapModel::testWin()
+{
+	int cpt = 0;
+	for(std::vector<PlayerModel*>::iterator i=listPlayer.begin();i!=listPlayer.end();++i)
+	{
+		if((*i)->isAlive())
+		{
+			cpt = cpt + 1;
+		}
+	}
+
+	if(cpt <= 1)
+	{
+		return true;
+	}
+
+	return false;
+}
+
+void MapModel::mapEnd()
+{
+	int cpt = 0;
+	for(std::vector<PlayerModel*>::iterator i=listPlayer.begin();i!=listPlayer.end();++i)
+	{
+		if((*i)->isAlive())
+		{
+			cpt = cpt + 1;
+		}
+	}
+	if(cpt == 0)
+	{
+		for(std::vector<PlayerModel*>::iterator i=listPlayer.begin();i!=listPlayer.end();++i)
+		{
+			(*i)->user->addDraw((*i)->getNbKill(), (*i)->getNbDeath(), (*i)->getNbSuicide());
+		}
+	} else {
+		for(std::vector<PlayerModel*>::iterator i=listPlayer.begin();i!=listPlayer.end();++i)
+		{
+			if((*i)->isAlive())
+			{
+				(*i)->user->addWin((*i)->getNbKill(), (*i)->getNbDeath(), (*i)->getNbSuicide());
+			} else {
+				(*i)->user->addLoose((*i)->getNbKill(), (*i)->getNbDeath(), (*i)->getNbSuicide());
+			}
+		}
+	}
+	this->game->mapEnd();
+}
+
+void MapModel::refreshMapItems()
+{
+	::BomberLoutreInterface::MapItems mList;
+	::BomberLoutreInterface::MapItem m;
+	for(int i = 0; i < MAPHEIGHT; i++)
+	{
+		for(int j = 0; j < MAPWIDTH; i++)
+		{
+			if(this->logicalMap[j][i] == BoxItemCode)
+			{
+				m.i = i;
+				m.j = j;
+				m.destructible = true;
+				m.walkable = false;
+
+				mList.push_back(m);
+			}
+		}
+	}	
+
+	for(std::vector< ::BomberLoutreInterface::MapObserverPrx>::iterator i=observers.begin();i!=observers.end();++i)
+	{
+		(*i)->refreshMapItems(mList);
 	}
 }

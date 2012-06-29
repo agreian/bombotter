@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "Bomberloutre.h"
+#include "GameModel.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ class BombItem;
 class BoxItem;
 class VoidItem;
 class Bonus;
+class FlameItem;
 
 #define MAPHEIGHT 11
 #define MAPWIDTH 13
@@ -40,9 +42,10 @@ class MapModel :
 		MapItem* map[MAPWIDTH][MAPHEIGHT];
 		vector<PlayerModel*> listPlayer;
 		vector< ::BomberLoutreInterface::MapObserverPrx> observers;
+		GameModel* game;
 	
 		MapModel();	
-		MapModel(int _height, int _width);		
+		MapModel(GameModel* _game, string logicalMap);
 		~MapModel();
 		void checkMove(PlayerModel* p, ::BomberLoutreInterface::Point arrive);
 		void dropBonus(BoxItem* bonus);
@@ -50,37 +53,32 @@ class MapModel :
 		void addPlayer(PlayerModel* newPlayer);
 		void dropBonus(int bonusItemCode, ::BomberLoutreInterface::Point p);
 		void handleExplode(BombItem* b);
+		void handleBurn(FlameItem* f);
 		void dropBomb(PlayerModel *p);
 		// Factory à Map Item
 		void createMapItem(int typeMapItem, ::BomberLoutreInterface::Point p, PlayerModel *player);
-		void loapMap(string id);
+		void loadMap(string logicalMap);
 		//virtual void render() = 0;
 		
 		virtual ::std::string getId(const ::Ice::Current& = ::Ice::Current());
-
 		virtual ::Ice::Int getWidth(const ::Ice::Current& = ::Ice::Current());
-
 		virtual ::Ice::Int getHeight(const ::Ice::Current& = ::Ice::Current());
- 
 		virtual void moveUp(const ::BomberLoutreInterface::Player&, const ::Ice::Current& = ::Ice::Current());
-
-		virtual void moveDown(const ::BomberLoutreInterface::Player&, const ::Ice::Current& = ::Ice::Current());
- 
+		virtual void moveDown(const ::BomberLoutreInterface::Player&, const ::Ice::Current& = ::Ice::Current()); 
 		virtual void moveLeft(const ::BomberLoutreInterface::Player&, const ::Ice::Current& = ::Ice::Current());
-
 		virtual void moveRight(const ::BomberLoutreInterface::Player&, const ::Ice::Current& = ::Ice::Current());
- 
 		virtual void dropBomb(const ::BomberLoutreInterface::Player&, const ::BomberLoutreInterface::Bomb&, const ::Ice::Current& = ::Ice::Current());
-
 		void bombKicked(BombItem* b, int x, int y, ::BomberLoutreInterface::Point p);
-
 		void bombExploded(BombItem* b, int x, int y);
-
 		void bombHasBeenPlanted(BombItem* b, int x, int y);
-
-		void refreshPlayers();		
+		void bonusDisappeared(Bonus* b, int x, int y);
+		void refreshMapItems();
+		void refreshPlayers();
 		void bonusesDropped(Bonus* b, int x, int y);
 		void playerDied(PlayerModel* p);
+
+		void mapEnd();
+		bool testWin();
 
 		enum MapItemCode
 		{

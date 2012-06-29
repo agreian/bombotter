@@ -10,7 +10,7 @@
 FlameItem::FlameItem(MapModel* map, PlayerModel* player):MapItem(map,true,false)
 {
 	this->player = player;
-	this->timer = 1.0;
+	this->timer = 0.5;
 	
 	boost::thread threadBurn(boost::bind(&FlameItem::burn, this));
 }
@@ -26,7 +26,7 @@ void FlameItem::burn()
 	
 	while(this->timer > 0)
 	{
-		timer -= t.elapsed();
+		timer -= (float)t.elapsed();
 	}
 
 	this->map->handleBurn(this);

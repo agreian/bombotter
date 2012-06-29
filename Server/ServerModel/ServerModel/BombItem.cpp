@@ -11,7 +11,7 @@ BombItem::BombItem(MapModel* map, PlayerModel* player, int power):MapItem(map,tr
 {
 	this->player = player;
 	this->power = power;
-	this->timer = 3.0;
+	this->timer = 2.0;
 	
 	boost::thread threadExplosion(boost::bind(&BombItem::explod, this));
 }
@@ -26,7 +26,7 @@ void BombItem::explod()
 	
 	while(this->timer > 0)
 	{
-		timer -= t.elapsed();
+		timer -= (float)t.elapsed();
 	}
 
 	this->map->handleExplode(this);
