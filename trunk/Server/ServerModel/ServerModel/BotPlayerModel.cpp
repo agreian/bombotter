@@ -1,5 +1,6 @@
 #include <time.h>
 #include "BotPlayerModel.h"
+#include "BombItem.h"
 
 const float dangerLimit = 10.0f;
 const float criticalLimit = 0.0f;
@@ -8,7 +9,10 @@ BotPlayerModel::BotPlayerModel()
 {
 	
 }
-
+		
+PlayerModel(MapModel *map, UserModel *user, int posX, int posY):PlayerModel(map, user, posX, posY)
+{
+}
 
 void BotPlayerModel::autoMove()
 {
@@ -198,9 +202,9 @@ void BotPlayerModel::findActions()
 			}
 		}
 	} else {	// danger
-		for (int i=0; i<MAPWIDTH; i++)
+		for (int i=0; i<MAPHEIGHT; i++)
 		{
-			for (int j=0; j<MAPHEIGHT; j++)
+			for (int j=0; j<MAPWIDTH; j++)
 			{
 				// unreachable
 				if (this->wayMap[i][j]==-1)
@@ -234,8 +238,8 @@ int BotPlayerModel::explosingCount(int posx, int posy, int range)
 			{
 			case PlayerModel::dirLeft: x0-=distance; break;
 			case PlayerModel::dirRight: x0+=distance; break;
-			case PlayerModel::dirUp: y0+=distance; break;
-			case PlayerModel::dirDown: y0-=distance; break;
+			case PlayerModel::dirUp: y0-=distance; break;
+			case PlayerModel::dirDown: y0+=distance; break;
 			}
 
 			switch (this->map->logicalMap[x0][y0])
@@ -275,8 +279,8 @@ int BotPlayerModel::killingCount(int posx, int posy, int range)
 			{
 			case PlayerModel::dirLeft: x0-=distance; break;
 			case PlayerModel::dirRight: x0+=distance; break;
-			case PlayerModel::dirUp: y0+=distance; break;
-			case PlayerModel::dirDown: y0-=distance; break;
+			case PlayerModel::dirUp: y0-=distance; break;
+			case PlayerModel::dirDown: y0+=distance; break;
 			}
 
 			switch (this->map->logicalMap[x0][y0])
@@ -314,12 +318,12 @@ int BotPlayerModel::killingCount(int posx, int posy, int range)
 // tested
 void BotPlayerModel::findExplosions()
 {
-	for (int i=0; i<MAPWIDTH; i++)
-		for (int j=0; j<MAPHEIGHT; j++)
+	for (int i=0; i<MAPHEIGHT; i++)
+		for (int j=0; j<MAPWIDTH; j++)
 		{
 			if (this->map->logicalMap[i][j] == MapModel::BombItemCode)
 			{
-				simulateExplosion(i,j,(BombItem*)(this->map->map[i][j])->getTimer());
+				simulateExplosion(i,j,((BombItem*)(this->map->map[i][j]))->getTimer());
 			}
 		}
 }
@@ -342,8 +346,8 @@ void BotPlayerModel::simulateExplosion(int posx, int posy, float expDelay)
 			{
 				case PlayerModel::dirLeft: x0-=distance; break;
 				case PlayerModel::dirRight: x0+=distance; break;
-				case PlayerModel::dirUp: y0+=distance; break;
-				case PlayerModel::dirDown: y0-=distance; break;
+				case PlayerModel::dirUp: y0-=distance; break;
+				case PlayerModel::dirDown: y0+=distance; break;
 			}
 
 			switch (this->map->logicalMap[x0][y0])
@@ -359,7 +363,7 @@ void BotPlayerModel::simulateExplosion(int posx, int posy, float expDelay)
 				case MapModel::KickerCode: 
 				case MapModel::InvisibleItemCode:  
 				case MapModel::InvincibleItemCode: 
-				case MapModel::ShieldItemCode:  this->delayMap[x0][y0]=expDelay; goOut=true; break;
+				case MapModel::ShieldItemCode:  this->delayMap[x0][y0]=expDelay; break;
 				case MapModel::BombItemCode: 
 				{
 					if (this->delayMap[x0][y0] < expDelay)
@@ -402,8 +406,8 @@ void BotPlayerModel::doBestAction()
 
 		//if (tx==-1)
 		{
-			for (int i=0; i<MAPWIDTH; i++)
-				for (int j=0; j<MAPHEIGHT; j++)
+			for (int i=0; i<MAPHEIGHT; i++)
+				for (int j=0; j<MAPWIDTH; j++)
 				{
 					if (this->wayMap[i][j] >= 0 && this->resultMap[i][j] > third)
 					{
@@ -493,30 +497,30 @@ void BotPlayerModel::doBestAction()
 				tx = -1;
 				this->resultMap[tx][ty]=-5000;
 			} else if (mtx>x) {
-				if (this->target==PlayerModel::dirUp && displacement > 12)
+				if (this->target==PlayerModel::dirUp && displacement > 9)
 					moveDown = true;
-				else if (this->target==PlayerModel::dirDown && displacement > 12)
+				else if (this->target==PlayerModel::dirDown && displacement > 9)
 					moveUp = true;
 				else
 					moveRight = true;		
 			} else if (mtx<x) {
-				if (this->target == PlayerModel::dirUp && displacement > 12)
+				if (this->target == PlayerModel::dirUp && displacement > 9)
 					moveDown = true;
-				else if (this->target == PlayerModel::dirDown && displacement > 12)
+				else if (this->target == PlayerModel::dirDown && displacement > 9)
 					moveUp = true;
 				else
 					moveLeft = true;	
 			} else if (mty>y) {
-				if (this->target==PlayerModel::dirLeft && displacement > 12)
+				if (this->target==PlayerModel::dirLeft && displacement > 9)
 					moveRight=true;
-				else if (this->target==PlayerModel::dirRight && displacement > 12)
+				else if (this->target==PlayerModel::dirRight && displacement > 9)
 					moveLeft=true;
 				else
 					moveUp=true;
 			} else if (mty<y) {
-				if (this->target == PlayerModel::dirLeft && displacement > 12)
+				if (this->target == PlayerModel::dirLeft && displacement > 9)
 					moveRight=true;
-				else if (this->target == PlayerModel::dirRight && displacement > 12)
+				else if (this->target == PlayerModel::dirRight && displacement > 9)
 					moveLeft = true;
 				else
 					moveDown = true;
@@ -536,8 +540,8 @@ void BotPlayerModel::goOutDanger()
 	int tx2=-1, ty2=-1, record2 = 50; 
 	float bestTime = 0.0f;
 
-	for (int i=0; i<MAPWIDTH; i++)
-		for (int j=0; j<MAPHEIGHT; j++)
+	for (int i=0; i<MAPHEIGHT; i++)
+		for (int j=0; j<MAPWIDTH; j++)
 		{
 			// distance score
 			if (this->wayMap[i][j]>=0 && this->delayMap[i][j] > 10.0f && this->wayMap[i][j]<record)
@@ -609,36 +613,36 @@ void BotPlayerModel::goOutDanger()
 
 		if (mtx>x) 
 		{
-			if (this->target==PlayerModel::dirUp && displacement > 12)
+			if (this->target==PlayerModel::dirUp && displacement > 9)
 				moveDown=true;
-			else if (this->target==PlayerModel::dirDown && displacement > 12)
+			else if (this->target==PlayerModel::dirDown && displacement > 9)
 				moveUp=true;
 			else
 				moveRight=true;		
 		}
 		else if (mtx<x)
 		{
-			if (this->target==PlayerModel::dirUp && displacement > 12)
+			if (this->target==PlayerModel::dirUp && displacement > 9)
 				moveDown = true;
-			else if (this->target==PlayerModel::dirDown && displacement > 12)
+			else if (this->target==PlayerModel::dirDown && displacement > 9)
 				moveUp = true;
 			else
 				moveLeft = true;	
 		}
 		else if (mty>y) 
 		{
-			if (this->target==PlayerModel::dirLeft && displacement > 12)
+			if (this->target==PlayerModel::dirLeft && displacement > 9)
 				moveRight=true;
-			else if (this->target==PlayerModel::dirRight && displacement > 12)
+			else if (this->target==PlayerModel::dirRight && displacement > 9)
 				moveLeft=true;
 			else
 				moveUp=true;
 		}
 		else if (mty<y) 
 		{
-			if (this->target==PlayerModel::dirLeft && displacement > 12)
+			if (this->target==PlayerModel::dirLeft && displacement > 9)
 				moveRight=true;
-			else if (this->target==PlayerModel::dirRight && displacement > 12)
+			else if (this->target==PlayerModel::dirRight && displacement > 9)
 				moveLeft=true;
 			else
 				moveDown=true;
@@ -646,163 +650,36 @@ void BotPlayerModel::goOutDanger()
 	}
 }
 
-bool BotPlayerModel::OnAnimate(float ElapsedTime , float AbsoluteTime)
+bool BotPlayerModel::action()
 {
-	/*if (state==stateStanding || state==stateMoving)
+	if(isAlive())
 	{
-
-	  // the player can't die if he's invulnerable (bonus) or if the round is over
-	  if (!specialState[state_invulnerable] && testCollisions() && game.gameState == CGame::gamePlay) 
-	  {
-			// state to dead (a collision with an explosion has been detected)
-			state=stateDead;
-			Spin.y=6;
-			deathTime = AbsoluteTime;
-	  }
-	  else
-	  {
-		// check the states and update the counter/state
-		for (int i=0; i<maxState; i++)
-		{
-			if (specialState[i])
-			{
-				stateDelay[i] = stateDelay[i] - ElapsedTime;
-				if (stateDelay[i] <= 0.0f) specialState[i] = false;
-			}
-		}
-
-		// berserk state : automatically drop bombs
-		if (specialState[state_berserk])
-		{
-			if (!specialState[state_nobomb]) dropBomb();
-		}
-
-		// moving, update the coordinate of the player
-		if (state == stateMoving)
-		{
-			Position=Vector3(-tileSize * (mapWidth-1)*0.5f + x*tileSize,
-											32,
-											-tileSize * (mapHeight-1)*0.5f + y*tileSize);
-			switch (target)
-			{
-			case dirDown: Position.z = Position.z - tileSize * displacement; break;
-			case dirUp: Position.z = Position.z + tileSize * displacement; break;
-			case dirLeft: Position.x = Position.x - tileSize * displacement; break;
-			case dirRight: Position.x = Position.x + tileSize * displacement; break;
-			}
-		}
-
 		autoMove();
 
 		if (!moveDown && !moveUp && !moveRight && !moveLeft)
 		{
-			watchDog--;
-			if (watchDog==0)
-			{
-				watchDog = CTools::randi(40,80);
-				randomMove();
-			}
+	
 		}
 		else
 		{
-			watchDog = CTools::randi(40,80);
+		
 		}
 
-		if (specialState[state_haste])
+		// testing the directional-keys
+		if (moveDown)
 		{
-			if (( moveDown && !oldMoveDown) ||
-				( moveUp && !oldMoveUp) ||
-				( moveLeft && !oldMoveLeft) ||
-				( moveRight && !oldMoveRight)    )
-			{
-				slow=0.66f;
-			}
-		}
-
-
-		if (slow>0.0f)
-		{
-			slow -= ElapsedTime;
-		}
-		else
-		{
-			// testing the directional-keys
-			if (moveDown) move(dirDown, ElapsedTime);
-			else if (moveUp) move(dirUp, ElapsedTime);
-			else if (moveLeft) move(dirLeft, ElapsedTime);
-			else if (moveRight) move(dirRight, ElapsedTime);
-		}
-
-
-		// initialising the keys
-		oldMoveDown=moveDown;
-		oldMoveUp=moveUp;
-		oldMoveLeft=moveLeft;
-		oldMoveRight=moveRight;
-
-		moveDown=false;
-		moveUp=false;
-		moveLeft=false;
-		moveRight=false;
-
-		// updating the rendering "frame" of the player
-		if (moving)
-		{
-			if (frame==0)	// player was standing but is moving now
-			{
-				frame=3;
-				framesCounter = 0.0f;
-			}
-			else	// player continues to move (update the frame/counter)
-			{	
-				framesCounter-=ElapsedTime;
-				if (framesCounter<=0.0f)
-				{
-					// ping-pong mode
-					framesCounter = framesCounter + (0.05f + (7.0f - speed)/3.4f * 0.07f);
-					frame++;
-					if (frame>10) frame=1;	// back to the begining
-				}
-			}
-			// choosing the frame to render
-			if (frame<=6) WillRenderLike(game.mplayer[charSet][frame]);
-			else WillRenderLike(game.mplayer[charSet][12-frame]);
-		}
-		else	// standing
-		{
-			// updating the frame if he wasn't standing
-			if (frame>0)
-			{
-				frame=0;
-				WillRenderLike(game.mplayer[charSet][frame]);
-			}
-		}
-
-		// test collision with bonus
-		getBonus (testBonus());
-
-		moving=false;	// update moving
-	  }
-	}
-
-	else if (state==stateDead)	// dead
-	{
-		if (AbsoluteTime - deathTime < 1.2f)
-		{
-			Scale=Vector3( 40 + (AbsoluteTime - deathTime) * 3.0f,
-				40 - ( (AbsoluteTime - deathTime) * 20.0f), 
-				40 + (AbsoluteTime - deathTime) * 3.0f);
-		}
-		else
-		{
-			WillRenderLike(game.NullRenderer);
-			state = stateOut;
-			new CBloodPart(Position.x,Position.z,30, charSet==2);
+			moveDown();
+		} else if(moveUp) {
+			moveUp();
+		} else if (moveLeft) {
+			moveLeft();
+		} else if (moveRight) {
+			moveRight();
 		}
 	}
-
 	return true;
 }
+
 
 void BotPlayerModel::randomMove()
 {
@@ -815,15 +692,20 @@ void BotPlayerModel::randomMove()
 		int x0=x, y0=y;
 		switch (target)
 		{
-			case dirDown: y0++; break;
-			case dirUp: y0--; break;
-			case dirLeft: x0--; break;
-			case dirRight: x0++; break;
+			case PlayerModel::dirDown: y0++; break;
+			case PlayerModel::dirUp: y0--; break;
+			case PlayerModel::dirLeft: x0--; break;
+			case PlayerModel::dirRight: x0++; break;
 		}
-		if (game.map->map[x0][y0] <= mapEmpty) 
+		if (this->map->logicalMap[x0][y0] <= MapModel::VoidItemCode) 
 		{
-			tx = x0;
-			ty = y0;
+			switch (target)
+			{
+				case PlayerModel::dirDown: moveDown = true; break;
+				case PlayerModel::dirUp: moveUp = true; break;
+				case PlayerModel::dirLeft: moveLeft = true; break;
+				case PlayerModel::dirRight: moveRight = true; break;
+			}
 			goOut = true;
 		}
 		i++;
@@ -835,10 +717,10 @@ void BotPlayerModel::randomMove()
 // tested
 bool BotPlayerModel::simuBomb(int posx, int posy, int range)
 {
-	this->simuMap[posx][posy]=explodeDelay;
+	this->simuMap[posx][posy] = 3;
 
 	//  4 directions exploding
-	for (int dir=CGuy::dirLeft; dir<= CGuy::dirDown; dir++)
+	for (int dir=PlayerModel::dirLeft; dir<= PlayerModel::dirDown; dir++)
 	{
 		bool goOut = false;
 		int distance = 1;
@@ -848,38 +730,43 @@ bool BotPlayerModel::simuBomb(int posx, int posy, int range)
 			int x0=posx, y0=posy;
 			switch (dir)
 			{
-			case CGuy::dirLeft: x0-=distance; break;
-			case CGuy::dirRight: x0+=distance; break;
-			case CGuy::dirUp: y0+=distance; break;
-			case CGuy::dirDown: y0-=distance; break;
+			case PlayerModel::dirLeft: x0-=distance; break;
+			case PlayerModel::dirRight: x0+=distance; break;
+			case PlayerModel::dirUp: y0+=distance; break;
+			case PlayerModel::dirDown: y0-=distance; break;
 			}
 
-			switch (game.map->map[x0][y0])
+			switch (this->map->logicalMap[x0][y0])
 			{
-			case mapEmpty: this->simuMap[x0][y0]=explodeDelay; break;
-			case mapWall: goOut=true; break;
-			case mapExploding: this->simuMap[x0][y0]=explodeDelay; break;
-			case mapThing:  goOut=true; break;
-			case mapBonus: this->simuMap[x0][y0]=explodeDelay; goOut=true; break;
-			case mapExplodingThing: goOut = true; break;
+			case MapModel::VoidItemCode: this->simuMap[x0][y0] = 3 ; break;
+			case MapModel::RockItemCode: goOut=true; break;
+			case MapModel::FlameItemCode: this->simuMap[x0][y0]= 3; break;
+			case MapModel::BoxItemCode:  goOut=true; break;
+			case MapModel::FlameUpCode: 
+			case MapModel::GoldenFlameCode:  
+			case MapModel::BombUpCode:  
+			case MapModel::SpeedUpCode:  
+			case MapModel::KickerCode: 
+			case MapModel::InvisibleItemCode:  
+			case MapModel::InvincibleItemCode: 
+			case MapModel::ShieldItemCode:  this->simuMap[x0][y0] = 3; break;
 			}
-
 			distance++;
 		}
 	}
 
-	for (int i=0; i<mapWidth; i++)
-		for (int j=0; j<mapHeight; j++)
+	for (int i=0; i<MAPHEIGHT; i++)
+		for (int j=0; j<MAPWIDTH; j++)
 		{	
-
-			if (this->wayMap[i][j] >= 0 /*&& this->resultMap[i][j] >= 0*///)
-/*			{
+			if (this->wayMap[i][j] >= 0 && this->resultMap[i][j] >= 0)
+			{
 				if (this->simuMap[i][j] > 10.0f) return true;
 			}
-		}	
-
-	return false;*/
+		}
+		
+	return false;
 }
+		
 
 bool BotPlayerModel::isInDanger()
 {
@@ -890,8 +777,8 @@ bool BotPlayerModel::isInDanger()
 	int x0=x, y0=y;
 	switch (this->target)
 	{
-		case PlayerModel::dirDown: y0--; break;
-		case PlayerModel::dirUp: y0++; break;
+		case PlayerModel::dirDown: y0++; break;
+		case PlayerModel::dirUp: y0--; break;
 		case PlayerModel::dirLeft: x0--; break;
 		case PlayerModel::dirRight: x0++; break;
 	}

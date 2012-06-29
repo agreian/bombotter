@@ -6,6 +6,7 @@
 #include <iostream>
 #include "PlayerModel.h"
 #include "MapModel.h"
+#include "UserModel.h"
 
 using namespace std;
 
@@ -17,6 +18,7 @@ class BotPlayerModel : public PlayerModel
 {
 public:
 	BotPlayerModel();
+	BotPlayerModel(MapModel* map, UserModel* user, int posX, int posY);
 
 private:
 
@@ -54,6 +56,8 @@ private:
 	void randomMove();
 	bool simuBomb(int posx, int posy, int range);
 	bool isInDanger();
+	bool action();
+
 };
 
 #endif

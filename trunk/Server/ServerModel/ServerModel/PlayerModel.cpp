@@ -5,32 +5,10 @@
 	
 }*/
 
-PlayerModel::PlayerModel(MapModel* map, UserModel* user, int width, int height, int flamePower,bool invincible,	bool invisibility,	bool kicker,	int nbBomb,	int nbDeath, int nbKill, int posX, int posY, int speed, bool alive,int nbSuicide, int nbBombUsed)
+PlayerModel::PlayerModel(MapModel* map, UserModel* user, int posX, int posY)
 {
-	this->width = width;
-	this->height = height;
-	this->map = map ;
-	this->flamePower = flamePower;
-	this->invincible = invincible;
-	this->invisibility = invisibility;
-	this->kicker = kicker;
-	this->nbBomb = nbBomb;
-	this->nbDeath = nbDeath;
-	this->nbKill = nbKill;
-	this->posX = posX;
-	this->posY = posY;
-	this->speed = speed;
-	this->alive = alive;
-	this->nbSuicide = nbSuicide;
-	this->nbBombUsed = nbBombUsed;
-	this->user = user;
-}
-
-
-PlayerModel::PlayerModel(MapModel* map, UserModel* user,  int newWidth, int newHeight)
-{
-	this->width = newWidth;
-	this->height = newHeight;
+	this->width = 64;
+	this->height = 72;
 	this->map = map ;
 	this->flamePower = 1;
 	this->invincible = false;
@@ -39,8 +17,8 @@ PlayerModel::PlayerModel(MapModel* map, UserModel* user,  int newWidth, int newH
 	this->nbBomb = 1;
 	this->nbDeath = 0;
 	this->nbKill = 0;
-	this->posX = 0;
-	this->posY = 0;
+	this->posX = posX;
+	this->posY = posY;
 	this->speed = 1;
 	this->alive = true;
 	this->nbSuicide = 0;

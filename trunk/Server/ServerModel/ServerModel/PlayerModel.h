@@ -20,7 +20,6 @@ class PlayerModel
 		
 	protected :
 		MapModel *map;
-		UserModel* user;
 		int flamePower;
 		bool invincible;
 		bool invisibility;
@@ -38,10 +37,10 @@ class PlayerModel
 		int dir;
 	
 	public :
+		UserModel *user;
 		enum playerDirectionId { dirLeft=0, dirRight=1, dirUp=2, dirDown=3 };
-		//PlayerModel();
-		PlayerModel(MapModel* map, UserModel* user, int newWidth, int newHeight);
-		PlayerModel(MapModel* map, UserModel* user, int width, int height, int flamePower,bool invincible,	bool invisibility,	bool kicker,	int nbBomb,	int nbDeath, int nbKill, int posX, int posY, int speed, bool alive, int nbSuicide, int nbBombUsed);		
+		PlayerModel();
+		PlayerModel(MapModel *map, UserModel *user, int posX, int posY);		
 
 		void addBonus(Bonus* b);
 		void die(PlayerModel* player);
