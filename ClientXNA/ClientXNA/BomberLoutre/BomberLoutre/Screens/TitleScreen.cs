@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 using BomberLoutre.Controls;
+using Microsoft.Xna.Framework.Audio;
 
 namespace BomberLoutre.Screens
 {
@@ -12,9 +13,10 @@ namespace BomberLoutre.Screens
     {
         #region Field region
         Texture2D backgroundImage;
+        Vector2 menuPosition;
+        SoundEffect menuClick;
         string[] menuString;
         int indexMenu;
-        Vector2 menuPosition;
         bool enableMenu;
         #endregion
 
@@ -33,12 +35,14 @@ namespace BomberLoutre.Screens
         public override void Initialize()
         {
             menuPosition = new Vector2(150, 350);
+            MediaPlayer.Volume = 0.40f;
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             backgroundImage = GameRef.Content.Load<Texture2D>("Graphics/Screens/Title");
+            menuClick = GameRef.Content.Load<SoundEffect>("Audio/Sounds/menuClick");
 
             // TODO : Gérer la musique pas uniquement lors du LoadContent, sinon en revenant sur le Title on n'a pas de musique
             MediaPlayer.IsRepeating = true;
@@ -88,10 +92,13 @@ namespace BomberLoutre.Screens
                     indexMenu = menuString.Length - 1;
                 else
                     indexMenu--;
+
+                GameRef.PlaySoundEffect(menuClick);
             }
             else if (InputHandler.Pushed("Down", PlayerIndex.One))
             {
                 indexMenu = (indexMenu + 1) % menuString.Length;
+                GameRef.PlaySoundEffect(menuClick);
             }
 
             base.Update(gameTime);

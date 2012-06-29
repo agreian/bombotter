@@ -7,6 +7,7 @@ using BomberLoutre.Controls;
 using System;
 using Nuclex.UserInterface;
 using Nuclex.Input;
+using Microsoft.Xna.Framework.Audio;
 
 namespace BomberLoutre
 {
@@ -127,8 +128,6 @@ namespace BomberLoutre
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-
-
             if (!DisplayBackgroundImage)
                 GraphicsDevice.Clear(Color.DarkGray);
 
@@ -140,6 +139,13 @@ namespace BomberLoutre
             }
 
             base.Draw(gameTime);
+        }
+
+
+        public void PlaySoundEffect(SoundEffect sound)
+        {
+            if (Properties.App.Default.SoundState)
+                sound.Play(0.40f, 0.0f, 0.0f);
         }
     }
 }
