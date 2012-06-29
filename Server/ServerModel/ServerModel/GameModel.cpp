@@ -35,15 +35,36 @@ void GameModel::addUser(UserModel* user)
 	m_listUsers.push_back(user);
 }
 
-void GameModel::createMap(string id, string mod)
-{
-	string* s = this->m_server->getMap(id); 
-	this->map = new MapModel(this, s[0]);
-}
-
 std::string GameModel::createMapLocal(std::string id, std::string mode)
 {
-	return "";
+	std::string* s = this->m_server->getMap(id); 
+	this->map = new MapModel(this, s[0]);
+
+	::BomberLoutreInterface::Point position[4];
+
+	position[0].x = 0;
+	position[0].y = 0;
+
+	position[1].x = 0;
+	position[1].y = 716;
+
+	position[2].x = 588;
+	position[2].y = 0;
+
+	position[3].x = 588;
+	position[3].y = 716;
+
+	int j = 0;
+	for(std::vector<UserModel*>::iterator i=m_listUsers.begin();i!=m_listUsers.end();++i)
+	{
+		if((*i)->isBot)
+		{
+		} else {
+			this->map->addPlayer(new PlayerModel(this->map, (*i), position[j].x, position[j].y)); 
+		}
+		j++;
+	}
+	return s[0]+s[1]+s[2]+s[3]+s[4];
 }
 
 void GameModel::mapStart()
@@ -53,7 +74,7 @@ void GameModel::mapStart()
 
 void GameModel::mapEnd()
 {
-	// TODO : clean the map and notify the client
+	this->endMap();
 }
 
 void GameModel::addRoom(BomberLoutreInterface::GameWaitRoomPrx room)
@@ -97,7 +118,12 @@ void GameModel::removeBot(const ::Ice::Current&)
 
 ::BomberLoutreInterface::MapNameList GameModel::getMapList(const ::Ice::Current&)
 {
-	// Ask list to server
+	::BomberLoutreInterface::MapNameList mList;
+	for(std::vector<std::string[5]>::iterator i=this->m_server->mapFiles.begin(); i!=this->m_server->mapFiles.end();++i)
+	{
+		mList.push_back((*i)[0]+(*i)[1]+(*i)[2]+(*i)[3]+(*i)[4]);
+	}
+	return mList;
 	::BomberLoutreInterface::MapNameList list;
 	// TODO
 	return list;
