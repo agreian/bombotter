@@ -57,21 +57,13 @@ namespace BomberLoutre.Screens
             for (int i = 0; i < Config.PlayerNumber; ++i)
                 playerList.Add(new Player(i, GameRef, new Vector2(Config.PlayerPosition[i, 0], Config.PlayerPosition[i, 1]), 0, this));
 
-
-            /* Ajout de Bonus au pif
-            Random randomizer = new Random();
-            string[] types = new string[] { "powerUp", "powerUpGold", "canKick", "speedUp" };
-            for (int i = 0; i < 15; ++i)
-                bonusList.Add(new Bonus(GameRef, new Vector2((float) randomizer.Next(13)+1, (float) randomizer.Next(11)+1), types[randomizer.Next(4)]));
-            -------------------- */
+            MediaPlayer.Volume = 0.40f;
             
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            MediaPlayer.Volume = 0.40f;
-
             bombExplosionSound = GameRef.Content.Load<SoundEffect>("Audio/Sounds/bombExplosion");
             itemLootSound = GameRef.Content.Load<SoundEffect>("Audio/Sounds/itemLoot");
             playerDeathSound = GameRef.Content.Load<SoundEffect>("Audio/Sounds/playerDeath");
@@ -174,7 +166,7 @@ namespace BomberLoutre.Screens
             }
 
             bombList.Remove(bomb);
-            PlaySoundEffect(bombExplosionSound);
+            GameRef.PlaySoundEffect(bombExplosionSound);
         }
 
         public void RemoveFlame(Flame flame)
@@ -228,12 +220,6 @@ namespace BomberLoutre.Screens
             }
 
             return stop;
-        }
-
-        public void PlaySoundEffect(SoundEffect sound)
-        {
-            if (Properties.App.Default.SoundState)
-                sound.Play();
         }
         #endregion
     }
