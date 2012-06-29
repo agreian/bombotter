@@ -1,10 +1,11 @@
 #include "GameModel.h"
 #include "ServerModel.h"
 #include "UserModel.h"
+#include "MapModel.h"
 
 GameModel::GameModel(ServerModel* server, UserModel* creator) : m_server(server), m_creator(creator)
 { /* Something to do ? */ }
-
+	
 GameModel::GameModel(ServerModel* server, UserModel* creator, ::Ice::ObjectAdapterPtr a) : m_server(server), m_creator(creator), m_adapter(a)
 {
 	::Ice::Identity id;
@@ -34,6 +35,12 @@ void GameModel::addUser(UserModel* user)
 	m_listUsers.push_back(user);
 }
 
+void GameModel::createMap(string id, string mod)
+{
+	string* s = this->m_server->getMap(id); 
+	this->map = new MapModel(this, s[0]);
+}
+
 std::string GameModel::createMapLocal(std::string id, std::string mode)
 {
 	return "";
@@ -59,7 +66,7 @@ void GameModel::addMapObserver(BomberLoutreInterface::MapObserverPrx obs)
 	if(m_map != NULL)
 	{
 		//m_map->addObserver(obs);
-	}
+}
 }
 
 /* NETWORK INTERFACE */
