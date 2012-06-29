@@ -5,6 +5,7 @@
 #include <iostream>
 #include "GameModel.h"
 #include "Bomberloutre.h"
+class Database;
 
 using namespace std;
 
@@ -52,12 +53,14 @@ class UserModel
 		int nbKill;
 		int nbDeath;
 		int nbSuicide;
+		Database *db;
 			
 		/* Private user constructor (called by Connect or CreateUser */
 		UserModel();
 		UserModel(string log, string pwd, bool isBot = false);
 		/* Save new information of the user : new Game Tag, updates of Win, Lose or Draw number */
 		bool save();
+		void setAttributes(vector<vector<string>> data);
 };
 
 #endif //USER_MODEL_HEADER

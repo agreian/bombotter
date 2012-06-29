@@ -1,4 +1,4 @@
-
+#include <sstream>
 #include <iostream>
 #include "Database.h"
 #include "UserModel.h"
@@ -23,7 +23,7 @@ bool Database::open(char* filename)
 	return false;   
 }
 
-vector<vector<string> > Database::query(char* query)
+vector<vector<string> > Database::query(const char* query)
 {
 	sqlite3_stmt *statement;
 	vector<vector<string> > results;
@@ -63,38 +63,51 @@ vector<vector<string> > Database::query(char* query)
 
 void Database::insertUser(UserModel* user)
 {
-	string insertQuery =	"INSERT INTO USER(usrid,login,pwd,gametag,nbwin,nbloose,nbdraw,nbkill,nbdeath,nbsuicide) " 
-							"VALUES (1,'" + user->login + "','" + user->password + "','" + user->gameTag + "'," + user->nbWin + "," + user->nbLoose + "," + user->nbDraw + "," + user->nbKill + "," + user->nbDeath + "," + user->nbSuicide + ")";
-	this->query(insertQuery);
+	string insertQuery =	"INSERT INTO USER(login,pwd,gametag,nbwin,nbloose,nbdraw,nbkill,nbdeath,nbsuicide) " 
+							"VALUES ('" + user->login + "','" + user->password + "','" + user->gameTag + "',0,0,0,0,0,0)";
+	this->query(insertQuery.c_str());
 }
 
 void Database::updateUser(UserModel* user)
 {
-	string updateQuery =	"UPDATE USER SET usrid = ,"							
-							"pwd=,'" + user->password + "'"
+	std::ostringstream oss;    
+    oss << user->nbWin;
+	string nbWin = oss.str();
+	oss << user->nbLoose;
+	string nbLoose = oss.str();
+	oss << user->nbDraw;
+	string nbDraw = oss.str();
+	oss << user->nbKill;
+	string nbKill = oss.str();
+	oss << user->nbDeath;
+	string nbDeath = oss.str();
+	oss << user->nbSuicide;
+	string nbSuicide = oss.str();
+
+	string updateQuery =	"UPDATE USER SET pwd=,'" + user->password + "'"
 							"gametag=,'" + user->gameTag + "'"
-							"nbwin=," + user->nbWin + ""
-							"nbloose=," + user->nbLoose + ""
-							"nbdraw=," + user->nbDraw + ""
-							"nbkill=," + user->nbKill + ""
-							"nbdeath=," + user->nbDeath + ""
-							"nbsuicide=	" + user->nbSuicide + ""	
+							"nbwin=," + nbWin + ""
+							"nbloose=," + nbLoose + ""
+							"nbdraw=," + nbDraw + ""
+							"nbkill=," + nbKill + ""
+							"nbdeath=," + nbDeath + ""
+							"nbsuicide=	" + nbSuicide + ""	
 							"WHERE login='" + user->login + "'"	;					
-	this->query(updateQuery);
+	this->query(updateQuery.c_str());
 }
 
 void Database::deleteUser(UserModel* user)
 {
-	string deleteQuery =	"DELETE FROM USER"	
+	string deleteQuery =	"DELETE * FROM USER"	
 							"WHERE login='" + user->login + "'";					
-	this->query(deleteQuery);
+	this->query(deleteQuery.c_str());
 }
 
 vector<vector<string>> Database::selectUser(UserModel* user)
 {
 	string selectQuery =	"SELECT * FROM USER"	
 							"WHERE login='" + user->login + "'"	;						
-	return this->query(selectQuery);
+	return this->query(selectQuery.c_str());
 }
 
 vector<vector<string>> Database::selectAllUsers()
