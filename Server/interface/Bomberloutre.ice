@@ -130,6 +130,7 @@ module BomberLoutreInterface
 		void bombKicked(Bomb b, Point dest);
 		
 		void bonusesDropped(Bonuses b);
+		void bonusDisappeared(Bonus b);
 		
 		void playerDied(Player p);
 	};
