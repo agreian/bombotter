@@ -114,12 +114,23 @@ namespace BomberLoutre.Components
 
         private void DropBomb()
         {
+            Vector2 bombCell;
             Vector2 bombPosition = new Vector2(Sprite.SpritePosition.X - Config.OtterWidth / 2, Sprite.SpritePosition.Y - Config.OtterHeight / 3);
 
-            Bomb newBomb = new Bomb(id, bombPosition, bombPower, GameRef, gameScreen);
-            gameScreen.AddBomb(newBomb);
+            // convertie en Cellule
+            bombPosition = Map.PointToVector((int)bombPosition.X + 1, (int)bombPosition.Y + 1); 
+            // reconverti en position (point (top,left) de la cellule ciblée) pour le positionnement
+            bombPosition = new Vector2((bombPosition.X * Config.TileWidth) + Config.MapLayer.X, (bombPosition.Y * Config.TileHeight) + Config.MapLayer.Y);
+            // Reconverti en Cellule pour déterminer s'il y a déjà une bombe à cette endroit
+            bombCell = Map.PointToVector((int)bombPosition.X, (int)bombPosition.Y);
 
-            Sprite.CellPosition = Map.PointToVector((int)newBomb.Sprite.SpritePosition.X, (int)newBomb.Sprite.SpritePosition.Y);
+            if (!Map.IsBomb((int)bombCell.X, (int)bombCell.Y))
+            {
+                Bomb newBomb = new Bomb(id, bombPosition, bombPower, GameRef, gameScreen);
+                gameScreen.AddBomb(newBomb);
+                // Trick pour tenter de ne pas laisser le joueur bloqué sur sa bombe s'il l'a posée devant lui et que sa Cell était toujours celle de sa case précédente
+                Sprite.CellPosition = Map.PointToVector((int)newBomb.Sprite.SpritePosition.X, (int)newBomb.Sprite.SpritePosition.Y);
+            }
         }
 
 
