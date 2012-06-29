@@ -209,6 +209,7 @@ ServerModel::getUserInterface(const BomberLoutreInterface::GameData & gd,const I
 void ServerModel::loadMap(const std::string dossier)
 {
 	string fileContent[5];
+	
 	boost::filesystem::path path(dossier);
 	if(!boost::filesystem::exists(path)) {
 		std::cout << "Invalid path!" << std::endl;
@@ -241,7 +242,11 @@ void ServerModel::loadMap(const std::string dossier)
 						}
 
 					}	
-					this->mapFiles.push_back(fileContent);
+					vector<string> maps;
+					for(int i = 0; i < 5; i++){
+						maps.push_back(fileContent[i]);
+					}
+					this->mapFiles.push_back(maps);
 					fs.close();
 				}
 				else
@@ -253,13 +258,20 @@ void ServerModel::loadMap(const std::string dossier)
 	}
 }
 
-std::string* ServerModel::getMap(const std::string mapName)
+std::vector<string> ServerModel::getMap(const std::string mapName)
 {
-	vector<string[5]>::iterator it;
+	/*vector<string[5]>::iterator it;
 
 	for ( it=this->mapFiles.begin() ; it < this->mapFiles.end(); it++ )
 	{
 		if(*it[4] == mapName) return *it;
 	}
-	return NULL;
+	return NULL;*/
+
+	for(std::vector<vector<string>>::iterator ligne = this->mapFiles.begin(); ligne != this->mapFiles.end(); ++ligne) {
+		for(std::vector<string>::iterator colonne = ligne->begin(); colonne != ligne->end(); ++colonne) {
+			if(*colonne == mapName) return *ligne;
+		}
+	}
+	return *(new vector<string>());
 }
