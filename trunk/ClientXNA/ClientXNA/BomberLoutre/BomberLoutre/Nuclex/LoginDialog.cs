@@ -13,10 +13,17 @@ namespace Nuclex.UserInterface.Demo
     {
         public delegate void ConnectionEstablishedHandler(object sender, BomberLoutreInterface.UserData userData);
         public event ConnectionEstablishedHandler ConnectionEstablished;
+        public delegate void ConnectionCancelledHandler(object sender);
+        public event ConnectionCancelledHandler ConnectionCancelled;
+
+        public float Width { get; protected set; }
+        public float Height { get; protected set; }
 
         /// <summary>Initializes a new GUI demonstration dialog</summary>
         public LoginDialog()
         {
+            Width = (float) 310;
+            Height = (float) 200;
             InitializeComponent();
         }
 
@@ -49,6 +56,7 @@ namespace Nuclex.UserInterface.Demo
         /// <param name="arguments">Not used</param>
         private void cancelClicked(object sender, EventArgs arguments)
         {
+            ConnectionCancelled(this);
             this.Close();
         }
 

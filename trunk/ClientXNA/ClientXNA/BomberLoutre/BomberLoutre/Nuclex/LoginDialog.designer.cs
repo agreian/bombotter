@@ -26,28 +26,28 @@ namespace Nuclex.UserInterface.Demo
             //
             // nameEntryLabel
             //
-            this.loginLabel.Text = "Login:";
+            this.loginLabel.Text = "Identifiant :";
             this.loginLabel.Bounds = new UniRectangle(10.0f, 30.0f, 110.0f, 24.0f);
             //
             // nameEntryBox
             //
             this.loginTextBox.Bounds = new UniRectangle(10.0f, 55.0f, 280.0f, 24.0f);
-            this.loginTextBox.Text = "KillerDu77";
+            this.loginTextBox.Text = "";
             //
             // nameEntryLabel
             //
-            this.passwordLabel.Text = "Password:";
+            this.passwordLabel.Text = "Mot de passe :";
             this.passwordLabel.Bounds = new UniRectangle(10.0f, 85.0f, 110.0f, 24.0f);
             //
             // nameEntryBox
             //
             this.passwordTextBox.Bounds = new UniRectangle(10.0f, 110.0f, 280.0f, 24.0f);
-            this.passwordTextBox.Text = "******(MAD BRO')";
+            this.passwordTextBox.Text = "";
 
             this.okButton.Bounds = new UniRectangle(
               new UniScalar(1.0f, -180.0f), new UniScalar(1.0f, -40.0f), 80, 24
             );
-            this.okButton.Text = "Ok";
+            this.okButton.Text = "Valider";
             this.okButton.Pressed += new EventHandler(okClicked);
             //
             // cancelButton
@@ -55,13 +55,13 @@ namespace Nuclex.UserInterface.Demo
             this.cancelButton.Bounds = new UniRectangle(
               new UniScalar(1.0f, -90.0f), new UniScalar(1.0f, -40.0f), 80, 24
             );
-            this.cancelButton.Text = "Cancel";
+            this.cancelButton.Text = "Retour";
             this.cancelButton.Pressed += new EventHandler(cancelClicked);
             //
             // DemoDialog
             //
-            this.Bounds = new UniRectangle(80.0f, 10.0f, 310.0f, 200.0f);
-            this.Title = "Fenetre de connexion";
+            this.Bounds = new UniRectangle(Properties.App.Default.ScreenWidth / 2 - Width / 2, Properties.App.Default.ScreenHeight / 2, Width, Height);
+            this.Title = "Connexion";
             Children.Add(this.loginLabel);
             Children.Add(this.loginTextBox);
             Children.Add(this.passwordLabel);

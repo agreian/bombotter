@@ -43,8 +43,7 @@ namespace BomberLoutre.Screens
             LoginDialog loginDialog = new LoginDialog();
             GameRef.nuclexMainScreen.Desktop.Children.Add(loginDialog);
             loginDialog.ConnectionEstablished += new LoginDialog.ConnectionEstablishedHandler(loginDialog_ConnectionEstablished);
-
-
+            loginDialog.ConnectionCancelled += new LoginDialog.ConnectionCancelledHandler(loginDialog_ConnectionCancelled);
         }
 
         protected override void LoadContent()
@@ -75,6 +74,11 @@ namespace BomberLoutre.Screens
             gameListDialog.JoinGame += new GameListDialog.JoinGameHandler(gameListDialog_JoinGame);
             gameListDialog.CreateGame += new GameListDialog.CreateGameHandler(gameListDialog_CreateGame);
 
+        }
+
+        void loginDialog_ConnectionCancelled(object sender)
+        {
+            StateManager.ChangeState(GameRef.TitleScreen);
         }
 
         void gameListDialog_CreateGame(object sender)
