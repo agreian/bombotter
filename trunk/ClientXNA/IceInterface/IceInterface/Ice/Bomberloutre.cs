@@ -1709,6 +1709,9 @@ namespace BomberLoutreInterface
     public delegate void Callback_MapObserver_bonusesDropped();
 
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public delegate void Callback_MapObserver_bonusDisappeared();
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public delegate void Callback_MapObserver_playerDied();
 
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
@@ -2194,6 +2197,17 @@ namespace BomberLoutreInterface
 
         void end_bonusesDropped(Ice.AsyncResult r__);
 
+        void bonusDisappeared(BomberLoutreInterface.Bonus b);
+        void bonusDisappeared(BomberLoutreInterface.Bonus b, _System.Collections.Generic.Dictionary<string, string> context__);
+
+        Ice.AsyncResult<BomberLoutreInterface.Callback_MapObserver_bonusDisappeared> begin_bonusDisappeared(BomberLoutreInterface.Bonus b);
+        Ice.AsyncResult<BomberLoutreInterface.Callback_MapObserver_bonusDisappeared> begin_bonusDisappeared(BomberLoutreInterface.Bonus b, _System.Collections.Generic.Dictionary<string, string> ctx__);
+
+        Ice.AsyncResult begin_bonusDisappeared(BomberLoutreInterface.Bonus b, Ice.AsyncCallback cb__, object cookie__);
+        Ice.AsyncResult begin_bonusDisappeared(BomberLoutreInterface.Bonus b, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
+
+        void end_bonusDisappeared(Ice.AsyncResult r__);
+
         void playerDied(BomberLoutreInterface.Player p);
         void playerDied(BomberLoutreInterface.Player p, _System.Collections.Generic.Dictionary<string, string> context__);
 
@@ -2473,6 +2487,8 @@ namespace BomberLoutreInterface
 
         void bonusesDropped(BomberLoutreInterface.Bonus[] b, Ice.Current current__);
 
+        void bonusDisappeared(BomberLoutreInterface.Bonus b, Ice.Current current__);
+
         void playerDied(BomberLoutreInterface.Player p, Ice.Current current__);
     }
 
@@ -2490,6 +2506,8 @@ namespace BomberLoutreInterface
         void bombKicked(BomberLoutreInterface.Bomb b, BomberLoutreInterface.Point dest);
 
         void bonusesDropped(BomberLoutreInterface.Bonus[] b);
+
+        void bonusDisappeared(BomberLoutreInterface.Bonus b);
 
         void playerDied(BomberLoutreInterface.Player p);
     }
@@ -7026,6 +7044,44 @@ namespace BomberLoutreInterface
             }
         }
 
+        public void bonusDisappeared(BomberLoutreInterface.Bonus b)
+        {
+            bonusDisappeared(b, null, false);
+        }
+
+        public void bonusDisappeared(BomberLoutreInterface.Bonus b, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            bonusDisappeared(b, context__, true);
+        }
+
+        private void bonusDisappeared(BomberLoutreInterface.Bonus b, _System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
+        {
+            if(explicitContext__ && context__ == null)
+            {
+                context__ = emptyContext_;
+            }
+            int cnt__ = 0;
+            while(true)
+            {
+                Ice.ObjectDel_ delBase__ = null;
+                try
+                {
+                    delBase__ = getDelegate__(false);
+                    MapObserverDel_ del__ = (MapObserverDel_)delBase__;
+                    del__.bonusDisappeared(b, context__);
+                    return;
+                }
+                catch(IceInternal.LocalExceptionWrapper ex__)
+                {
+                    handleExceptionWrapper__(delBase__, ex__);
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    handleException__(delBase__, ex__, true, ref cnt__);
+                }
+            }
+        }
+
         public void bonusesDropped(BomberLoutreInterface.Bonus[] b)
         {
             bonusesDropped(b, null, false);
@@ -7347,6 +7403,63 @@ namespace BomberLoutreInterface
         }
 
         private void bombKicked_completed__(BomberLoutreInterface.Callback_MapObserver_bombKicked cb__)
+        {
+            if(cb__ != null)
+            {
+                cb__();
+            }
+        }
+
+        public Ice.AsyncResult<BomberLoutreInterface.Callback_MapObserver_bonusDisappeared> begin_bonusDisappeared(BomberLoutreInterface.Bonus b)
+        {
+            return begin_bonusDisappeared(b, null, false, null, null);
+        }
+
+        public Ice.AsyncResult<BomberLoutreInterface.Callback_MapObserver_bonusDisappeared> begin_bonusDisappeared(BomberLoutreInterface.Bonus b, _System.Collections.Generic.Dictionary<string, string> ctx__)
+        {
+            return begin_bonusDisappeared(b, ctx__, true, null, null);
+        }
+
+        public Ice.AsyncResult begin_bonusDisappeared(BomberLoutreInterface.Bonus b, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_bonusDisappeared(b, null, false, cb__, cookie__);
+        }
+
+        public Ice.AsyncResult begin_bonusDisappeared(BomberLoutreInterface.Bonus b, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_bonusDisappeared(b, ctx__, true, cb__, cookie__);
+        }
+
+        private const string __bonusDisappeared_name = "bonusDisappeared";
+
+        public void end_bonusDisappeared(Ice.AsyncResult r__)
+        {
+            end__(r__, __bonusDisappeared_name);
+        }
+
+        private Ice.AsyncResult<BomberLoutreInterface.Callback_MapObserver_bonusDisappeared> begin_bonusDisappeared(BomberLoutreInterface.Bonus b, _System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            IceInternal.OnewayOutgoingAsync<BomberLoutreInterface.Callback_MapObserver_bonusDisappeared> result__ = new IceInternal.OnewayOutgoingAsync<BomberLoutreInterface.Callback_MapObserver_bonusDisappeared>(this, __bonusDisappeared_name, bonusDisappeared_completed__, cookie__);
+            if(cb__ != null)
+            {
+                result__.whenCompletedWithAsyncCallback(cb__);
+            }
+            try
+            {
+                result__.prepare__(__bonusDisappeared_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
+                IceInternal.BasicStream os__ = result__.ostr__;
+                b.write__(os__);
+                os__.endWriteEncaps();
+                result__.send__(true);
+            }
+            catch(Ice.LocalException ex__)
+            {
+                result__.exceptionAsync__(ex__);
+            }
+            return result__;
+        }
+
+        private void bonusDisappeared_completed__(BomberLoutreInterface.Callback_MapObserver_bonusDisappeared cb__)
         {
             if(cb__ != null)
             {
@@ -8995,6 +9108,8 @@ namespace BomberLoutreInterface
 
         void bonusesDropped(BomberLoutreInterface.Bonus[] b, _System.Collections.Generic.Dictionary<string, string> context__);
 
+        void bonusDisappeared(BomberLoutreInterface.Bonus b, _System.Collections.Generic.Dictionary<string, string> context__);
+
         void playerDied(BomberLoutreInterface.Player p, _System.Collections.Generic.Dictionary<string, string> context__);
     }
 
@@ -10579,6 +10694,50 @@ namespace BomberLoutreInterface
                     IceInternal.BasicStream os__ = og__.ostr();
                     b.write__(os__);
                     dest.write__(os__);
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    og__.abort(ex__);
+                }
+                bool ok__ = og__.invoke();
+                if(!og__.istr().isEmpty())
+                {
+                    try
+                    {
+                        if(!ok__)
+                        {
+                            try
+                            {
+                                og__.throwUserException();
+                            }
+                            catch(Ice.UserException ex__)
+                            {
+                                throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                            }
+                        }
+                        og__.istr().skipEmptyEncaps();
+                    }
+                    catch(Ice.LocalException ex__)
+                    {
+                        throw new IceInternal.LocalExceptionWrapper(ex__, false);
+                    }
+                }
+            }
+            finally
+            {
+                handler__.reclaimOutgoing(og__);
+            }
+        }
+
+        public void bonusDisappeared(BomberLoutreInterface.Bonus b, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            IceInternal.Outgoing og__ = handler__.getOutgoing("bonusDisappeared", Ice.OperationMode.Normal, context__);
+            try
+            {
+                try
+                {
+                    IceInternal.BasicStream os__ = og__.ostr();
+                    b.write__(os__);
                 }
                 catch(Ice.LocalException ex__)
                 {
@@ -12847,6 +13006,49 @@ namespace BomberLoutreInterface
         }
 
         [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
+        public void bonusDisappeared(BomberLoutreInterface.Bonus b, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            Ice.Current current__ = new Ice.Current();
+            initCurrent__(ref current__, "bonusDisappeared", Ice.OperationMode.Normal, context__);
+            IceInternal.Direct.RunDelegate run__ = delegate(Ice.Object obj__)
+            {
+                MapObserver servant__ = null;
+                try
+                {
+                    servant__ = (MapObserver)obj__;
+                }
+                catch(_System.InvalidCastException)
+                {
+                    throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
+                }
+                servant__.bonusDisappeared(b, current__);
+                return Ice.DispatchStatus.DispatchOK;
+            };
+            IceInternal.Direct direct__ = null;
+            try
+            {
+                direct__ = new IceInternal.Direct(current__, run__);
+                try
+                {
+                    Ice.DispatchStatus status__ = direct__.servant().collocDispatch__(direct__);
+                    _System.Diagnostics.Debug.Assert(status__ == Ice.DispatchStatus.DispatchOK);
+                }
+                finally
+                {
+                    direct__.destroy();
+                }
+            }
+            catch(Ice.SystemException)
+            {
+                throw;
+            }
+            catch(_System.Exception ex__)
+            {
+                IceInternal.LocalExceptionWrapper.throwWrapper(ex__);
+            }
+        }
+
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
         public void bonusesDropped(BomberLoutreInterface.Bonus[] b, _System.Collections.Generic.Dictionary<string, string> context__)
         {
             Ice.Current current__ = new Ice.Current();
@@ -14819,6 +15021,13 @@ namespace BomberLoutreInterface
 
         public abstract void bonusesDropped(BomberLoutreInterface.Bonus[] b, Ice.Current current__);
 
+        public void bonusDisappeared(BomberLoutreInterface.Bonus b)
+        {
+            bonusDisappeared(b, Ice.ObjectImpl.defaultCurrent);
+        }
+
+        public abstract void bonusDisappeared(BomberLoutreInterface.Bonus b, Ice.Current current__);
+
         public void playerDied(BomberLoutreInterface.Player p)
         {
             playerDied(p, Ice.ObjectImpl.defaultCurrent);
@@ -14982,6 +15191,20 @@ namespace BomberLoutreInterface
         }
 
         [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+        public static Ice.DispatchStatus bonusDisappeared___(MapObserver obj__, IceInternal.Incoming inS__, Ice.Current current__)
+        {
+            checkMode__(Ice.OperationMode.Normal, current__.mode);
+            IceInternal.BasicStream is__ = inS__.istr();
+            is__.startReadEncaps();
+            BomberLoutreInterface.Bonus b;
+            b = new BomberLoutreInterface.Bonus();
+            b.read__(is__);
+            is__.endReadEncaps();
+            obj__.bonusDisappeared(b, current__);
+            return Ice.DispatchStatus.DispatchOK;
+        }
+
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
         public static Ice.DispatchStatus playerDied___(MapObserver obj__, IceInternal.Incoming inS__, Ice.Current current__)
         {
             checkMode__(Ice.OperationMode.Normal, current__.mode);
@@ -15004,6 +15227,7 @@ namespace BomberLoutreInterface
             "bombExploded",
             "bombHasBeenPlanted",
             "bombKicked",
+            "bonusDisappeared",
             "bonusesDropped",
             "ice_id",
             "ice_ids",
@@ -15038,33 +15262,37 @@ namespace BomberLoutreInterface
                 }
                 case 3:
                 {
-                    return bonusesDropped___(this, inS__, current__);
+                    return bonusDisappeared___(this, inS__, current__);
                 }
                 case 4:
                 {
-                    return ice_id___(this, inS__, current__);
+                    return bonusesDropped___(this, inS__, current__);
                 }
                 case 5:
                 {
-                    return ice_ids___(this, inS__, current__);
+                    return ice_id___(this, inS__, current__);
                 }
                 case 6:
                 {
-                    return ice_isA___(this, inS__, current__);
+                    return ice_ids___(this, inS__, current__);
                 }
                 case 7:
                 {
-                    return ice_ping___(this, inS__, current__);
+                    return ice_isA___(this, inS__, current__);
                 }
                 case 8:
                 {
-                    return playerDied___(this, inS__, current__);
+                    return ice_ping___(this, inS__, current__);
                 }
                 case 9:
                 {
-                    return refreshMapItems___(this, inS__, current__);
+                    return playerDied___(this, inS__, current__);
                 }
                 case 10:
+                {
+                    return refreshMapItems___(this, inS__, current__);
+                }
+                case 11:
                 {
                     return refreshPlayers___(this, inS__, current__);
                 }
