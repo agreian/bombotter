@@ -40,6 +40,8 @@ static const ::std::string __BomberLoutreInterface__GameUserInterface__getCreato
 
 static const ::std::string __BomberLoutreInterface__GameUserInterface__userReady_name = "userReady";
 
+static const ::std::string __BomberLoutreInterface__GameUserInterface__leaveGame_name = "leaveGame";
+
 static const ::std::string __BomberLoutreInterface__GameInterface__getName_name = "getName";
 
 static const ::std::string __BomberLoutreInterface__GameInterface__getState_name = "getState";
@@ -79,6 +81,8 @@ static const ::std::string __BomberLoutreInterface__GameWaitRoom__allUsersReady_
 static const ::std::string __BomberLoutreInterface__GameWaitRoom__userReady_name = "userReady";
 
 static const ::std::string __BomberLoutreInterface__GameWaitRoom__gameDataUpdated_name = "gameDataUpdated";
+
+static const ::std::string __BomberLoutreInterface__GameWaitRoom__newMapDefined_name = "newMapDefined";
 
 static const ::std::string __BomberLoutreInterface__GameWaitRoom__gameStart_name = "gameStart";
 
@@ -1013,6 +1017,56 @@ void
 IceProxy::BomberLoutreInterface::GameUserInterface::end_userReady(const ::Ice::AsyncResultPtr& __result)
 {
     __end(__result, __BomberLoutreInterface__GameUserInterface__userReady_name);
+}
+
+void
+IceProxy::BomberLoutreInterface::GameUserInterface::leaveGame(const ::BomberLoutreInterface::UserData& u, const ::Ice::Context* __ctx)
+{
+    int __cnt = 0;
+    while(true)
+    {
+        ::IceInternal::Handle< ::IceDelegate::Ice::Object> __delBase;
+        try
+        {
+            __delBase = __getDelegate(false);
+            ::IceDelegate::BomberLoutreInterface::GameUserInterface* __del = dynamic_cast< ::IceDelegate::BomberLoutreInterface::GameUserInterface*>(__delBase.get());
+            __del->leaveGame(u, __ctx);
+            return;
+        }
+        catch(const ::IceInternal::LocalExceptionWrapper& __ex)
+        {
+            __handleExceptionWrapper(__delBase, __ex);
+        }
+        catch(const ::Ice::LocalException& __ex)
+        {
+            __handleException(__delBase, __ex, true, __cnt);
+        }
+    }
+}
+
+::Ice::AsyncResultPtr
+IceProxy::BomberLoutreInterface::GameUserInterface::begin_leaveGame(const ::BomberLoutreInterface::UserData& u, const ::Ice::Context* __ctx, const ::IceInternal::CallbackBasePtr& __del, const ::Ice::LocalObjectPtr& __cookie)
+{
+    ::IceInternal::OutgoingAsyncPtr __result = new ::IceInternal::OutgoingAsync(this, __BomberLoutreInterface__GameUserInterface__leaveGame_name, __del, __cookie);
+    try
+    {
+        __result->__prepare(__BomberLoutreInterface__GameUserInterface__leaveGame_name, ::Ice::Normal, __ctx);
+        ::IceInternal::BasicStream* __os = __result->__getOs();
+        u.__write(__os);
+        __os->endWriteEncaps();
+        __result->__send(true);
+    }
+    catch(const ::Ice::LocalException& __ex)
+    {
+        __result->__exceptionAsync(__ex);
+    }
+    return __result;
+}
+
+void
+IceProxy::BomberLoutreInterface::GameUserInterface::end_leaveGame(const ::Ice::AsyncResultPtr& __result)
+{
+    __end(__result, __BomberLoutreInterface__GameUserInterface__leaveGame_name);
 }
 
 const ::std::string&
@@ -2160,6 +2214,56 @@ void
 IceProxy::BomberLoutreInterface::GameWaitRoom::end_gameDataUpdated(const ::Ice::AsyncResultPtr& __result)
 {
     __end(__result, __BomberLoutreInterface__GameWaitRoom__gameDataUpdated_name);
+}
+
+void
+IceProxy::BomberLoutreInterface::GameWaitRoom::newMapDefined(const ::std::string& map, const ::Ice::Context* __ctx)
+{
+    int __cnt = 0;
+    while(true)
+    {
+        ::IceInternal::Handle< ::IceDelegate::Ice::Object> __delBase;
+        try
+        {
+            __delBase = __getDelegate(false);
+            ::IceDelegate::BomberLoutreInterface::GameWaitRoom* __del = dynamic_cast< ::IceDelegate::BomberLoutreInterface::GameWaitRoom*>(__delBase.get());
+            __del->newMapDefined(map, __ctx);
+            return;
+        }
+        catch(const ::IceInternal::LocalExceptionWrapper& __ex)
+        {
+            __handleExceptionWrapper(__delBase, __ex);
+        }
+        catch(const ::Ice::LocalException& __ex)
+        {
+            __handleException(__delBase, __ex, true, __cnt);
+        }
+    }
+}
+
+::Ice::AsyncResultPtr
+IceProxy::BomberLoutreInterface::GameWaitRoom::begin_newMapDefined(const ::std::string& map, const ::Ice::Context* __ctx, const ::IceInternal::CallbackBasePtr& __del, const ::Ice::LocalObjectPtr& __cookie)
+{
+    ::IceInternal::OutgoingAsyncPtr __result = new ::IceInternal::OutgoingAsync(this, __BomberLoutreInterface__GameWaitRoom__newMapDefined_name, __del, __cookie);
+    try
+    {
+        __result->__prepare(__BomberLoutreInterface__GameWaitRoom__newMapDefined_name, ::Ice::Normal, __ctx);
+        ::IceInternal::BasicStream* __os = __result->__getOs();
+        __os->write(map);
+        __os->endWriteEncaps();
+        __result->__send(true);
+    }
+    catch(const ::Ice::LocalException& __ex)
+    {
+        __result->__exceptionAsync(__ex);
+    }
+    return __result;
+}
+
+void
+IceProxy::BomberLoutreInterface::GameWaitRoom::end_newMapDefined(const ::Ice::AsyncResultPtr& __result)
+{
+    __end(__result, __BomberLoutreInterface__GameWaitRoom__newMapDefined_name);
 }
 
 void
@@ -3745,6 +3849,45 @@ IceDelegateM::BomberLoutreInterface::GameUserInterface::userReady(const ::Bomber
     }
 }
 
+void
+IceDelegateM::BomberLoutreInterface::GameUserInterface::leaveGame(const ::BomberLoutreInterface::UserData& u, const ::Ice::Context* __context)
+{
+    ::IceInternal::Outgoing __og(__handler.get(), __BomberLoutreInterface__GameUserInterface__leaveGame_name, ::Ice::Normal, __context);
+    try
+    {
+        ::IceInternal::BasicStream* __os = __og.os();
+        u.__write(__os);
+    }
+    catch(const ::Ice::LocalException& __ex)
+    {
+        __og.abort(__ex);
+    }
+    bool __ok = __og.invoke();
+    if(!__og.is()->b.empty())
+    {
+        try
+        {
+            if(!__ok)
+            {
+                try
+                {
+                    __og.throwUserException();
+                }
+                catch(const ::Ice::UserException& __ex)
+                {
+                    ::Ice::UnknownUserException __uue(__FILE__, __LINE__, __ex.ice_name());
+                    throw __uue;
+                }
+            }
+            __og.is()->skipEmptyEncaps();
+        }
+        catch(const ::Ice::LocalException& __ex)
+        {
+            throw ::IceInternal::LocalExceptionWrapper(__ex, false);
+        }
+    }
+}
+
 ::std::string
 IceDelegateM::BomberLoutreInterface::GameInterface::getName(const ::Ice::Context* __context)
 {
@@ -4417,6 +4560,45 @@ IceDelegateM::BomberLoutreInterface::GameWaitRoom::gameDataUpdated(const ::Bombe
     {
         ::IceInternal::BasicStream* __os = __og.os();
         g.__write(__os);
+    }
+    catch(const ::Ice::LocalException& __ex)
+    {
+        __og.abort(__ex);
+    }
+    bool __ok = __og.invoke();
+    if(!__og.is()->b.empty())
+    {
+        try
+        {
+            if(!__ok)
+            {
+                try
+                {
+                    __og.throwUserException();
+                }
+                catch(const ::Ice::UserException& __ex)
+                {
+                    ::Ice::UnknownUserException __uue(__FILE__, __LINE__, __ex.ice_name());
+                    throw __uue;
+                }
+            }
+            __og.is()->skipEmptyEncaps();
+        }
+        catch(const ::Ice::LocalException& __ex)
+        {
+            throw ::IceInternal::LocalExceptionWrapper(__ex, false);
+        }
+    }
+}
+
+void
+IceDelegateM::BomberLoutreInterface::GameWaitRoom::newMapDefined(const ::std::string& map, const ::Ice::Context* __context)
+{
+    ::IceInternal::Outgoing __og(__handler.get(), __BomberLoutreInterface__GameWaitRoom__newMapDefined_name, ::Ice::Normal, __context);
+    try
+    {
+        ::IceInternal::BasicStream* __os = __og.os();
+        __os->write(map);
     }
     catch(const ::Ice::LocalException& __ex)
     {
@@ -5482,6 +5664,70 @@ IceDelegateD::BomberLoutreInterface::GameUserInterface::userReady(const ::Bomber
     
     ::Ice::Current __current;
     __initCurrent(__current, __BomberLoutreInterface__GameUserInterface__userReady_name, ::Ice::Normal, __context);
+    try
+    {
+        _DirectI __direct(u, __current);
+        try
+        {
+            __direct.servant()->__collocDispatch(__direct);
+        }
+        catch(...)
+        {
+            __direct.destroy();
+            throw;
+        }
+        __direct.destroy();
+    }
+    catch(const ::Ice::SystemException&)
+    {
+        throw;
+    }
+    catch(const ::IceInternal::LocalExceptionWrapper&)
+    {
+        throw;
+    }
+    catch(const ::std::exception& __ex)
+    {
+        ::IceInternal::LocalExceptionWrapper::throwWrapper(__ex);
+    }
+    catch(...)
+    {
+        throw ::IceInternal::LocalExceptionWrapper(::Ice::UnknownException(__FILE__, __LINE__, "unknown c++ exception"), false);
+    }
+}
+
+void
+IceDelegateD::BomberLoutreInterface::GameUserInterface::leaveGame(const ::BomberLoutreInterface::UserData& u, const ::Ice::Context* __context)
+{
+    class _DirectI : public ::IceInternal::Direct
+    {
+    public:
+
+        _DirectI(const ::BomberLoutreInterface::UserData& u, const ::Ice::Current& __current) : 
+            ::IceInternal::Direct(__current),
+            _m_u(u)
+        {
+        }
+        
+        virtual ::Ice::DispatchStatus
+        run(::Ice::Object* object)
+        {
+            ::BomberLoutreInterface::GameUserInterface* servant = dynamic_cast< ::BomberLoutreInterface::GameUserInterface*>(object);
+            if(!servant)
+            {
+                throw ::Ice::OperationNotExistException(__FILE__, __LINE__, _current.id, _current.facet, _current.operation);
+            }
+            servant->leaveGame(_m_u, _current);
+            return ::Ice::DispatchOK;
+        }
+        
+    private:
+        
+        const ::BomberLoutreInterface::UserData& _m_u;
+    };
+    
+    ::Ice::Current __current;
+    __initCurrent(__current, __BomberLoutreInterface__GameUserInterface__leaveGame_name, ::Ice::Normal, __context);
     try
     {
         _DirectI __direct(u, __current);
@@ -6771,6 +7017,70 @@ IceDelegateD::BomberLoutreInterface::GameWaitRoom::gameDataUpdated(const ::Bombe
     try
     {
         _DirectI __direct(g, __current);
+        try
+        {
+            __direct.servant()->__collocDispatch(__direct);
+        }
+        catch(...)
+        {
+            __direct.destroy();
+            throw;
+        }
+        __direct.destroy();
+    }
+    catch(const ::Ice::SystemException&)
+    {
+        throw;
+    }
+    catch(const ::IceInternal::LocalExceptionWrapper&)
+    {
+        throw;
+    }
+    catch(const ::std::exception& __ex)
+    {
+        ::IceInternal::LocalExceptionWrapper::throwWrapper(__ex);
+    }
+    catch(...)
+    {
+        throw ::IceInternal::LocalExceptionWrapper(::Ice::UnknownException(__FILE__, __LINE__, "unknown c++ exception"), false);
+    }
+}
+
+void
+IceDelegateD::BomberLoutreInterface::GameWaitRoom::newMapDefined(const ::std::string& map, const ::Ice::Context* __context)
+{
+    class _DirectI : public ::IceInternal::Direct
+    {
+    public:
+
+        _DirectI(const ::std::string& map, const ::Ice::Current& __current) : 
+            ::IceInternal::Direct(__current),
+            _m_map(map)
+        {
+        }
+        
+        virtual ::Ice::DispatchStatus
+        run(::Ice::Object* object)
+        {
+            ::BomberLoutreInterface::GameWaitRoom* servant = dynamic_cast< ::BomberLoutreInterface::GameWaitRoom*>(object);
+            if(!servant)
+            {
+                throw ::Ice::OperationNotExistException(__FILE__, __LINE__, _current.id, _current.facet, _current.operation);
+            }
+            servant->newMapDefined(_m_map, _current);
+            return ::Ice::DispatchOK;
+        }
+        
+    private:
+        
+        const ::std::string& _m_map;
+    };
+    
+    ::Ice::Current __current;
+    __initCurrent(__current, __BomberLoutreInterface__GameWaitRoom__newMapDefined_name, ::Ice::Normal, __context);
+    try
+    {
+        _DirectI __direct(map, __current);
         try
         {
             __direct.servant()->__collocDispatch(__direct);
@@ -8471,6 +8781,19 @@ BomberLoutreInterface::GameUserInterface::___userReady(::IceInternal::Incoming& 
     return ::Ice::DispatchOK;
 }
 
+::Ice::DispatchStatus
+BomberLoutreInterface::GameUserInterface::___leaveGame(::IceInternal::Incoming& __inS, const ::Ice::Current& __current)
+{
+    __checkMode(::Ice::Normal, __current.mode);
+    ::IceInternal::BasicStream* __is = __inS.is();
+    __is->startReadEncaps();
+    ::BomberLoutreInterface::UserData u;
+    u.__read(__is);
+    __is->endReadEncaps();
+    leaveGame(u, __current);
+    return ::Ice::DispatchOK;
+}
+
 static ::std::string __BomberLoutreInterface__GameUserInterface_all[] =
 {
     "getCreatorName",
@@ -8478,13 +8801,14 @@ static ::std::string __BomberLoutreInterface__GameUserInterface_all[] =
     "ice_ids",
     "ice_isA",
     "ice_ping",
+    "leaveGame",
     "userReady"
 };
 
 ::Ice::DispatchStatus
 BomberLoutreInterface::GameUserInterface::__dispatch(::IceInternal::Incoming& in, const ::Ice::Current& current)
 {
-    ::std::pair< ::std::string*, ::std::string*> r = ::std::equal_range(__BomberLoutreInterface__GameUserInterface_all, __BomberLoutreInterface__GameUserInterface_all + 6, current.operation);
+    ::std::pair< ::std::string*, ::std::string*> r = ::std::equal_range(__BomberLoutreInterface__GameUserInterface_all, __BomberLoutreInterface__GameUserInterface_all + 7, current.operation);
     if(r.first == r.second)
     {
         throw ::Ice::OperationNotExistException(__FILE__, __LINE__, current.id, current.facet, current.operation);
@@ -8513,6 +8837,10 @@ BomberLoutreInterface::GameUserInterface::__dispatch(::IceInternal::Incoming& in
             return ___ice_ping(in, current);
         }
         case 5:
+        {
+            return ___leaveGame(in, current);
+        }
+        case 6:
         {
             return ___userReady(in, current);
         }
@@ -9076,6 +9404,19 @@ BomberLoutreInterface::GameWaitRoom::___gameDataUpdated(::IceInternal::Incoming&
 }
 
 ::Ice::DispatchStatus
+BomberLoutreInterface::GameWaitRoom::___newMapDefined(::IceInternal::Incoming& __inS, const ::Ice::Current& __current)
+{
+    __checkMode(::Ice::Normal, __current.mode);
+    ::IceInternal::BasicStream* __is = __inS.is();
+    __is->startReadEncaps();
+    ::std::string map;
+    __is->read(map);
+    __is->endReadEncaps();
+    newMapDefined(map, __current);
+    return ::Ice::DispatchOK;
+}
+
+::Ice::DispatchStatus
 BomberLoutreInterface::GameWaitRoom::___gameStart(::IceInternal::Incoming& __inS, const ::Ice::Current& __current)
 {
     __checkMode(::Ice::Normal, __current.mode);
@@ -9103,6 +9444,7 @@ static ::std::string __BomberLoutreInterface__GameWaitRoom_all[] =
     "ice_ids",
     "ice_isA",
     "ice_ping",
+    "newMapDefined",
     "newUserInRoom",
     "userLeftRoom",
     "userReady"
@@ -9111,7 +9453,7 @@ static ::std::string __BomberLoutreInterface__GameWaitRoom_all[] =
 ::Ice::DispatchStatus
 BomberLoutreInterface::GameWaitRoom::__dispatch(::IceInternal::Incoming& in, const ::Ice::Current& current)
 {
-    ::std::pair< ::std::string*, ::std::string*> r = ::std::equal_range(__BomberLoutreInterface__GameWaitRoom_all, __BomberLoutreInterface__GameWaitRoom_all + 11, current.operation);
+    ::std::pair< ::std::string*, ::std::string*> r = ::std::equal_range(__BomberLoutreInterface__GameWaitRoom_all, __BomberLoutreInterface__GameWaitRoom_all + 12, current.operation);
     if(r.first == r.second)
     {
         throw ::Ice::OperationNotExistException(__FILE__, __LINE__, current.id, current.facet, current.operation);
@@ -9153,13 +9495,17 @@ BomberLoutreInterface::GameWaitRoom::__dispatch(::IceInternal::Incoming& in, con
         }
         case 8:
         {
-            return ___newUserInRoom(in, current);
+            return ___newMapDefined(in, current);
         }
         case 9:
         {
-            return ___userLeftRoom(in, current);
+            return ___newUserInRoom(in, current);
         }
         case 10:
+        {
+            return ___userLeftRoom(in, current);
+        }
+        case 11:
         {
             return ___userReady(in, current);
         }

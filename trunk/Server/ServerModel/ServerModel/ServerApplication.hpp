@@ -7,12 +7,12 @@
 #include "Bomberloutre.h"
 #include "ServerModel.h"
 
-class ServerApplication : public Ice::Application
+class BomberServerApplication : 
+	public Ice::Application
 {
-
 public:
-	ServerApplication();
-	virtual ~ServerApplication();
+	BomberServerApplication();
+	virtual ~BomberServerApplication();
 	
 	virtual int run(int argc, char** argv);
 	virtual void interruptCallback(int);

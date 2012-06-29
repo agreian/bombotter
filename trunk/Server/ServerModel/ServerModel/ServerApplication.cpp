@@ -1,12 +1,12 @@
 #include "ServerApplication.hpp"
 
-ServerApplication::ServerApplication()
+BomberServerApplication::BomberServerApplication()
 {}
 
-ServerApplication::~ServerApplication()
+BomberServerApplication::~BomberServerApplication()
 {}
 	
-int ServerApplication::run(int argc, char** argv)
+int BomberServerApplication::run(int argc, char** argv)
 {
 	std::cout << "My server is running !!" << std::endl;
 	
@@ -22,7 +22,7 @@ int ServerApplication::run(int argc, char** argv)
 	return EXIT_SUCCESS;
 }
 
-void ServerApplication::interruptCallback(int signal)
+void BomberServerApplication::interruptCallback(int signal)
 {
 	std::cout << signal << " Doing some interrupt work..." << std::endl;
 	communicator()->shutdown();

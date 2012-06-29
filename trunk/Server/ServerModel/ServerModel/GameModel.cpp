@@ -1,98 +1,114 @@
 #include "GameModel.h"
+#include "ServerModel.h"
 #include "UserModel.h"
 
-/*GameModel::GameModel()
-{
-	
-}*/
+GameModel::GameModel(ServerModel* server, UserModel* creator) : m_server(server), m_creator(creator)
+{ /* Something to do ? */ }
 
-GameModel::~GameModel()
+GameModel::GameModel(ServerModel* server, UserModel* creator, ::Ice::ObjectAdapterPtr a) : m_server(server), m_creator(creator), m_adapter(a)
 {
-	
+	::Ice::Identity id;
+	id.name = "Game";
+	m_proxy = BomberLoutreInterface::GameInterfacePrx::checkedCast(m_adapter->add(this,id));
 }
 
-GameModel::GameModel(UserModel* creator, ::Ice::ObjectAdapterPtr obj)
+void GameModel::addBotLocal()
 {
-	this->gameCreator = creator;
+	UserModel* bot = UserModel::CreateUser("Bot","Game",true);
+	addUser(bot);
 }
 
-void GameModel::addUser(UserModel* newUser) 
+void GameModel::removeBotLocal()
 {
-	if (listUser.size() >= 4)
-		throw std::exception("La partie est complète (4 participants)");
-	listUser.push_back(newUser);
+	for(std::vector<UserModel*>::iterator i=m_listUsers.begin();i!=m_listUsers.end();++i)
+	{
+		if((*i)->getLogin().find("BOT") == 0)
+		{
+			m_listUsers.erase(i);
+		}
+	}
 }
 
-bool GameModel::createGame(string name)
+void GameModel::addUser(UserModel* user)
 {
-	return true;
+	m_listUsers.push_back(user);
 }
 
-void GameModel::createMap(string mod, string mapSkin)
+std::string GameModel::createMapLocal(std::string id, std::string mode)
 {
-
+	return "";
 }
 
-void GameModel::addRoom(BomberLoutreInterface::MapObserverPrx room)
+void GameModel::startMap()
 {
-	this->currentRoom = room;
+	// TODO : launch the game...
+}
+
+void GameModel::endMap()
+{
+	// TODO : clean the map and notify the client
+}
+
+void GameModel::addRoom(BomberLoutreInterface::GameWaitRoomPrx room)
+{
+	m_listRooms.push_back(room);
 }
 
 void GameModel::addMapObserver(BomberLoutreInterface::MapObserverPrx obs)
 {
-	this->currentObserver = obs;
+	if(m_map != NULL)
+	{
+		//m_map->addObserver(obs);
+	}
 }
 
-//Vérifier avec Daniel si on peut passer tous les paramètres d'un coup au lieu de faire de la recopie champs par champs.
-void GameModel::addPlayer(BomberLoutreInterface::UserData us) // But : récupérer depuis la liste des Users connectés au serveur
+/* NETWORK INTERFACE */
+
+::std::string GameModel::getName(const ::Ice::Current&)
+{ return this->m_name; }
+::Ice::Int GameModel::getState(const ::Ice::Current&)
+{ return this->m_state; }
+::Ice::Int GameModel::getRoundCount(const ::Ice::Current&)
+{ return this->m_roundCount; }
+
+void GameModel::setName(const ::std::string& name, const ::Ice::Current&)
+{ this->m_name = name; }
+void GameModel::setState(::Ice::Int state, const ::Ice::Current&)
+{ this->m_state = state; }
+void GameModel::setRoundCount(::Ice::Int rc, const ::Ice::Current&)
+{ this->m_roundCount = rc; }
+
+void GameModel::kickPlayer(const ::std::string&, const ::Ice::Current&)
+{/* Not implemented */}
+void GameModel::invitePlayer(const ::std::string&, const ::Ice::Current&)
+{/* Not implemented */}
+
+void GameModel::addBot(const ::Ice::Current&)
+{ this->addBotLocal(); }
+void GameModel::removeBot(const ::Ice::Current&)
+{ this->removeBotLocal(); }
+
+::BomberLoutreInterface::MapNameList GameModel::getMapList(const ::Ice::Current&)
 {
-	
+	// Ask list to server
 }
 
-BomberLoutreInterface::GameInterfacePrx GameModel::getProxy()
+::std::string GameModel::createMap(const ::std::string& id, const ::std::string& mode, const ::Ice::Current&)
 {
-	return this->giProxy;
+	return this->createMapLocal(id,mode);
 }
 
-/* GETTERS */
-string GameModel::getName()
+void GameModel::startMap(const ::Ice::Current&)
 {
-	return this->name;
+
 }
 
-int GameModel::getRoundCount()
+void GameModel::endMap(const ::Ice::Current&)
 {
-	return->nbRound;
+
 }
 
-int GameModel::getState()
+bool GameModel::removeGame(const ::Ice::Current&)
 {
-	return this->state;
-}
-
-//Vérifier le champs "map"
-BomberLoutreInterface::Map GameModel::getMap()
-{
-	return this->BomberLoutreInterface::Map m;
-}
-
-int GameModel::getPlayerCount()
-{
-	return listUser.size();
-}
-
-/* SETTERS */
-void GameModel::setName(string newName)
-{
-	this->name = newName;
-}
-
-void GameModel::setNbRound(int newNbRound)
-{
-	this->nbRound = newNbRound;
-}
-
-void GameModel::setState(int newState)
-{
-	this->state = newState;
+	return false;
 }

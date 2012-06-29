@@ -1,13 +1,11 @@
 #include "UserModel.h"
 
 UserModel::UserModel()
-{
-	/*Trololo */
-}
+{}
 
-UserModel::UserModel(string log, string pwd)
+UserModel::UserModel(string log, string pwd, bool isBot)
 {
-	this->login = log;
+	this->login = (isBot ? "BOT"+log : log);
 	this->password = pwd;
 }
 
@@ -33,6 +31,8 @@ UserModel* UserModel::CreateUser(string login, string password, bool isBot)
 		throw ::BomberLoutreInterface::UserException("L'utilisateur existe déjà : sois créatif et trouve un autre pseudo.... VICTIME!");
 
 	/* Maj de la bdd : création du user avec des params par dé */
+	/* TEMP */
+	user = new UserModel(login,password,isBot);
 	return user;
 }
 

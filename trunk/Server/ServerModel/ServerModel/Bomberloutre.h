@@ -18,8 +18,8 @@
 // </auto-generated>
 //
 
-#ifndef __C__Users_Simon_Desktop_bombotter_Server_ServerModel_ServerModel_Bomberloutre_h__
-#define __C__Users_Simon_Desktop_bombotter_Server_ServerModel_ServerModel_Bomberloutre_h__
+#ifndef __C__Users_Florent_Documents_Visual_Studio_2010_Projects_BomberLoutre_Server_ServerModel_ServerModel_Bomberloutre_h__
+#define __C__Users_Florent_Documents_Visual_Studio_2010_Projects_BomberLoutre_Server_ServerModel_ServerModel_Bomberloutre_h__
 
 #include <Ice/LocalObjectF.h>
 #include <Ice/ProxyF.h>
@@ -824,6 +824,9 @@ typedef ::IceUtil::Handle< Callback_GameUserInterface_getCreatorName_Base> Callb
 class Callback_GameUserInterface_userReady_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_GameUserInterface_userReady_Base> Callback_GameUserInterface_userReadyPtr;
 
+class Callback_GameUserInterface_leaveGame_Base : virtual public ::IceInternal::CallbackBase { };
+typedef ::IceUtil::Handle< Callback_GameUserInterface_leaveGame_Base> Callback_GameUserInterface_leaveGamePtr;
+
 class Callback_GameInterface_getName_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_GameInterface_getName_Base> Callback_GameInterface_getNamePtr;
 
@@ -883,6 +886,9 @@ typedef ::IceUtil::Handle< Callback_GameWaitRoom_userReady_Base> Callback_GameWa
 
 class Callback_GameWaitRoom_gameDataUpdated_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_GameWaitRoom_gameDataUpdated_Base> Callback_GameWaitRoom_gameDataUpdatedPtr;
+
+class Callback_GameWaitRoom_newMapDefined_Base : virtual public ::IceInternal::CallbackBase { };
+typedef ::IceUtil::Handle< Callback_GameWaitRoom_newMapDefined_Base> Callback_GameWaitRoom_newMapDefinedPtr;
 
 class Callback_GameWaitRoom_gameStart_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_GameWaitRoom_gameStart_Base> Callback_GameWaitRoom_gameStartPtr;
@@ -1061,6 +1067,54 @@ private:
 
     void userReady(const ::BomberLoutreInterface::UserData&, const ::Ice::Context*);
     ::Ice::AsyncResultPtr begin_userReady(const ::BomberLoutreInterface::UserData&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    
+public:
+
+    void leaveGame(const ::BomberLoutreInterface::UserData& u)
+    {
+        leaveGame(u, 0);
+    }
+    void leaveGame(const ::BomberLoutreInterface::UserData& u, const ::Ice::Context& __ctx)
+    {
+        leaveGame(u, &__ctx);
+    }
+
+    ::Ice::AsyncResultPtr begin_leaveGame(const ::BomberLoutreInterface::UserData& u)
+    {
+        return begin_leaveGame(u, 0, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_leaveGame(const ::BomberLoutreInterface::UserData& u, const ::Ice::Context& __ctx)
+    {
+        return begin_leaveGame(u, &__ctx, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_leaveGame(const ::BomberLoutreInterface::UserData& u, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_leaveGame(u, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_leaveGame(const ::BomberLoutreInterface::UserData& u, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_leaveGame(u, &__ctx, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_leaveGame(const ::BomberLoutreInterface::UserData& u, const ::BomberLoutreInterface::Callback_GameUserInterface_leaveGamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_leaveGame(u, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_leaveGame(const ::BomberLoutreInterface::UserData& u, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameUserInterface_leaveGamePtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_leaveGame(u, &__ctx, __del, __cookie);
+    }
+
+    void end_leaveGame(const ::Ice::AsyncResultPtr&);
+    
+private:
+
+    void leaveGame(const ::BomberLoutreInterface::UserData&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_leaveGame(const ::BomberLoutreInterface::UserData&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
     
@@ -2427,6 +2481,54 @@ private:
 
     void gameDataUpdated(const ::BomberLoutreInterface::GameData&, const ::Ice::Context*);
     ::Ice::AsyncResultPtr begin_gameDataUpdated(const ::BomberLoutreInterface::GameData&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    
+public:
+
+    void newMapDefined(const ::std::string& map)
+    {
+        newMapDefined(map, 0);
+    }
+    void newMapDefined(const ::std::string& map, const ::Ice::Context& __ctx)
+    {
+        newMapDefined(map, &__ctx);
+    }
+
+    ::Ice::AsyncResultPtr begin_newMapDefined(const ::std::string& map)
+    {
+        return begin_newMapDefined(map, 0, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_newMapDefined(const ::std::string& map, const ::Ice::Context& __ctx)
+    {
+        return begin_newMapDefined(map, &__ctx, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_newMapDefined(const ::std::string& map, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_newMapDefined(map, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_newMapDefined(const ::std::string& map, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_newMapDefined(map, &__ctx, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_newMapDefined(const ::std::string& map, const ::BomberLoutreInterface::Callback_GameWaitRoom_newMapDefinedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_newMapDefined(map, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_newMapDefined(const ::std::string& map, const ::Ice::Context& __ctx, const ::BomberLoutreInterface::Callback_GameWaitRoom_newMapDefinedPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_newMapDefined(map, &__ctx, __del, __cookie);
+    }
+
+    void end_newMapDefined(const ::Ice::AsyncResultPtr&);
+    
+private:
+
+    void newMapDefined(const ::std::string&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_newMapDefined(const ::std::string&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
 
@@ -4407,6 +4509,8 @@ public:
     virtual ::std::string getCreatorName(const ::Ice::Context*) = 0;
 
     virtual void userReady(const ::BomberLoutreInterface::UserData&, const ::Ice::Context*) = 0;
+
+    virtual void leaveGame(const ::BomberLoutreInterface::UserData&, const ::Ice::Context*) = 0;
 };
 
 class GameInterface : virtual public ::IceDelegate::Ice::Object
@@ -4457,6 +4561,8 @@ public:
     virtual void userReady(const ::std::string&, const ::Ice::Context*) = 0;
 
     virtual void gameDataUpdated(const ::BomberLoutreInterface::GameData&, const ::Ice::Context*) = 0;
+
+    virtual void newMapDefined(const ::std::string&, const ::Ice::Context*) = 0;
 
     virtual void gameStart(const ::Ice::Context*) = 0;
 
@@ -4540,6 +4646,8 @@ public:
     virtual ::std::string getCreatorName(const ::Ice::Context*);
 
     virtual void userReady(const ::BomberLoutreInterface::UserData&, const ::Ice::Context*);
+
+    virtual void leaveGame(const ::BomberLoutreInterface::UserData&, const ::Ice::Context*);
 };
 
 class GameInterface : virtual public ::IceDelegate::BomberLoutreInterface::GameInterface,
@@ -4592,6 +4700,8 @@ public:
     virtual void userReady(const ::std::string&, const ::Ice::Context*);
 
     virtual void gameDataUpdated(const ::BomberLoutreInterface::GameData&, const ::Ice::Context*);
+
+    virtual void newMapDefined(const ::std::string&, const ::Ice::Context*);
 
     virtual void gameStart(const ::Ice::Context*);
 
@@ -4678,6 +4788,8 @@ public:
     virtual ::std::string getCreatorName(const ::Ice::Context*);
 
     virtual void userReady(const ::BomberLoutreInterface::UserData&, const ::Ice::Context*);
+
+    virtual void leaveGame(const ::BomberLoutreInterface::UserData&, const ::Ice::Context*);
 };
 
 class GameInterface : virtual public ::IceDelegate::BomberLoutreInterface::GameInterface,
@@ -4730,6 +4842,8 @@ public:
     virtual void userReady(const ::std::string&, const ::Ice::Context*);
 
     virtual void gameDataUpdated(const ::BomberLoutreInterface::GameData&, const ::Ice::Context*);
+
+    virtual void newMapDefined(const ::std::string&, const ::Ice::Context*);
 
     virtual void gameStart(const ::Ice::Context*);
 
@@ -4824,6 +4938,9 @@ public:
 
     virtual void userReady(const ::BomberLoutreInterface::UserData&, const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___userReady(::IceInternal::Incoming&, const ::Ice::Current&);
+
+    virtual void leaveGame(const ::BomberLoutreInterface::UserData&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    ::Ice::DispatchStatus ___leaveGame(::IceInternal::Incoming&, const ::Ice::Current&);
 
     virtual ::Ice::DispatchStatus __dispatch(::IceInternal::Incoming&, const ::Ice::Current&);
 
@@ -4954,6 +5071,9 @@ public:
 
     virtual void gameDataUpdated(const ::BomberLoutreInterface::GameData&, const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___gameDataUpdated(::IceInternal::Incoming&, const ::Ice::Current&);
+
+    virtual void newMapDefined(const ::std::string&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    ::Ice::DispatchStatus ___newMapDefined(::IceInternal::Incoming&, const ::Ice::Current&);
 
     virtual void gameStart(const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___gameStart(::IceInternal::Incoming&, const ::Ice::Current&);
@@ -5354,6 +5474,88 @@ template<class T, typename CT> Callback_GameUserInterface_userReadyPtr
 newCallback_GameUserInterface_userReady(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
     return new Callback_GameUserInterface_userReady<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T>
+class CallbackNC_GameUserInterface_leaveGame : public Callback_GameUserInterface_leaveGame_Base, public ::IceInternal::OnewayCallbackNC<T>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception&);
+    typedef void (T::*Sent)(bool);
+    typedef void (T::*Response)();
+
+    CallbackNC_GameUserInterface_leaveGame(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallbackNC<T>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T> Callback_GameUserInterface_leaveGamePtr
+newCallback_GameUserInterface_leaveGame(const IceUtil::Handle<T>& instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameUserInterface_leaveGame<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_GameUserInterface_leaveGamePtr
+newCallback_GameUserInterface_leaveGame(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameUserInterface_leaveGame<T>(instance, 0, excb, sentcb);
+}
+
+template<class T> Callback_GameUserInterface_leaveGamePtr
+newCallback_GameUserInterface_leaveGame(T* instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameUserInterface_leaveGame<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_GameUserInterface_leaveGamePtr
+newCallback_GameUserInterface_leaveGame(T* instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameUserInterface_leaveGame<T>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT>
+class Callback_GameUserInterface_leaveGame : public Callback_GameUserInterface_leaveGame_Base, public ::IceInternal::OnewayCallback<T, CT>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
+    typedef void (T::*Sent)(bool , const CT&);
+    typedef void (T::*Response)(const CT&);
+
+    Callback_GameUserInterface_leaveGame(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallback<T, CT>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T, typename CT> Callback_GameUserInterface_leaveGamePtr
+newCallback_GameUserInterface_leaveGame(const IceUtil::Handle<T>& instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameUserInterface_leaveGame<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_GameUserInterface_leaveGamePtr
+newCallback_GameUserInterface_leaveGame(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameUserInterface_leaveGame<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_GameUserInterface_leaveGamePtr
+newCallback_GameUserInterface_leaveGame(T* instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameUserInterface_leaveGame<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_GameUserInterface_leaveGamePtr
+newCallback_GameUserInterface_leaveGame(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameUserInterface_leaveGame<T, CT>(instance, 0, excb, sentcb);
 }
 
 template<class T>
@@ -7198,6 +7400,88 @@ template<class T, typename CT> Callback_GameWaitRoom_gameDataUpdatedPtr
 newCallback_GameWaitRoom_gameDataUpdated(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
     return new Callback_GameWaitRoom_gameDataUpdated<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T>
+class CallbackNC_GameWaitRoom_newMapDefined : public Callback_GameWaitRoom_newMapDefined_Base, public ::IceInternal::OnewayCallbackNC<T>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception&);
+    typedef void (T::*Sent)(bool);
+    typedef void (T::*Response)();
+
+    CallbackNC_GameWaitRoom_newMapDefined(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallbackNC<T>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T> Callback_GameWaitRoom_newMapDefinedPtr
+newCallback_GameWaitRoom_newMapDefined(const IceUtil::Handle<T>& instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameWaitRoom_newMapDefined<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_GameWaitRoom_newMapDefinedPtr
+newCallback_GameWaitRoom_newMapDefined(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameWaitRoom_newMapDefined<T>(instance, 0, excb, sentcb);
+}
+
+template<class T> Callback_GameWaitRoom_newMapDefinedPtr
+newCallback_GameWaitRoom_newMapDefined(T* instance, void (T::*cb)(), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameWaitRoom_newMapDefined<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_GameWaitRoom_newMapDefinedPtr
+newCallback_GameWaitRoom_newMapDefined(T* instance, void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_GameWaitRoom_newMapDefined<T>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT>
+class Callback_GameWaitRoom_newMapDefined : public Callback_GameWaitRoom_newMapDefined_Base, public ::IceInternal::OnewayCallback<T, CT>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
+    typedef void (T::*Sent)(bool , const CT&);
+    typedef void (T::*Response)(const CT&);
+
+    Callback_GameWaitRoom_newMapDefined(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::OnewayCallback<T, CT>(obj, cb, excb, sentcb)
+    {
+    }
+};
+
+template<class T, typename CT> Callback_GameWaitRoom_newMapDefinedPtr
+newCallback_GameWaitRoom_newMapDefined(const IceUtil::Handle<T>& instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameWaitRoom_newMapDefined<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_GameWaitRoom_newMapDefinedPtr
+newCallback_GameWaitRoom_newMapDefined(const IceUtil::Handle<T>& instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameWaitRoom_newMapDefined<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_GameWaitRoom_newMapDefinedPtr
+newCallback_GameWaitRoom_newMapDefined(T* instance, void (T::*cb)(const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameWaitRoom_newMapDefined<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_GameWaitRoom_newMapDefinedPtr
+newCallback_GameWaitRoom_newMapDefined(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_GameWaitRoom_newMapDefined<T, CT>(instance, 0, excb, sentcb);
 }
 
 template<class T>

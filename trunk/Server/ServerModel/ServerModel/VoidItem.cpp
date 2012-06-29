@@ -7,7 +7,7 @@
 
 VoidItem::VoidItem(MapModel* map):MapItem(map, false, true)
 {
-	this->dropChances = 0.10;
+	this->dropChances = 0.10f;
 }
 
 

@@ -7,7 +7,7 @@ int main(int argc, char** argv)
 	std::cout << "Hello World!" << std::endl;
 	try
 	{
-		ServerApplication app;
+		BomberServerApplication app;
 		return app.main(argc,argv);
 	}
 	catch(const std::exception& e)
