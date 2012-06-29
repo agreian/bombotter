@@ -217,21 +217,6 @@ namespace BomberLoutreInterface
         #endregion
     }
 
-    [_System.Runtime.InteropServices.ComVisible(false)]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704")]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707")]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709")]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1710")]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711")]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1715")]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720")]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1722")]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724")]
-    public partial interface GameUserInterface : Ice.Object, GameUserInterfaceOperations_, GameUserInterfaceOperationsNC_
-    {
-    }
-
     [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704")]
     [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707")]
     [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709")]
@@ -258,9 +243,6 @@ namespace BomberLoutreInterface
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
         public int playerCount;
 
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public BomberLoutreInterface.GameUserInterfacePrx gameui;
-
         #endregion
 
         #region Constructors
@@ -271,13 +253,12 @@ namespace BomberLoutreInterface
         }
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public GameData(string name, int roundCount, int state, int playerCount, BomberLoutreInterface.GameUserInterfacePrx gameui)
+        public GameData(string name, int roundCount, int state, int playerCount)
         {
             this.name = name;
             this.roundCount = roundCount;
             this.state = state;
             this.playerCount = playerCount;
-            this.gameui = gameui;
         }
 
         #endregion
@@ -305,10 +286,6 @@ namespace BomberLoutreInterface
             h__ = 5 * h__ + roundCount.GetHashCode();
             h__ = 5 * h__ + state.GetHashCode();
             h__ = 5 * h__ + playerCount.GetHashCode();
-            if(gameui != null)
-            {
-                h__ = 5 * h__ + gameui.GetHashCode();
-            }
             return h__;
         }
 
@@ -354,20 +331,6 @@ namespace BomberLoutreInterface
             {
                 return false;
             }
-            if(gameui == null)
-            {
-                if(o__.gameui != null)
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                if(!gameui.Equals(o__.gameui))
-                {
-                    return false;
-                }
-            }
             return true;
         }
 
@@ -398,7 +361,6 @@ namespace BomberLoutreInterface
             os__.writeInt(roundCount);
             os__.writeInt(state);
             os__.writeInt(playerCount);
-            BomberLoutreInterface.GameUserInterfacePrxHelper.write__(os__, gameui);
         }
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
@@ -408,7 +370,6 @@ namespace BomberLoutreInterface
             roundCount = is__.readInt();
             state = is__.readInt();
             playerCount = is__.readInt();
-            gameui = BomberLoutreInterface.GameUserInterfacePrxHelper.read__(is__);
         }
 
         #endregion
@@ -788,6 +749,9 @@ namespace BomberLoutreInterface
         #region Slice data members
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public string id;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
         public BomberLoutreInterface.MapInterfacePrx mi;
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
@@ -806,8 +770,9 @@ namespace BomberLoutreInterface
         }
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public Map(BomberLoutreInterface.MapInterfacePrx mi, BomberLoutreInterface.MapItem[] items, BomberLoutreInterface.Player[] players)
+        public Map(string id, BomberLoutreInterface.MapInterfacePrx mi, BomberLoutreInterface.MapItem[] items, BomberLoutreInterface.Player[] players)
         {
+            this.id = id;
             this.mi = mi;
             this.items = items;
             this.players = players;
@@ -831,6 +796,10 @@ namespace BomberLoutreInterface
         public override int GetHashCode()
         {
             int h__ = 0;
+            if(id != null)
+            {
+                h__ = 5 * h__ + id.GetHashCode();
+            }
             if(mi != null)
             {
                 h__ = 5 * h__ + mi.GetHashCode();
@@ -862,6 +831,20 @@ namespace BomberLoutreInterface
                 return false;
             }
             Map o__ = (Map)other__;
+            if(id == null)
+            {
+                if(o__.id != null)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if(!id.Equals(o__.id))
+                {
+                    return false;
+                }
+            }
             if(mi == null)
             {
                 if(o__.mi != null)
@@ -930,6 +913,7 @@ namespace BomberLoutreInterface
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
         public void write__(IceInternal.BasicStream os__)
         {
+            os__.writeString(id);
             BomberLoutreInterface.MapInterfacePrxHelper.write__(os__, mi);
             if(items == null)
             {
@@ -960,6 +944,7 @@ namespace BomberLoutreInterface
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
         public void read__(IceInternal.BasicStream is__)
         {
+            id = is__.readString();
             mi = BomberLoutreInterface.MapInterfacePrxHelper.read__(is__);
             {
                 int szx__ = is__.readAndCheckSeqSize(10);
@@ -1589,15 +1574,6 @@ namespace BomberLoutreInterface
 namespace BomberLoutreInterface
 {
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public delegate void Callback_GameUserInterface_getCreatorName(string ret__);
-
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public delegate void Callback_GameUserInterface_userReady();
-
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public delegate void Callback_GameUserInterface_leaveGame();
-
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public delegate void Callback_GameInterface_getName(string ret__);
 
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
@@ -1641,6 +1617,18 @@ namespace BomberLoutreInterface
 
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public delegate void Callback_GameInterface_removeGame(bool ret__);
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public delegate void Callback_GameInterface_getCreatorName(string ret__);
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public delegate void Callback_GameInterface_userReady();
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public delegate void Callback_GameInterface_leaveGame();
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public delegate void Callback_GameInterface_getMapInterface(BomberLoutreInterface.MapInterfacePrx ret__);
 
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public delegate void Callback_GameWaitRoom_newUserInRoom();
@@ -1730,6 +1718,9 @@ namespace BomberLoutreInterface
     public delegate void Callback_ServerInterface_joinGame(BomberLoutreInterface.Map ret__);
 
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public delegate void Callback_ServerInterface_getUserInterface(BomberLoutreInterface.GameInterfacePrx ret__);
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public delegate void Callback_ServerInterface_getGameList(BomberLoutreInterface.GameData[] ret__);
 
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
@@ -1738,43 +1729,6 @@ namespace BomberLoutreInterface
 
 namespace BomberLoutreInterface
 {
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public interface GameUserInterfacePrx : Ice.ObjectPrx
-    {
-        string getCreatorName();
-        string getCreatorName(_System.Collections.Generic.Dictionary<string, string> context__);
-
-        Ice.AsyncResult<BomberLoutreInterface.Callback_GameUserInterface_getCreatorName> begin_getCreatorName();
-        Ice.AsyncResult<BomberLoutreInterface.Callback_GameUserInterface_getCreatorName> begin_getCreatorName(_System.Collections.Generic.Dictionary<string, string> ctx__);
-
-        Ice.AsyncResult begin_getCreatorName(Ice.AsyncCallback cb__, object cookie__);
-        Ice.AsyncResult begin_getCreatorName(_System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
-
-        string end_getCreatorName(Ice.AsyncResult r__);
-
-        void userReady(BomberLoutreInterface.UserData u);
-        void userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__);
-
-        Ice.AsyncResult<BomberLoutreInterface.Callback_GameUserInterface_userReady> begin_userReady(BomberLoutreInterface.UserData u);
-        Ice.AsyncResult<BomberLoutreInterface.Callback_GameUserInterface_userReady> begin_userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__);
-
-        Ice.AsyncResult begin_userReady(BomberLoutreInterface.UserData u, Ice.AsyncCallback cb__, object cookie__);
-        Ice.AsyncResult begin_userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
-
-        void end_userReady(Ice.AsyncResult r__);
-
-        void leaveGame(BomberLoutreInterface.UserData u);
-        void leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__);
-
-        Ice.AsyncResult<BomberLoutreInterface.Callback_GameUserInterface_leaveGame> begin_leaveGame(BomberLoutreInterface.UserData u);
-        Ice.AsyncResult<BomberLoutreInterface.Callback_GameUserInterface_leaveGame> begin_leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__);
-
-        Ice.AsyncResult begin_leaveGame(BomberLoutreInterface.UserData u, Ice.AsyncCallback cb__, object cookie__);
-        Ice.AsyncResult begin_leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
-
-        void end_leaveGame(Ice.AsyncResult r__);
-    }
-
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public interface GameInterfacePrx : Ice.ObjectPrx
     {
@@ -1942,6 +1896,50 @@ namespace BomberLoutreInterface
         Ice.AsyncResult begin_removeGame(_System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
 
         bool end_removeGame(Ice.AsyncResult r__);
+
+        string getCreatorName();
+        string getCreatorName(_System.Collections.Generic.Dictionary<string, string> context__);
+
+        Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_getCreatorName> begin_getCreatorName();
+        Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_getCreatorName> begin_getCreatorName(_System.Collections.Generic.Dictionary<string, string> ctx__);
+
+        Ice.AsyncResult begin_getCreatorName(Ice.AsyncCallback cb__, object cookie__);
+        Ice.AsyncResult begin_getCreatorName(_System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
+
+        string end_getCreatorName(Ice.AsyncResult r__);
+
+        void userReady(BomberLoutreInterface.UserData u);
+        void userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__);
+
+        Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_userReady> begin_userReady(BomberLoutreInterface.UserData u);
+        Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_userReady> begin_userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__);
+
+        Ice.AsyncResult begin_userReady(BomberLoutreInterface.UserData u, Ice.AsyncCallback cb__, object cookie__);
+        Ice.AsyncResult begin_userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
+
+        void end_userReady(Ice.AsyncResult r__);
+
+        void leaveGame(BomberLoutreInterface.UserData u);
+        void leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__);
+
+        Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_leaveGame> begin_leaveGame(BomberLoutreInterface.UserData u);
+        Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_leaveGame> begin_leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__);
+
+        Ice.AsyncResult begin_leaveGame(BomberLoutreInterface.UserData u, Ice.AsyncCallback cb__, object cookie__);
+        Ice.AsyncResult begin_leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
+
+        void end_leaveGame(Ice.AsyncResult r__);
+
+        BomberLoutreInterface.MapInterfacePrx getMapInterface();
+        BomberLoutreInterface.MapInterfacePrx getMapInterface(_System.Collections.Generic.Dictionary<string, string> context__);
+
+        Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_getMapInterface> begin_getMapInterface();
+        Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_getMapInterface> begin_getMapInterface(_System.Collections.Generic.Dictionary<string, string> ctx__);
+
+        Ice.AsyncResult begin_getMapInterface(Ice.AsyncCallback cb__, object cookie__);
+        Ice.AsyncResult begin_getMapInterface(_System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
+
+        BomberLoutreInterface.MapInterfacePrx end_getMapInterface(Ice.AsyncResult r__);
     }
 
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
@@ -2278,6 +2276,17 @@ namespace BomberLoutreInterface
 
         BomberLoutreInterface.Map end_joinGame(Ice.AsyncResult r__);
 
+        BomberLoutreInterface.GameInterfacePrx getUserInterface(BomberLoutreInterface.GameData gd);
+        BomberLoutreInterface.GameInterfacePrx getUserInterface(BomberLoutreInterface.GameData gd, _System.Collections.Generic.Dictionary<string, string> context__);
+
+        Ice.AsyncResult<BomberLoutreInterface.Callback_ServerInterface_getUserInterface> begin_getUserInterface(BomberLoutreInterface.GameData gd);
+        Ice.AsyncResult<BomberLoutreInterface.Callback_ServerInterface_getUserInterface> begin_getUserInterface(BomberLoutreInterface.GameData gd, _System.Collections.Generic.Dictionary<string, string> ctx__);
+
+        Ice.AsyncResult begin_getUserInterface(BomberLoutreInterface.GameData gd, Ice.AsyncCallback cb__, object cookie__);
+        Ice.AsyncResult begin_getUserInterface(BomberLoutreInterface.GameData gd, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
+
+        BomberLoutreInterface.GameInterfacePrx end_getUserInterface(Ice.AsyncResult r__);
+
         BomberLoutreInterface.GameData[] getGameList();
         BomberLoutreInterface.GameData[] getGameList(_System.Collections.Generic.Dictionary<string, string> context__);
 
@@ -2304,26 +2313,6 @@ namespace BomberLoutreInterface
 
 namespace BomberLoutreInterface
 {
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public interface GameUserInterfaceOperations_
-    {
-        string getCreatorName(Ice.Current current__);
-
-        void userReady(BomberLoutreInterface.UserData u, Ice.Current current__);
-
-        void leaveGame(BomberLoutreInterface.UserData u, Ice.Current current__);
-    }
-
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public interface GameUserInterfaceOperationsNC_
-    {
-        string getCreatorName();
-
-        void userReady(BomberLoutreInterface.UserData u);
-
-        void leaveGame(BomberLoutreInterface.UserData u);
-    }
-
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public interface GameInterfaceOperations_
     {
@@ -2356,6 +2345,14 @@ namespace BomberLoutreInterface
         void endMap(Ice.Current current__);
 
         bool removeGame(Ice.Current current__);
+
+        string getCreatorName(Ice.Current current__);
+
+        void userReady(BomberLoutreInterface.UserData u, Ice.Current current__);
+
+        void leaveGame(BomberLoutreInterface.UserData u, Ice.Current current__);
+
+        BomberLoutreInterface.MapInterfacePrx getMapInterface(Ice.Current current__);
     }
 
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
@@ -2390,6 +2387,14 @@ namespace BomberLoutreInterface
         void endMap();
 
         bool removeGame();
+
+        string getCreatorName();
+
+        void userReady(BomberLoutreInterface.UserData u);
+
+        void leaveGame(BomberLoutreInterface.UserData u);
+
+        BomberLoutreInterface.MapInterfacePrx getMapInterface();
     }
 
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
@@ -2525,6 +2530,8 @@ namespace BomberLoutreInterface
 
         BomberLoutreInterface.Map joinGame(string name, BomberLoutreInterface.UserData user, BomberLoutreInterface.GameWaitRoomPrx room, BomberLoutreInterface.MapObserverPrx mo, Ice.Current current__);
 
+        BomberLoutreInterface.GameInterfacePrx getUserInterface(BomberLoutreInterface.GameData gd, Ice.Current current__);
+
         BomberLoutreInterface.GameData[] getGameList(Ice.Current current__);
 
         BomberLoutreInterface.UserData[] getUserList(Ice.Current current__);
@@ -2542,6 +2549,8 @@ namespace BomberLoutreInterface
         BomberLoutreInterface.GameInterfacePrx addGame(string name, BomberLoutreInterface.UserData user, BomberLoutreInterface.GameWaitRoomPrx room, BomberLoutreInterface.MapObserverPrx mo);
 
         BomberLoutreInterface.Map joinGame(string name, BomberLoutreInterface.UserData user, BomberLoutreInterface.GameWaitRoomPrx room, BomberLoutreInterface.MapObserverPrx mo);
+
+        BomberLoutreInterface.GameInterfacePrx getUserInterface(BomberLoutreInterface.GameData gd);
 
         BomberLoutreInterface.GameData[] getGameList();
 
@@ -2586,501 +2595,6 @@ namespace BomberLoutreInterface
         }
     }
 
-    [_System.Runtime.InteropServices.ComVisible(false)]
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public sealed class GameUserInterfacePrxHelper : Ice.ObjectPrxHelperBase, GameUserInterfacePrx
-    {
-        #region Synchronous operations
-
-        public string getCreatorName()
-        {
-            return getCreatorName(null, false);
-        }
-
-        public string getCreatorName(_System.Collections.Generic.Dictionary<string, string> context__)
-        {
-            return getCreatorName(context__, true);
-        }
-
-        private string getCreatorName(_System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
-        {
-            if(explicitContext__ && context__ == null)
-            {
-                context__ = emptyContext_;
-            }
-            int cnt__ = 0;
-            while(true)
-            {
-                Ice.ObjectDel_ delBase__ = null;
-                try
-                {
-                    checkTwowayOnly__("getCreatorName");
-                    delBase__ = getDelegate__(false);
-                    GameUserInterfaceDel_ del__ = (GameUserInterfaceDel_)delBase__;
-                    return del__.getCreatorName(context__);
-                }
-                catch(IceInternal.LocalExceptionWrapper ex__)
-                {
-                    handleExceptionWrapper__(delBase__, ex__);
-                }
-                catch(Ice.LocalException ex__)
-                {
-                    handleException__(delBase__, ex__, true, ref cnt__);
-                }
-            }
-        }
-
-        public void leaveGame(BomberLoutreInterface.UserData u)
-        {
-            leaveGame(u, null, false);
-        }
-
-        public void leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__)
-        {
-            leaveGame(u, context__, true);
-        }
-
-        private void leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
-        {
-            if(explicitContext__ && context__ == null)
-            {
-                context__ = emptyContext_;
-            }
-            int cnt__ = 0;
-            while(true)
-            {
-                Ice.ObjectDel_ delBase__ = null;
-                try
-                {
-                    delBase__ = getDelegate__(false);
-                    GameUserInterfaceDel_ del__ = (GameUserInterfaceDel_)delBase__;
-                    del__.leaveGame(u, context__);
-                    return;
-                }
-                catch(IceInternal.LocalExceptionWrapper ex__)
-                {
-                    handleExceptionWrapper__(delBase__, ex__);
-                }
-                catch(Ice.LocalException ex__)
-                {
-                    handleException__(delBase__, ex__, true, ref cnt__);
-                }
-            }
-        }
-
-        public void userReady(BomberLoutreInterface.UserData u)
-        {
-            userReady(u, null, false);
-        }
-
-        public void userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__)
-        {
-            userReady(u, context__, true);
-        }
-
-        private void userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
-        {
-            if(explicitContext__ && context__ == null)
-            {
-                context__ = emptyContext_;
-            }
-            int cnt__ = 0;
-            while(true)
-            {
-                Ice.ObjectDel_ delBase__ = null;
-                try
-                {
-                    delBase__ = getDelegate__(false);
-                    GameUserInterfaceDel_ del__ = (GameUserInterfaceDel_)delBase__;
-                    del__.userReady(u, context__);
-                    return;
-                }
-                catch(IceInternal.LocalExceptionWrapper ex__)
-                {
-                    handleExceptionWrapper__(delBase__, ex__);
-                }
-                catch(Ice.LocalException ex__)
-                {
-                    handleException__(delBase__, ex__, true, ref cnt__);
-                }
-            }
-        }
-
-        #endregion
-
-        #region Asynchronous operations
-
-        public Ice.AsyncResult<BomberLoutreInterface.Callback_GameUserInterface_getCreatorName> begin_getCreatorName()
-        {
-            return begin_getCreatorName(null, false, null, null);
-        }
-
-        public Ice.AsyncResult<BomberLoutreInterface.Callback_GameUserInterface_getCreatorName> begin_getCreatorName(_System.Collections.Generic.Dictionary<string, string> ctx__)
-        {
-            return begin_getCreatorName(ctx__, true, null, null);
-        }
-
-        public Ice.AsyncResult begin_getCreatorName(Ice.AsyncCallback cb__, object cookie__)
-        {
-            return begin_getCreatorName(null, false, cb__, cookie__);
-        }
-
-        public Ice.AsyncResult begin_getCreatorName(_System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
-        {
-            return begin_getCreatorName(ctx__, true, cb__, cookie__);
-        }
-
-        private const string __getCreatorName_name = "getCreatorName";
-
-        public string end_getCreatorName(Ice.AsyncResult r__)
-        {
-            IceInternal.OutgoingAsync outAsync__ = (IceInternal.OutgoingAsync)r__;
-            IceInternal.OutgoingAsync.check__(outAsync__, this, __getCreatorName_name);
-            if(!outAsync__.wait__())
-            {
-                try
-                {
-                    outAsync__.throwUserException__();
-                }
-                catch(Ice.UserException ex__)
-                {
-                    throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
-                }
-            }
-            string ret__;
-            IceInternal.BasicStream is__ = outAsync__.istr__;
-            is__.startReadEncaps();
-            ret__ = is__.readString();
-            is__.endReadEncaps();
-            return ret__;
-        }
-
-        private Ice.AsyncResult<BomberLoutreInterface.Callback_GameUserInterface_getCreatorName> begin_getCreatorName(_System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
-        {
-            checkAsyncTwowayOnly__(__getCreatorName_name);
-            IceInternal.TwowayOutgoingAsync<BomberLoutreInterface.Callback_GameUserInterface_getCreatorName> result__ =  new IceInternal.TwowayOutgoingAsync<BomberLoutreInterface.Callback_GameUserInterface_getCreatorName>(this, __getCreatorName_name, getCreatorName_completed__, cookie__);
-            if(cb__ != null)
-            {
-                result__.whenCompletedWithAsyncCallback(cb__);
-            }
-            try
-            {
-                result__.prepare__(__getCreatorName_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
-                IceInternal.BasicStream os__ = result__.ostr__;
-                os__.endWriteEncaps();
-                result__.send__(true);
-            }
-            catch(Ice.LocalException ex__)
-            {
-                result__.exceptionAsync__(ex__);
-            }
-            return result__;
-        }
-
-        private void getCreatorName_completed__(Ice.AsyncResult r__, BomberLoutreInterface.Callback_GameUserInterface_getCreatorName cb__, Ice.ExceptionCallback excb__)
-        {
-            string ret__;
-            try
-            {
-                ret__ = end_getCreatorName(r__);
-            }
-            catch(Ice.Exception ex__)
-            {
-                if(excb__ != null)
-                {
-                    excb__(ex__);
-                }
-                return;
-            }
-            if(cb__ != null)
-            {
-                cb__(ret__);
-            }
-        }
-
-        public Ice.AsyncResult<BomberLoutreInterface.Callback_GameUserInterface_leaveGame> begin_leaveGame(BomberLoutreInterface.UserData u)
-        {
-            return begin_leaveGame(u, null, false, null, null);
-        }
-
-        public Ice.AsyncResult<BomberLoutreInterface.Callback_GameUserInterface_leaveGame> begin_leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__)
-        {
-            return begin_leaveGame(u, ctx__, true, null, null);
-        }
-
-        public Ice.AsyncResult begin_leaveGame(BomberLoutreInterface.UserData u, Ice.AsyncCallback cb__, object cookie__)
-        {
-            return begin_leaveGame(u, null, false, cb__, cookie__);
-        }
-
-        public Ice.AsyncResult begin_leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
-        {
-            return begin_leaveGame(u, ctx__, true, cb__, cookie__);
-        }
-
-        private const string __leaveGame_name = "leaveGame";
-
-        public void end_leaveGame(Ice.AsyncResult r__)
-        {
-            end__(r__, __leaveGame_name);
-        }
-
-        private Ice.AsyncResult<BomberLoutreInterface.Callback_GameUserInterface_leaveGame> begin_leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
-        {
-            IceInternal.OnewayOutgoingAsync<BomberLoutreInterface.Callback_GameUserInterface_leaveGame> result__ = new IceInternal.OnewayOutgoingAsync<BomberLoutreInterface.Callback_GameUserInterface_leaveGame>(this, __leaveGame_name, leaveGame_completed__, cookie__);
-            if(cb__ != null)
-            {
-                result__.whenCompletedWithAsyncCallback(cb__);
-            }
-            try
-            {
-                result__.prepare__(__leaveGame_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
-                IceInternal.BasicStream os__ = result__.ostr__;
-                if(u == null)
-                {
-                    BomberLoutreInterface.UserData tmp__ = new BomberLoutreInterface.UserData();
-                    tmp__.write__(os__);
-                }
-                else
-                {
-                    u.write__(os__);
-                }
-                os__.endWriteEncaps();
-                result__.send__(true);
-            }
-            catch(Ice.LocalException ex__)
-            {
-                result__.exceptionAsync__(ex__);
-            }
-            return result__;
-        }
-
-        private void leaveGame_completed__(BomberLoutreInterface.Callback_GameUserInterface_leaveGame cb__)
-        {
-            if(cb__ != null)
-            {
-                cb__();
-            }
-        }
-
-        public Ice.AsyncResult<BomberLoutreInterface.Callback_GameUserInterface_userReady> begin_userReady(BomberLoutreInterface.UserData u)
-        {
-            return begin_userReady(u, null, false, null, null);
-        }
-
-        public Ice.AsyncResult<BomberLoutreInterface.Callback_GameUserInterface_userReady> begin_userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__)
-        {
-            return begin_userReady(u, ctx__, true, null, null);
-        }
-
-        public Ice.AsyncResult begin_userReady(BomberLoutreInterface.UserData u, Ice.AsyncCallback cb__, object cookie__)
-        {
-            return begin_userReady(u, null, false, cb__, cookie__);
-        }
-
-        public Ice.AsyncResult begin_userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
-        {
-            return begin_userReady(u, ctx__, true, cb__, cookie__);
-        }
-
-        private const string __userReady_name = "userReady";
-
-        public void end_userReady(Ice.AsyncResult r__)
-        {
-            end__(r__, __userReady_name);
-        }
-
-        private Ice.AsyncResult<BomberLoutreInterface.Callback_GameUserInterface_userReady> begin_userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
-        {
-            IceInternal.OnewayOutgoingAsync<BomberLoutreInterface.Callback_GameUserInterface_userReady> result__ = new IceInternal.OnewayOutgoingAsync<BomberLoutreInterface.Callback_GameUserInterface_userReady>(this, __userReady_name, userReady_completed__, cookie__);
-            if(cb__ != null)
-            {
-                result__.whenCompletedWithAsyncCallback(cb__);
-            }
-            try
-            {
-                result__.prepare__(__userReady_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
-                IceInternal.BasicStream os__ = result__.ostr__;
-                if(u == null)
-                {
-                    BomberLoutreInterface.UserData tmp__ = new BomberLoutreInterface.UserData();
-                    tmp__.write__(os__);
-                }
-                else
-                {
-                    u.write__(os__);
-                }
-                os__.endWriteEncaps();
-                result__.send__(true);
-            }
-            catch(Ice.LocalException ex__)
-            {
-                result__.exceptionAsync__(ex__);
-            }
-            return result__;
-        }
-
-        private void userReady_completed__(BomberLoutreInterface.Callback_GameUserInterface_userReady cb__)
-        {
-            if(cb__ != null)
-            {
-                cb__();
-            }
-        }
-
-        #endregion
-
-        #region Checked and unchecked cast operations
-
-        public static GameUserInterfacePrx checkedCast(Ice.ObjectPrx b)
-        {
-            if(b == null)
-            {
-                return null;
-            }
-            GameUserInterfacePrx r = b as GameUserInterfacePrx;
-            if((r == null) && b.ice_isA(ice_staticId()))
-            {
-                GameUserInterfacePrxHelper h = new GameUserInterfacePrxHelper();
-                h.copyFrom__(b);
-                r = h;
-            }
-            return r;
-        }
-
-        public static GameUserInterfacePrx checkedCast(Ice.ObjectPrx b, _System.Collections.Generic.Dictionary<string, string> ctx)
-        {
-            if(b == null)
-            {
-                return null;
-            }
-            GameUserInterfacePrx r = b as GameUserInterfacePrx;
-            if((r == null) && b.ice_isA(ice_staticId(), ctx))
-            {
-                GameUserInterfacePrxHelper h = new GameUserInterfacePrxHelper();
-                h.copyFrom__(b);
-                r = h;
-            }
-            return r;
-        }
-
-        public static GameUserInterfacePrx checkedCast(Ice.ObjectPrx b, string f)
-        {
-            if(b == null)
-            {
-                return null;
-            }
-            Ice.ObjectPrx bb = b.ice_facet(f);
-            try
-            {
-                if(bb.ice_isA(ice_staticId()))
-                {
-                    GameUserInterfacePrxHelper h = new GameUserInterfacePrxHelper();
-                    h.copyFrom__(bb);
-                    return h;
-                }
-            }
-            catch(Ice.FacetNotExistException)
-            {
-            }
-            return null;
-        }
-
-        public static GameUserInterfacePrx checkedCast(Ice.ObjectPrx b, string f, _System.Collections.Generic.Dictionary<string, string> ctx)
-        {
-            if(b == null)
-            {
-                return null;
-            }
-            Ice.ObjectPrx bb = b.ice_facet(f);
-            try
-            {
-                if(bb.ice_isA(ice_staticId(), ctx))
-                {
-                    GameUserInterfacePrxHelper h = new GameUserInterfacePrxHelper();
-                    h.copyFrom__(bb);
-                    return h;
-                }
-            }
-            catch(Ice.FacetNotExistException)
-            {
-            }
-            return null;
-        }
-
-        public static GameUserInterfacePrx uncheckedCast(Ice.ObjectPrx b)
-        {
-            if(b == null)
-            {
-                return null;
-            }
-            GameUserInterfacePrx r = b as GameUserInterfacePrx;
-            if(r == null)
-            {
-                GameUserInterfacePrxHelper h = new GameUserInterfacePrxHelper();
-                h.copyFrom__(b);
-                r = h;
-            }
-            return r;
-        }
-
-        public static GameUserInterfacePrx uncheckedCast(Ice.ObjectPrx b, string f)
-        {
-            if(b == null)
-            {
-                return null;
-            }
-            Ice.ObjectPrx bb = b.ice_facet(f);
-            GameUserInterfacePrxHelper h = new GameUserInterfacePrxHelper();
-            h.copyFrom__(bb);
-            return h;
-        }
-
-        public static readonly string[] ids__ =
-        {
-            "::BomberLoutreInterface::GameUserInterface",
-            "::Ice::Object"
-        };
-
-        public static string ice_staticId()
-        {
-            return ids__[0];
-        }
-
-        #endregion
-
-        #region Marshaling support
-
-        protected override Ice.ObjectDelM_ createDelegateM__()
-        {
-            return new GameUserInterfaceDelM_();
-        }
-
-        protected override Ice.ObjectDelD_ createDelegateD__()
-        {
-            return new GameUserInterfaceDelD_();
-        }
-
-        public static void write__(IceInternal.BasicStream os__, GameUserInterfacePrx v__)
-        {
-            os__.writeProxy(v__);
-        }
-
-        public static GameUserInterfacePrx read__(IceInternal.BasicStream is__)
-        {
-            Ice.ObjectPrx proxy = is__.readProxy();
-            if(proxy != null)
-            {
-                GameUserInterfacePrxHelper result = new GameUserInterfacePrxHelper();
-                result.copyFrom__(proxy);
-                return result;
-            }
-            return null;
-        }
-
-        #endregion
-    }
-
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public sealed class GameDataListHelper
     {
@@ -3104,7 +2618,7 @@ namespace BomberLoutreInterface
         {
             BomberLoutreInterface.GameData[] v__;
             {
-                int szx__ = is__.readAndCheckSeqSize(15);
+                int szx__ = is__.readAndCheckSeqSize(13);
                 v__ = new BomberLoutreInterface.GameData[szx__];
                 for(int ix__ = 0; ix__ < szx__; ++ix__)
                 {
@@ -3240,6 +2754,82 @@ namespace BomberLoutreInterface
                     GameInterfaceDel_ del__ = (GameInterfaceDel_)delBase__;
                     del__.endMap(context__);
                     return;
+                }
+                catch(IceInternal.LocalExceptionWrapper ex__)
+                {
+                    handleExceptionWrapper__(delBase__, ex__);
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    handleException__(delBase__, ex__, true, ref cnt__);
+                }
+            }
+        }
+
+        public string getCreatorName()
+        {
+            return getCreatorName(null, false);
+        }
+
+        public string getCreatorName(_System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            return getCreatorName(context__, true);
+        }
+
+        private string getCreatorName(_System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
+        {
+            if(explicitContext__ && context__ == null)
+            {
+                context__ = emptyContext_;
+            }
+            int cnt__ = 0;
+            while(true)
+            {
+                Ice.ObjectDel_ delBase__ = null;
+                try
+                {
+                    checkTwowayOnly__("getCreatorName");
+                    delBase__ = getDelegate__(false);
+                    GameInterfaceDel_ del__ = (GameInterfaceDel_)delBase__;
+                    return del__.getCreatorName(context__);
+                }
+                catch(IceInternal.LocalExceptionWrapper ex__)
+                {
+                    handleExceptionWrapper__(delBase__, ex__);
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    handleException__(delBase__, ex__, true, ref cnt__);
+                }
+            }
+        }
+
+        public BomberLoutreInterface.MapInterfacePrx getMapInterface()
+        {
+            return getMapInterface(null, false);
+        }
+
+        public BomberLoutreInterface.MapInterfacePrx getMapInterface(_System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            return getMapInterface(context__, true);
+        }
+
+        private BomberLoutreInterface.MapInterfacePrx getMapInterface(_System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
+        {
+            if(explicitContext__ && context__ == null)
+            {
+                context__ = emptyContext_;
+            }
+            int cnt__ = 0;
+            while(true)
+            {
+                Ice.ObjectDel_ delBase__ = null;
+                try
+                {
+                    checkTwowayOnly__("getMapInterface");
+                    delBase__ = getDelegate__(false);
+                    GameInterfaceDel_ del__ = (GameInterfaceDel_)delBase__;
+                    return del__.getMapInterface(context__);
                 }
                 catch(IceInternal.LocalExceptionWrapper ex__)
                 {
@@ -3467,6 +3057,44 @@ namespace BomberLoutreInterface
                     delBase__ = getDelegate__(false);
                     GameInterfaceDel_ del__ = (GameInterfaceDel_)delBase__;
                     del__.kickPlayer(username, context__);
+                    return;
+                }
+                catch(IceInternal.LocalExceptionWrapper ex__)
+                {
+                    handleExceptionWrapper__(delBase__, ex__);
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    handleException__(delBase__, ex__, true, ref cnt__);
+                }
+            }
+        }
+
+        public void leaveGame(BomberLoutreInterface.UserData u)
+        {
+            leaveGame(u, null, false);
+        }
+
+        public void leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            leaveGame(u, context__, true);
+        }
+
+        private void leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
+        {
+            if(explicitContext__ && context__ == null)
+            {
+                context__ = emptyContext_;
+            }
+            int cnt__ = 0;
+            while(true)
+            {
+                Ice.ObjectDel_ delBase__ = null;
+                try
+                {
+                    delBase__ = getDelegate__(false);
+                    GameInterfaceDel_ del__ = (GameInterfaceDel_)delBase__;
+                    del__.leaveGame(u, context__);
                     return;
                 }
                 catch(IceInternal.LocalExceptionWrapper ex__)
@@ -3708,6 +3336,44 @@ namespace BomberLoutreInterface
             }
         }
 
+        public void userReady(BomberLoutreInterface.UserData u)
+        {
+            userReady(u, null, false);
+        }
+
+        public void userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            userReady(u, context__, true);
+        }
+
+        private void userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
+        {
+            if(explicitContext__ && context__ == null)
+            {
+                context__ = emptyContext_;
+            }
+            int cnt__ = 0;
+            while(true)
+            {
+                Ice.ObjectDel_ delBase__ = null;
+                try
+                {
+                    delBase__ = getDelegate__(false);
+                    GameInterfaceDel_ del__ = (GameInterfaceDel_)delBase__;
+                    del__.userReady(u, context__);
+                    return;
+                }
+                catch(IceInternal.LocalExceptionWrapper ex__)
+                {
+                    handleExceptionWrapper__(delBase__, ex__);
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    handleException__(delBase__, ex__, true, ref cnt__);
+                }
+            }
+        }
+
         #endregion
 
         #region Asynchronous operations
@@ -3911,6 +3577,182 @@ namespace BomberLoutreInterface
             if(cb__ != null)
             {
                 cb__();
+            }
+        }
+
+        public Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_getCreatorName> begin_getCreatorName()
+        {
+            return begin_getCreatorName(null, false, null, null);
+        }
+
+        public Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_getCreatorName> begin_getCreatorName(_System.Collections.Generic.Dictionary<string, string> ctx__)
+        {
+            return begin_getCreatorName(ctx__, true, null, null);
+        }
+
+        public Ice.AsyncResult begin_getCreatorName(Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_getCreatorName(null, false, cb__, cookie__);
+        }
+
+        public Ice.AsyncResult begin_getCreatorName(_System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_getCreatorName(ctx__, true, cb__, cookie__);
+        }
+
+        private const string __getCreatorName_name = "getCreatorName";
+
+        public string end_getCreatorName(Ice.AsyncResult r__)
+        {
+            IceInternal.OutgoingAsync outAsync__ = (IceInternal.OutgoingAsync)r__;
+            IceInternal.OutgoingAsync.check__(outAsync__, this, __getCreatorName_name);
+            if(!outAsync__.wait__())
+            {
+                try
+                {
+                    outAsync__.throwUserException__();
+                }
+                catch(Ice.UserException ex__)
+                {
+                    throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                }
+            }
+            string ret__;
+            IceInternal.BasicStream is__ = outAsync__.istr__;
+            is__.startReadEncaps();
+            ret__ = is__.readString();
+            is__.endReadEncaps();
+            return ret__;
+        }
+
+        private Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_getCreatorName> begin_getCreatorName(_System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            checkAsyncTwowayOnly__(__getCreatorName_name);
+            IceInternal.TwowayOutgoingAsync<BomberLoutreInterface.Callback_GameInterface_getCreatorName> result__ =  new IceInternal.TwowayOutgoingAsync<BomberLoutreInterface.Callback_GameInterface_getCreatorName>(this, __getCreatorName_name, getCreatorName_completed__, cookie__);
+            if(cb__ != null)
+            {
+                result__.whenCompletedWithAsyncCallback(cb__);
+            }
+            try
+            {
+                result__.prepare__(__getCreatorName_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
+                IceInternal.BasicStream os__ = result__.ostr__;
+                os__.endWriteEncaps();
+                result__.send__(true);
+            }
+            catch(Ice.LocalException ex__)
+            {
+                result__.exceptionAsync__(ex__);
+            }
+            return result__;
+        }
+
+        private void getCreatorName_completed__(Ice.AsyncResult r__, BomberLoutreInterface.Callback_GameInterface_getCreatorName cb__, Ice.ExceptionCallback excb__)
+        {
+            string ret__;
+            try
+            {
+                ret__ = end_getCreatorName(r__);
+            }
+            catch(Ice.Exception ex__)
+            {
+                if(excb__ != null)
+                {
+                    excb__(ex__);
+                }
+                return;
+            }
+            if(cb__ != null)
+            {
+                cb__(ret__);
+            }
+        }
+
+        public Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_getMapInterface> begin_getMapInterface()
+        {
+            return begin_getMapInterface(null, false, null, null);
+        }
+
+        public Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_getMapInterface> begin_getMapInterface(_System.Collections.Generic.Dictionary<string, string> ctx__)
+        {
+            return begin_getMapInterface(ctx__, true, null, null);
+        }
+
+        public Ice.AsyncResult begin_getMapInterface(Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_getMapInterface(null, false, cb__, cookie__);
+        }
+
+        public Ice.AsyncResult begin_getMapInterface(_System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_getMapInterface(ctx__, true, cb__, cookie__);
+        }
+
+        private const string __getMapInterface_name = "getMapInterface";
+
+        public BomberLoutreInterface.MapInterfacePrx end_getMapInterface(Ice.AsyncResult r__)
+        {
+            IceInternal.OutgoingAsync outAsync__ = (IceInternal.OutgoingAsync)r__;
+            IceInternal.OutgoingAsync.check__(outAsync__, this, __getMapInterface_name);
+            if(!outAsync__.wait__())
+            {
+                try
+                {
+                    outAsync__.throwUserException__();
+                }
+                catch(Ice.UserException ex__)
+                {
+                    throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                }
+            }
+            BomberLoutreInterface.MapInterfacePrx ret__;
+            IceInternal.BasicStream is__ = outAsync__.istr__;
+            is__.startReadEncaps();
+            ret__ = BomberLoutreInterface.MapInterfacePrxHelper.read__(is__);
+            is__.endReadEncaps();
+            return ret__;
+        }
+
+        private Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_getMapInterface> begin_getMapInterface(_System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            checkAsyncTwowayOnly__(__getMapInterface_name);
+            IceInternal.TwowayOutgoingAsync<BomberLoutreInterface.Callback_GameInterface_getMapInterface> result__ =  new IceInternal.TwowayOutgoingAsync<BomberLoutreInterface.Callback_GameInterface_getMapInterface>(this, __getMapInterface_name, getMapInterface_completed__, cookie__);
+            if(cb__ != null)
+            {
+                result__.whenCompletedWithAsyncCallback(cb__);
+            }
+            try
+            {
+                result__.prepare__(__getMapInterface_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
+                IceInternal.BasicStream os__ = result__.ostr__;
+                os__.endWriteEncaps();
+                result__.send__(true);
+            }
+            catch(Ice.LocalException ex__)
+            {
+                result__.exceptionAsync__(ex__);
+            }
+            return result__;
+        }
+
+        private void getMapInterface_completed__(Ice.AsyncResult r__, BomberLoutreInterface.Callback_GameInterface_getMapInterface cb__, Ice.ExceptionCallback excb__)
+        {
+            BomberLoutreInterface.MapInterfacePrx ret__;
+            try
+            {
+                ret__ = end_getMapInterface(r__);
+            }
+            catch(Ice.Exception ex__)
+            {
+                if(excb__ != null)
+                {
+                    excb__(ex__);
+                }
+                return;
+            }
+            if(cb__ != null)
+            {
+                cb__(ret__);
             }
         }
 
@@ -4380,6 +4222,71 @@ namespace BomberLoutreInterface
             }
         }
 
+        public Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_leaveGame> begin_leaveGame(BomberLoutreInterface.UserData u)
+        {
+            return begin_leaveGame(u, null, false, null, null);
+        }
+
+        public Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_leaveGame> begin_leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__)
+        {
+            return begin_leaveGame(u, ctx__, true, null, null);
+        }
+
+        public Ice.AsyncResult begin_leaveGame(BomberLoutreInterface.UserData u, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_leaveGame(u, null, false, cb__, cookie__);
+        }
+
+        public Ice.AsyncResult begin_leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_leaveGame(u, ctx__, true, cb__, cookie__);
+        }
+
+        private const string __leaveGame_name = "leaveGame";
+
+        public void end_leaveGame(Ice.AsyncResult r__)
+        {
+            end__(r__, __leaveGame_name);
+        }
+
+        private Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_leaveGame> begin_leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            IceInternal.OnewayOutgoingAsync<BomberLoutreInterface.Callback_GameInterface_leaveGame> result__ = new IceInternal.OnewayOutgoingAsync<BomberLoutreInterface.Callback_GameInterface_leaveGame>(this, __leaveGame_name, leaveGame_completed__, cookie__);
+            if(cb__ != null)
+            {
+                result__.whenCompletedWithAsyncCallback(cb__);
+            }
+            try
+            {
+                result__.prepare__(__leaveGame_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
+                IceInternal.BasicStream os__ = result__.ostr__;
+                if(u == null)
+                {
+                    BomberLoutreInterface.UserData tmp__ = new BomberLoutreInterface.UserData();
+                    tmp__.write__(os__);
+                }
+                else
+                {
+                    u.write__(os__);
+                }
+                os__.endWriteEncaps();
+                result__.send__(true);
+            }
+            catch(Ice.LocalException ex__)
+            {
+                result__.exceptionAsync__(ex__);
+            }
+            return result__;
+        }
+
+        private void leaveGame_completed__(BomberLoutreInterface.Callback_GameInterface_leaveGame cb__)
+        {
+            if(cb__ != null)
+            {
+                cb__();
+            }
+        }
+
         public Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_removeBot> begin_removeBot()
         {
             return begin_removeBot(null, false, null, null);
@@ -4744,6 +4651,71 @@ namespace BomberLoutreInterface
         }
 
         private void startMap_completed__(BomberLoutreInterface.Callback_GameInterface_startMap cb__)
+        {
+            if(cb__ != null)
+            {
+                cb__();
+            }
+        }
+
+        public Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_userReady> begin_userReady(BomberLoutreInterface.UserData u)
+        {
+            return begin_userReady(u, null, false, null, null);
+        }
+
+        public Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_userReady> begin_userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__)
+        {
+            return begin_userReady(u, ctx__, true, null, null);
+        }
+
+        public Ice.AsyncResult begin_userReady(BomberLoutreInterface.UserData u, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_userReady(u, null, false, cb__, cookie__);
+        }
+
+        public Ice.AsyncResult begin_userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_userReady(u, ctx__, true, cb__, cookie__);
+        }
+
+        private const string __userReady_name = "userReady";
+
+        public void end_userReady(Ice.AsyncResult r__)
+        {
+            end__(r__, __userReady_name);
+        }
+
+        private Ice.AsyncResult<BomberLoutreInterface.Callback_GameInterface_userReady> begin_userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            IceInternal.OnewayOutgoingAsync<BomberLoutreInterface.Callback_GameInterface_userReady> result__ = new IceInternal.OnewayOutgoingAsync<BomberLoutreInterface.Callback_GameInterface_userReady>(this, __userReady_name, userReady_completed__, cookie__);
+            if(cb__ != null)
+            {
+                result__.whenCompletedWithAsyncCallback(cb__);
+            }
+            try
+            {
+                result__.prepare__(__userReady_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
+                IceInternal.BasicStream os__ = result__.ostr__;
+                if(u == null)
+                {
+                    BomberLoutreInterface.UserData tmp__ = new BomberLoutreInterface.UserData();
+                    tmp__.write__(os__);
+                }
+                else
+                {
+                    u.write__(os__);
+                }
+                os__.endWriteEncaps();
+                result__.send__(true);
+            }
+            catch(Ice.LocalException ex__)
+            {
+                result__.exceptionAsync__(ex__);
+            }
+            return result__;
+        }
+
+        private void userReady_completed__(BomberLoutreInterface.Callback_GameInterface_userReady cb__)
         {
             if(cb__ != null)
             {
@@ -8085,6 +8057,44 @@ namespace BomberLoutreInterface
             }
         }
 
+        public BomberLoutreInterface.GameInterfacePrx getUserInterface(BomberLoutreInterface.GameData gd)
+        {
+            return getUserInterface(gd, null, false);
+        }
+
+        public BomberLoutreInterface.GameInterfacePrx getUserInterface(BomberLoutreInterface.GameData gd, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            return getUserInterface(gd, context__, true);
+        }
+
+        private BomberLoutreInterface.GameInterfacePrx getUserInterface(BomberLoutreInterface.GameData gd, _System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
+        {
+            if(explicitContext__ && context__ == null)
+            {
+                context__ = emptyContext_;
+            }
+            int cnt__ = 0;
+            while(true)
+            {
+                Ice.ObjectDel_ delBase__ = null;
+                try
+                {
+                    checkTwowayOnly__("getUserInterface");
+                    delBase__ = getDelegate__(false);
+                    ServerInterfaceDel_ del__ = (ServerInterfaceDel_)delBase__;
+                    return del__.getUserInterface(gd, context__);
+                }
+                catch(IceInternal.LocalExceptionWrapper ex__)
+                {
+                    handleExceptionWrapper__(delBase__, ex__);
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    handleException__(delBase__, ex__, true, ref cnt__);
+                }
+            }
+        }
+
         public BomberLoutreInterface.UserData[] getUserList()
         {
             return getUserList(null, false);
@@ -8597,7 +8607,7 @@ namespace BomberLoutreInterface
             IceInternal.BasicStream is__ = outAsync__.istr__;
             is__.startReadEncaps();
             {
-                int szx__ = is__.readAndCheckSeqSize(15);
+                int szx__ = is__.readAndCheckSeqSize(13);
                 ret__ = new BomberLoutreInterface.GameData[szx__];
                 for(int ix__ = 0; ix__ < szx__; ++ix__)
                 {
@@ -8637,6 +8647,103 @@ namespace BomberLoutreInterface
             try
             {
                 ret__ = end_getGameList(r__);
+            }
+            catch(Ice.Exception ex__)
+            {
+                if(excb__ != null)
+                {
+                    excb__(ex__);
+                }
+                return;
+            }
+            if(cb__ != null)
+            {
+                cb__(ret__);
+            }
+        }
+
+        public Ice.AsyncResult<BomberLoutreInterface.Callback_ServerInterface_getUserInterface> begin_getUserInterface(BomberLoutreInterface.GameData gd)
+        {
+            return begin_getUserInterface(gd, null, false, null, null);
+        }
+
+        public Ice.AsyncResult<BomberLoutreInterface.Callback_ServerInterface_getUserInterface> begin_getUserInterface(BomberLoutreInterface.GameData gd, _System.Collections.Generic.Dictionary<string, string> ctx__)
+        {
+            return begin_getUserInterface(gd, ctx__, true, null, null);
+        }
+
+        public Ice.AsyncResult begin_getUserInterface(BomberLoutreInterface.GameData gd, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_getUserInterface(gd, null, false, cb__, cookie__);
+        }
+
+        public Ice.AsyncResult begin_getUserInterface(BomberLoutreInterface.GameData gd, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_getUserInterface(gd, ctx__, true, cb__, cookie__);
+        }
+
+        private const string __getUserInterface_name = "getUserInterface";
+
+        public BomberLoutreInterface.GameInterfacePrx end_getUserInterface(Ice.AsyncResult r__)
+        {
+            IceInternal.OutgoingAsync outAsync__ = (IceInternal.OutgoingAsync)r__;
+            IceInternal.OutgoingAsync.check__(outAsync__, this, __getUserInterface_name);
+            if(!outAsync__.wait__())
+            {
+                try
+                {
+                    outAsync__.throwUserException__();
+                }
+                catch(Ice.UserException ex__)
+                {
+                    throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                }
+            }
+            BomberLoutreInterface.GameInterfacePrx ret__;
+            IceInternal.BasicStream is__ = outAsync__.istr__;
+            is__.startReadEncaps();
+            ret__ = BomberLoutreInterface.GameInterfacePrxHelper.read__(is__);
+            is__.endReadEncaps();
+            return ret__;
+        }
+
+        private Ice.AsyncResult<BomberLoutreInterface.Callback_ServerInterface_getUserInterface> begin_getUserInterface(BomberLoutreInterface.GameData gd, _System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            checkAsyncTwowayOnly__(__getUserInterface_name);
+            IceInternal.TwowayOutgoingAsync<BomberLoutreInterface.Callback_ServerInterface_getUserInterface> result__ =  new IceInternal.TwowayOutgoingAsync<BomberLoutreInterface.Callback_ServerInterface_getUserInterface>(this, __getUserInterface_name, getUserInterface_completed__, cookie__);
+            if(cb__ != null)
+            {
+                result__.whenCompletedWithAsyncCallback(cb__);
+            }
+            try
+            {
+                result__.prepare__(__getUserInterface_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
+                IceInternal.BasicStream os__ = result__.ostr__;
+                if(gd == null)
+                {
+                    BomberLoutreInterface.GameData tmp__ = new BomberLoutreInterface.GameData();
+                    tmp__.write__(os__);
+                }
+                else
+                {
+                    gd.write__(os__);
+                }
+                os__.endWriteEncaps();
+                result__.send__(true);
+            }
+            catch(Ice.LocalException ex__)
+            {
+                result__.exceptionAsync__(ex__);
+            }
+            return result__;
+        }
+
+        private void getUserInterface_completed__(Ice.AsyncResult r__, BomberLoutreInterface.Callback_ServerInterface_getUserInterface cb__, Ice.ExceptionCallback excb__)
+        {
+            BomberLoutreInterface.GameInterfacePrx ret__;
+            try
+            {
+                ret__ = end_getUserInterface(r__);
             }
             catch(Ice.Exception ex__)
             {
@@ -9010,16 +9117,6 @@ namespace BomberLoutreInterface
 namespace BomberLoutreInterface
 {
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public interface GameUserInterfaceDel_ : Ice.ObjectDel_
-    {
-        string getCreatorName(_System.Collections.Generic.Dictionary<string, string> context__);
-
-        void userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__);
-
-        void leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__);
-    }
-
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public interface GameInterfaceDel_ : Ice.ObjectDel_
     {
         string getName(_System.Collections.Generic.Dictionary<string, string> context__);
@@ -9051,6 +9148,14 @@ namespace BomberLoutreInterface
         void endMap(_System.Collections.Generic.Dictionary<string, string> context__);
 
         bool removeGame(_System.Collections.Generic.Dictionary<string, string> context__);
+
+        string getCreatorName(_System.Collections.Generic.Dictionary<string, string> context__);
+
+        void userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__);
+
+        void leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__);
+
+        BomberLoutreInterface.MapInterfacePrx getMapInterface(_System.Collections.Generic.Dictionary<string, string> context__);
     }
 
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
@@ -9126,6 +9231,8 @@ namespace BomberLoutreInterface
 
         BomberLoutreInterface.Map joinGame(string name, BomberLoutreInterface.UserData user, BomberLoutreInterface.GameWaitRoomPrx room, BomberLoutreInterface.MapObserverPrx mo, _System.Collections.Generic.Dictionary<string, string> context__);
 
+        BomberLoutreInterface.GameInterfacePrx getUserInterface(BomberLoutreInterface.GameData gd, _System.Collections.Generic.Dictionary<string, string> context__);
+
         BomberLoutreInterface.GameData[] getGameList(_System.Collections.Generic.Dictionary<string, string> context__);
 
         BomberLoutreInterface.UserData[] getUserList(_System.Collections.Generic.Dictionary<string, string> context__);
@@ -9134,152 +9241,6 @@ namespace BomberLoutreInterface
 
 namespace BomberLoutreInterface
 {
-    [_System.Runtime.InteropServices.ComVisible(false)]
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public sealed class GameUserInterfaceDelM_ : Ice.ObjectDelM_, GameUserInterfaceDel_
-    {
-        public string getCreatorName(_System.Collections.Generic.Dictionary<string, string> context__)
-        {
-            IceInternal.Outgoing og__ = handler__.getOutgoing("getCreatorName", Ice.OperationMode.Normal, context__);
-            try
-            {
-                bool ok__ = og__.invoke();
-                try
-                {
-                    if(!ok__)
-                    {
-                        try
-                        {
-                            og__.throwUserException();
-                        }
-                        catch(Ice.UserException ex__)
-                        {
-                            throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
-                        }
-                    }
-                    IceInternal.BasicStream is__ = og__.istr();
-                    is__.startReadEncaps();
-                    string ret__;
-                    ret__ = is__.readString();
-                    is__.endReadEncaps();
-                    return ret__;
-                }
-                catch(Ice.LocalException ex__)
-                {
-                    throw new IceInternal.LocalExceptionWrapper(ex__, false);
-                }
-            }
-            finally
-            {
-                handler__.reclaimOutgoing(og__);
-            }
-        }
-
-        public void leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__)
-        {
-            IceInternal.Outgoing og__ = handler__.getOutgoing("leaveGame", Ice.OperationMode.Normal, context__);
-            try
-            {
-                try
-                {
-                    IceInternal.BasicStream os__ = og__.ostr();
-                    if(u == null)
-                    {
-                        BomberLoutreInterface.UserData tmp__ = new BomberLoutreInterface.UserData();
-                        tmp__.write__(os__);
-                    }
-                    else
-                    {
-                        u.write__(os__);
-                    }
-                }
-                catch(Ice.LocalException ex__)
-                {
-                    og__.abort(ex__);
-                }
-                bool ok__ = og__.invoke();
-                if(!og__.istr().isEmpty())
-                {
-                    try
-                    {
-                        if(!ok__)
-                        {
-                            try
-                            {
-                                og__.throwUserException();
-                            }
-                            catch(Ice.UserException ex__)
-                            {
-                                throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
-                            }
-                        }
-                        og__.istr().skipEmptyEncaps();
-                    }
-                    catch(Ice.LocalException ex__)
-                    {
-                        throw new IceInternal.LocalExceptionWrapper(ex__, false);
-                    }
-                }
-            }
-            finally
-            {
-                handler__.reclaimOutgoing(og__);
-            }
-        }
-
-        public void userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__)
-        {
-            IceInternal.Outgoing og__ = handler__.getOutgoing("userReady", Ice.OperationMode.Normal, context__);
-            try
-            {
-                try
-                {
-                    IceInternal.BasicStream os__ = og__.ostr();
-                    if(u == null)
-                    {
-                        BomberLoutreInterface.UserData tmp__ = new BomberLoutreInterface.UserData();
-                        tmp__.write__(os__);
-                    }
-                    else
-                    {
-                        u.write__(os__);
-                    }
-                }
-                catch(Ice.LocalException ex__)
-                {
-                    og__.abort(ex__);
-                }
-                bool ok__ = og__.invoke();
-                if(!og__.istr().isEmpty())
-                {
-                    try
-                    {
-                        if(!ok__)
-                        {
-                            try
-                            {
-                                og__.throwUserException();
-                            }
-                            catch(Ice.UserException ex__)
-                            {
-                                throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
-                            }
-                        }
-                        og__.istr().skipEmptyEncaps();
-                    }
-                    catch(Ice.LocalException ex__)
-                    {
-                        throw new IceInternal.LocalExceptionWrapper(ex__, false);
-                    }
-                }
-            }
-            finally
-            {
-                handler__.reclaimOutgoing(og__);
-            }
-        }
-    }
-
     [_System.Runtime.InteropServices.ComVisible(false)]
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public sealed class GameInterfaceDelM_ : Ice.ObjectDelM_, GameInterfaceDel_
@@ -9393,6 +9354,80 @@ namespace BomberLoutreInterface
                     {
                         throw new IceInternal.LocalExceptionWrapper(ex__, false);
                     }
+                }
+            }
+            finally
+            {
+                handler__.reclaimOutgoing(og__);
+            }
+        }
+
+        public string getCreatorName(_System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            IceInternal.Outgoing og__ = handler__.getOutgoing("getCreatorName", Ice.OperationMode.Normal, context__);
+            try
+            {
+                bool ok__ = og__.invoke();
+                try
+                {
+                    if(!ok__)
+                    {
+                        try
+                        {
+                            og__.throwUserException();
+                        }
+                        catch(Ice.UserException ex__)
+                        {
+                            throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                        }
+                    }
+                    IceInternal.BasicStream is__ = og__.istr();
+                    is__.startReadEncaps();
+                    string ret__;
+                    ret__ = is__.readString();
+                    is__.endReadEncaps();
+                    return ret__;
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    throw new IceInternal.LocalExceptionWrapper(ex__, false);
+                }
+            }
+            finally
+            {
+                handler__.reclaimOutgoing(og__);
+            }
+        }
+
+        public BomberLoutreInterface.MapInterfacePrx getMapInterface(_System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            IceInternal.Outgoing og__ = handler__.getOutgoing("getMapInterface", Ice.OperationMode.Normal, context__);
+            try
+            {
+                bool ok__ = og__.invoke();
+                try
+                {
+                    if(!ok__)
+                    {
+                        try
+                        {
+                            og__.throwUserException();
+                        }
+                        catch(Ice.UserException ex__)
+                        {
+                            throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                        }
+                    }
+                    IceInternal.BasicStream is__ = og__.istr();
+                    is__.startReadEncaps();
+                    BomberLoutreInterface.MapInterfacePrx ret__;
+                    ret__ = BomberLoutreInterface.MapInterfacePrxHelper.read__(is__);
+                    is__.endReadEncaps();
+                    return ret__;
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    throw new IceInternal.LocalExceptionWrapper(ex__, false);
                 }
             }
             finally
@@ -9637,6 +9672,58 @@ namespace BomberLoutreInterface
             }
         }
 
+        public void leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            IceInternal.Outgoing og__ = handler__.getOutgoing("leaveGame", Ice.OperationMode.Normal, context__);
+            try
+            {
+                try
+                {
+                    IceInternal.BasicStream os__ = og__.ostr();
+                    if(u == null)
+                    {
+                        BomberLoutreInterface.UserData tmp__ = new BomberLoutreInterface.UserData();
+                        tmp__.write__(os__);
+                    }
+                    else
+                    {
+                        u.write__(os__);
+                    }
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    og__.abort(ex__);
+                }
+                bool ok__ = og__.invoke();
+                if(!og__.istr().isEmpty())
+                {
+                    try
+                    {
+                        if(!ok__)
+                        {
+                            try
+                            {
+                                og__.throwUserException();
+                            }
+                            catch(Ice.UserException ex__)
+                            {
+                                throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                            }
+                        }
+                        og__.istr().skipEmptyEncaps();
+                    }
+                    catch(Ice.LocalException ex__)
+                    {
+                        throw new IceInternal.LocalExceptionWrapper(ex__, false);
+                    }
+                }
+            }
+            finally
+            {
+                handler__.reclaimOutgoing(og__);
+            }
+        }
+
         public void removeBot(_System.Collections.Generic.Dictionary<string, string> context__)
         {
             IceInternal.Outgoing og__ = handler__.getOutgoing("removeBot", Ice.OperationMode.Normal, context__);
@@ -9846,6 +9933,58 @@ namespace BomberLoutreInterface
             IceInternal.Outgoing og__ = handler__.getOutgoing("startMap", Ice.OperationMode.Normal, context__);
             try
             {
+                bool ok__ = og__.invoke();
+                if(!og__.istr().isEmpty())
+                {
+                    try
+                    {
+                        if(!ok__)
+                        {
+                            try
+                            {
+                                og__.throwUserException();
+                            }
+                            catch(Ice.UserException ex__)
+                            {
+                                throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                            }
+                        }
+                        og__.istr().skipEmptyEncaps();
+                    }
+                    catch(Ice.LocalException ex__)
+                    {
+                        throw new IceInternal.LocalExceptionWrapper(ex__, false);
+                    }
+                }
+            }
+            finally
+            {
+                handler__.reclaimOutgoing(og__);
+            }
+        }
+
+        public void userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            IceInternal.Outgoing og__ = handler__.getOutgoing("userReady", Ice.OperationMode.Normal, context__);
+            try
+            {
+                try
+                {
+                    IceInternal.BasicStream os__ = og__.ostr();
+                    if(u == null)
+                    {
+                        BomberLoutreInterface.UserData tmp__ = new BomberLoutreInterface.UserData();
+                        tmp__.write__(os__);
+                    }
+                    else
+                    {
+                        u.write__(os__);
+                    }
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    og__.abort(ex__);
+                }
                 bool ok__ = og__.invoke();
                 if(!og__.istr().isEmpty())
                 {
@@ -11237,7 +11376,7 @@ namespace BomberLoutreInterface
                     is__.startReadEncaps();
                     BomberLoutreInterface.GameData[] ret__;
                     {
-                        int szx__ = is__.readAndCheckSeqSize(15);
+                        int szx__ = is__.readAndCheckSeqSize(13);
                         ret__ = new BomberLoutreInterface.GameData[szx__];
                         for(int ix__ = 0; ix__ < szx__; ++ix__)
                         {
@@ -11245,6 +11384,60 @@ namespace BomberLoutreInterface
                             ret__[ix__].read__(is__);
                         }
                     }
+                    is__.endReadEncaps();
+                    return ret__;
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    throw new IceInternal.LocalExceptionWrapper(ex__, false);
+                }
+            }
+            finally
+            {
+                handler__.reclaimOutgoing(og__);
+            }
+        }
+
+        public BomberLoutreInterface.GameInterfacePrx getUserInterface(BomberLoutreInterface.GameData gd, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            IceInternal.Outgoing og__ = handler__.getOutgoing("getUserInterface", Ice.OperationMode.Normal, context__);
+            try
+            {
+                try
+                {
+                    IceInternal.BasicStream os__ = og__.ostr();
+                    if(gd == null)
+                    {
+                        BomberLoutreInterface.GameData tmp__ = new BomberLoutreInterface.GameData();
+                        tmp__.write__(os__);
+                    }
+                    else
+                    {
+                        gd.write__(os__);
+                    }
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    og__.abort(ex__);
+                }
+                bool ok__ = og__.invoke();
+                try
+                {
+                    if(!ok__)
+                    {
+                        try
+                        {
+                            og__.throwUserException();
+                        }
+                        catch(Ice.UserException ex__)
+                        {
+                            throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                        }
+                    }
+                    IceInternal.BasicStream is__ = og__.istr();
+                    is__.startReadEncaps();
+                    BomberLoutreInterface.GameInterfacePrx ret__;
+                    ret__ = BomberLoutreInterface.GameInterfacePrxHelper.read__(is__);
                     is__.endReadEncaps();
                     return ret__;
                 }
@@ -11370,142 +11563,6 @@ namespace BomberLoutreInterface
 
 namespace BomberLoutreInterface
 {
-    [_System.Runtime.InteropServices.ComVisible(false)]
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public sealed class GameUserInterfaceDelD_ : Ice.ObjectDelD_, GameUserInterfaceDel_
-    {
-        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
-        public string getCreatorName(_System.Collections.Generic.Dictionary<string, string> context__)
-        {
-            Ice.Current current__ = new Ice.Current();
-            initCurrent__(ref current__, "getCreatorName", Ice.OperationMode.Normal, context__);
-            string result__ = null;
-            IceInternal.Direct.RunDelegate run__ = delegate(Ice.Object obj__)
-            {
-                GameUserInterface servant__ = null;
-                try
-                {
-                    servant__ = (GameUserInterface)obj__;
-                }
-                catch(_System.InvalidCastException)
-                {
-                    throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
-                }
-                result__ = servant__.getCreatorName(current__);
-                return Ice.DispatchStatus.DispatchOK;
-            };
-            IceInternal.Direct direct__ = null;
-            try
-            {
-                direct__ = new IceInternal.Direct(current__, run__);
-                try
-                {
-                    Ice.DispatchStatus status__ = direct__.servant().collocDispatch__(direct__);
-                    _System.Diagnostics.Debug.Assert(status__ == Ice.DispatchStatus.DispatchOK);
-                }
-                finally
-                {
-                    direct__.destroy();
-                }
-            }
-            catch(Ice.SystemException)
-            {
-                throw;
-            }
-            catch(_System.Exception ex__)
-            {
-                IceInternal.LocalExceptionWrapper.throwWrapper(ex__);
-            }
-            return result__;
-        }
-
-        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
-        public void leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__)
-        {
-            Ice.Current current__ = new Ice.Current();
-            initCurrent__(ref current__, "leaveGame", Ice.OperationMode.Normal, context__);
-            IceInternal.Direct.RunDelegate run__ = delegate(Ice.Object obj__)
-            {
-                GameUserInterface servant__ = null;
-                try
-                {
-                    servant__ = (GameUserInterface)obj__;
-                }
-                catch(_System.InvalidCastException)
-                {
-                    throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
-                }
-                servant__.leaveGame(u, current__);
-                return Ice.DispatchStatus.DispatchOK;
-            };
-            IceInternal.Direct direct__ = null;
-            try
-            {
-                direct__ = new IceInternal.Direct(current__, run__);
-                try
-                {
-                    Ice.DispatchStatus status__ = direct__.servant().collocDispatch__(direct__);
-                    _System.Diagnostics.Debug.Assert(status__ == Ice.DispatchStatus.DispatchOK);
-                }
-                finally
-                {
-                    direct__.destroy();
-                }
-            }
-            catch(Ice.SystemException)
-            {
-                throw;
-            }
-            catch(_System.Exception ex__)
-            {
-                IceInternal.LocalExceptionWrapper.throwWrapper(ex__);
-            }
-        }
-
-        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
-        public void userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__)
-        {
-            Ice.Current current__ = new Ice.Current();
-            initCurrent__(ref current__, "userReady", Ice.OperationMode.Normal, context__);
-            IceInternal.Direct.RunDelegate run__ = delegate(Ice.Object obj__)
-            {
-                GameUserInterface servant__ = null;
-                try
-                {
-                    servant__ = (GameUserInterface)obj__;
-                }
-                catch(_System.InvalidCastException)
-                {
-                    throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
-                }
-                servant__.userReady(u, current__);
-                return Ice.DispatchStatus.DispatchOK;
-            };
-            IceInternal.Direct direct__ = null;
-            try
-            {
-                direct__ = new IceInternal.Direct(current__, run__);
-                try
-                {
-                    Ice.DispatchStatus status__ = direct__.servant().collocDispatch__(direct__);
-                    _System.Diagnostics.Debug.Assert(status__ == Ice.DispatchStatus.DispatchOK);
-                }
-                finally
-                {
-                    direct__.destroy();
-                }
-            }
-            catch(Ice.SystemException)
-            {
-                throw;
-            }
-            catch(_System.Exception ex__)
-            {
-                IceInternal.LocalExceptionWrapper.throwWrapper(ex__);
-            }
-        }
-    }
-
     [_System.Runtime.InteropServices.ComVisible(false)]
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public sealed class GameInterfaceDelD_ : Ice.ObjectDelD_, GameInterfaceDel_
@@ -11639,6 +11696,96 @@ namespace BomberLoutreInterface
             {
                 IceInternal.LocalExceptionWrapper.throwWrapper(ex__);
             }
+        }
+
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
+        public string getCreatorName(_System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            Ice.Current current__ = new Ice.Current();
+            initCurrent__(ref current__, "getCreatorName", Ice.OperationMode.Normal, context__);
+            string result__ = null;
+            IceInternal.Direct.RunDelegate run__ = delegate(Ice.Object obj__)
+            {
+                GameInterface servant__ = null;
+                try
+                {
+                    servant__ = (GameInterface)obj__;
+                }
+                catch(_System.InvalidCastException)
+                {
+                    throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
+                }
+                result__ = servant__.getCreatorName(current__);
+                return Ice.DispatchStatus.DispatchOK;
+            };
+            IceInternal.Direct direct__ = null;
+            try
+            {
+                direct__ = new IceInternal.Direct(current__, run__);
+                try
+                {
+                    Ice.DispatchStatus status__ = direct__.servant().collocDispatch__(direct__);
+                    _System.Diagnostics.Debug.Assert(status__ == Ice.DispatchStatus.DispatchOK);
+                }
+                finally
+                {
+                    direct__.destroy();
+                }
+            }
+            catch(Ice.SystemException)
+            {
+                throw;
+            }
+            catch(_System.Exception ex__)
+            {
+                IceInternal.LocalExceptionWrapper.throwWrapper(ex__);
+            }
+            return result__;
+        }
+
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
+        public BomberLoutreInterface.MapInterfacePrx getMapInterface(_System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            Ice.Current current__ = new Ice.Current();
+            initCurrent__(ref current__, "getMapInterface", Ice.OperationMode.Normal, context__);
+            BomberLoutreInterface.MapInterfacePrx result__ = null;
+            IceInternal.Direct.RunDelegate run__ = delegate(Ice.Object obj__)
+            {
+                GameInterface servant__ = null;
+                try
+                {
+                    servant__ = (GameInterface)obj__;
+                }
+                catch(_System.InvalidCastException)
+                {
+                    throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
+                }
+                result__ = servant__.getMapInterface(current__);
+                return Ice.DispatchStatus.DispatchOK;
+            };
+            IceInternal.Direct direct__ = null;
+            try
+            {
+                direct__ = new IceInternal.Direct(current__, run__);
+                try
+                {
+                    Ice.DispatchStatus status__ = direct__.servant().collocDispatch__(direct__);
+                    _System.Diagnostics.Debug.Assert(status__ == Ice.DispatchStatus.DispatchOK);
+                }
+                finally
+                {
+                    direct__.destroy();
+                }
+            }
+            catch(Ice.SystemException)
+            {
+                throw;
+            }
+            catch(_System.Exception ex__)
+            {
+                IceInternal.LocalExceptionWrapper.throwWrapper(ex__);
+            }
+            return result__;
         }
 
         [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
@@ -11908,6 +12055,49 @@ namespace BomberLoutreInterface
         }
 
         [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
+        public void leaveGame(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            Ice.Current current__ = new Ice.Current();
+            initCurrent__(ref current__, "leaveGame", Ice.OperationMode.Normal, context__);
+            IceInternal.Direct.RunDelegate run__ = delegate(Ice.Object obj__)
+            {
+                GameInterface servant__ = null;
+                try
+                {
+                    servant__ = (GameInterface)obj__;
+                }
+                catch(_System.InvalidCastException)
+                {
+                    throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
+                }
+                servant__.leaveGame(u, current__);
+                return Ice.DispatchStatus.DispatchOK;
+            };
+            IceInternal.Direct direct__ = null;
+            try
+            {
+                direct__ = new IceInternal.Direct(current__, run__);
+                try
+                {
+                    Ice.DispatchStatus status__ = direct__.servant().collocDispatch__(direct__);
+                    _System.Diagnostics.Debug.Assert(status__ == Ice.DispatchStatus.DispatchOK);
+                }
+                finally
+                {
+                    direct__.destroy();
+                }
+            }
+            catch(Ice.SystemException)
+            {
+                throw;
+            }
+            catch(_System.Exception ex__)
+            {
+                IceInternal.LocalExceptionWrapper.throwWrapper(ex__);
+            }
+        }
+
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
         public void removeBot(_System.Collections.Generic.Dictionary<string, string> context__)
         {
             Ice.Current current__ = new Ice.Current();
@@ -12141,6 +12331,49 @@ namespace BomberLoutreInterface
                     throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
                 }
                 servant__.startMap(current__);
+                return Ice.DispatchStatus.DispatchOK;
+            };
+            IceInternal.Direct direct__ = null;
+            try
+            {
+                direct__ = new IceInternal.Direct(current__, run__);
+                try
+                {
+                    Ice.DispatchStatus status__ = direct__.servant().collocDispatch__(direct__);
+                    _System.Diagnostics.Debug.Assert(status__ == Ice.DispatchStatus.DispatchOK);
+                }
+                finally
+                {
+                    direct__.destroy();
+                }
+            }
+            catch(Ice.SystemException)
+            {
+                throw;
+            }
+            catch(_System.Exception ex__)
+            {
+                IceInternal.LocalExceptionWrapper.throwWrapper(ex__);
+            }
+        }
+
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
+        public void userReady(BomberLoutreInterface.UserData u, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            Ice.Current current__ = new Ice.Current();
+            initCurrent__(ref current__, "userReady", Ice.OperationMode.Normal, context__);
+            IceInternal.Direct.RunDelegate run__ = delegate(Ice.Object obj__)
+            {
+                GameInterface servant__ = null;
+                try
+                {
+                    servant__ = (GameInterface)obj__;
+                }
+                catch(_System.InvalidCastException)
+                {
+                    throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
+                }
+                servant__.userReady(u, current__);
                 return Ice.DispatchStatus.DispatchOK;
             };
             IceInternal.Direct direct__ = null;
@@ -13489,6 +13722,51 @@ namespace BomberLoutreInterface
         }
 
         [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
+        public BomberLoutreInterface.GameInterfacePrx getUserInterface(BomberLoutreInterface.GameData gd, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            Ice.Current current__ = new Ice.Current();
+            initCurrent__(ref current__, "getUserInterface", Ice.OperationMode.Normal, context__);
+            BomberLoutreInterface.GameInterfacePrx result__ = null;
+            IceInternal.Direct.RunDelegate run__ = delegate(Ice.Object obj__)
+            {
+                ServerInterface servant__ = null;
+                try
+                {
+                    servant__ = (ServerInterface)obj__;
+                }
+                catch(_System.InvalidCastException)
+                {
+                    throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
+                }
+                result__ = servant__.getUserInterface(gd, current__);
+                return Ice.DispatchStatus.DispatchOK;
+            };
+            IceInternal.Direct direct__ = null;
+            try
+            {
+                direct__ = new IceInternal.Direct(current__, run__);
+                try
+                {
+                    Ice.DispatchStatus status__ = direct__.servant().collocDispatch__(direct__);
+                    _System.Diagnostics.Debug.Assert(status__ == Ice.DispatchStatus.DispatchOK);
+                }
+                finally
+                {
+                    direct__.destroy();
+                }
+            }
+            catch(Ice.SystemException)
+            {
+                throw;
+            }
+            catch(_System.Exception ex__)
+            {
+                IceInternal.LocalExceptionWrapper.throwWrapper(ex__);
+            }
+            return result__;
+        }
+
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
         public BomberLoutreInterface.UserData[] getUserList(_System.Collections.Generic.Dictionary<string, string> context__)
         {
             Ice.Current current__ = new Ice.Current();
@@ -13582,224 +13860,6 @@ namespace BomberLoutreInterface
 
 namespace BomberLoutreInterface
 {
-    [_System.Runtime.InteropServices.ComVisible(false)]
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public abstract class GameUserInterfaceDisp_ : Ice.ObjectImpl, GameUserInterface
-    {
-        #region Slice operations
-
-        public string getCreatorName()
-        {
-            return getCreatorName(Ice.ObjectImpl.defaultCurrent);
-        }
-
-        public abstract string getCreatorName(Ice.Current current__);
-
-        public void userReady(BomberLoutreInterface.UserData u)
-        {
-            userReady(u, Ice.ObjectImpl.defaultCurrent);
-        }
-
-        public abstract void userReady(BomberLoutreInterface.UserData u, Ice.Current current__);
-
-        public void leaveGame(BomberLoutreInterface.UserData u)
-        {
-            leaveGame(u, Ice.ObjectImpl.defaultCurrent);
-        }
-
-        public abstract void leaveGame(BomberLoutreInterface.UserData u, Ice.Current current__);
-
-        #endregion
-
-        #region Slice type-related members
-
-        public static new readonly string[] ids__ = 
-        {
-            "::BomberLoutreInterface::GameUserInterface",
-            "::Ice::Object"
-        };
-
-        public override bool ice_isA(string s)
-        {
-            return _System.Array.BinarySearch(ids__, s, IceUtilInternal.StringUtil.OrdinalStringComparer) >= 0;
-        }
-
-        public override bool ice_isA(string s, Ice.Current current__)
-        {
-            return _System.Array.BinarySearch(ids__, s, IceUtilInternal.StringUtil.OrdinalStringComparer) >= 0;
-        }
-
-        public override string[] ice_ids()
-        {
-            return ids__;
-        }
-
-        public override string[] ice_ids(Ice.Current current__)
-        {
-            return ids__;
-        }
-
-        public override string ice_id()
-        {
-            return ids__[0];
-        }
-
-        public override string ice_id(Ice.Current current__)
-        {
-            return ids__[0];
-        }
-
-        public static new string ice_staticId()
-        {
-            return ids__[0];
-        }
-
-        #endregion
-
-        #region Operation dispatch
-
-        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-        public static Ice.DispatchStatus getCreatorName___(GameUserInterface obj__, IceInternal.Incoming inS__, Ice.Current current__)
-        {
-            checkMode__(Ice.OperationMode.Normal, current__.mode);
-            inS__.istr().skipEmptyEncaps();
-            IceInternal.BasicStream os__ = inS__.ostr();
-            string ret__ = obj__.getCreatorName(current__);
-            os__.writeString(ret__);
-            return Ice.DispatchStatus.DispatchOK;
-        }
-
-        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-        public static Ice.DispatchStatus userReady___(GameUserInterface obj__, IceInternal.Incoming inS__, Ice.Current current__)
-        {
-            checkMode__(Ice.OperationMode.Normal, current__.mode);
-            IceInternal.BasicStream is__ = inS__.istr();
-            is__.startReadEncaps();
-            BomberLoutreInterface.UserData u;
-            u = null;
-            if(u == null)
-            {
-                u = new BomberLoutreInterface.UserData();
-            }
-            u.read__(is__);
-            is__.endReadEncaps();
-            obj__.userReady(u, current__);
-            return Ice.DispatchStatus.DispatchOK;
-        }
-
-        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-        public static Ice.DispatchStatus leaveGame___(GameUserInterface obj__, IceInternal.Incoming inS__, Ice.Current current__)
-        {
-            checkMode__(Ice.OperationMode.Normal, current__.mode);
-            IceInternal.BasicStream is__ = inS__.istr();
-            is__.startReadEncaps();
-            BomberLoutreInterface.UserData u;
-            u = null;
-            if(u == null)
-            {
-                u = new BomberLoutreInterface.UserData();
-            }
-            u.read__(is__);
-            is__.endReadEncaps();
-            obj__.leaveGame(u, current__);
-            return Ice.DispatchStatus.DispatchOK;
-        }
-
-        private static string[] all__ =
-        {
-            "getCreatorName",
-            "ice_id",
-            "ice_ids",
-            "ice_isA",
-            "ice_ping",
-            "leaveGame",
-            "userReady"
-        };
-
-        public override Ice.DispatchStatus dispatch__(IceInternal.Incoming inS__, Ice.Current current__)
-        {
-            int pos = _System.Array.BinarySearch(all__, current__.operation, IceUtilInternal.StringUtil.OrdinalStringComparer);
-            if(pos < 0)
-            {
-                throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
-            }
-
-            switch(pos)
-            {
-                case 0:
-                {
-                    return getCreatorName___(this, inS__, current__);
-                }
-                case 1:
-                {
-                    return ice_id___(this, inS__, current__);
-                }
-                case 2:
-                {
-                    return ice_ids___(this, inS__, current__);
-                }
-                case 3:
-                {
-                    return ice_isA___(this, inS__, current__);
-                }
-                case 4:
-                {
-                    return ice_ping___(this, inS__, current__);
-                }
-                case 5:
-                {
-                    return leaveGame___(this, inS__, current__);
-                }
-                case 6:
-                {
-                    return userReady___(this, inS__, current__);
-                }
-            }
-
-            _System.Diagnostics.Debug.Assert(false);
-            throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
-        }
-
-        #endregion
-
-        #region Marshaling support
-
-        public override void write__(IceInternal.BasicStream os__)
-        {
-            os__.writeTypeId(ice_staticId());
-            os__.startWriteSlice();
-            os__.endWriteSlice();
-            base.write__(os__);
-        }
-
-        public override void read__(IceInternal.BasicStream is__, bool rid__)
-        {
-            if(rid__)
-            {
-                /* string myId = */ is__.readTypeId();
-            }
-            is__.startReadSlice();
-            is__.endReadSlice();
-            base.read__(is__, true);
-        }
-
-        public override void write__(Ice.OutputStream outS__)
-        {
-            Ice.MarshalException ex = new Ice.MarshalException();
-            ex.reason = "type BomberLoutreInterface::GameUserInterface was not generated with stream support";
-            throw ex;
-        }
-
-        public override void read__(Ice.InputStream inS__, bool rid__)
-        {
-            Ice.MarshalException ex = new Ice.MarshalException();
-            ex.reason = "type BomberLoutreInterface::GameUserInterface was not generated with stream support";
-            throw ex;
-        }
-
-        #endregion
-    }
-
     [_System.Runtime.InteropServices.ComVisible(false)]
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public abstract class GameInterfaceDisp_ : Ice.ObjectImpl, GameInterface
@@ -13910,6 +13970,34 @@ namespace BomberLoutreInterface
         }
 
         public abstract bool removeGame(Ice.Current current__);
+
+        public string getCreatorName()
+        {
+            return getCreatorName(Ice.ObjectImpl.defaultCurrent);
+        }
+
+        public abstract string getCreatorName(Ice.Current current__);
+
+        public void userReady(BomberLoutreInterface.UserData u)
+        {
+            userReady(u, Ice.ObjectImpl.defaultCurrent);
+        }
+
+        public abstract void userReady(BomberLoutreInterface.UserData u, Ice.Current current__);
+
+        public void leaveGame(BomberLoutreInterface.UserData u)
+        {
+            leaveGame(u, Ice.ObjectImpl.defaultCurrent);
+        }
+
+        public abstract void leaveGame(BomberLoutreInterface.UserData u, Ice.Current current__);
+
+        public BomberLoutreInterface.MapInterfacePrx getMapInterface()
+        {
+            return getMapInterface(Ice.ObjectImpl.defaultCurrent);
+        }
+
+        public abstract BomberLoutreInterface.MapInterfacePrx getMapInterface(Ice.Current current__);
 
         #endregion
 
@@ -14133,11 +14221,71 @@ namespace BomberLoutreInterface
             return Ice.DispatchStatus.DispatchOK;
         }
 
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+        public static Ice.DispatchStatus getCreatorName___(GameInterface obj__, IceInternal.Incoming inS__, Ice.Current current__)
+        {
+            checkMode__(Ice.OperationMode.Normal, current__.mode);
+            inS__.istr().skipEmptyEncaps();
+            IceInternal.BasicStream os__ = inS__.ostr();
+            string ret__ = obj__.getCreatorName(current__);
+            os__.writeString(ret__);
+            return Ice.DispatchStatus.DispatchOK;
+        }
+
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+        public static Ice.DispatchStatus userReady___(GameInterface obj__, IceInternal.Incoming inS__, Ice.Current current__)
+        {
+            checkMode__(Ice.OperationMode.Normal, current__.mode);
+            IceInternal.BasicStream is__ = inS__.istr();
+            is__.startReadEncaps();
+            BomberLoutreInterface.UserData u;
+            u = null;
+            if(u == null)
+            {
+                u = new BomberLoutreInterface.UserData();
+            }
+            u.read__(is__);
+            is__.endReadEncaps();
+            obj__.userReady(u, current__);
+            return Ice.DispatchStatus.DispatchOK;
+        }
+
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+        public static Ice.DispatchStatus leaveGame___(GameInterface obj__, IceInternal.Incoming inS__, Ice.Current current__)
+        {
+            checkMode__(Ice.OperationMode.Normal, current__.mode);
+            IceInternal.BasicStream is__ = inS__.istr();
+            is__.startReadEncaps();
+            BomberLoutreInterface.UserData u;
+            u = null;
+            if(u == null)
+            {
+                u = new BomberLoutreInterface.UserData();
+            }
+            u.read__(is__);
+            is__.endReadEncaps();
+            obj__.leaveGame(u, current__);
+            return Ice.DispatchStatus.DispatchOK;
+        }
+
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+        public static Ice.DispatchStatus getMapInterface___(GameInterface obj__, IceInternal.Incoming inS__, Ice.Current current__)
+        {
+            checkMode__(Ice.OperationMode.Normal, current__.mode);
+            inS__.istr().skipEmptyEncaps();
+            IceInternal.BasicStream os__ = inS__.ostr();
+            BomberLoutreInterface.MapInterfacePrx ret__ = obj__.getMapInterface(current__);
+            BomberLoutreInterface.MapInterfacePrxHelper.write__(os__, ret__);
+            return Ice.DispatchStatus.DispatchOK;
+        }
+
         private static string[] all__ =
         {
             "addBot",
             "createMap",
             "endMap",
+            "getCreatorName",
+            "getMapInterface",
             "getMapList",
             "getName",
             "getRoundCount",
@@ -14148,12 +14296,14 @@ namespace BomberLoutreInterface
             "ice_ping",
             "invitePlayer",
             "kickPlayer",
+            "leaveGame",
             "removeBot",
             "removeGame",
             "setName",
             "setRoundCount",
             "setState",
-            "startMap"
+            "startMap",
+            "userReady"
         };
 
         public override Ice.DispatchStatus dispatch__(IceInternal.Incoming inS__, Ice.Current current__)
@@ -14180,67 +14330,83 @@ namespace BomberLoutreInterface
                 }
                 case 3:
                 {
-                    return getMapList___(this, inS__, current__);
+                    return getCreatorName___(this, inS__, current__);
                 }
                 case 4:
                 {
-                    return getName___(this, inS__, current__);
+                    return getMapInterface___(this, inS__, current__);
                 }
                 case 5:
                 {
-                    return getRoundCount___(this, inS__, current__);
+                    return getMapList___(this, inS__, current__);
                 }
                 case 6:
                 {
-                    return getState___(this, inS__, current__);
+                    return getName___(this, inS__, current__);
                 }
                 case 7:
                 {
-                    return ice_id___(this, inS__, current__);
+                    return getRoundCount___(this, inS__, current__);
                 }
                 case 8:
                 {
-                    return ice_ids___(this, inS__, current__);
+                    return getState___(this, inS__, current__);
                 }
                 case 9:
                 {
-                    return ice_isA___(this, inS__, current__);
+                    return ice_id___(this, inS__, current__);
                 }
                 case 10:
                 {
-                    return ice_ping___(this, inS__, current__);
+                    return ice_ids___(this, inS__, current__);
                 }
                 case 11:
                 {
-                    return invitePlayer___(this, inS__, current__);
+                    return ice_isA___(this, inS__, current__);
                 }
                 case 12:
                 {
-                    return kickPlayer___(this, inS__, current__);
+                    return ice_ping___(this, inS__, current__);
                 }
                 case 13:
                 {
-                    return removeBot___(this, inS__, current__);
+                    return invitePlayer___(this, inS__, current__);
                 }
                 case 14:
                 {
-                    return removeGame___(this, inS__, current__);
+                    return kickPlayer___(this, inS__, current__);
                 }
                 case 15:
                 {
-                    return setName___(this, inS__, current__);
+                    return leaveGame___(this, inS__, current__);
                 }
                 case 16:
                 {
-                    return setRoundCount___(this, inS__, current__);
+                    return removeBot___(this, inS__, current__);
                 }
                 case 17:
                 {
-                    return setState___(this, inS__, current__);
+                    return removeGame___(this, inS__, current__);
                 }
                 case 18:
                 {
+                    return setName___(this, inS__, current__);
+                }
+                case 19:
+                {
+                    return setRoundCount___(this, inS__, current__);
+                }
+                case 20:
+                {
+                    return setState___(this, inS__, current__);
+                }
+                case 21:
+                {
                     return startMap___(this, inS__, current__);
+                }
+                case 22:
+                {
+                    return userReady___(this, inS__, current__);
                 }
             }
 
@@ -15383,6 +15549,13 @@ namespace BomberLoutreInterface
 
         public abstract BomberLoutreInterface.Map joinGame(string name, BomberLoutreInterface.UserData user, BomberLoutreInterface.GameWaitRoomPrx room, BomberLoutreInterface.MapObserverPrx mo, Ice.Current current__);
 
+        public BomberLoutreInterface.GameInterfacePrx getUserInterface(BomberLoutreInterface.GameData gd)
+        {
+            return getUserInterface(gd, Ice.ObjectImpl.defaultCurrent);
+        }
+
+        public abstract BomberLoutreInterface.GameInterfacePrx getUserInterface(BomberLoutreInterface.GameData gd, Ice.Current current__);
+
         public BomberLoutreInterface.GameData[] getGameList()
         {
             return getGameList(Ice.ObjectImpl.defaultCurrent);
@@ -15593,6 +15766,26 @@ namespace BomberLoutreInterface
         }
 
         [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+        public static Ice.DispatchStatus getUserInterface___(ServerInterface obj__, IceInternal.Incoming inS__, Ice.Current current__)
+        {
+            checkMode__(Ice.OperationMode.Normal, current__.mode);
+            IceInternal.BasicStream is__ = inS__.istr();
+            is__.startReadEncaps();
+            BomberLoutreInterface.GameData gd;
+            gd = null;
+            if(gd == null)
+            {
+                gd = new BomberLoutreInterface.GameData();
+            }
+            gd.read__(is__);
+            is__.endReadEncaps();
+            IceInternal.BasicStream os__ = inS__.ostr();
+            BomberLoutreInterface.GameInterfacePrx ret__ = obj__.getUserInterface(gd, current__);
+            BomberLoutreInterface.GameInterfacePrxHelper.write__(os__, ret__);
+            return Ice.DispatchStatus.DispatchOK;
+        }
+
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
         public static Ice.DispatchStatus getGameList___(ServerInterface obj__, IceInternal.Incoming inS__, Ice.Current current__)
         {
             checkMode__(Ice.OperationMode.Normal, current__.mode);
@@ -15643,6 +15836,7 @@ namespace BomberLoutreInterface
             "createUser",
             "deleteUser",
             "getGameList",
+            "getUserInterface",
             "getUserList",
             "ice_id",
             "ice_ids",
@@ -15683,25 +15877,29 @@ namespace BomberLoutreInterface
                 }
                 case 5:
                 {
-                    return getUserList___(this, inS__, current__);
+                    return getUserInterface___(this, inS__, current__);
                 }
                 case 6:
                 {
-                    return ice_id___(this, inS__, current__);
+                    return getUserList___(this, inS__, current__);
                 }
                 case 7:
                 {
-                    return ice_ids___(this, inS__, current__);
+                    return ice_id___(this, inS__, current__);
                 }
                 case 8:
                 {
-                    return ice_isA___(this, inS__, current__);
+                    return ice_ids___(this, inS__, current__);
                 }
                 case 9:
                 {
-                    return ice_ping___(this, inS__, current__);
+                    return ice_isA___(this, inS__, current__);
                 }
                 case 10:
+                {
+                    return ice_ping___(this, inS__, current__);
+                }
+                case 11:
                 {
                     return joinGame___(this, inS__, current__);
                 }

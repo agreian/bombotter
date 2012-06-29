@@ -19,12 +19,14 @@ module BomberLoutreInterface
 	};
 	sequence<UserData> UserDataList;
 
-	interface GameUserInterface
+	interface MapInterface;
+	/*interface GameUserInterface
 	{
 		string getCreatorName();
 		void userReady(UserData u);
 		void leaveGame(UserData u);
-	};
+		MapInterface* getMapInterface();
+	};*/
 
 	struct GameData
 	{
@@ -32,7 +34,7 @@ module BomberLoutreInterface
 		int roundCount;
 		int state;
 		int playerCount;
-		GameUserInterface* gameui;
+		//GameUserInterface* gameui;
 	};
 	sequence<GameData> GameDataList;
 	
@@ -60,6 +62,11 @@ module BomberLoutreInterface
 		void endMap();
 		
 		bool removeGame();
+
+		string getCreatorName();
+		void userReady(UserData u);
+		void leaveGame(UserData u);
+		MapInterface* getMapInterface();
 	};
 	
 	interface GameWaitRoom
@@ -115,6 +122,7 @@ module BomberLoutreInterface
 
 	struct Map
 	{	
+		string id;
 		MapInterface* mi;
 		MapItems items;
 		PlayerList players;
@@ -136,7 +144,7 @@ module BomberLoutreInterface
 	};
 
 	exception UserException { string reason; };
-	exception BadLoginException 				extends UserException {};
+	exception BadLoginException 			extends UserException {};
 	exception BadPasswordException 			extends UserException {};
 	exception UserAlreadyExistsException 	extends UserException {};
 
@@ -148,8 +156,9 @@ module BomberLoutreInterface
 			throws UserAlreadyExistsException;
 		bool deleteUser(string login);
 		
-		GameInterface* addGame(string name, UserData user, GameWaitRoom* room, MapObserver* mo);
+		GameInterface*  addGame(string name, UserData user, GameWaitRoom* room, MapObserver* mo);
 		Map				joinGame(string name, UserData user, GameWaitRoom* room, MapObserver* mo);
+		GameInterface*	getUserInterface(GameData gd);
 		GameDataList	getGameList();
 		UserDataList	getUserList();
 	};
