@@ -1,6 +1,8 @@
 #include <time.h>
 #include "BotPlayerModel.h"
 #include "BombItem.h"
+#include "MapModel.h"
+#include "UserModel.h"
 
 const float dangerLimit = 10.0f;
 const float criticalLimit = 0.0f;
@@ -10,7 +12,7 @@ BotPlayerModel::BotPlayerModel()
 	
 }
 		
-PlayerModel(MapModel *map, UserModel *user, int posX, int posY):PlayerModel(map, user, posX, posY)
+BotPlayerModel::BotPlayerModel(MapModel *map, UserModel *user, int posX, int posY):PlayerModel(map, user, posX, posY)
 {
 }
 
@@ -466,10 +468,10 @@ void BotPlayerModel::doBestAction()
 			{
 				switch (target)
 				{
-					case PlayerModel::dirLeft: moveRight = true; break;
-					case PlayerModel::dirRight: moveLeft = true; break;
-					case PlayerModel::dirUp: moveDown = true; break;
-					case PlayerModel::dirDown: moveUp = true; break;
+					case PlayerModel::dirLeft: _moveRight = true; break;
+					case PlayerModel::dirRight: _moveLeft = true; break;
+					case PlayerModel::dirUp: _moveDown = true; break;
+					case PlayerModel::dirDown: _moveUp = true; break;
 				}
 			} else {
 				tx=-1;
@@ -498,32 +500,32 @@ void BotPlayerModel::doBestAction()
 				this->resultMap[tx][ty]=-5000;
 			} else if (mtx>x) {
 				if (this->target==PlayerModel::dirUp && displacement > 9)
-					moveDown = true;
+					_moveDown = true;
 				else if (this->target==PlayerModel::dirDown && displacement > 9)
-					moveUp = true;
+					_moveUp = true;
 				else
-					moveRight = true;		
+					_moveRight = true;		
 			} else if (mtx<x) {
 				if (this->target == PlayerModel::dirUp && displacement > 9)
-					moveDown = true;
+					_moveDown = true;
 				else if (this->target == PlayerModel::dirDown && displacement > 9)
-					moveUp = true;
+					_moveUp = true;
 				else
-					moveLeft = true;	
+					_moveLeft = true;	
 			} else if (mty>y) {
 				if (this->target==PlayerModel::dirLeft && displacement > 9)
-					moveRight=true;
+					_moveRight=true;
 				else if (this->target==PlayerModel::dirRight && displacement > 9)
-					moveLeft=true;
+					_moveLeft=true;
 				else
-					moveUp=true;
+					_moveUp=true;
 			} else if (mty<y) {
 				if (this->target == PlayerModel::dirLeft && displacement > 9)
-					moveRight=true;
+					_moveRight=true;
 				else if (this->target == PlayerModel::dirRight && displacement > 9)
-					moveLeft = true;
+					_moveLeft = true;
 				else
-					moveDown = true;
+					_moveDown = true;
 			}
 
 		} // end while
@@ -576,22 +578,22 @@ void BotPlayerModel::goOutDanger()
 			{
 				case dirLeft: 
 				{
-					moveRight=true;
+					_moveRight=true;
 					break;
 				}
 				case dirRight:
 				{
-					moveLeft=true;
+					_moveLeft=true;
 					break;
 				}
 				case dirUp:
 				{
-					moveDown=true;
+					_moveDown=true;
 					break;
 				}
 				case dirDown:
 				{
-					moveUp=true;
+					_moveUp=true;
 					break;
 				}
 			}
@@ -614,38 +616,38 @@ void BotPlayerModel::goOutDanger()
 		if (mtx>x) 
 		{
 			if (this->target==PlayerModel::dirUp && displacement > 9)
-				moveDown=true;
+				_moveDown=true;
 			else if (this->target==PlayerModel::dirDown && displacement > 9)
-				moveUp=true;
+				_moveUp=true;
 			else
-				moveRight=true;		
+				_moveRight=true;		
 		}
 		else if (mtx<x)
 		{
 			if (this->target==PlayerModel::dirUp && displacement > 9)
-				moveDown = true;
+				_moveDown = true;
 			else if (this->target==PlayerModel::dirDown && displacement > 9)
-				moveUp = true;
+				_moveUp = true;
 			else
-				moveLeft = true;	
+				_moveLeft = true;	
 		}
 		else if (mty>y) 
 		{
 			if (this->target==PlayerModel::dirLeft && displacement > 9)
-				moveRight=true;
+				_moveRight=true;
 			else if (this->target==PlayerModel::dirRight && displacement > 9)
-				moveLeft=true;
+				_moveLeft=true;
 			else
-				moveUp=true;
+				_moveUp=true;
 		}
 		else if (mty<y) 
 		{
 			if (this->target==PlayerModel::dirLeft && displacement > 9)
-				moveRight=true;
+				_moveRight=true;
 			else if (this->target==PlayerModel::dirRight && displacement > 9)
-				moveLeft=true;
+				_moveLeft=true;
 			else
-				moveDown=true;
+				_moveDown=true;
 		}
 	}
 }
@@ -656,7 +658,7 @@ bool BotPlayerModel::action()
 	{
 		autoMove();
 
-		if (!moveDown && !moveUp && !moveRight && !moveLeft)
+		if (!_moveDown && !_moveUp && !_moveRight && !_moveLeft)
 		{
 	
 		}
@@ -666,14 +668,14 @@ bool BotPlayerModel::action()
 		}
 
 		// testing the directional-keys
-		if (moveDown)
+		if (_moveDown)
 		{
 			moveDown();
-		} else if(moveUp) {
+		} else if(_moveUp) {
 			moveUp();
-		} else if (moveLeft) {
+		} else if (_moveLeft) {
 			moveLeft();
-		} else if (moveRight) {
+		} else if (_moveRight) {
 			moveRight();
 		}
 	}
@@ -685,7 +687,8 @@ void BotPlayerModel::randomMove()
 {
 	int i=0;
 	bool goOut = false;
-	int randDir = CTools::randi(0,3);
+	srand (time(NULL));
+	int randDir =  rand() % 3;
 	
 	while (!goOut && i<4)
 	{
@@ -701,10 +704,10 @@ void BotPlayerModel::randomMove()
 		{
 			switch (target)
 			{
-				case PlayerModel::dirDown: moveDown = true; break;
-				case PlayerModel::dirUp: moveUp = true; break;
-				case PlayerModel::dirLeft: moveLeft = true; break;
-				case PlayerModel::dirRight: moveRight = true; break;
+				case PlayerModel::dirDown: _moveDown = true; break;
+				case PlayerModel::dirUp: _moveUp = true; break;
+				case PlayerModel::dirLeft: _moveLeft = true; break;
+				case PlayerModel::dirRight: _moveRight = true; break;
 			}
 			goOut = true;
 		}
