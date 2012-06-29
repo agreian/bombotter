@@ -65,8 +65,9 @@ namespace BomberLoutre.Screens
                     {
                         case "Jouer":
                             MediaPlayer.Stop(); 
-                            StateManager.ChangeState(GameRef.NuclexScreen);
-                            //StateManager.ChangeState(GameRef.GameScreen);
+                            //StateManager.ChangeState(GameRef.NuclexScreen);
+                            GameRef.DisplayBackgroundImage = false;
+                            StateManager.ChangeState(GameRef.GameScreen);
                             break;
                         case "Options":
                             StateManager.ChangeState(GameRef.OptionScreen);

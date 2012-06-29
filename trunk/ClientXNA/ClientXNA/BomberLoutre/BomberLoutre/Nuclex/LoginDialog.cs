@@ -36,18 +36,21 @@ namespace Nuclex.UserInterface.Demo
             string login = loginTextBox.Text;
             string password = passwordTextBox.Text;
 
-            try
+            if(!(string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password)))
             {
-                BomberLoutreInterface.UserData userData = BomberLoutre.IceInterface.Main.Connection(login, password);
+                try
+                {
+                    BomberLoutreInterface.UserData userData = BomberLoutre.IceInterface.Main.Connection(login, password);
 
-                if (ConnectionEstablished != null)
-                    ConnectionEstablished(this, userData);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
+                    if (ConnectionEstablished != null)
+                        ConnectionEstablished(this, userData);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
 
-                this.Close();
+                    this.Close();
+                }
             }
         }
 

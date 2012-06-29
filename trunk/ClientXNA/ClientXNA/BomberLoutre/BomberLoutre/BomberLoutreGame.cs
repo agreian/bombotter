@@ -33,6 +33,7 @@ namespace BomberLoutre
         public InputManager nuclexInput;
 
         private Texture2D backgroundImage;
+        public bool DisplayBackgroundImage { get; set; }
 
         public BomberLoutreGame()
         {
@@ -66,6 +67,8 @@ namespace BomberLoutre
             ControlEditScreen = new ControlEditScreen(this, stateManager);
             GameScreen = new GameScreen(this, stateManager);
             NuclexScreen = new NuclexScreen(this, stateManager);
+
+            DisplayBackgroundImage = true;
 
             stateManager.ChangeState(TitleScreen);
         }
@@ -124,10 +127,17 @@ namespace BomberLoutre
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            spriteBatch.Begin();
-            spriteBatch.Draw(backgroundImage, new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), Color.White);
-            spriteBatch.End();
-            //GraphicsDevice.Clear(Color.DarkGray);
+
+
+            if (!DisplayBackgroundImage)
+                GraphicsDevice.Clear(Color.DarkGray);
+
+            else
+            {
+                spriteBatch.Begin();
+                spriteBatch.Draw(backgroundImage, new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), Color.White);
+                spriteBatch.End();
+            }
 
             base.Draw(gameTime);
         }
