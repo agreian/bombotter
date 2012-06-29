@@ -38,19 +38,18 @@ class ServerModel :
 		
 		virtual BomberLoutreInterface::GameDataList 
 		getGameList(const Ice::Current& = ::Ice::Current());
-
-		virtual ::BomberLoutreInterface::GameInterfacePrx
-		getUserInterface(::BomberLoutreInterface::GameData gd);
 		
 		virtual BomberLoutreInterface::UserDataList 
 		getUserList(const Ice::Current& = ::Ice::Current());
 
 		void loadMap(const std::string dossier);
-		std::vector<string> getMap(const std::string mapName)
-
+		std::vector<std::string> getMap(const std::string mapName);
+		
 		BomberLoutreInterface::GameInterfacePrx 
-		getUserInterface(const BomberLoutreInterface::GameData &,const Ice::Current & = ::Ice::Current());
+		getUserInterface(const ::BomberLoutreInterface::GameData &,const Ice::Current & = ::Ice::Current());
 	
+		std::vector< std::vector<std::string> > mapFiles;
+
 	private:
 		ServerModel();
 
@@ -58,7 +57,6 @@ class ServerModel :
 		std::vector<UserModel*> m_currentUsers;
 
 		::Ice::ObjectAdapterPtr m_adapter;
-		std::vector<vector<string>> mapFiles;
 };
 
 #endif

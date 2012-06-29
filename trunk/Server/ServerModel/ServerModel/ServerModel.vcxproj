@@ -59,8 +59,8 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Iced.lib;IceUtild.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(IceHome)\lib\vc100;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Iced.lib;IceUtild.lib; libboost_thread-vc100-mt-gd-1_50.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(IceHome)\lib\vc100;C:\Program Files %28x86%29\boost_1_50_0\bin.v2\libs\thread\build\msvc-10.0\debug\link-static\threading-multi\;C:\Program Files %28x86%29\boost_1_50_0\bin.v2\libs\date_time\build\msvc-10.0\debug\link-static\threading-multi\;C:\Program Files %28x86%29\boost_1_50_0\bin.v2\libs\system\build\msvc-10.0\debug\link-static\threading-multi\;C:\Program Files %28x86%29\boost_1_50_0\bin.v2\libs\chrono\build\msvc-10.0\debug\link-static\threading-multi\;C:\Program Files %28x86%29\boost_1_50_0\bin.v2\libs\filesystem\build\msvc-10.0\debug\link-static\threading-multi\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -89,6 +89,8 @@
     <ClInclude Include="Bonus.h" />
     <ClInclude Include="BotPlayerModel.h" />
     <ClInclude Include="BoxItem.h" />
+    <ClInclude Include="Database.h" />
+    <ClInclude Include="FlameItem.h" />
     <ClInclude Include="FlameUp.h" />
     <ClInclude Include="GameModel.h" />
     <ClInclude Include="Kicker.h" />
@@ -102,6 +104,7 @@
     <ClInclude Include="ServerApplication.hpp" />
     <ClInclude Include="ServerModel.h" />
     <ClInclude Include="SpeedUp.h" />
+    <ClInclude Include="sqlite3.h" />
     <ClInclude Include="UserModel.h" />
     <ClInclude Include="VoidItem.h" />
   </ItemGroup>
@@ -113,6 +116,8 @@
     <ClCompile Include="Bonus.cpp" />
     <ClCompile Include="BotPlayerModel.cpp" />
     <ClCompile Include="BoxItem.cpp" />
+    <ClCompile Include="Database.cpp" />
+    <ClCompile Include="FlameItem.cpp" />
     <ClCompile Include="FlameUp.cpp" />
     <ClCompile Include="GameModel.cpp" />
     <ClCompile Include="Kicker.cpp" />
@@ -127,6 +132,7 @@
     <ClCompile Include="ServerApplication.cpp" />
     <ClCompile Include="ServerModel.cpp" />
     <ClCompile Include="SpeedUp.cpp" />
+    <ClCompile Include="sqlite3.c" />
     <ClCompile Include="UserModel.cpp" />
     <ClCompile Include="VoidItem.cpp" />
   </ItemGroup>

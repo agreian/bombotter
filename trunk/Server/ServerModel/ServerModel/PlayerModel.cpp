@@ -1,9 +1,7 @@
 #include "PlayerModel.h"
 
-/*PlayerModel::PlayerModel()
-{
-	
-}*/
+PlayerModel::PlayerModel()
+{}
 
 PlayerModel::PlayerModel(MapModel* map, UserModel* user, int posX, int posY)
 {

@@ -13,6 +13,9 @@ GameModel::GameModel(ServerModel* server, UserModel* creator, ::Ice::ObjectAdapt
 		);
 }
 
+GameModel::~GameModel()
+{}
+
 void GameModel::addBotLocal()
 {
 	UserModel* bot = UserModel::CreateUser("Bot","Game",true);
@@ -37,7 +40,7 @@ void GameModel::addUser(UserModel* user)
 
 std::string GameModel::createMapLocal(std::string id, std::string mode)
 {
-	std::string* s = this->m_server->getMap(id); 
+	std::vector<std::string> s = this->m_server->getMap(id); 
 	this->map = new MapModel(this, s[0]);
 
 	::BomberLoutreInterface::Point position[4];
@@ -119,7 +122,7 @@ void GameModel::removeBot(const ::Ice::Current&)
 ::BomberLoutreInterface::MapNameList GameModel::getMapList(const ::Ice::Current&)
 {
 	::BomberLoutreInterface::MapNameList mList;
-	for(std::vector<std::string[5]>::iterator i=this->m_server->mapFiles.begin(); i!=this->m_server->mapFiles.end();++i)
+	for(std::vector< std::vector<std::string> >::iterator i=this->m_server->mapFiles.begin(); i!=this->m_server->mapFiles.end();++i)
 	{
 		mList.push_back((*i)[0]+(*i)[1]+(*i)[2]+(*i)[3]+(*i)[4]);
 	}
