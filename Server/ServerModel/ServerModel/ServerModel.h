@@ -1,6 +1,8 @@
 #ifndef __SERVERMODEL_H__
 #define __SERVERMODEL_H__
 
+#include <vector>
+
 #include <Ice/Ice.h>
 #include <IceUtil/IceUtil.h>
 
@@ -36,12 +38,18 @@ class ServerModel :
 		
 		virtual BomberLoutreInterface::GameDataList 
 		getGameList(const Ice::Current& = ::Ice::Current());
+
+		virtual ::BomberLoutreInterface::GameInterfacePrx
+		getUserInterface(::BomberLoutreInterface::GameData gd);
 		
 		virtual BomberLoutreInterface::UserDataList 
 		getUserList(const Ice::Current& = ::Ice::Current());
 
 		void loadMap(const std::string dossier);
 		std::string* getMap(const std::string mapName);
+
+		BomberLoutreInterface::GameInterfacePrx 
+		getUserInterface(const BomberLoutreInterface::GameData &,const Ice::Current & = ::Ice::Current());
 	
 	private:
 		ServerModel();
@@ -50,7 +58,7 @@ class ServerModel :
 		std::vector<UserModel*> m_currentUsers;
 
 		::Ice::ObjectAdapterPtr m_adapter;
-		std::vector<string[5]> mapFiles;
+		std::vector< std::string[5] > mapFiles;
 };
 
 #endif

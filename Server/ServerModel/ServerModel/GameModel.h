@@ -27,8 +27,8 @@ class GameModel :
 	//void kickPlayer(string name);
 	//void render();
 
-	void startMap();
-	void endMap();
+	void mapStart();
+	void mapEnd();
 		
 	void addBotLocal();
 	void removeBotLocal();
@@ -78,10 +78,24 @@ class GameModel :
 
 		virtual bool removeGame(const ::Ice::Current& = ::Ice::Current());
 
+	virtual ::std::string 
+	getCreatorName(const ::Ice::Current& = ::Ice::Current());
+
+	virtual void 
+	userReady(const ::BomberLoutreInterface::UserData&, const ::Ice::Current& = ::Ice::Current());
+
+	virtual void
+	leaveGame(const ::BomberLoutreInterface::UserData&, const ::Ice::Current& = ::Ice::Current());
+
+	virtual ::BomberLoutreInterface::MapInterfacePrx 
+	getMapInterface(const ::Ice::Current& = ::Ice::Current());
+
 private:
 	::std::string m_name;
 	int m_roundCount;
 	int m_state;
+
+	int m_userReadyCount;
 
 	ServerModel* m_server;
 	UserModel* m_creator;
