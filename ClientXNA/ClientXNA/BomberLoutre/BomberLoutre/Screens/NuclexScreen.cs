@@ -88,6 +88,15 @@ namespace BomberLoutre.Screens
             CreateGameDialog createGameDialog = new CreateGameDialog();
             GameRef.nuclexMainScreen.Desktop.Children.Add(createGameDialog);
             createGameDialog.MapCreated += new CreateGameDialog.MapCreatedHandler(createGameDialog_MapCreated);
+            createGameDialog.MapCreationCanceled += new CreateGameDialog.MapCreationCanceledHandler(createGameDialog_MapCreationCanceled);
+        }
+
+        void createGameDialog_MapCreationCanceled(object sender)
+        {
+            GameListDialog gameListDialog = new GameListDialog();
+            GameRef.nuclexMainScreen.Desktop.Children.Add(gameListDialog);
+            gameListDialog.JoinGame += new GameListDialog.JoinGameHandler(gameListDialog_JoinGame);
+            gameListDialog.CreateGame += new GameListDialog.CreateGameHandler(gameListDialog_CreateGame);
         }
 
         void createGameDialog_MapCreated(object sender, string mapName)

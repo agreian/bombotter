@@ -106,6 +106,7 @@ namespace BomberLoutre.Screens
                         Properties.App.Default.Save();
 
                         Config.UpdateMapLayer(); // Mise à jour de la position de la "zone-map", vu que la résolution a changé
+                        Config.UpdatePlayerPosition(); // Mise à jour des positions des joueurs car la résolution a changé
 
                         StateManager.PushState(GameRef.TitleScreen); // Retour vers l'écran d'accueil
                         break;

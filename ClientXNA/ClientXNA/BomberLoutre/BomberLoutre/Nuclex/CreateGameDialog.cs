@@ -11,24 +11,33 @@ namespace Nuclex.UserInterface.Demo
         public delegate void MapCreatedHandler(object sender, string mapName);
         public event MapCreatedHandler MapCreated;
 
+        public delegate void MapCreationCanceledHandler(object sender);
+        public event MapCreationCanceledHandler MapCreationCanceled;
+
+        private string[] _mapNames;
+
         public CreateGameDialog()
         {
             InitializeComponent();
 
-            string[] mapNames = BomberLoutre.IceInterface.Main.MapsNames;
+            this.gameNameEntryBox.Text = BomberLoutre.IceInterface.Main.GetPartyName();
 
-            for (int i = 0; i < mapNames.Length; ++i)
+            _mapNames = BomberLoutre.IceInterface.Main.MapsNames;
+
+            for (int i = 0; i < _mapNames.Length; ++i)
             {
-                this.mapList.Items.Add(mapNames[i]);
+                this.mapList.Items.Add(_mapNames[i]);
             }
         }
 
         private void okClicked(object sender, EventArgs arguments)
         {
-            if (!string.IsNullOrWhiteSpace(this.gameNameEntryBox.Text))
+            if ((string.IsNullOrWhiteSpace(this.gameNameEntryBox.Text)) || (this.mapList.SelectedItems.Count == 0))
             {
-                BomberLoutre.IceInterface.Main.CreateGame(this.gameNameEntryBox.Text);
 
+            }
+            else
+            {
                 if (MapCreated != null)
                 {
                     MapCreated(this, this.gameNameEntryBox.Text);
@@ -38,7 +47,11 @@ namespace Nuclex.UserInterface.Demo
 
         private void cancelClicked(object sender, EventArgs arguments)
         {
-            Close();
+            if (MapCreationCanceled != null)
+            {
+                MapCreationCanceled(this);
+                Close();
+            }
         }
 
     }
