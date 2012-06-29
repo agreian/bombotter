@@ -37,7 +37,8 @@ ServerModel::connect(const std::string& login, const std::string& password, cons
 	
 	if(login == "tamere")
 	{
-		throw ::BomberLoutreInterface::BadLoginException();
+		//throw ::BomberLoutreInterface::BadLoginException();
+		throw std::exception();
 	}
 	
 	std::cout << login << " " << password << std::endl;
@@ -46,13 +47,15 @@ ServerModel::connect(const std::string& login, const std::string& password, cons
 	{
 		if((*i)->getLogin() == login)
 		{
-			throw ::BomberLoutreInterface::BadLoginException();
+			//throw ::BomberLoutreInterface::BadLoginException();
+			throw std::exception();
 		}
 	}
 	UserModel* um = UserModel::Connect(login,password);
 	if(um == NULL)
 	{
-		throw ::BomberLoutreInterface::BadLoginException();
+		//throw ::BomberLoutreInterface::BadLoginException();
+		throw std::exception();
 	}
 	m_currentUsers.push_back(um);
 	std::cout << "ServerModel::connect END" << std::endl;

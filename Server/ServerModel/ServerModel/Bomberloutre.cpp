@@ -416,479 +416,6 @@ BomberLoutreInterface::Map::__read(::IceInternal::BasicStream* __is)
     ::BomberLoutreInterface::__readPlayerList(__is, players);
 }
 
-BomberLoutreInterface::UserException::UserException(const ::std::string& __ice_reason) :
-#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
-    UserException(),
-#else
-    ::Ice::UserException(),
-#endif
-    reason(__ice_reason)
-{
-}
-
-BomberLoutreInterface::UserException::~UserException() throw()
-{
-}
-
-static const char* __BomberLoutreInterface__UserException_name = "BomberLoutreInterface::UserException";
-
-::std::string
-BomberLoutreInterface::UserException::ice_name() const
-{
-    return __BomberLoutreInterface__UserException_name;
-}
-
-::Ice::Exception*
-BomberLoutreInterface::UserException::ice_clone() const
-{
-    return new UserException(*this);
-}
-
-void
-BomberLoutreInterface::UserException::ice_throw() const
-{
-    throw *this;
-}
-
-void
-BomberLoutreInterface::UserException::__write(::IceInternal::BasicStream* __os) const
-{
-    __os->write(::std::string("::BomberLoutreInterface::UserException"), false);
-    __os->startWriteSlice();
-    __os->write(reason);
-    __os->endWriteSlice();
-}
-
-void
-BomberLoutreInterface::UserException::__read(::IceInternal::BasicStream* __is, bool __rid)
-{
-    if(__rid)
-    {
-        ::std::string myId;
-        __is->read(myId, false);
-    }
-    __is->startReadSlice();
-    __is->read(reason);
-    __is->endReadSlice();
-}
-
-// COMPILERFIX: Stream API is not supported with VC++ 6
-#if !defined(_MSC_VER) || (_MSC_VER >= 1300)
-void
-BomberLoutreInterface::UserException::__write(const ::Ice::OutputStreamPtr&) const
-{
-    Ice::MarshalException ex(__FILE__, __LINE__);
-    ex.reason = "exception BomberLoutreInterface::UserException was not generated with stream support";
-    throw ex;
-}
-
-void
-BomberLoutreInterface::UserException::__read(const ::Ice::InputStreamPtr&, bool)
-{
-    Ice::MarshalException ex(__FILE__, __LINE__);
-    ex.reason = "exception BomberLoutreInterface::UserException was not generated with stream support";
-    throw ex;
-}
-#endif
-
-struct __F__BomberLoutreInterface__UserException : public ::IceInternal::UserExceptionFactory
-{
-    virtual void
-    createAndThrow()
-    {
-        throw ::BomberLoutreInterface::UserException();
-    }
-};
-
-static ::IceInternal::UserExceptionFactoryPtr __F__BomberLoutreInterface__UserException__Ptr = new __F__BomberLoutreInterface__UserException;
-
-const ::IceInternal::UserExceptionFactoryPtr&
-BomberLoutreInterface::UserException::ice_factory()
-{
-    return __F__BomberLoutreInterface__UserException__Ptr;
-}
-
-class __F__BomberLoutreInterface__UserException__Init
-{
-public:
-
-    __F__BomberLoutreInterface__UserException__Init()
-    {
-        ::IceInternal::factoryTable->addExceptionFactory("::BomberLoutreInterface::UserException", ::BomberLoutreInterface::UserException::ice_factory());
-    }
-
-    ~__F__BomberLoutreInterface__UserException__Init()
-    {
-        ::IceInternal::factoryTable->removeExceptionFactory("::BomberLoutreInterface::UserException");
-    }
-};
-
-static __F__BomberLoutreInterface__UserException__Init __F__BomberLoutreInterface__UserException__i;
-
-#ifdef __APPLE__
-extern "C" { void __F__BomberLoutreInterface__UserException__initializer() {} }
-#endif
-
-BomberLoutreInterface::BadLoginException::BadLoginException(const ::std::string& __ice_reason) :
-#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
-    UserException(__ice_reason)
-#else
-    ::BomberLoutreInterface::UserException(__ice_reason)
-#endif
-{
-}
-
-BomberLoutreInterface::BadLoginException::~BadLoginException() throw()
-{
-}
-
-static const char* __BomberLoutreInterface__BadLoginException_name = "BomberLoutreInterface::BadLoginException";
-
-::std::string
-BomberLoutreInterface::BadLoginException::ice_name() const
-{
-    return __BomberLoutreInterface__BadLoginException_name;
-}
-
-::Ice::Exception*
-BomberLoutreInterface::BadLoginException::ice_clone() const
-{
-    return new BadLoginException(*this);
-}
-
-void
-BomberLoutreInterface::BadLoginException::ice_throw() const
-{
-    throw *this;
-}
-
-void
-BomberLoutreInterface::BadLoginException::__write(::IceInternal::BasicStream* __os) const
-{
-    __os->write(::std::string("::BomberLoutreInterface::BadLoginException"), false);
-    __os->startWriteSlice();
-    __os->endWriteSlice();
-#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
-    UserException::__write(__os);
-#else
-    ::BomberLoutreInterface::UserException::__write(__os);
-#endif
-}
-
-void
-BomberLoutreInterface::BadLoginException::__read(::IceInternal::BasicStream* __is, bool __rid)
-{
-    if(__rid)
-    {
-        ::std::string myId;
-        __is->read(myId, false);
-    }
-    __is->startReadSlice();
-    __is->endReadSlice();
-#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
-    UserException::__read(__is, true);
-#else
-    ::BomberLoutreInterface::UserException::__read(__is, true);
-#endif
-}
-
-// COMPILERFIX: Stream API is not supported with VC++ 6
-#if !defined(_MSC_VER) || (_MSC_VER >= 1300)
-void
-BomberLoutreInterface::BadLoginException::__write(const ::Ice::OutputStreamPtr&) const
-{
-    Ice::MarshalException ex(__FILE__, __LINE__);
-    ex.reason = "exception BomberLoutreInterface::BadLoginException was not generated with stream support";
-    throw ex;
-}
-
-void
-BomberLoutreInterface::BadLoginException::__read(const ::Ice::InputStreamPtr&, bool)
-{
-    Ice::MarshalException ex(__FILE__, __LINE__);
-    ex.reason = "exception BomberLoutreInterface::BadLoginException was not generated with stream support";
-    throw ex;
-}
-#endif
-
-struct __F__BomberLoutreInterface__BadLoginException : public ::IceInternal::UserExceptionFactory
-{
-    virtual void
-    createAndThrow()
-    {
-        throw ::BomberLoutreInterface::BadLoginException();
-    }
-};
-
-static ::IceInternal::UserExceptionFactoryPtr __F__BomberLoutreInterface__BadLoginException__Ptr = new __F__BomberLoutreInterface__BadLoginException;
-
-const ::IceInternal::UserExceptionFactoryPtr&
-BomberLoutreInterface::BadLoginException::ice_factory()
-{
-    return __F__BomberLoutreInterface__BadLoginException__Ptr;
-}
-
-class __F__BomberLoutreInterface__BadLoginException__Init
-{
-public:
-
-    __F__BomberLoutreInterface__BadLoginException__Init()
-    {
-        ::IceInternal::factoryTable->addExceptionFactory("::BomberLoutreInterface::BadLoginException", ::BomberLoutreInterface::BadLoginException::ice_factory());
-    }
-
-    ~__F__BomberLoutreInterface__BadLoginException__Init()
-    {
-        ::IceInternal::factoryTable->removeExceptionFactory("::BomberLoutreInterface::BadLoginException");
-    }
-};
-
-static __F__BomberLoutreInterface__BadLoginException__Init __F__BomberLoutreInterface__BadLoginException__i;
-
-#ifdef __APPLE__
-extern "C" { void __F__BomberLoutreInterface__BadLoginException__initializer() {} }
-#endif
-
-BomberLoutreInterface::BadPasswordException::BadPasswordException(const ::std::string& __ice_reason) :
-#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
-    UserException(__ice_reason)
-#else
-    ::BomberLoutreInterface::UserException(__ice_reason)
-#endif
-{
-}
-
-BomberLoutreInterface::BadPasswordException::~BadPasswordException() throw()
-{
-}
-
-static const char* __BomberLoutreInterface__BadPasswordException_name = "BomberLoutreInterface::BadPasswordException";
-
-::std::string
-BomberLoutreInterface::BadPasswordException::ice_name() const
-{
-    return __BomberLoutreInterface__BadPasswordException_name;
-}
-
-::Ice::Exception*
-BomberLoutreInterface::BadPasswordException::ice_clone() const
-{
-    return new BadPasswordException(*this);
-}
-
-void
-BomberLoutreInterface::BadPasswordException::ice_throw() const
-{
-    throw *this;
-}
-
-void
-BomberLoutreInterface::BadPasswordException::__write(::IceInternal::BasicStream* __os) const
-{
-    __os->write(::std::string("::BomberLoutreInterface::BadPasswordException"), false);
-    __os->startWriteSlice();
-    __os->endWriteSlice();
-#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
-    UserException::__write(__os);
-#else
-    ::BomberLoutreInterface::UserException::__write(__os);
-#endif
-}
-
-void
-BomberLoutreInterface::BadPasswordException::__read(::IceInternal::BasicStream* __is, bool __rid)
-{
-    if(__rid)
-    {
-        ::std::string myId;
-        __is->read(myId, false);
-    }
-    __is->startReadSlice();
-    __is->endReadSlice();
-#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
-    UserException::__read(__is, true);
-#else
-    ::BomberLoutreInterface::UserException::__read(__is, true);
-#endif
-}
-
-// COMPILERFIX: Stream API is not supported with VC++ 6
-#if !defined(_MSC_VER) || (_MSC_VER >= 1300)
-void
-BomberLoutreInterface::BadPasswordException::__write(const ::Ice::OutputStreamPtr&) const
-{
-    Ice::MarshalException ex(__FILE__, __LINE__);
-    ex.reason = "exception BomberLoutreInterface::BadPasswordException was not generated with stream support";
-    throw ex;
-}
-
-void
-BomberLoutreInterface::BadPasswordException::__read(const ::Ice::InputStreamPtr&, bool)
-{
-    Ice::MarshalException ex(__FILE__, __LINE__);
-    ex.reason = "exception BomberLoutreInterface::BadPasswordException was not generated with stream support";
-    throw ex;
-}
-#endif
-
-struct __F__BomberLoutreInterface__BadPasswordException : public ::IceInternal::UserExceptionFactory
-{
-    virtual void
-    createAndThrow()
-    {
-        throw ::BomberLoutreInterface::BadPasswordException();
-    }
-};
-
-static ::IceInternal::UserExceptionFactoryPtr __F__BomberLoutreInterface__BadPasswordException__Ptr = new __F__BomberLoutreInterface__BadPasswordException;
-
-const ::IceInternal::UserExceptionFactoryPtr&
-BomberLoutreInterface::BadPasswordException::ice_factory()
-{
-    return __F__BomberLoutreInterface__BadPasswordException__Ptr;
-}
-
-class __F__BomberLoutreInterface__BadPasswordException__Init
-{
-public:
-
-    __F__BomberLoutreInterface__BadPasswordException__Init()
-    {
-        ::IceInternal::factoryTable->addExceptionFactory("::BomberLoutreInterface::BadPasswordException", ::BomberLoutreInterface::BadPasswordException::ice_factory());
-    }
-
-    ~__F__BomberLoutreInterface__BadPasswordException__Init()
-    {
-        ::IceInternal::factoryTable->removeExceptionFactory("::BomberLoutreInterface::BadPasswordException");
-    }
-};
-
-static __F__BomberLoutreInterface__BadPasswordException__Init __F__BomberLoutreInterface__BadPasswordException__i;
-
-#ifdef __APPLE__
-extern "C" { void __F__BomberLoutreInterface__BadPasswordException__initializer() {} }
-#endif
-
-BomberLoutreInterface::UserAlreadyExistsException::UserAlreadyExistsException(const ::std::string& __ice_reason) :
-#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
-    UserException(__ice_reason)
-#else
-    ::BomberLoutreInterface::UserException(__ice_reason)
-#endif
-{
-}
-
-BomberLoutreInterface::UserAlreadyExistsException::~UserAlreadyExistsException() throw()
-{
-}
-
-static const char* __BomberLoutreInterface__UserAlreadyExistsException_name = "BomberLoutreInterface::UserAlreadyExistsException";
-
-::std::string
-BomberLoutreInterface::UserAlreadyExistsException::ice_name() const
-{
-    return __BomberLoutreInterface__UserAlreadyExistsException_name;
-}
-
-::Ice::Exception*
-BomberLoutreInterface::UserAlreadyExistsException::ice_clone() const
-{
-    return new UserAlreadyExistsException(*this);
-}
-
-void
-BomberLoutreInterface::UserAlreadyExistsException::ice_throw() const
-{
-    throw *this;
-}
-
-void
-BomberLoutreInterface::UserAlreadyExistsException::__write(::IceInternal::BasicStream* __os) const
-{
-    __os->write(::std::string("::BomberLoutreInterface::UserAlreadyExistsException"), false);
-    __os->startWriteSlice();
-    __os->endWriteSlice();
-#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
-    UserException::__write(__os);
-#else
-    ::BomberLoutreInterface::UserException::__write(__os);
-#endif
-}
-
-void
-BomberLoutreInterface::UserAlreadyExistsException::__read(::IceInternal::BasicStream* __is, bool __rid)
-{
-    if(__rid)
-    {
-        ::std::string myId;
-        __is->read(myId, false);
-    }
-    __is->startReadSlice();
-    __is->endReadSlice();
-#if defined(_MSC_VER) && (_MSC_VER < 1300) // VC++ 6 compiler bug
-    UserException::__read(__is, true);
-#else
-    ::BomberLoutreInterface::UserException::__read(__is, true);
-#endif
-}
-
-// COMPILERFIX: Stream API is not supported with VC++ 6
-#if !defined(_MSC_VER) || (_MSC_VER >= 1300)
-void
-BomberLoutreInterface::UserAlreadyExistsException::__write(const ::Ice::OutputStreamPtr&) const
-{
-    Ice::MarshalException ex(__FILE__, __LINE__);
-    ex.reason = "exception BomberLoutreInterface::UserAlreadyExistsException was not generated with stream support";
-    throw ex;
-}
-
-void
-BomberLoutreInterface::UserAlreadyExistsException::__read(const ::Ice::InputStreamPtr&, bool)
-{
-    Ice::MarshalException ex(__FILE__, __LINE__);
-    ex.reason = "exception BomberLoutreInterface::UserAlreadyExistsException was not generated with stream support";
-    throw ex;
-}
-#endif
-
-struct __F__BomberLoutreInterface__UserAlreadyExistsException : public ::IceInternal::UserExceptionFactory
-{
-    virtual void
-    createAndThrow()
-    {
-        throw ::BomberLoutreInterface::UserAlreadyExistsException();
-    }
-};
-
-static ::IceInternal::UserExceptionFactoryPtr __F__BomberLoutreInterface__UserAlreadyExistsException__Ptr = new __F__BomberLoutreInterface__UserAlreadyExistsException;
-
-const ::IceInternal::UserExceptionFactoryPtr&
-BomberLoutreInterface::UserAlreadyExistsException::ice_factory()
-{
-    return __F__BomberLoutreInterface__UserAlreadyExistsException__Ptr;
-}
-
-class __F__BomberLoutreInterface__UserAlreadyExistsException__Init
-{
-public:
-
-    __F__BomberLoutreInterface__UserAlreadyExistsException__Init()
-    {
-        ::IceInternal::factoryTable->addExceptionFactory("::BomberLoutreInterface::UserAlreadyExistsException", ::BomberLoutreInterface::UserAlreadyExistsException::ice_factory());
-    }
-
-    ~__F__BomberLoutreInterface__UserAlreadyExistsException__Init()
-    {
-        ::IceInternal::factoryTable->removeExceptionFactory("::BomberLoutreInterface::UserAlreadyExistsException");
-    }
-};
-
-static __F__BomberLoutreInterface__UserAlreadyExistsException__Init __F__BomberLoutreInterface__UserAlreadyExistsException__i;
-
-#ifdef __APPLE__
-extern "C" { void __F__BomberLoutreInterface__UserAlreadyExistsException__initializer() {} }
-#endif
-
 ::std::string
 IceProxy::BomberLoutreInterface::GameInterface::getName(const ::Ice::Context* __ctx)
 {
@@ -3397,14 +2924,6 @@ IceProxy::BomberLoutreInterface::ServerInterface::end_connect(const ::Ice::Async
         {
             __result->__throwUserException();
         }
-        catch(const ::BomberLoutreInterface::BadLoginException&)
-        {
-            throw;
-        }
-        catch(const ::BomberLoutreInterface::BadPasswordException&)
-        {
-            throw;
-        }
         catch(const ::Ice::UserException& __ex)
         {
             throw ::Ice::UnknownUserException(__FILE__, __LINE__, __ex.ice_name());
@@ -3473,10 +2992,6 @@ IceProxy::BomberLoutreInterface::ServerInterface::end_createUser(const ::Ice::As
         try
         {
             __result->__throwUserException();
-        }
-        catch(const ::BomberLoutreInterface::UserAlreadyExistsException&)
-        {
-            throw;
         }
         catch(const ::Ice::UserException& __ex)
         {
@@ -5520,14 +5035,6 @@ IceDelegateM::BomberLoutreInterface::ServerInterface::connect(const ::std::strin
             {
                 __og.throwUserException();
             }
-            catch(const ::BomberLoutreInterface::BadLoginException&)
-            {
-                throw;
-            }
-            catch(const ::BomberLoutreInterface::BadPasswordException&)
-            {
-                throw;
-            }
             catch(const ::Ice::UserException& __ex)
             {
                 ::Ice::UnknownUserException __uue(__FILE__, __LINE__, __ex.ice_name());
@@ -5569,10 +5076,6 @@ IceDelegateM::BomberLoutreInterface::ServerInterface::createUser(const ::std::st
             try
             {
                 __og.throwUserException();
-            }
-            catch(const ::BomberLoutreInterface::UserAlreadyExistsException&)
-            {
-                throw;
             }
             catch(const ::Ice::UserException& __ex)
             {
@@ -8617,16 +8120,8 @@ IceDelegateD::BomberLoutreInterface::ServerInterface::connect(const ::std::strin
             {
                 throw ::Ice::OperationNotExistException(__FILE__, __LINE__, _current.id, _current.facet, _current.operation);
             }
-            try
-            {
-                _result = servant->connect(_m_login, _m_password, _current);
-                return ::Ice::DispatchOK;
-            }
-            catch(const ::Ice::UserException& __ex)
-            {
-                setUserException(__ex);
-                return ::Ice::DispatchUserException;
-            }
+            _result = servant->connect(_m_login, _m_password, _current);
+            return ::Ice::DispatchOK;
         }
         
     private:
@@ -8652,14 +8147,6 @@ IceDelegateD::BomberLoutreInterface::ServerInterface::connect(const ::std::strin
             throw;
         }
         __direct.destroy();
-    }
-    catch(const ::BomberLoutreInterface::BadLoginException&)
-    {
-        throw;
-    }
-    catch(const ::BomberLoutreInterface::BadPasswordException&)
-    {
-        throw;
     }
     catch(const ::Ice::SystemException&)
     {
@@ -8703,16 +8190,8 @@ IceDelegateD::BomberLoutreInterface::ServerInterface::createUser(const ::std::st
             {
                 throw ::Ice::OperationNotExistException(__FILE__, __LINE__, _current.id, _current.facet, _current.operation);
             }
-            try
-            {
-                _result = servant->createUser(_m_login, _m_password, _current);
-                return ::Ice::DispatchOK;
-            }
-            catch(const ::Ice::UserException& __ex)
-            {
-                setUserException(__ex);
-                return ::Ice::DispatchUserException;
-            }
+            _result = servant->createUser(_m_login, _m_password, _current);
+            return ::Ice::DispatchOK;
         }
         
     private:
@@ -8738,10 +8217,6 @@ IceDelegateD::BomberLoutreInterface::ServerInterface::createUser(const ::std::st
             throw;
         }
         __direct.destroy();
-    }
-    catch(const ::BomberLoutreInterface::UserAlreadyExistsException&)
-    {
-        throw;
     }
     catch(const ::Ice::SystemException&)
     {
@@ -10524,21 +9999,8 @@ BomberLoutreInterface::ServerInterface::___connect(::IceInternal::Incoming& __in
     __is->read(password);
     __is->endReadEncaps();
     ::IceInternal::BasicStream* __os = __inS.os();
-    try
-    {
-        ::BomberLoutreInterface::UserData __ret = connect(login, password, __current);
-        __ret.__write(__os);
-    }
-    catch(const ::BomberLoutreInterface::BadLoginException& __ex)
-    {
-        __os->write(__ex);
-        return ::Ice::DispatchUserException;
-    }
-    catch(const ::BomberLoutreInterface::BadPasswordException& __ex)
-    {
-        __os->write(__ex);
-        return ::Ice::DispatchUserException;
-    }
+    ::BomberLoutreInterface::UserData __ret = connect(login, password, __current);
+    __ret.__write(__os);
     return ::Ice::DispatchOK;
 }
 
@@ -10554,16 +10016,8 @@ BomberLoutreInterface::ServerInterface::___createUser(::IceInternal::Incoming& _
     __is->read(password);
     __is->endReadEncaps();
     ::IceInternal::BasicStream* __os = __inS.os();
-    try
-    {
-        ::BomberLoutreInterface::UserData __ret = createUser(login, password, __current);
-        __ret.__write(__os);
-    }
-    catch(const ::BomberLoutreInterface::UserAlreadyExistsException& __ex)
-    {
-        __os->write(__ex);
-        return ::Ice::DispatchUserException;
-    }
+    ::BomberLoutreInterface::UserData __ret = createUser(login, password, __current);
+    __ret.__write(__os);
     return ::Ice::DispatchOK;
 }
 

@@ -10,6 +10,9 @@ int BomberServerApplication::run(int argc, char** argv)
 {
 	std::cout << "BomberLoutre server begins" << std::endl;
 	
+	::Ice::PropertiesPtr p = communicator()->getProperties();
+	std::cout << p->getProperty("BomberloutreServer.Endpoints") << std::endl;
+
 	m_adapter = communicator()->createObjectAdapter("BomberloutreServer");
 	std::cout << "Adapter OK" << std::endl;
 
@@ -20,14 +23,8 @@ int BomberServerApplication::run(int argc, char** argv)
 	m_adapter->activate();
 	std::cout << "Adapter activated" << std::endl;
 	
-	callbackOnInterrupt();
+	shutdownOnInterrupt();
 	communicator()->waitForShutdown();
 	std::cout << "BomberLoutre server ends" << std::endl;
 	return EXIT_SUCCESS;
-}
-
-void BomberServerApplication::interruptCallback(int signal)
-{
-	std::cout << signal << " Doing some interrupt work..." << std::endl;
-	communicator()->shutdown();
 }

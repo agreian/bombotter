@@ -32,7 +32,6 @@
 #include <Ice/OutgoingAsync.h>
 #include <Ice/Incoming.h>
 #include <Ice/Direct.h>
-#include <Ice/FactoryTableInit.h>
 #include <IceUtil/ScopedArray.h>
 #include <Ice/StreamF.h>
 #include <Bomberloutre_map_item.h>
@@ -700,102 +699,6 @@ struct Map
 
     void __write(::IceInternal::BasicStream*) const;
     void __read(::IceInternal::BasicStream*);
-};
-
-class UserException : public ::Ice::UserException
-{
-public:
-
-    UserException() {}
-    explicit UserException(const ::std::string&);
-    virtual ~UserException() throw();
-
-    virtual ::std::string ice_name() const;
-    virtual ::Ice::Exception* ice_clone() const;
-    virtual void ice_throw() const;
-
-    static const ::IceInternal::UserExceptionFactoryPtr& ice_factory();
-
-    ::std::string reason;
-
-    virtual void __write(::IceInternal::BasicStream*) const;
-    virtual void __read(::IceInternal::BasicStream*, bool);
-// COMPILERFIX: Stream API is not supported with VC++ 6
-#if !defined(_MSC_VER) || (_MSC_VER >= 1300)
-    virtual void __write(const ::Ice::OutputStreamPtr&) const;
-    virtual void __read(const ::Ice::InputStreamPtr&, bool);
-#endif
-};
-
-static UserException __UserException_init;
-
-class BadLoginException : public ::BomberLoutreInterface::UserException
-{
-public:
-
-    BadLoginException() {}
-    explicit BadLoginException(const ::std::string&);
-    virtual ~BadLoginException() throw();
-
-    virtual ::std::string ice_name() const;
-    virtual ::Ice::Exception* ice_clone() const;
-    virtual void ice_throw() const;
-
-    static const ::IceInternal::UserExceptionFactoryPtr& ice_factory();
-
-    virtual void __write(::IceInternal::BasicStream*) const;
-    virtual void __read(::IceInternal::BasicStream*, bool);
-// COMPILERFIX: Stream API is not supported with VC++ 6
-#if !defined(_MSC_VER) || (_MSC_VER >= 1300)
-    virtual void __write(const ::Ice::OutputStreamPtr&) const;
-    virtual void __read(const ::Ice::InputStreamPtr&, bool);
-#endif
-};
-
-class BadPasswordException : public ::BomberLoutreInterface::UserException
-{
-public:
-
-    BadPasswordException() {}
-    explicit BadPasswordException(const ::std::string&);
-    virtual ~BadPasswordException() throw();
-
-    virtual ::std::string ice_name() const;
-    virtual ::Ice::Exception* ice_clone() const;
-    virtual void ice_throw() const;
-
-    static const ::IceInternal::UserExceptionFactoryPtr& ice_factory();
-
-    virtual void __write(::IceInternal::BasicStream*) const;
-    virtual void __read(::IceInternal::BasicStream*, bool);
-// COMPILERFIX: Stream API is not supported with VC++ 6
-#if !defined(_MSC_VER) || (_MSC_VER >= 1300)
-    virtual void __write(const ::Ice::OutputStreamPtr&) const;
-    virtual void __read(const ::Ice::InputStreamPtr&, bool);
-#endif
-};
-
-class UserAlreadyExistsException : public ::BomberLoutreInterface::UserException
-{
-public:
-
-    UserAlreadyExistsException() {}
-    explicit UserAlreadyExistsException(const ::std::string&);
-    virtual ~UserAlreadyExistsException() throw();
-
-    virtual ::std::string ice_name() const;
-    virtual ::Ice::Exception* ice_clone() const;
-    virtual void ice_throw() const;
-
-    static const ::IceInternal::UserExceptionFactoryPtr& ice_factory();
-
-    virtual void __write(::IceInternal::BasicStream*) const;
-    virtual void __read(::IceInternal::BasicStream*, bool);
-// COMPILERFIX: Stream API is not supported with VC++ 6
-#if !defined(_MSC_VER) || (_MSC_VER >= 1300)
-    virtual void __write(const ::Ice::OutputStreamPtr&) const;
-    virtual void __read(const ::Ice::InputStreamPtr&, bool);
-#endif
 };
 
 }
