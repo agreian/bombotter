@@ -31,10 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ice, Version=3.4.2.0, Culture=neutral, PublicKeyToken=cdd571ade22f2f16, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Ressources\Ice.dll</HintPath>
-    </Reference>
+    <Reference Include="Ice, Version=3.4.2.0, Culture=neutral, PublicKeyToken=cdd571ade22f2f16, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -59,7 +56,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties ZerocIce_Enabled="True" ZerocIce_IncludePath=".\..\..\..\Server\interface" />
+      <UserProperties ZerocIce_IncludePath=".\..\..\..\Server\interface" ZerocIce_Enabled="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

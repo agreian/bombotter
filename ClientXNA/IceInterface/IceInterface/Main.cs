@@ -77,7 +77,7 @@ namespace BomberLoutre.IceInterface
         {
             get
             {
-                return CurrentGameData.gameui.getCreatorName();
+                return GameInterfacePrx.getCreatorName();
             }
         }
 
@@ -138,6 +138,8 @@ namespace BomberLoutre.IceInterface
 
         public static Map JoinGame(GameData selectedGame)
         {
+            GameInterfacePrx = BomberLoutre.IceInterface.Main.ServerInterfacePrx.getUserInterface(selectedGame);
+
             CurrentGameData = selectedGame;
             CurrentMap = BomberLoutre.IceInterface.Main.ServerInterfacePrx.joinGame(selectedGame.name, CurrentUser, CurrentGameWaitRoomPrx, CurrentMapObserverPrx);
             for (int i = 0; i < CurrentMap.players.Length; ++i)
@@ -168,7 +170,12 @@ namespace BomberLoutre.IceInterface
 
         public static void ImReady()
         {
-            CurrentGameData.gameui.userReady(CurrentUser);
+            GameInterfacePrx.userReady(CurrentUser);
+        }
+
+        public static void ImLeaving()
+        {
+            GameInterfacePrx.leaveGame(CurrentUser);
         }
 
         public static void MoveUp()
