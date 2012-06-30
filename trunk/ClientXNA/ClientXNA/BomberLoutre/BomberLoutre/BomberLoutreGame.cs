@@ -5,8 +5,6 @@ using Microsoft.Xna.Framework.Input;
 using BomberLoutre.Screens;
 using BomberLoutre.Controls;
 using System;
-using Nuclex.UserInterface;
-using Nuclex.Input;
 using Microsoft.Xna.Framework.Audio;
 
 namespace BomberLoutre
@@ -26,12 +24,6 @@ namespace BomberLoutre
         public OptionScreen OptionScreen;
         public ControlEditScreen ControlEditScreen;
         public GameScreen GameScreen;
-        public NuclexScreen NuclexScreen;
-
-        // Nuclex screens
-        public Screen nuclexMainScreen;
-        public GuiManager nuclexGui;
-        public InputManager nuclexInput;
 
         private Texture2D backgroundImage;
         public bool DisplayBackgroundImage { get; set; }
@@ -54,20 +46,12 @@ namespace BomberLoutre
             stateManager = new GameStateManager(this);
             Components.Add(stateManager);
 
-            // Nuclex
-            nuclexInput = new InputManager(Services, Window.Handle);
-            nuclexGui = new GuiManager(Services);
-            Components.Add(nuclexInput);
-            Components.Add(nuclexGui);
-            nuclexGui.DrawOrder = 1000;
-
             // Jeu
             TitleScreen = new TitleScreen(this, stateManager);
             CreditScreen = new CreditScreen(this, stateManager);
             OptionScreen = new OptionScreen(this, stateManager);
             ControlEditScreen = new ControlEditScreen(this, stateManager);
             GameScreen = new GameScreen(this, stateManager);
-            NuclexScreen = new NuclexScreen(this, stateManager);
 
             DisplayBackgroundImage = true;
 

@@ -11,7 +11,6 @@ namespace BomberLoutre.Sprites
         private float Timer;
         private float Interval;
         private int CurrentFrame;
-        public float SpriteSpeed { get; set; }
         public Vector2 Direction { get; set; }
         private Boolean Facing;
         public Point CellOffset { get; set; }
@@ -30,7 +29,6 @@ namespace BomberLoutre.Sprites
             SpritePosition = position;
             Facing = true; // Par défaut, la Sprite est de face. Si elle monte, elle sera de dos
 
-            SpriteSpeed = 0.3f;
             Interval = 80f;
 
             SpriteWidth = Config.OtterWidth;
