@@ -40,6 +40,13 @@ namespace BomberLoutre
         public static int[,] Resolutions = new int[,] { {900, 700}, { 1024, 768 }, { 1280, 1024 }, { 1366, 768 }, { 1920, 1080 } };
         public static int IndexResolution = 0;
 
+        public static int InitialBombPower = 1;
+        public static int InitialBombNumber = 1;
+        public static float InitialWalkSpeed = 0.20f;
+        public static int MaxBombPower = 6;
+        public static float SpeedUpIncrement = 0.025f;
+        public static float MaxWalkSpeed = 0.30f;
+
         /* Option menu */
         public const string ControlOptionString = "Contrôles";
         public const string ResolutionOptionString = "Résolution";

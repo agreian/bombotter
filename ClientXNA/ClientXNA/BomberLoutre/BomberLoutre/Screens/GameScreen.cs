@@ -50,7 +50,7 @@ namespace BomberLoutre.Screens
 
         public override void Initialize()
         {
-            mapName = "map3.map";
+            mapName = "map1.map";
             MapZone = new Map(GameRef, mapName, this);
             GameRef.Components.Add(MapZone);    // Ajoute la Map aux "Components", = instance qui vont appeler successivement Ctor()/Initialize()/LoadContent()
 
@@ -140,7 +140,7 @@ namespace BomberLoutre.Screens
         {
             Bonus randomBonus;
             string[] types = new string[] { "powerUp", "powerUpGold", "canKick", "speedUp", "bombUp" };
-            int randomNumber = randomizer.Next(15);
+            int randomNumber = randomizer.Next(10);
 
             if (randomNumber < 5)
             {
@@ -186,19 +186,27 @@ namespace BomberLoutre.Screens
                     switch (bonusList[i].Type)
                     {
                         case "powerUp":
-                            break;
+                            if(player.BombPower < Config.MaxBombPower)
+                                player.BombPower++;
+                        break;
 
                         case "powerUpGold":
-                            break;
+                            player.BombPower = Config.MaxBombPower;
+                          break;
 
                         case "speedUp":
-                            break;
+                            if(player.WalkSpeed < Config.MaxWalkSpeed)
+                                player.WalkSpeed += Config.SpeedUpIncrement;
+                         break;
 
                         case "bombUp":
-                            break;
+                            player.BombNumber++;
+                            player.BombAvailable++;
+                        break;
 
                         case "canKick":
-                            break;
+                            player.CanKick = true;
+                        break;
                     }
 
                     Map.RemoveBonus(x, y);

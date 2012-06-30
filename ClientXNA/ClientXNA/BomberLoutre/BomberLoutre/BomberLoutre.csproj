@@ -61,10 +61,6 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ice, Version=3.4.2.0, Culture=neutral, PublicKeyToken=cdd571ade22f2f16, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Ressources\Ice.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -95,12 +91,6 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
-    <Reference Include="Nuclex.Input">
-      <HintPath>..\..\..\Ressources\Nuclex.Input.dll</HintPath>
-    </Reference>
-    <Reference Include="Nuclex.UserInterface">
-      <HintPath>..\..\..\Ressources\Nuclex.UserInterface.dll</HintPath>
-    </Reference>
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -125,22 +115,6 @@
     <Compile Include="Components\Rock.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Components\Player.cs" />
-    <Compile Include="Nuclex\CreateGameDialog.cs" />
-    <Compile Include="Nuclex\CreateGameDialog.designer.cs">
-      <DependentUpon>CreateGameDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Nuclex\GameDialog.cs" />
-    <Compile Include="Nuclex\GameDialog.designer.cs">
-      <DependentUpon>GameDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Nuclex\GamesListDialog.cs" />
-    <Compile Include="Nuclex\GamesListDialog.designer.cs">
-      <DependentUpon>GamesListDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Nuclex\LoginDialog.cs" />
-    <Compile Include="Nuclex\LoginDialog.designer.cs">
-      <DependentUpon>LoginDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="Screens\BaseGameState.cs" />
     <Compile Include="Controls\Control.cs" />
     <Compile Include="Controls\ControlManager.cs" />
@@ -151,7 +125,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="BomberLoutreGame.cs" />
     <Compile Include="Screens\ControlEditScreen.cs" />
-    <Compile Include="Screens\NuclexScreen.cs" />
     <Compile Include="Screens\GameScreen.cs" />
     <Compile Include="Screens\OptionScreen.cs" />
     <Compile Include="Screens\CreditScreen.cs" />
@@ -170,10 +143,6 @@
     <Content Include="ico.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\IceInterface\IceInterface\IceInterface.csproj">
-      <Project>{C5D39F89-317B-4A25-8280-8C8B58D9FC2C}</Project>
-      <Name>IceInterface</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BomberLoutreContent\BomberLoutreContent.contentproj">
       <Name>BomberLoutreContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>

@@ -13,7 +13,7 @@ namespace BomberLoutre.Components
         #region Field Region
 
         private BomberLoutreGame GameRef;
-        private GameScreen gameScreen;
+        private GameScreen GameScreen;
         public int Id { get; set; }
 
         public OtterSprite Sprite { get; protected set; }
@@ -29,23 +29,25 @@ namespace BomberLoutre.Components
         public int BombNumber { get; set; }     // Capacité totale de bombes déposables
         public int BombAvailable { get; set; }  // Capacité courante de bombes déposables
         public bool CanKick { get; set; }       // Peut kicker les bombes
+        public float WalkSpeed { get; set; }
 
         #endregion
 
         #region Constructor Region
         public Player(int id, BomberLoutreGame game, Vector2 position, int currentFrame, GameScreen gameScreen)
         {
-            this.id = id;
+            Id = id;
             GameRef = game;
-            this.gameScreen = gameScreen;
+            GameScreen = gameScreen;
 
             bombDropped = false;
 
             IsAlive = true;
-            BombPower = 1;
-            BombNumber = 1;
+            BombPower = Config.InitialBombPower;
+            BombNumber = Config.InitialBombNumber;
             BombAvailable = BombNumber;
             CanKick = false;
+            WalkSpeed = Config.InitialWalkSpeed;
 
             Texture2D spriteTexture = GameRef.Content.Load<Texture2D>("Graphics/Sprites/otterSprite");
             Sprite = new OtterSprite(spriteTexture, currentFrame, position);
@@ -74,7 +76,7 @@ namespace BomberLoutre.Components
                     if (!Map.IsObstacle((int)Sprite.CellPosition.X + 1, (int)Sprite.CellPosition.Y) && !Map.IsBomb((int)Sprite.CellPosition.X + 1, (int)Sprite.CellPosition.Y))
                     {
                         Sprite.Direction = Vector2.Normalize(new Vector2(1, 0));
-                        Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * (Sprite.SpriteSpeed);
+                        Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * WalkSpeed;
 
                         // Contournement
                         if ((Sprite.SpritePosition.Y - Config.MapLayer.Y) > ((Sprite.CellPosition.Y * Config.TileHeight) - Config.TileHeight - Config.TileHeight / 5))
@@ -89,7 +91,7 @@ namespace BomberLoutre.Components
                         if (!(Sprite.SpritePosition.X + Config.OtterWidth > (Sprite.CellPosition.X * Config.TileWidth + Config.MapLayer.X)))
                         {
                             Sprite.Direction = Vector2.Normalize(new Vector2(1, 0));
-                            Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * Sprite.SpriteSpeed;
+                            Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * WalkSpeed;
                         }
                     }
                 }
@@ -105,7 +107,7 @@ namespace BomberLoutre.Components
                     if (!Map.IsObstacle((int)Sprite.CellPosition.X - 1, (int)Sprite.CellPosition.Y) && !Map.IsBomb((int)Sprite.CellPosition.X - 1, (int)Sprite.CellPosition.Y))
                     {
                         Sprite.Direction = Vector2.Normalize(new Vector2(-1, 0));
-                        Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * Sprite.SpriteSpeed;
+                        Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * WalkSpeed;
 
 
                         // Contournement
@@ -121,7 +123,7 @@ namespace BomberLoutre.Components
                         if (!(Sprite.SpritePosition.X + Config.OtterWidth < (Sprite.CellPosition.X * Config.TileWidth + Config.MapLayer.X)))
                         {
                             Sprite.Direction = Vector2.Normalize(new Vector2(-1, 0));
-                            Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * Sprite.SpriteSpeed;
+                            Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * WalkSpeed;
                         }
                     }
                 }
@@ -138,7 +140,7 @@ namespace BomberLoutre.Components
                     if (!Map.IsObstacle((int)Sprite.CellPosition.X, (int)Sprite.CellPosition.Y + 1) && !Map.IsBomb((int)Sprite.CellPosition.X, (int)Sprite.CellPosition.Y + 1))
                     {
                         Sprite.Direction = Vector2.Normalize(new Vector2(0, 1));
-                        Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * Sprite.SpriteSpeed;
+                        Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * WalkSpeed;
 
 
                         // Contournement
@@ -154,7 +156,7 @@ namespace BomberLoutre.Components
                         if (!(Sprite.SpritePosition.Y + Config.OtterHeight > (Sprite.CellPosition.Y * Config.TileHeight + Config.MapLayer.Y)))
                         {
                             Sprite.Direction = Vector2.Normalize(new Vector2(0, 1));
-                            Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * Sprite.SpriteSpeed;
+                            Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * WalkSpeed;
                         }
                     }
                 }
@@ -170,7 +172,7 @@ namespace BomberLoutre.Components
                     if (!Map.IsObstacle((int)Sprite.CellPosition.X, (int)Sprite.CellPosition.Y - 1) && !Map.IsBomb((int)Sprite.CellPosition.X, (int)Sprite.CellPosition.Y - 1))
                     {
                         Sprite.Direction = Vector2.Normalize(new Vector2(0, -1));
-                        Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * Sprite.SpriteSpeed;
+                        Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * WalkSpeed;
 
                         // Contournement
                         if ((Sprite.SpritePosition.X - Config.MapLayer.X + Config.OtterWidth / 2) > ((Sprite.CellPosition.X * Config.TileWidth) - Config.TileWidth / 4))
@@ -185,7 +187,7 @@ namespace BomberLoutre.Components
                         if (!(Sprite.SpritePosition.Y + Config.OtterHeight < Sprite.CellPosition.Y * Config.TileHeight + Config.MapLayer.Y))
                         {
                             Sprite.Direction = Vector2.Normalize(new Vector2(0, -1));
-                            Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * Sprite.SpriteSpeed;
+                            Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * WalkSpeed;
                         }
                     }
                 }
@@ -198,7 +200,7 @@ namespace BomberLoutre.Components
             
             if (Map.IsBonus((int) Sprite.CellPosition.X, (int) Sprite.CellPosition.Y))
             {
-                gameScreen.ApplyBonus(this, (int) Sprite.CellPosition.X, (int) Sprite.CellPosition.Y);
+                GameScreen.ApplyBonus(this, (int) Sprite.CellPosition.X, (int) Sprite.CellPosition.Y);
             }
 
 
@@ -220,10 +222,10 @@ namespace BomberLoutre.Components
         {
             if (InputHandler.Maintained("Space", PlayerIndex.One))
             {
-                if (!bombDropped && bombAvailable > 0)
+                if (!bombDropped && BombAvailable > 0)
                 {
                     DropBomb();
-                    bombAvailable--;
+                    BombAvailable--;
                     bombDropped = true;
                 }
             }
@@ -245,8 +247,8 @@ namespace BomberLoutre.Components
 
             if (!Map.IsBomb((int)bombCell.X, (int)bombCell.Y))
             {
-                Bomb newBomb = new Bomb(id, bombPosition, bombPower, GameRef, gameScreen);
-                gameScreen.AddBomb(newBomb);
+                Bomb newBomb = new Bomb(Id, bombPosition, BombPower, GameRef, GameScreen);
+                GameScreen.AddBomb(newBomb);
                 // Trick pour tenter de ne pas laisser le joueur bloqué sur sa bombe s'il l'a posée devant lui et que sa Cell était toujours celle de sa case précédente
                 Sprite.CellPosition = Map.PointToVector((int)newBomb.Sprite.SpritePosition.X, (int)newBomb.Sprite.SpritePosition.Y);
             }
