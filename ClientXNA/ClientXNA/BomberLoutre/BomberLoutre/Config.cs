@@ -53,7 +53,6 @@ namespace BomberLoutre
 
         public static void UpdateMapLayer()
         {
-            // On pourrait réattribuer chaque valeur au rectangle, mais autant en recréer un direct :°)
             MapLayer = new Rectangle((Properties.App.Default.ScreenWidth - MapSize.X * TileWidth) / 2, (Properties.App.Default.ScreenHeight - MapSize.Y * TileHeight) / 2, MapSize.X * TileWidth, MapSize.Y * TileHeight);
         }
 

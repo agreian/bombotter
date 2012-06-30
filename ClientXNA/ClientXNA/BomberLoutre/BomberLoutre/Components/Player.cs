@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using BomberLoutre.Controls;
 using BomberLoutre.Screens;
 using BomberLoutre.World;
+using Microsoft.Xna.Framework.Input;
 
 namespace BomberLoutre.Components
 {
@@ -16,6 +17,9 @@ namespace BomberLoutre.Components
         private int id;
 
         public OtterSprite Sprite { get; protected set; }
+
+        KeyboardState currentKBState;
+        KeyboardState previousKBState;
 
         private bool bombDropped;
 
@@ -87,6 +91,148 @@ namespace BomberLoutre.Components
         public void Update(GameTime gameTime)
         {
             CheckBombing();
+
+            previousKBState = currentKBState;
+            currentKBState = Keyboard.GetState();
+
+            if (previousKBState != currentKBState)
+                Sprite.CellOffset = new Point(Config.OtterWidth / 4, Config.OtterHeight / 2);
+
+            if (InputHandler.Maintained("Right", PlayerIndex.One))
+            {
+                Sprite.LookDirection = Config.LookDirection.Right;
+                Sprite.AnimateRight(gameTime);
+
+                if (Sprite.SpritePosition.X < (Config.MapLayer.Width + Config.MapLayer.X - Config.OtterWidth))
+                {
+                    if (!Map.IsObstacle((int)Sprite.CellPosition.X + 1, (int)Sprite.CellPosition.Y) && !Map.IsBomb((int)Sprite.CellPosition.X + 1, (int)Sprite.CellPosition.Y))
+                    {
+                        Sprite.Direction = Vector2.Normalize(new Vector2(1, 0));
+                        Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * (Sprite.SpriteSpeed);
+
+                        // Contournement
+                        if ((Sprite.SpritePosition.Y - Config.MapLayer.Y) > ((Sprite.CellPosition.Y * Config.TileHeight) - Config.TileHeight - Config.TileHeight / 5))
+                        {
+                            Sprite.SpritePosition = new Vector2(Sprite.SpritePosition.X, Sprite.SpritePosition.Y - 3);
+                        }
+                    }
+
+                    else // La case vers laquelle on se dirige est bloquante mais on veut pouvoir pousser la taupe dans le guichet ;D
+                    {
+                        // Tant que le bord droit de la loutre n'a pas dépassé le bord gauche de la cellule bloquante...
+                        if (!(Sprite.SpritePosition.X + Config.OtterWidth > (Sprite.CellPosition.X * Config.TileWidth + Config.MapLayer.X)))
+                        {
+                            Sprite.Direction = Vector2.Normalize(new Vector2(1, 0));
+                            Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * Sprite.SpriteSpeed;
+                        }
+                    }
+                }
+            }
+
+            else if (InputHandler.Maintained("Left", PlayerIndex.One))
+            {
+                Sprite.LookDirection = Config.LookDirection.Left;
+                Sprite.AnimateLeft(gameTime);
+
+                if (Sprite.SpritePosition.X > Config.MapLayer.X)
+                {
+                    if (!Map.IsObstacle((int)Sprite.CellPosition.X - 1, (int)Sprite.CellPosition.Y) && !Map.IsBomb((int)Sprite.CellPosition.X - 1, (int)Sprite.CellPosition.Y))
+                    {
+                        Sprite.Direction = Vector2.Normalize(new Vector2(-1, 0));
+                        Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * Sprite.SpriteSpeed;
+
+
+                        // Contournement
+                        if ((Sprite.SpritePosition.Y - Config.MapLayer.Y) > ((Sprite.CellPosition.Y * Config.TileHeight) - Config.TileHeight - Config.TileHeight / 5))
+                        {
+                            Sprite.SpritePosition = new Vector2(Sprite.SpritePosition.X, Sprite.SpritePosition.Y - 3);
+                        }
+                    }
+
+                    else // La case vers laquelle on se dirige est bloquante mais on veut pouvoir pousser la taupe dans le guichet ;D
+                    {
+                        // Tant que le bord gauche de la loutre n'a pas dépassé le bord droit de la caisse bloquante
+                        if (!(Sprite.SpritePosition.X + Config.OtterWidth < (Sprite.CellPosition.X * Config.TileWidth + Config.MapLayer.X)))
+                        {
+                            Sprite.Direction = Vector2.Normalize(new Vector2(-1, 0));
+                            Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * Sprite.SpriteSpeed;
+                        }
+                    }
+                }
+
+            }
+
+            else if (InputHandler.Maintained("Down", PlayerIndex.One))
+            {
+                Sprite.LookDirection = Config.LookDirection.Down;
+                Sprite.AnimateDown(gameTime);
+
+                if (Sprite.SpritePosition.Y < (Config.MapLayer.Height + Config.MapLayer.Y - Config.OtterHeight))
+                {
+                    if (!Map.IsObstacle((int)Sprite.CellPosition.X, (int)Sprite.CellPosition.Y + 1) && !Map.IsBomb((int)Sprite.CellPosition.X, (int)Sprite.CellPosition.Y + 1))
+                    {
+                        Sprite.Direction = Vector2.Normalize(new Vector2(0, 1));
+                        Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * Sprite.SpriteSpeed;
+
+
+                        // Contournement
+                        if ((Sprite.SpritePosition.X - Config.MapLayer.X + Config.OtterWidth / 2) > ((Sprite.CellPosition.X * Config.TileWidth) - Config.TileWidth / 4))
+                        {
+                            Sprite.SpritePosition = new Vector2(Sprite.SpritePosition.X - 3, Sprite.SpritePosition.Y);
+                        }
+                    }
+
+                    else
+                    {
+                        // Tant que les pieds de la loutre n'ont pas atteint le bord haut de la case bloquante...
+                        if (!(Sprite.SpritePosition.Y + Config.OtterHeight > (Sprite.CellPosition.Y * Config.TileHeight + Config.MapLayer.Y)))
+                        {
+                            Sprite.Direction = Vector2.Normalize(new Vector2(0, 1));
+                            Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * Sprite.SpriteSpeed;
+                        }
+                    }
+                }
+            }
+
+            else if (InputHandler.Maintained("Up", PlayerIndex.One))
+            {
+                Sprite.LookDirection = Config.LookDirection.Up;
+                Sprite.AnimateUp(gameTime);
+
+                if (Sprite.SpritePosition.Y > Config.MapLayer.Y)
+                {
+                    if (!Map.IsObstacle((int)Sprite.CellPosition.X, (int)Sprite.CellPosition.Y - 1) && !Map.IsBomb((int)Sprite.CellPosition.X, (int)Sprite.CellPosition.Y - 1))
+                    {
+                        Sprite.Direction = Vector2.Normalize(new Vector2(0, -1));
+                        Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * Sprite.SpriteSpeed;
+
+                        // Contournement
+                        if ((Sprite.SpritePosition.X - Config.MapLayer.X + Config.OtterWidth / 2) > ((Sprite.CellPosition.X * Config.TileWidth) - Config.TileWidth / 4))
+                        {
+                            Sprite.SpritePosition = new Vector2(Sprite.SpritePosition.X - 3, Sprite.SpritePosition.Y);
+                        }
+                    }
+
+                    else // La case vers laquelle on se dirige est bloquante mais on veut pouvoir pousser la taupe dans le guichet ;D
+                    {
+                        // Tant que les pieds de la loutre n'ont pas touché le bord inférieur de la case précédant la bloquante...
+                        if (!(Sprite.SpritePosition.Y + Config.OtterHeight < Sprite.CellPosition.Y * Config.TileHeight + Config.MapLayer.Y))
+                        {
+                            Sprite.Direction = Vector2.Normalize(new Vector2(0, -1));
+                            Sprite.SpritePosition += Sprite.Direction * (float)gameTime.ElapsedGameTime.TotalMilliseconds * Sprite.SpriteSpeed;
+                        }
+                    }
+                }
+            }
+
+            else
+                Sprite.CellOffset = new Point(Config.OtterWidth / 4, Config.OtterHeight / 2);
+
+            Sprite.CellPosition = Map.PointToVector((int)(Sprite.SpritePosition.X + Sprite.CellOffset.X), (int)(Sprite.SpritePosition.Y + Sprite.CellOffset.Y));
+
+            Sprite.X = (int)Sprite.SpritePosition.X - Config.MapLayer.X;
+            Sprite.Y = (int)Sprite.SpritePosition.Y - Config.MapLayer.Y;
+
             Sprite.Update(gameTime);
         }
 
