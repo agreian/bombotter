@@ -8,13 +8,13 @@ using Microsoft.Xna.Framework.Input;
 
 namespace BomberLoutre.Components
 {
-    class Player
+    public class Player
     {
         #region Field Region
 
         private BomberLoutreGame GameRef;
         private GameScreen gameScreen;
-        private int id;
+        public int Id { get; set; }
 
         public OtterSprite Sprite { get; protected set; }
 
@@ -24,45 +24,11 @@ namespace BomberLoutre.Components
         private bool bombDropped;
 
         // Characteristics
-        private bool isAlive;       // Joueur vivant
-        private int bombPower;      // Rayon d'explosion de la bombe
-        private int bombNumber;     // Capacité totale de bombes déposables
-        private int bombAvailable;  // Capacité courante de bombes déposables
-        private bool canKick;       // Peut kicker les bombes
-
-        #endregion
-
-        #region Property Region
-
-        public int Id
-        {
-            get { return id; }
-        }
-
-        public bool IsAlive
-        {
-            get { return isAlive; }
-        }
-
-        public int BombPower
-        {
-            get { return bombPower; }
-        }
-
-        public int BombAvailable
-        {
-            get { return bombAvailable; }
-        }
-
-        public int BombNumber
-        {
-            get { return bombNumber; }
-        }
-
-        public bool CanKick
-        {
-            get { return canKick; }
-        }
+        public bool IsAlive { get; set; }       // Joueur vivant
+        public int BombPower { get; set; }      // Rayon d'explosion de la bombe
+        public int BombNumber { get; set; }     // Capacité totale de bombes déposables
+        public int BombAvailable { get; set; }  // Capacité courante de bombes déposables
+        public bool CanKick { get; set; }       // Peut kicker les bombes
 
         #endregion
 
@@ -75,11 +41,11 @@ namespace BomberLoutre.Components
 
             bombDropped = false;
 
-            isAlive = true;
-            bombPower = 3;
-            bombNumber = 1;
-            bombAvailable = 1;
-            canKick = false;
+            IsAlive = true;
+            BombPower = 1;
+            BombNumber = 1;
+            BombAvailable = BombNumber;
+            CanKick = false;
 
             Texture2D spriteTexture = GameRef.Content.Load<Texture2D>("Graphics/Sprites/otterSprite");
             Sprite = new OtterSprite(spriteTexture, currentFrame, position);
@@ -229,6 +195,12 @@ namespace BomberLoutre.Components
                 Sprite.CellOffset = new Point(Config.OtterWidth / 4, Config.OtterHeight / 2);
 
             Sprite.CellPosition = Map.PointToVector((int)(Sprite.SpritePosition.X + Sprite.CellOffset.X), (int)(Sprite.SpritePosition.Y + Sprite.CellOffset.Y));
+            
+            if (Map.IsBonus((int) Sprite.CellPosition.X, (int) Sprite.CellPosition.Y))
+            {
+                gameScreen.ApplyBonus(this, (int) Sprite.CellPosition.X, (int) Sprite.CellPosition.Y);
+            }
+
 
             Sprite.X = (int)Sprite.SpritePosition.X - Config.MapLayer.X;
             Sprite.Y = (int)Sprite.SpritePosition.Y - Config.MapLayer.Y;
@@ -248,9 +220,10 @@ namespace BomberLoutre.Components
         {
             if (InputHandler.Maintained("Space", PlayerIndex.One))
             {
-                if (!bombDropped)
+                if (!bombDropped && bombAvailable > 0)
                 {
                     DropBomb();
+                    bombAvailable--;
                     bombDropped = true;
                 }
             }
@@ -278,8 +251,7 @@ namespace BomberLoutre.Components
                 Sprite.CellPosition = Map.PointToVector((int)newBomb.Sprite.SpritePosition.X, (int)newBomb.Sprite.SpritePosition.Y);
             }
         }
-
-
+        
         #endregion
     }
 }

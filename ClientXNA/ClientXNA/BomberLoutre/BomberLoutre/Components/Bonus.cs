@@ -11,12 +11,14 @@ namespace BomberLoutre.Components
         protected BomberLoutreGame GameRef;
         protected Rectangle SourceRectangle;
         protected Texture2D Texture;
+        public Vector2 CellPosition { get; private set; }
         public string Type { get; set; }
 
         public Bonus(BomberLoutreGame gameRef, Vector2 cellule, string type)
         {
             GameRef = gameRef;
             SourceRectangle = new Rectangle(0, 0, Config.TileWidth, Config.TileHeight);
+            CellPosition = cellule;
             Type = type;
 
             switch (type)

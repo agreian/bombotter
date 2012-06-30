@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 
 namespace BomberLoutre
 {
-    static class Config
+    public static class Config
     {
         public static int PlayerNumber = 1;
         
