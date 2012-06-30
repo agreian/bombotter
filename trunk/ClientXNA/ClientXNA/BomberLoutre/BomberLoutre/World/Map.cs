@@ -16,7 +16,8 @@ namespace BomberLoutre.World
         static byte[,] matrix;
         static bool[,] walls;
         static bool[,] boxes;
-        static bool[,] bombs; 
+        static bool[,] bombs;
+        static bool[,] bonuses; 
 
         public Map(BomberLoutreGame gameRef, string fileName, GameScreen gameScreen) : base(gameRef)
         {
@@ -27,6 +28,7 @@ namespace BomberLoutre.World
             walls = new bool[13, 11];
             boxes = new bool[13, 11];
             bombs = new bool[13, 11];
+            bonuses = new bool[13, 11];
         }
 
         public override void Initialize()
