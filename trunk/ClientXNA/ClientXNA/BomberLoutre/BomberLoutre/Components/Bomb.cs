@@ -14,7 +14,7 @@ namespace BomberLoutre.Components
         private BomberLoutreGame GameRef;
         private GameScreen GameScreen;
         public BombSprite Sprite { get; protected set; }
-        private int playerId;
+        public int PlayerId { get; protected set; }
         public Vector2 CellPosition { get; set; }
         public TimeSpan Timer { get; set; }
         public int BombPower { get; set; }
@@ -25,7 +25,7 @@ namespace BomberLoutre.Components
             GameRef = gameRef;
             GameScreen = gameScreen;
             Texture2D spriteTexture = GameRef.Content.Load<Texture2D>("Graphics/Sprites/bombSprite");
-            this.playerId = pId;
+            PlayerId = pId;
 
             BombPower = power;
             Timer = new TimeSpan(0, 0, 0);

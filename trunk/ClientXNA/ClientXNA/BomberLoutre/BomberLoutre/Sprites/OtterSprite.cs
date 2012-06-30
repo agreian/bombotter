@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace BomberLoutre.Sprites
 {
-    class OtterSprite : Sprite
+    public class OtterSprite : Sprite
     {
         private float Timer;
         private float Interval;

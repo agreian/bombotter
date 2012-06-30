@@ -151,5 +151,21 @@ namespace BomberLoutre.World
         {
             boxes[x - 1, y - 1] = false;
         }
+
+        public static bool IsBonus(int x, int y)
+        {
+            if (x < 1 || x > 13 || y < 1 || y > 11) return false;
+            return bonuses[x - 1, y - 1];
+        }
+
+        public static void SetBonus(int x, int y)
+        {
+            bonuses[x - 1, y - 1] = true;
+        }
+
+        public static void RemoveBonus(int x, int y)
+        {
+            bonuses[x - 1, y - 1] = false;
+        }
     }
 }

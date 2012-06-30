@@ -146,6 +146,7 @@ namespace BomberLoutre.Screens
             {
                 randomBonus = new Bonus(GameRef, new Vector2(x, y), types[(randomNumber)]);
                 bonusList.Add(randomBonus);
+                Map.SetBonus(x, y);
             }
         }
 
@@ -166,12 +167,44 @@ namespace BomberLoutre.Screens
             }
 
             bombList.Remove(bomb);
+            playerList[bomb.PlayerId].BombAvailable++;
             GameRef.PlaySoundEffect(bombExplosionSound);
         }
 
         public void RemoveFlame(Flame flame)
         {
             flameList.Remove(flame);
+        }
+
+        public void ApplyBonus(Player player, int x, int y)
+        {
+            int i;
+            for (i = 0; i < bonusList.Count; ++i)
+            {
+                if ((bonusList[i].CellPosition.X == x && bonusList[i].CellPosition.Y == y))
+                {
+                    switch (bonusList[i].Type)
+                    {
+                        case "powerUp":
+                            break;
+
+                        case "powerUpGold":
+                            break;
+
+                        case "speedUp":
+                            break;
+
+                        case "bombUp":
+                            break;
+
+                        case "canKick":
+                            break;
+                    }
+
+                    Map.RemoveBonus(x, y);
+                    bonusList.RemoveAt(i);
+                }
+            }
         }
 
         public bool ComputeExplosion(Bomb bomb, int xOffset, int yOffset, bool stop)
