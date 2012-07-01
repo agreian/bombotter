@@ -1,9 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
-using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using BomberLoutre.Controls;
 using BomberLoutre.Components;
@@ -86,7 +83,9 @@ namespace BomberLoutre.Screens
                 MediaPlayer.Stop();
             }
 
-            for(i = 0; i < Config.PlayerNumber; ++i)    playerList[i].Update(gameTime);
+            CheckIfPlayersDie();
+
+            for (i = 0; i < Config.PlayerNumber; ++i)   if (playerList[i].IsAlive) playerList[i].Update(gameTime);
             for (i = 0; i < bombList.Count; ++i)        bombList[i].Update(gameTime);
             for (i = 0; i < flameList.Count; ++i)       flameList[i].Update(gameTime);
 
@@ -106,13 +105,12 @@ namespace BomberLoutre.Screens
             for (i = 0; i < bombList.Count; ++i)        bombList[i].Draw(gameTime);
             for (i = 0; i < bonusList.Count; ++i)       bonusList[i].Draw(gameTime);
             for (i = 0; i < rockList.Count; ++i)        rockList[i].Draw(gameTime);
-            for (i = 0; i < Config.PlayerNumber; ++i)   playerList[i].Draw(gameTime);
+            for (i = 0; i < Config.PlayerNumber; ++i)   if(playerList[i].IsAlive) playerList[i].Draw(gameTime);
             for (i = 0; i < flameList.Count; ++i)       flameList[i].Draw(gameTime);
 
             //GameRef.spriteBatch.DrawString(this.MidFont, String.Format("({0} : {1})", playerList[0].Sprite.SpritePosition.X - Config.MapLayer.X, playerList[0].Sprite.SpritePosition.Y - Config.MapLayer.Y), new Vector2(30, 30), Color.Red);
-            //GameRef.spriteBatch.DrawString(this.MidFont, String.Format("({0} : {1})", playerList[0].Sprite.CellPosition.X, playerList[0].Sprite.CellPosition.Y), new Vector2(30, 60), Color.Red);
+            GameRef.spriteBatch.DrawString(this.MidFont, String.Format("({0} : {1})", playerList[0].Sprite.CellPosition.X, playerList[0].Sprite.CellPosition.Y), new Vector2(30, 60), Color.Red);
             
- 
             GameRef.spriteBatch.End();
             base.Draw(gameTime);
         }
@@ -150,13 +148,31 @@ namespace BomberLoutre.Screens
             }
         }
 
+        public void CheckIfPlayersDie()
+        {
+            for (int i = 0; i < playerList.Count; ++i)
+                for(int j = 0; j < flameList.Count; ++j)
+                    if (playerList[i].HitBox.Intersects(flameList[j].SourceRectangle))
+                        playerList[i].IsAlive = false;
+        }
+
+        public void CheckIfPlayersDie(Flame newFlame)
+        {
+            for (int i = 0; i < playerList.Count; ++i)
+                if (playerList[i].HitBox.Intersects(newFlame.SourceRectangle))
+                    playerList[i].IsAlive = false;
+        }
+
         public void BOOM(Bomb bomb)
         {
+            bool right = false, top = false, left = false, bottom = false;
+            Flame newFlame;
+            
             Map.RemoveBomb((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y);
 
-            bool right = false, top = false, left = false, bottom = false;
-
-            flameList.Add(new Flame((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y, this, GameRef));
+            newFlame = new Flame((int)bomb.CellPosition.X, (int)bomb.CellPosition.Y, this, GameRef);
+            flameList.Add(newFlame);
+            CheckIfPlayersDie(newFlame);
 
             for (int i = 1; i <= bomb.BombPower; ++i)
             {
@@ -217,6 +233,7 @@ namespace BomberLoutre.Screens
 
         public bool ComputeExplosion(Bomb bomb, int xOffset, int yOffset, bool stop)
         {
+            Flame newFlame;
             bool rotateFlame = (xOffset != 0) ? true : false;
             if (!Map.IsObstacle((int)bomb.CellPosition.X + xOffset, (int)bomb.CellPosition.Y + yOffset) && !stop)
             {
@@ -224,7 +241,9 @@ namespace BomberLoutre.Screens
                 {
                     if ((int)bomb.CellPosition.Y + yOffset <= Config.MapSize.Y && (int)bomb.CellPosition.Y + yOffset > 0)
                     {
-                        flameList.Add(new Flame((int)bomb.CellPosition.X + xOffset, (int)bomb.CellPosition.Y + yOffset, this, GameRef, rotateFlame));
+                        newFlame = new Flame((int)bomb.CellPosition.X + xOffset, (int)bomb.CellPosition.Y + yOffset, this, GameRef, rotateFlame);
+                        flameList.Add(newFlame);
+                        CheckIfPlayersDie(newFlame);
                     }
                 }
 

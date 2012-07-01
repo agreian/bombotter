@@ -42,14 +42,14 @@ namespace BomberLoutre.Sprites
                     }
                 }
 
-                sourceRect = new Rectangle(currentFrame * SpriteWidth, 0, SpriteWidth, SpriteHeight);
+                SourceRectangle = new Rectangle(currentFrame * SpriteWidth, 0, SpriteWidth, SpriteHeight);
                 timer = 0f;
             }
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(SpriteTexture, SpritePosition, sourceRect, Color.White);
+            spriteBatch.Draw(SpriteTexture, SpritePosition, SourceRectangle, Color.White);
         }
     }
 }
