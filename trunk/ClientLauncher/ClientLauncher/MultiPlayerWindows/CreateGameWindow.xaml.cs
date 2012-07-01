@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace BomberLoutre.Client.Launcher
 {
     /// <summary>
-    /// Logique d'interaction pour GameListWindow.xaml
+    /// Logique d'interaction pour CreateGameWindow.xaml
     /// </summary>
-    public partial class GameListWindow : Window
+    public partial class CreateGameWindow : Window
     {
-        public GameListWindow()
+        public CreateGameWindow()
         {
             InitializeComponent();
         }

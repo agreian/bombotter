@@ -22,6 +22,26 @@ namespace BomberLoutre.Client.Launcher
         public LoginWindow()
         {
             InitializeComponent();
+
+            if (LauncherSettings.Default.DefaultUser != string.Empty)
+            {
+                txtLogin.Text = LauncherSettings.Default.DefaultUser;
+                chkSaveLogin.IsChecked = true;
+
+                txtPassword.Focus();
+            }
+            else
+            {
+                txtLogin.Focus();
+            }
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnValidate_Click(this, new RoutedEventArgs());
+            }
         }
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
@@ -50,6 +70,32 @@ namespace BomberLoutre.Client.Launcher
                 {
                     MessageBox.Show("Identifiant ou mot de passe erroné", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+            }
+        }
+
+        private void txtLogin_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (chkSaveLogin.IsChecked.Value)
+            {
+                chkSaveLogin.IsChecked = false;
+            }
+        }
+
+        private void chkSaveLogin_Checked(object sender, RoutedEventArgs e)
+        {
+            if (chkSaveLogin.IsChecked.Value)
+            {
+                if (!string.IsNullOrWhiteSpace(txtLogin.Text))
+                {
+
+                    LauncherSettings.Default.DefaultUser = txtLogin.Text;
+                    LauncherSettings.Default.Save();
+                }
+            }
+            else
+            {
+                LauncherSettings.Default.DefaultUser = string.Empty;
+                LauncherSettings.Default.Save();
             }
         }
     }
