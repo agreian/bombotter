@@ -15,42 +15,42 @@ using BomberLoutreIce;
 namespace BomberLoutre.Client.Launcher
 {
     /// <summary>
-    /// Logique d'interaction pour LoginWindow.xaml
+    /// Logique d'interaction pour AddUserWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class AddUserWindow : Window
     {
-        public LoginWindow()
+        public AddUserWindow()
         {
             InitializeComponent();
         }
 
-        private void Hyperlink_Click(object sender, RoutedEventArgs e)
-        {
-            AddUserWindow addUser = new AddUserWindow();
-            addUser.Show();
-            this.Close();
-        }
-
         private void btnValidate_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtLogin.Text) || string.IsNullOrWhiteSpace(txtPassword.Password))
+            if (string.IsNullOrWhiteSpace(txtLogin.Text) || string.IsNullOrWhiteSpace(txtPassword.Password) || txtPassword.Password != txtPassword2.Password)
             {
             }
             else
             {
                 try
                 {
-                    Client.CurrentUser = Client.CurrentClientPrx.Connect(txtLogin.Text, txtPassword.Password);
+                    Client.CurrentUser = Client.CurrentClientPrx.CreateUser(txtLogin.Text, txtPassword.Password);
 
                     GameListWindow gameList = new GameListWindow();
                     gameList.Show();
                     this.Close();
                 }
-                catch (BadUserInfoException)
+                catch (UserAlreadyExistsException)
                 {
-                    MessageBox.Show("Identifiant ou mot de passe erroné", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Cet identifiant est déjà utilisé", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
         }
     }
 }
