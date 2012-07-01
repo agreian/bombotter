@@ -30,9 +30,18 @@ namespace BomberLoutre.Client.Launcher
 
         private void btnMulti_Click(object sender, RoutedEventArgs e)
         {
-            LoginWindow login = new LoginWindow();
-            login.Show();
-            this.Close();
+            if (Client.CurrentUser != null)
+            {
+                GameListWindow gameList = new GameListWindow();
+                gameList.Show();
+                this.Close();
+            }
+            else
+            {
+                LoginWindow login = new LoginWindow();
+                login.Show();
+                this.Close();
+            }
         }
 
         private void btnOptions_Click(object sender, RoutedEventArgs e)

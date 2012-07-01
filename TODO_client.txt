@@ -1,0 +1,8 @@
+- Améliorer MapEditor :
+	- Afficher sur le côté les éléments à placer sur la map (vide, box, rock)
+	- Fenêtre de sélection des textures avec onglets (onglets vide, box, rock)
+	- Ajout de la fonctionnalité d'envois sur le serveur de la map
+
+- Client Launcher :
+	- Tout finir...
+	- Trouver un moyen pour afficher une preview de la map sélectionnée

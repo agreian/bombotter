@@ -50,7 +50,7 @@ namespace BomberLoutre.Server
             {
                 //Console.WriteLine("{0}, {1}, {2}", reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
 
-                User user = new User(reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
+                User user = new User(reader.GetInt32(0), reader.GetString(1));
 
                 reader.Close();
 
@@ -82,7 +82,7 @@ namespace BomberLoutre.Server
             {
                 //Console.WriteLine("{0}, {1}, {2}", reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
 
-                User user = new User(reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
+                User user = new User(reader.GetInt32(0), reader.GetString(1));
 
                 reader.Close();
 
@@ -98,9 +98,9 @@ namespace BomberLoutre.Server
             throw new BadUserInfoException();
         }
 
-        internal static List<User> SelectUsers()
+        internal static List<UserInfo> SelectUsers()
         {
-            List<User> users = new List<User>();
+            List<UserInfo> users = new List<UserInfo>();
 
             SQLiteConnection conn = Connection();
 
@@ -110,7 +110,7 @@ namespace BomberLoutre.Server
 
             while (reader.Read())
             {
-                users.Add(new User(reader.GetInt32(0), reader.GetString(1), reader.GetString(2)));
+                users.Add(new User(reader.GetInt32(0), reader.GetString(1)));
             }
 
             reader.Close();
@@ -146,7 +146,7 @@ namespace BomberLoutre.Server
 
                 Deconnection(conn);
 
-                return new User(lastID + 1, login.ToLower(), password);
+                return new User(lastID + 1, login.ToLower());
             }
         }
 

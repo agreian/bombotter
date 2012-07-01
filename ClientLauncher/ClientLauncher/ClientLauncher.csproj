@@ -59,7 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddUserWindow.xaml.cs">
+    <Compile Include="MultiPlayerWindows\AddUserWindow.xaml.cs">
       <DependentUpon>AddUserWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -68,11 +68,24 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MultiPlayerWindows\BeforeGameWindow.xaml.cs">
+      <DependentUpon>BeforeGameWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Client.cs" />
-    <Compile Include="GameListWindow.xaml.cs">
+    <Compile Include="ClientLauncher.cs" />
+    <Compile Include="ClientLauncher.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>ClientLauncher.settings</DependentUpon>
+    </Compile>
+    <Compile Include="MultiPlayerWindows\CreateGameWindow.xaml.cs">
+      <DependentUpon>CreateGameWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameClient.cs" />
+    <Compile Include="MultiPlayerWindows\GameListWindow.xaml.cs">
       <DependentUpon>GameListWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoginWindow.xaml.cs">
+    <Compile Include="MultiPlayerWindows\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
@@ -95,6 +108,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="ClientLauncher.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ClientLauncher.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -102,15 +120,23 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="AddUserWindow.xaml">
+    <Page Include="MultiPlayerWindows\AddUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GameListWindow.xaml">
+    <Page Include="MultiPlayerWindows\BeforeGameWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LoginWindow.xaml">
+    <Page Include="MultiPlayerWindows\CreateGameWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MultiPlayerWindows\GameListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MultiPlayerWindows\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -36,6 +36,208 @@ namespace BomberLoutreIce
     [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720")]
     [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1722")]
     [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724")]
+    public partial class UserInfo : _System.ICloneable
+    {
+        #region Slice data members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public string login;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public int gameCount;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public int winCount;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public int drawCount;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public int looseCount;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public int killCount;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public int deathCount;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public int suicideCount;
+
+        #endregion
+
+        #region Constructors
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public UserInfo()
+        {
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public UserInfo(string login, int gameCount, int winCount, int drawCount, int looseCount, int killCount, int deathCount, int suicideCount)
+        {
+            this.login = login;
+            this.gameCount = gameCount;
+            this.winCount = winCount;
+            this.drawCount = drawCount;
+            this.looseCount = looseCount;
+            this.killCount = killCount;
+            this.deathCount = deathCount;
+            this.suicideCount = suicideCount;
+        }
+
+        #endregion
+
+        #region ICloneable members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
+
+        #endregion
+
+        #region Object members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override int GetHashCode()
+        {
+            int h__ = 0;
+            if(login != null)
+            {
+                h__ = 5 * h__ + login.GetHashCode();
+            }
+            h__ = 5 * h__ + gameCount.GetHashCode();
+            h__ = 5 * h__ + winCount.GetHashCode();
+            h__ = 5 * h__ + drawCount.GetHashCode();
+            h__ = 5 * h__ + looseCount.GetHashCode();
+            h__ = 5 * h__ + killCount.GetHashCode();
+            h__ = 5 * h__ + deathCount.GetHashCode();
+            h__ = 5 * h__ + suicideCount.GetHashCode();
+            return h__;
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override bool Equals(object other__)
+        {
+            if(object.ReferenceEquals(this, other__))
+            {
+                return true;
+            }
+            if(other__ == null)
+            {
+                return false;
+            }
+            if(GetType() != other__.GetType())
+            {
+                return false;
+            }
+            UserInfo o__ = (UserInfo)other__;
+            if(login == null)
+            {
+                if(o__.login != null)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if(!login.Equals(o__.login))
+                {
+                    return false;
+                }
+            }
+            if(!gameCount.Equals(o__.gameCount))
+            {
+                return false;
+            }
+            if(!winCount.Equals(o__.winCount))
+            {
+                return false;
+            }
+            if(!drawCount.Equals(o__.drawCount))
+            {
+                return false;
+            }
+            if(!looseCount.Equals(o__.looseCount))
+            {
+                return false;
+            }
+            if(!killCount.Equals(o__.killCount))
+            {
+                return false;
+            }
+            if(!deathCount.Equals(o__.deathCount))
+            {
+                return false;
+            }
+            if(!suicideCount.Equals(o__.suicideCount))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        #endregion
+
+        #region Comparison members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public static bool operator==(UserInfo lhs__, UserInfo rhs__)
+        {
+            return Equals(lhs__, rhs__);
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public static bool operator!=(UserInfo lhs__, UserInfo rhs__)
+        {
+            return !Equals(lhs__, rhs__);
+        }
+
+        #endregion
+
+        #region Marshalling support
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public void write__(IceInternal.BasicStream os__)
+        {
+            os__.writeString(login);
+            os__.writeInt(gameCount);
+            os__.writeInt(winCount);
+            os__.writeInt(drawCount);
+            os__.writeInt(looseCount);
+            os__.writeInt(killCount);
+            os__.writeInt(deathCount);
+            os__.writeInt(suicideCount);
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public void read__(IceInternal.BasicStream is__)
+        {
+            login = is__.readString();
+            gameCount = is__.readInt();
+            winCount = is__.readInt();
+            drawCount = is__.readInt();
+            looseCount = is__.readInt();
+            killCount = is__.readInt();
+            deathCount = is__.readInt();
+            suicideCount = is__.readInt();
+        }
+
+        #endregion
+    }
+
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1710")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1715")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1722")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724")]
     public partial class User : _System.ICloneable
     {
         #region Slice data members
@@ -44,10 +246,10 @@ namespace BomberLoutreIce
         public int id;
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public string login;
+        public string password;
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public string password;
+        public BomberLoutreIce.UserInfo info;
 
         #endregion
 
@@ -59,11 +261,11 @@ namespace BomberLoutreIce
         }
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public User(int id, string login, string password)
+        public User(int id, string password, BomberLoutreIce.UserInfo info)
         {
             this.id = id;
-            this.login = login;
             this.password = password;
+            this.info = info;
         }
 
         #endregion
@@ -85,13 +287,13 @@ namespace BomberLoutreIce
         {
             int h__ = 0;
             h__ = 5 * h__ + id.GetHashCode();
-            if(login != null)
-            {
-                h__ = 5 * h__ + login.GetHashCode();
-            }
             if(password != null)
             {
                 h__ = 5 * h__ + password.GetHashCode();
+            }
+            if(info != null)
+            {
+                h__ = 5 * h__ + info.GetHashCode();
             }
             return h__;
         }
@@ -116,20 +318,6 @@ namespace BomberLoutreIce
             {
                 return false;
             }
-            if(login == null)
-            {
-                if(o__.login != null)
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                if(!login.Equals(o__.login))
-                {
-                    return false;
-                }
-            }
             if(password == null)
             {
                 if(o__.password != null)
@@ -140,6 +328,20 @@ namespace BomberLoutreIce
             else
             {
                 if(!password.Equals(o__.password))
+                {
+                    return false;
+                }
+            }
+            if(info == null)
+            {
+                if(o__.info != null)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if(!info.Equals(o__.info))
                 {
                     return false;
                 }
@@ -171,16 +373,911 @@ namespace BomberLoutreIce
         public void write__(IceInternal.BasicStream os__)
         {
             os__.writeInt(id);
-            os__.writeString(login);
             os__.writeString(password);
+            if(info == null)
+            {
+                BomberLoutreIce.UserInfo tmp__ = new BomberLoutreIce.UserInfo();
+                tmp__.write__(os__);
+            }
+            else
+            {
+                info.write__(os__);
+            }
         }
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
         public void read__(IceInternal.BasicStream is__)
         {
             id = is__.readInt();
-            login = is__.readString();
             password = is__.readString();
+            if(info == null)
+            {
+                info = new BomberLoutreIce.UserInfo();
+            }
+            info.read__(is__);
+        }
+
+        #endregion
+    }
+
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1710")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1715")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1722")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724")]
+    public partial struct MapItem
+    {
+        #region Slice data members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public int i;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public int j;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public bool destructible;
+
+        #endregion
+
+        #region Constructor
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public MapItem(int i, int j, bool destructible)
+        {
+            this.i = i;
+            this.j = j;
+            this.destructible = destructible;
+        }
+
+        #endregion
+
+        #region Object members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override int GetHashCode()
+        {
+            int h__ = 0;
+            h__ = 5 * h__ + i.GetHashCode();
+            h__ = 5 * h__ + j.GetHashCode();
+            h__ = 5 * h__ + destructible.GetHashCode();
+            return h__;
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override bool Equals(object other__)
+        {
+            if(!(other__ is MapItem))
+            {
+                return false;
+            }
+            MapItem o__ = (MapItem)other__;
+            if(!i.Equals(o__.i))
+            {
+                return false;
+            }
+            if(!j.Equals(o__.j))
+            {
+                return false;
+            }
+            if(!destructible.Equals(o__.destructible))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        #endregion
+
+        #region Comparison members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public static bool operator==(MapItem lhs__, MapItem rhs__)
+        {
+            return Equals(lhs__, rhs__);
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public static bool operator!=(MapItem lhs__, MapItem rhs__)
+        {
+            return !Equals(lhs__, rhs__);
+        }
+
+        #endregion
+
+        #region Marshalling support
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public void write__(IceInternal.BasicStream os__)
+        {
+            os__.writeInt(i);
+            os__.writeInt(j);
+            os__.writeBool(destructible);
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public void read__(IceInternal.BasicStream is__)
+        {
+            i = is__.readInt();
+            j = is__.readInt();
+            destructible = is__.readBool();
+        }
+
+        #endregion
+    }
+
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1710")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1715")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1722")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724")]
+    public partial struct Bomb
+    {
+        #region Slice data members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public int i;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public int j;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public int power;
+
+        #endregion
+
+        #region Constructor
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public Bomb(int i, int j, int power)
+        {
+            this.i = i;
+            this.j = j;
+            this.power = power;
+        }
+
+        #endregion
+
+        #region Object members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override int GetHashCode()
+        {
+            int h__ = 0;
+            h__ = 5 * h__ + i.GetHashCode();
+            h__ = 5 * h__ + j.GetHashCode();
+            h__ = 5 * h__ + power.GetHashCode();
+            return h__;
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override bool Equals(object other__)
+        {
+            if(!(other__ is Bomb))
+            {
+                return false;
+            }
+            Bomb o__ = (Bomb)other__;
+            if(!i.Equals(o__.i))
+            {
+                return false;
+            }
+            if(!j.Equals(o__.j))
+            {
+                return false;
+            }
+            if(!power.Equals(o__.power))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        #endregion
+
+        #region Comparison members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public static bool operator==(Bomb lhs__, Bomb rhs__)
+        {
+            return Equals(lhs__, rhs__);
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public static bool operator!=(Bomb lhs__, Bomb rhs__)
+        {
+            return !Equals(lhs__, rhs__);
+        }
+
+        #endregion
+
+        #region Marshalling support
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public void write__(IceInternal.BasicStream os__)
+        {
+            os__.writeInt(i);
+            os__.writeInt(j);
+            os__.writeInt(power);
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public void read__(IceInternal.BasicStream is__)
+        {
+            i = is__.readInt();
+            j = is__.readInt();
+            power = is__.readInt();
+        }
+
+        #endregion
+    }
+
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1710")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1715")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1722")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724")]
+    public partial class Bonus : _System.ICloneable
+    {
+        #region Slice data members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public int i;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public int j;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public string type;
+
+        #endregion
+
+        #region Constructors
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public Bonus()
+        {
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public Bonus(int i, int j, string type)
+        {
+            this.i = i;
+            this.j = j;
+            this.type = type;
+        }
+
+        #endregion
+
+        #region ICloneable members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
+
+        #endregion
+
+        #region Object members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override int GetHashCode()
+        {
+            int h__ = 0;
+            h__ = 5 * h__ + i.GetHashCode();
+            h__ = 5 * h__ + j.GetHashCode();
+            if(type != null)
+            {
+                h__ = 5 * h__ + type.GetHashCode();
+            }
+            return h__;
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override bool Equals(object other__)
+        {
+            if(object.ReferenceEquals(this, other__))
+            {
+                return true;
+            }
+            if(other__ == null)
+            {
+                return false;
+            }
+            if(GetType() != other__.GetType())
+            {
+                return false;
+            }
+            Bonus o__ = (Bonus)other__;
+            if(!i.Equals(o__.i))
+            {
+                return false;
+            }
+            if(!j.Equals(o__.j))
+            {
+                return false;
+            }
+            if(type == null)
+            {
+                if(o__.type != null)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if(!type.Equals(o__.type))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        #endregion
+
+        #region Comparison members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public static bool operator==(Bonus lhs__, Bonus rhs__)
+        {
+            return Equals(lhs__, rhs__);
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public static bool operator!=(Bonus lhs__, Bonus rhs__)
+        {
+            return !Equals(lhs__, rhs__);
+        }
+
+        #endregion
+
+        #region Marshalling support
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public void write__(IceInternal.BasicStream os__)
+        {
+            os__.writeInt(i);
+            os__.writeInt(j);
+            os__.writeString(type);
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public void read__(IceInternal.BasicStream is__)
+        {
+            i = is__.readInt();
+            j = is__.readInt();
+            type = is__.readString();
+        }
+
+        #endregion
+    }
+
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1710")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1715")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1722")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724")]
+    public partial class Map : _System.ICloneable
+    {
+        #region Slice data members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public string name;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public string groundTexture;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public string boxTexture;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public string rockTexture;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public BomberLoutreIce.MapItem[] mapItems;
+
+        #endregion
+
+        #region Constructors
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public Map()
+        {
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public Map(string name, string groundTexture, string boxTexture, string rockTexture, BomberLoutreIce.MapItem[] mapItems)
+        {
+            this.name = name;
+            this.groundTexture = groundTexture;
+            this.boxTexture = boxTexture;
+            this.rockTexture = rockTexture;
+            this.mapItems = mapItems;
+        }
+
+        #endregion
+
+        #region ICloneable members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
+
+        #endregion
+
+        #region Object members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override int GetHashCode()
+        {
+            int h__ = 0;
+            if(name != null)
+            {
+                h__ = 5 * h__ + name.GetHashCode();
+            }
+            if(groundTexture != null)
+            {
+                h__ = 5 * h__ + groundTexture.GetHashCode();
+            }
+            if(boxTexture != null)
+            {
+                h__ = 5 * h__ + boxTexture.GetHashCode();
+            }
+            if(rockTexture != null)
+            {
+                h__ = 5 * h__ + rockTexture.GetHashCode();
+            }
+            if(mapItems != null)
+            {
+                h__ = 5 * h__ + IceUtilInternal.Arrays.GetHashCode(mapItems);
+            }
+            return h__;
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override bool Equals(object other__)
+        {
+            if(object.ReferenceEquals(this, other__))
+            {
+                return true;
+            }
+            if(other__ == null)
+            {
+                return false;
+            }
+            if(GetType() != other__.GetType())
+            {
+                return false;
+            }
+            Map o__ = (Map)other__;
+            if(name == null)
+            {
+                if(o__.name != null)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if(!name.Equals(o__.name))
+                {
+                    return false;
+                }
+            }
+            if(groundTexture == null)
+            {
+                if(o__.groundTexture != null)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if(!groundTexture.Equals(o__.groundTexture))
+                {
+                    return false;
+                }
+            }
+            if(boxTexture == null)
+            {
+                if(o__.boxTexture != null)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if(!boxTexture.Equals(o__.boxTexture))
+                {
+                    return false;
+                }
+            }
+            if(rockTexture == null)
+            {
+                if(o__.rockTexture != null)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if(!rockTexture.Equals(o__.rockTexture))
+                {
+                    return false;
+                }
+            }
+            if(mapItems == null)
+            {
+                if(o__.mapItems != null)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if(!IceUtilInternal.Arrays.Equals(mapItems, o__.mapItems))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        #endregion
+
+        #region Comparison members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public static bool operator==(Map lhs__, Map rhs__)
+        {
+            return Equals(lhs__, rhs__);
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public static bool operator!=(Map lhs__, Map rhs__)
+        {
+            return !Equals(lhs__, rhs__);
+        }
+
+        #endregion
+
+        #region Marshalling support
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public void write__(IceInternal.BasicStream os__)
+        {
+            os__.writeString(name);
+            os__.writeString(groundTexture);
+            os__.writeString(boxTexture);
+            os__.writeString(rockTexture);
+            if(mapItems == null)
+            {
+                os__.writeSize(0);
+            }
+            else
+            {
+                os__.writeSize(mapItems.Length);
+                for(int ix__ = 0; ix__ < mapItems.Length; ++ix__)
+                {
+                    mapItems[ix__].write__(os__);
+                }
+            }
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public void read__(IceInternal.BasicStream is__)
+        {
+            name = is__.readString();
+            groundTexture = is__.readString();
+            boxTexture = is__.readString();
+            rockTexture = is__.readString();
+            {
+                int szx__ = is__.readAndCheckSeqSize(9);
+                mapItems = new BomberLoutreIce.MapItem[szx__];
+                for(int ix__ = 0; ix__ < szx__; ++ix__)
+                {
+                    mapItems[ix__].read__(is__);
+                }
+            }
+        }
+
+        #endregion
+    }
+
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1710")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1715")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1722")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724")]
+    public partial class Game : _System.ICloneable
+    {
+        #region Slice data members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public string name;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public int roundCount;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public string gameMode;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public BomberLoutreIce.UserInfo creator;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public BomberLoutreIce.UserInfo[] users;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public BomberLoutreIce.Map gameMap;
+
+        #endregion
+
+        #region Constructors
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public Game()
+        {
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public Game(string name, int roundCount, string gameMode, BomberLoutreIce.UserInfo creator, BomberLoutreIce.UserInfo[] users, BomberLoutreIce.Map gameMap)
+        {
+            this.name = name;
+            this.roundCount = roundCount;
+            this.gameMode = gameMode;
+            this.creator = creator;
+            this.users = users;
+            this.gameMap = gameMap;
+        }
+
+        #endregion
+
+        #region ICloneable members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
+
+        #endregion
+
+        #region Object members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override int GetHashCode()
+        {
+            int h__ = 0;
+            if(name != null)
+            {
+                h__ = 5 * h__ + name.GetHashCode();
+            }
+            h__ = 5 * h__ + roundCount.GetHashCode();
+            if(gameMode != null)
+            {
+                h__ = 5 * h__ + gameMode.GetHashCode();
+            }
+            if(creator != null)
+            {
+                h__ = 5 * h__ + creator.GetHashCode();
+            }
+            if(users != null)
+            {
+                h__ = 5 * h__ + IceUtilInternal.Arrays.GetHashCode(users);
+            }
+            if(gameMap != null)
+            {
+                h__ = 5 * h__ + gameMap.GetHashCode();
+            }
+            return h__;
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override bool Equals(object other__)
+        {
+            if(object.ReferenceEquals(this, other__))
+            {
+                return true;
+            }
+            if(other__ == null)
+            {
+                return false;
+            }
+            if(GetType() != other__.GetType())
+            {
+                return false;
+            }
+            Game o__ = (Game)other__;
+            if(name == null)
+            {
+                if(o__.name != null)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if(!name.Equals(o__.name))
+                {
+                    return false;
+                }
+            }
+            if(!roundCount.Equals(o__.roundCount))
+            {
+                return false;
+            }
+            if(gameMode == null)
+            {
+                if(o__.gameMode != null)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if(!gameMode.Equals(o__.gameMode))
+                {
+                    return false;
+                }
+            }
+            if(creator == null)
+            {
+                if(o__.creator != null)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if(!creator.Equals(o__.creator))
+                {
+                    return false;
+                }
+            }
+            if(users == null)
+            {
+                if(o__.users != null)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if(!IceUtilInternal.Arrays.Equals(users, o__.users))
+                {
+                    return false;
+                }
+            }
+            if(gameMap == null)
+            {
+                if(o__.gameMap != null)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if(!gameMap.Equals(o__.gameMap))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        #endregion
+
+        #region Comparison members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public static bool operator==(Game lhs__, Game rhs__)
+        {
+            return Equals(lhs__, rhs__);
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public static bool operator!=(Game lhs__, Game rhs__)
+        {
+            return !Equals(lhs__, rhs__);
+        }
+
+        #endregion
+
+        #region Marshalling support
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public void write__(IceInternal.BasicStream os__)
+        {
+            os__.writeString(name);
+            os__.writeInt(roundCount);
+            os__.writeString(gameMode);
+            if(creator == null)
+            {
+                BomberLoutreIce.UserInfo tmp__ = new BomberLoutreIce.UserInfo();
+                tmp__.write__(os__);
+            }
+            else
+            {
+                creator.write__(os__);
+            }
+            if(users == null)
+            {
+                os__.writeSize(0);
+            }
+            else
+            {
+                os__.writeSize(users.Length);
+                for(int ix__ = 0; ix__ < users.Length; ++ix__)
+                {
+                    (users[ix__] == null ? new BomberLoutreIce.UserInfo() : users[ix__]).write__(os__);
+                }
+            }
+            if(gameMap == null)
+            {
+                BomberLoutreIce.Map tmp__ = new BomberLoutreIce.Map();
+                tmp__.write__(os__);
+            }
+            else
+            {
+                gameMap.write__(os__);
+            }
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public void read__(IceInternal.BasicStream is__)
+        {
+            name = is__.readString();
+            roundCount = is__.readInt();
+            gameMode = is__.readString();
+            if(creator == null)
+            {
+                creator = new BomberLoutreIce.UserInfo();
+            }
+            creator.read__(is__);
+            {
+                int szx__ = is__.readAndCheckSeqSize(29);
+                users = new BomberLoutreIce.UserInfo[szx__];
+                for(int ix__ = 0; ix__ < szx__; ++ix__)
+                {
+                    users[ix__] = new BomberLoutreIce.UserInfo();
+                    users[ix__].read__(is__);
+                }
+            }
+            if(gameMap == null)
+            {
+                gameMap = new BomberLoutreIce.Map();
+            }
+            gameMap.read__(is__);
         }
 
         #endregion
@@ -633,6 +1730,21 @@ namespace BomberLoutreIce
     [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720")]
     [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1722")]
     [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724")]
+    public partial interface Server : Ice.Object, ServerOperations_, ServerOperationsNC_
+    {
+    }
+
+    [_System.Runtime.InteropServices.ComVisible(false)]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1710")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1715")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1722")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724")]
     public partial interface Client : Ice.Object, ClientOperations_, ClientOperationsNC_
     {
     }
@@ -645,10 +1757,24 @@ namespace BomberLoutreIce
 
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public delegate void Callback_Client_CreateUser(BomberLoutreIce.User ret__);
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public delegate void Callback_Client_GetGameList(BomberLoutreIce.Game[] ret__);
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public delegate void Callback_Client_JoinGame(BomberLoutreIce.ServerPrx ret__);
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public delegate void Callback_Client_CreateGame(BomberLoutreIce.ServerPrx ret__);
 }
 
 namespace BomberLoutreIce
 {
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public interface ServerPrx : Ice.ObjectPrx
+    {
+    }
+
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public interface ClientPrx : Ice.ObjectPrx
     {
@@ -673,17 +1799,66 @@ namespace BomberLoutreIce
         Ice.AsyncResult begin_CreateUser(string login, string password, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
 
         BomberLoutreIce.User end_CreateUser(Ice.AsyncResult r__);
+
+        BomberLoutreIce.Game[] GetGameList();
+        BomberLoutreIce.Game[] GetGameList(_System.Collections.Generic.Dictionary<string, string> context__);
+
+        Ice.AsyncResult<BomberLoutreIce.Callback_Client_GetGameList> begin_GetGameList();
+        Ice.AsyncResult<BomberLoutreIce.Callback_Client_GetGameList> begin_GetGameList(_System.Collections.Generic.Dictionary<string, string> ctx__);
+
+        Ice.AsyncResult begin_GetGameList(Ice.AsyncCallback cb__, object cookie__);
+        Ice.AsyncResult begin_GetGameList(_System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
+
+        BomberLoutreIce.Game[] end_GetGameList(Ice.AsyncResult r__);
+
+        BomberLoutreIce.ServerPrx JoinGame(string name);
+        BomberLoutreIce.ServerPrx JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> context__);
+
+        Ice.AsyncResult<BomberLoutreIce.Callback_Client_JoinGame> begin_JoinGame(string name);
+        Ice.AsyncResult<BomberLoutreIce.Callback_Client_JoinGame> begin_JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> ctx__);
+
+        Ice.AsyncResult begin_JoinGame(string name, Ice.AsyncCallback cb__, object cookie__);
+        Ice.AsyncResult begin_JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
+
+        BomberLoutreIce.ServerPrx end_JoinGame(Ice.AsyncResult r__);
+
+        BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame);
+        BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> context__);
+
+        Ice.AsyncResult<BomberLoutreIce.Callback_Client_CreateGame> begin_CreateGame(BomberLoutreIce.Game newGame);
+        Ice.AsyncResult<BomberLoutreIce.Callback_Client_CreateGame> begin_CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> ctx__);
+
+        Ice.AsyncResult begin_CreateGame(BomberLoutreIce.Game newGame, Ice.AsyncCallback cb__, object cookie__);
+        Ice.AsyncResult begin_CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
+
+        BomberLoutreIce.ServerPrx end_CreateGame(Ice.AsyncResult r__);
     }
 }
 
 namespace BomberLoutreIce
 {
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public interface ServerOperations_
+    {
+    }
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public interface ServerOperationsNC_
+    {
+    }
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public interface ClientOperations_
     {
         BomberLoutreIce.User Connect(string login, string password, Ice.Current current__);
 
         BomberLoutreIce.User CreateUser(string login, string password, Ice.Current current__);
+
+        BomberLoutreIce.Game[] GetGameList(Ice.Current current__);
+
+        BomberLoutreIce.ServerPrx JoinGame(string name, Ice.Current current__);
+
+        BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame, Ice.Current current__);
     }
 
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
@@ -692,11 +1867,349 @@ namespace BomberLoutreIce
         BomberLoutreIce.User Connect(string login, string password);
 
         BomberLoutreIce.User CreateUser(string login, string password);
+
+        BomberLoutreIce.Game[] GetGameList();
+
+        BomberLoutreIce.ServerPrx JoinGame(string name);
+
+        BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame);
     }
 }
 
 namespace BomberLoutreIce
 {
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public sealed class UserInfoListHelper
+    {
+        public static void write(IceInternal.BasicStream os__, BomberLoutreIce.UserInfo[] v__)
+        {
+            if(v__ == null)
+            {
+                os__.writeSize(0);
+            }
+            else
+            {
+                os__.writeSize(v__.Length);
+                for(int ix__ = 0; ix__ < v__.Length; ++ix__)
+                {
+                    (v__[ix__] == null ? new BomberLoutreIce.UserInfo() : v__[ix__]).write__(os__);
+                }
+            }
+        }
+
+        public static BomberLoutreIce.UserInfo[] read(IceInternal.BasicStream is__)
+        {
+            BomberLoutreIce.UserInfo[] v__;
+            {
+                int szx__ = is__.readAndCheckSeqSize(29);
+                v__ = new BomberLoutreIce.UserInfo[szx__];
+                for(int ix__ = 0; ix__ < szx__; ++ix__)
+                {
+                    v__[ix__] = new BomberLoutreIce.UserInfo();
+                    v__[ix__].read__(is__);
+                }
+            }
+            return v__;
+        }
+    }
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public sealed class MapItemListHelper
+    {
+        public static void write(IceInternal.BasicStream os__, BomberLoutreIce.MapItem[] v__)
+        {
+            if(v__ == null)
+            {
+                os__.writeSize(0);
+            }
+            else
+            {
+                os__.writeSize(v__.Length);
+                for(int ix__ = 0; ix__ < v__.Length; ++ix__)
+                {
+                    v__[ix__].write__(os__);
+                }
+            }
+        }
+
+        public static BomberLoutreIce.MapItem[] read(IceInternal.BasicStream is__)
+        {
+            BomberLoutreIce.MapItem[] v__;
+            {
+                int szx__ = is__.readAndCheckSeqSize(9);
+                v__ = new BomberLoutreIce.MapItem[szx__];
+                for(int ix__ = 0; ix__ < szx__; ++ix__)
+                {
+                    v__[ix__].read__(is__);
+                }
+            }
+            return v__;
+        }
+    }
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public sealed class BombListHelper
+    {
+        public static void write(IceInternal.BasicStream os__, BomberLoutreIce.Bomb[] v__)
+        {
+            if(v__ == null)
+            {
+                os__.writeSize(0);
+            }
+            else
+            {
+                os__.writeSize(v__.Length);
+                for(int ix__ = 0; ix__ < v__.Length; ++ix__)
+                {
+                    v__[ix__].write__(os__);
+                }
+            }
+        }
+
+        public static BomberLoutreIce.Bomb[] read(IceInternal.BasicStream is__)
+        {
+            BomberLoutreIce.Bomb[] v__;
+            {
+                int szx__ = is__.readAndCheckSeqSize(12);
+                v__ = new BomberLoutreIce.Bomb[szx__];
+                for(int ix__ = 0; ix__ < szx__; ++ix__)
+                {
+                    v__[ix__].read__(is__);
+                }
+            }
+            return v__;
+        }
+    }
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public sealed class BonusListHelper
+    {
+        public static void write(IceInternal.BasicStream os__, BomberLoutreIce.Bonus[] v__)
+        {
+            if(v__ == null)
+            {
+                os__.writeSize(0);
+            }
+            else
+            {
+                os__.writeSize(v__.Length);
+                for(int ix__ = 0; ix__ < v__.Length; ++ix__)
+                {
+                    (v__[ix__] == null ? new BomberLoutreIce.Bonus() : v__[ix__]).write__(os__);
+                }
+            }
+        }
+
+        public static BomberLoutreIce.Bonus[] read(IceInternal.BasicStream is__)
+        {
+            BomberLoutreIce.Bonus[] v__;
+            {
+                int szx__ = is__.readAndCheckSeqSize(9);
+                v__ = new BomberLoutreIce.Bonus[szx__];
+                for(int ix__ = 0; ix__ < szx__; ++ix__)
+                {
+                    v__[ix__] = new BomberLoutreIce.Bonus();
+                    v__[ix__].read__(is__);
+                }
+            }
+            return v__;
+        }
+    }
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public sealed class GameListHelper
+    {
+        public static void write(IceInternal.BasicStream os__, BomberLoutreIce.Game[] v__)
+        {
+            if(v__ == null)
+            {
+                os__.writeSize(0);
+            }
+            else
+            {
+                os__.writeSize(v__.Length);
+                for(int ix__ = 0; ix__ < v__.Length; ++ix__)
+                {
+                    (v__[ix__] == null ? new BomberLoutreIce.Game() : v__[ix__]).write__(os__);
+                }
+            }
+        }
+
+        public static BomberLoutreIce.Game[] read(IceInternal.BasicStream is__)
+        {
+            BomberLoutreIce.Game[] v__;
+            {
+                int szx__ = is__.readAndCheckSeqSize(41);
+                v__ = new BomberLoutreIce.Game[szx__];
+                for(int ix__ = 0; ix__ < szx__; ++ix__)
+                {
+                    v__[ix__] = new BomberLoutreIce.Game();
+                    v__[ix__].read__(is__);
+                }
+            }
+            return v__;
+        }
+    }
+
+    [_System.Runtime.InteropServices.ComVisible(false)]
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public sealed class ServerPrxHelper : Ice.ObjectPrxHelperBase, ServerPrx
+    {
+        #region Asynchronous operations
+
+        #endregion
+
+        #region Checked and unchecked cast operations
+
+        public static ServerPrx checkedCast(Ice.ObjectPrx b)
+        {
+            if(b == null)
+            {
+                return null;
+            }
+            ServerPrx r = b as ServerPrx;
+            if((r == null) && b.ice_isA(ice_staticId()))
+            {
+                ServerPrxHelper h = new ServerPrxHelper();
+                h.copyFrom__(b);
+                r = h;
+            }
+            return r;
+        }
+
+        public static ServerPrx checkedCast(Ice.ObjectPrx b, _System.Collections.Generic.Dictionary<string, string> ctx)
+        {
+            if(b == null)
+            {
+                return null;
+            }
+            ServerPrx r = b as ServerPrx;
+            if((r == null) && b.ice_isA(ice_staticId(), ctx))
+            {
+                ServerPrxHelper h = new ServerPrxHelper();
+                h.copyFrom__(b);
+                r = h;
+            }
+            return r;
+        }
+
+        public static ServerPrx checkedCast(Ice.ObjectPrx b, string f)
+        {
+            if(b == null)
+            {
+                return null;
+            }
+            Ice.ObjectPrx bb = b.ice_facet(f);
+            try
+            {
+                if(bb.ice_isA(ice_staticId()))
+                {
+                    ServerPrxHelper h = new ServerPrxHelper();
+                    h.copyFrom__(bb);
+                    return h;
+                }
+            }
+            catch(Ice.FacetNotExistException)
+            {
+            }
+            return null;
+        }
+
+        public static ServerPrx checkedCast(Ice.ObjectPrx b, string f, _System.Collections.Generic.Dictionary<string, string> ctx)
+        {
+            if(b == null)
+            {
+                return null;
+            }
+            Ice.ObjectPrx bb = b.ice_facet(f);
+            try
+            {
+                if(bb.ice_isA(ice_staticId(), ctx))
+                {
+                    ServerPrxHelper h = new ServerPrxHelper();
+                    h.copyFrom__(bb);
+                    return h;
+                }
+            }
+            catch(Ice.FacetNotExistException)
+            {
+            }
+            return null;
+        }
+
+        public static ServerPrx uncheckedCast(Ice.ObjectPrx b)
+        {
+            if(b == null)
+            {
+                return null;
+            }
+            ServerPrx r = b as ServerPrx;
+            if(r == null)
+            {
+                ServerPrxHelper h = new ServerPrxHelper();
+                h.copyFrom__(b);
+                r = h;
+            }
+            return r;
+        }
+
+        public static ServerPrx uncheckedCast(Ice.ObjectPrx b, string f)
+        {
+            if(b == null)
+            {
+                return null;
+            }
+            Ice.ObjectPrx bb = b.ice_facet(f);
+            ServerPrxHelper h = new ServerPrxHelper();
+            h.copyFrom__(bb);
+            return h;
+        }
+
+        public static readonly string[] ids__ =
+        {
+            "::BomberLoutreIce::Server",
+            "::Ice::Object"
+        };
+
+        public static string ice_staticId()
+        {
+            return ids__[0];
+        }
+
+        #endregion
+
+        #region Marshaling support
+
+        protected override Ice.ObjectDelM_ createDelegateM__()
+        {
+            return new ServerDelM_();
+        }
+
+        protected override Ice.ObjectDelD_ createDelegateD__()
+        {
+            return new ServerDelD_();
+        }
+
+        public static void write__(IceInternal.BasicStream os__, ServerPrx v__)
+        {
+            os__.writeProxy(v__);
+        }
+
+        public static ServerPrx read__(IceInternal.BasicStream is__)
+        {
+            Ice.ObjectPrx proxy = is__.readProxy();
+            if(proxy != null)
+            {
+                ServerPrxHelper result = new ServerPrxHelper();
+                result.copyFrom__(proxy);
+                return result;
+            }
+            return null;
+        }
+
+        #endregion
+    }
+
     [_System.Runtime.InteropServices.ComVisible(false)]
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public sealed class ClientPrxHelper : Ice.ObjectPrxHelperBase, ClientPrx
@@ -741,6 +2254,44 @@ namespace BomberLoutreIce
             }
         }
 
+        public BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame)
+        {
+            return CreateGame(newGame, null, false);
+        }
+
+        public BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            return CreateGame(newGame, context__, true);
+        }
+
+        private BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
+        {
+            if(explicitContext__ && context__ == null)
+            {
+                context__ = emptyContext_;
+            }
+            int cnt__ = 0;
+            while(true)
+            {
+                Ice.ObjectDel_ delBase__ = null;
+                try
+                {
+                    checkTwowayOnly__("CreateGame");
+                    delBase__ = getDelegate__(false);
+                    ClientDel_ del__ = (ClientDel_)delBase__;
+                    return del__.CreateGame(newGame, context__);
+                }
+                catch(IceInternal.LocalExceptionWrapper ex__)
+                {
+                    handleExceptionWrapper__(delBase__, ex__);
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    handleException__(delBase__, ex__, true, ref cnt__);
+                }
+            }
+        }
+
         public BomberLoutreIce.User CreateUser(string login, string password)
         {
             return CreateUser(login, password, null, false);
@@ -767,6 +2318,82 @@ namespace BomberLoutreIce
                     delBase__ = getDelegate__(false);
                     ClientDel_ del__ = (ClientDel_)delBase__;
                     return del__.CreateUser(login, password, context__);
+                }
+                catch(IceInternal.LocalExceptionWrapper ex__)
+                {
+                    handleExceptionWrapper__(delBase__, ex__);
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    handleException__(delBase__, ex__, true, ref cnt__);
+                }
+            }
+        }
+
+        public BomberLoutreIce.Game[] GetGameList()
+        {
+            return GetGameList(null, false);
+        }
+
+        public BomberLoutreIce.Game[] GetGameList(_System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            return GetGameList(context__, true);
+        }
+
+        private BomberLoutreIce.Game[] GetGameList(_System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
+        {
+            if(explicitContext__ && context__ == null)
+            {
+                context__ = emptyContext_;
+            }
+            int cnt__ = 0;
+            while(true)
+            {
+                Ice.ObjectDel_ delBase__ = null;
+                try
+                {
+                    checkTwowayOnly__("GetGameList");
+                    delBase__ = getDelegate__(false);
+                    ClientDel_ del__ = (ClientDel_)delBase__;
+                    return del__.GetGameList(context__);
+                }
+                catch(IceInternal.LocalExceptionWrapper ex__)
+                {
+                    handleExceptionWrapper__(delBase__, ex__);
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    handleException__(delBase__, ex__, true, ref cnt__);
+                }
+            }
+        }
+
+        public BomberLoutreIce.ServerPrx JoinGame(string name)
+        {
+            return JoinGame(name, null, false);
+        }
+
+        public BomberLoutreIce.ServerPrx JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            return JoinGame(name, context__, true);
+        }
+
+        private BomberLoutreIce.ServerPrx JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
+        {
+            if(explicitContext__ && context__ == null)
+            {
+                context__ = emptyContext_;
+            }
+            int cnt__ = 0;
+            while(true)
+            {
+                Ice.ObjectDel_ delBase__ = null;
+                try
+                {
+                    checkTwowayOnly__("JoinGame");
+                    delBase__ = getDelegate__(false);
+                    ClientDel_ del__ = (ClientDel_)delBase__;
+                    return del__.JoinGame(name, context__);
                 }
                 catch(IceInternal.LocalExceptionWrapper ex__)
                 {
@@ -882,6 +2509,103 @@ namespace BomberLoutreIce
             }
         }
 
+        public Ice.AsyncResult<BomberLoutreIce.Callback_Client_CreateGame> begin_CreateGame(BomberLoutreIce.Game newGame)
+        {
+            return begin_CreateGame(newGame, null, false, null, null);
+        }
+
+        public Ice.AsyncResult<BomberLoutreIce.Callback_Client_CreateGame> begin_CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> ctx__)
+        {
+            return begin_CreateGame(newGame, ctx__, true, null, null);
+        }
+
+        public Ice.AsyncResult begin_CreateGame(BomberLoutreIce.Game newGame, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_CreateGame(newGame, null, false, cb__, cookie__);
+        }
+
+        public Ice.AsyncResult begin_CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_CreateGame(newGame, ctx__, true, cb__, cookie__);
+        }
+
+        private const string __CreateGame_name = "CreateGame";
+
+        public BomberLoutreIce.ServerPrx end_CreateGame(Ice.AsyncResult r__)
+        {
+            IceInternal.OutgoingAsync outAsync__ = (IceInternal.OutgoingAsync)r__;
+            IceInternal.OutgoingAsync.check__(outAsync__, this, __CreateGame_name);
+            if(!outAsync__.wait__())
+            {
+                try
+                {
+                    outAsync__.throwUserException__();
+                }
+                catch(Ice.UserException ex__)
+                {
+                    throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                }
+            }
+            BomberLoutreIce.ServerPrx ret__;
+            IceInternal.BasicStream is__ = outAsync__.istr__;
+            is__.startReadEncaps();
+            ret__ = BomberLoutreIce.ServerPrxHelper.read__(is__);
+            is__.endReadEncaps();
+            return ret__;
+        }
+
+        private Ice.AsyncResult<BomberLoutreIce.Callback_Client_CreateGame> begin_CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            checkAsyncTwowayOnly__(__CreateGame_name);
+            IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Client_CreateGame> result__ =  new IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Client_CreateGame>(this, __CreateGame_name, CreateGame_completed__, cookie__);
+            if(cb__ != null)
+            {
+                result__.whenCompletedWithAsyncCallback(cb__);
+            }
+            try
+            {
+                result__.prepare__(__CreateGame_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
+                IceInternal.BasicStream os__ = result__.ostr__;
+                if(newGame == null)
+                {
+                    BomberLoutreIce.Game tmp__ = new BomberLoutreIce.Game();
+                    tmp__.write__(os__);
+                }
+                else
+                {
+                    newGame.write__(os__);
+                }
+                os__.endWriteEncaps();
+                result__.send__(true);
+            }
+            catch(Ice.LocalException ex__)
+            {
+                result__.exceptionAsync__(ex__);
+            }
+            return result__;
+        }
+
+        private void CreateGame_completed__(Ice.AsyncResult r__, BomberLoutreIce.Callback_Client_CreateGame cb__, Ice.ExceptionCallback excb__)
+        {
+            BomberLoutreIce.ServerPrx ret__;
+            try
+            {
+                ret__ = end_CreateGame(r__);
+            }
+            catch(Ice.Exception ex__)
+            {
+                if(excb__ != null)
+                {
+                    excb__(ex__);
+                }
+                return;
+            }
+            if(cb__ != null)
+            {
+                cb__(ret__);
+            }
+        }
+
         public Ice.AsyncResult<BomberLoutreIce.Callback_Client_CreateUser> begin_CreateUser(string login, string password)
         {
             return begin_CreateUser(login, password, null, false, null, null);
@@ -966,6 +2690,191 @@ namespace BomberLoutreIce
             try
             {
                 ret__ = end_CreateUser(r__);
+            }
+            catch(Ice.Exception ex__)
+            {
+                if(excb__ != null)
+                {
+                    excb__(ex__);
+                }
+                return;
+            }
+            if(cb__ != null)
+            {
+                cb__(ret__);
+            }
+        }
+
+        public Ice.AsyncResult<BomberLoutreIce.Callback_Client_GetGameList> begin_GetGameList()
+        {
+            return begin_GetGameList(null, false, null, null);
+        }
+
+        public Ice.AsyncResult<BomberLoutreIce.Callback_Client_GetGameList> begin_GetGameList(_System.Collections.Generic.Dictionary<string, string> ctx__)
+        {
+            return begin_GetGameList(ctx__, true, null, null);
+        }
+
+        public Ice.AsyncResult begin_GetGameList(Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_GetGameList(null, false, cb__, cookie__);
+        }
+
+        public Ice.AsyncResult begin_GetGameList(_System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_GetGameList(ctx__, true, cb__, cookie__);
+        }
+
+        private const string __GetGameList_name = "GetGameList";
+
+        public BomberLoutreIce.Game[] end_GetGameList(Ice.AsyncResult r__)
+        {
+            IceInternal.OutgoingAsync outAsync__ = (IceInternal.OutgoingAsync)r__;
+            IceInternal.OutgoingAsync.check__(outAsync__, this, __GetGameList_name);
+            if(!outAsync__.wait__())
+            {
+                try
+                {
+                    outAsync__.throwUserException__();
+                }
+                catch(Ice.UserException ex__)
+                {
+                    throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                }
+            }
+            BomberLoutreIce.Game[] ret__;
+            IceInternal.BasicStream is__ = outAsync__.istr__;
+            is__.startReadEncaps();
+            {
+                int szx__ = is__.readAndCheckSeqSize(41);
+                ret__ = new BomberLoutreIce.Game[szx__];
+                for(int ix__ = 0; ix__ < szx__; ++ix__)
+                {
+                    ret__[ix__] = new BomberLoutreIce.Game();
+                    ret__[ix__].read__(is__);
+                }
+            }
+            is__.endReadEncaps();
+            return ret__;
+        }
+
+        private Ice.AsyncResult<BomberLoutreIce.Callback_Client_GetGameList> begin_GetGameList(_System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            checkAsyncTwowayOnly__(__GetGameList_name);
+            IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Client_GetGameList> result__ =  new IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Client_GetGameList>(this, __GetGameList_name, GetGameList_completed__, cookie__);
+            if(cb__ != null)
+            {
+                result__.whenCompletedWithAsyncCallback(cb__);
+            }
+            try
+            {
+                result__.prepare__(__GetGameList_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
+                IceInternal.BasicStream os__ = result__.ostr__;
+                os__.endWriteEncaps();
+                result__.send__(true);
+            }
+            catch(Ice.LocalException ex__)
+            {
+                result__.exceptionAsync__(ex__);
+            }
+            return result__;
+        }
+
+        private void GetGameList_completed__(Ice.AsyncResult r__, BomberLoutreIce.Callback_Client_GetGameList cb__, Ice.ExceptionCallback excb__)
+        {
+            BomberLoutreIce.Game[] ret__;
+            try
+            {
+                ret__ = end_GetGameList(r__);
+            }
+            catch(Ice.Exception ex__)
+            {
+                if(excb__ != null)
+                {
+                    excb__(ex__);
+                }
+                return;
+            }
+            if(cb__ != null)
+            {
+                cb__(ret__);
+            }
+        }
+
+        public Ice.AsyncResult<BomberLoutreIce.Callback_Client_JoinGame> begin_JoinGame(string name)
+        {
+            return begin_JoinGame(name, null, false, null, null);
+        }
+
+        public Ice.AsyncResult<BomberLoutreIce.Callback_Client_JoinGame> begin_JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> ctx__)
+        {
+            return begin_JoinGame(name, ctx__, true, null, null);
+        }
+
+        public Ice.AsyncResult begin_JoinGame(string name, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_JoinGame(name, null, false, cb__, cookie__);
+        }
+
+        public Ice.AsyncResult begin_JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_JoinGame(name, ctx__, true, cb__, cookie__);
+        }
+
+        private const string __JoinGame_name = "JoinGame";
+
+        public BomberLoutreIce.ServerPrx end_JoinGame(Ice.AsyncResult r__)
+        {
+            IceInternal.OutgoingAsync outAsync__ = (IceInternal.OutgoingAsync)r__;
+            IceInternal.OutgoingAsync.check__(outAsync__, this, __JoinGame_name);
+            if(!outAsync__.wait__())
+            {
+                try
+                {
+                    outAsync__.throwUserException__();
+                }
+                catch(Ice.UserException ex__)
+                {
+                    throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                }
+            }
+            BomberLoutreIce.ServerPrx ret__;
+            IceInternal.BasicStream is__ = outAsync__.istr__;
+            is__.startReadEncaps();
+            ret__ = BomberLoutreIce.ServerPrxHelper.read__(is__);
+            is__.endReadEncaps();
+            return ret__;
+        }
+
+        private Ice.AsyncResult<BomberLoutreIce.Callback_Client_JoinGame> begin_JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            checkAsyncTwowayOnly__(__JoinGame_name);
+            IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Client_JoinGame> result__ =  new IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Client_JoinGame>(this, __JoinGame_name, JoinGame_completed__, cookie__);
+            if(cb__ != null)
+            {
+                result__.whenCompletedWithAsyncCallback(cb__);
+            }
+            try
+            {
+                result__.prepare__(__JoinGame_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
+                IceInternal.BasicStream os__ = result__.ostr__;
+                os__.writeString(name);
+                os__.endWriteEncaps();
+                result__.send__(true);
+            }
+            catch(Ice.LocalException ex__)
+            {
+                result__.exceptionAsync__(ex__);
+            }
+            return result__;
+        }
+
+        private void JoinGame_completed__(Ice.AsyncResult r__, BomberLoutreIce.Callback_Client_JoinGame cb__, Ice.ExceptionCallback excb__)
+        {
+            BomberLoutreIce.ServerPrx ret__;
+            try
+            {
+                ret__ = end_JoinGame(r__);
             }
             catch(Ice.Exception ex__)
             {
@@ -1138,16 +3047,33 @@ namespace BomberLoutreIce
 namespace BomberLoutreIce
 {
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public interface ServerDel_ : Ice.ObjectDel_
+    {
+    }
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public interface ClientDel_ : Ice.ObjectDel_
     {
         BomberLoutreIce.User Connect(string login, string password, _System.Collections.Generic.Dictionary<string, string> context__);
 
         BomberLoutreIce.User CreateUser(string login, string password, _System.Collections.Generic.Dictionary<string, string> context__);
+
+        BomberLoutreIce.Game[] GetGameList(_System.Collections.Generic.Dictionary<string, string> context__);
+
+        BomberLoutreIce.ServerPrx JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> context__);
+
+        BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> context__);
     }
 }
 
 namespace BomberLoutreIce
 {
+    [_System.Runtime.InteropServices.ComVisible(false)]
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public sealed class ServerDelM_ : Ice.ObjectDelM_, ServerDel_
+    {
+    }
+
     [_System.Runtime.InteropServices.ComVisible(false)]
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public sealed class ClientDelM_ : Ice.ObjectDelM_, ClientDel_
@@ -1194,6 +3120,60 @@ namespace BomberLoutreIce
                         ret__ = new BomberLoutreIce.User();
                     }
                     ret__.read__(is__);
+                    is__.endReadEncaps();
+                    return ret__;
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    throw new IceInternal.LocalExceptionWrapper(ex__, false);
+                }
+            }
+            finally
+            {
+                handler__.reclaimOutgoing(og__);
+            }
+        }
+
+        public BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            IceInternal.Outgoing og__ = handler__.getOutgoing("CreateGame", Ice.OperationMode.Normal, context__);
+            try
+            {
+                try
+                {
+                    IceInternal.BasicStream os__ = og__.ostr();
+                    if(newGame == null)
+                    {
+                        BomberLoutreIce.Game tmp__ = new BomberLoutreIce.Game();
+                        tmp__.write__(os__);
+                    }
+                    else
+                    {
+                        newGame.write__(os__);
+                    }
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    og__.abort(ex__);
+                }
+                bool ok__ = og__.invoke();
+                try
+                {
+                    if(!ok__)
+                    {
+                        try
+                        {
+                            og__.throwUserException();
+                        }
+                        catch(Ice.UserException ex__)
+                        {
+                            throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                        }
+                    }
+                    IceInternal.BasicStream is__ = og__.istr();
+                    is__.startReadEncaps();
+                    BomberLoutreIce.ServerPrx ret__;
+                    ret__ = BomberLoutreIce.ServerPrxHelper.read__(is__);
                     is__.endReadEncaps();
                     return ret__;
                 }
@@ -1263,11 +3243,108 @@ namespace BomberLoutreIce
                 handler__.reclaimOutgoing(og__);
             }
         }
+
+        public BomberLoutreIce.Game[] GetGameList(_System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            IceInternal.Outgoing og__ = handler__.getOutgoing("GetGameList", Ice.OperationMode.Normal, context__);
+            try
+            {
+                bool ok__ = og__.invoke();
+                try
+                {
+                    if(!ok__)
+                    {
+                        try
+                        {
+                            og__.throwUserException();
+                        }
+                        catch(Ice.UserException ex__)
+                        {
+                            throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                        }
+                    }
+                    IceInternal.BasicStream is__ = og__.istr();
+                    is__.startReadEncaps();
+                    BomberLoutreIce.Game[] ret__;
+                    {
+                        int szx__ = is__.readAndCheckSeqSize(41);
+                        ret__ = new BomberLoutreIce.Game[szx__];
+                        for(int ix__ = 0; ix__ < szx__; ++ix__)
+                        {
+                            ret__[ix__] = new BomberLoutreIce.Game();
+                            ret__[ix__].read__(is__);
+                        }
+                    }
+                    is__.endReadEncaps();
+                    return ret__;
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    throw new IceInternal.LocalExceptionWrapper(ex__, false);
+                }
+            }
+            finally
+            {
+                handler__.reclaimOutgoing(og__);
+            }
+        }
+
+        public BomberLoutreIce.ServerPrx JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            IceInternal.Outgoing og__ = handler__.getOutgoing("JoinGame", Ice.OperationMode.Normal, context__);
+            try
+            {
+                try
+                {
+                    IceInternal.BasicStream os__ = og__.ostr();
+                    os__.writeString(name);
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    og__.abort(ex__);
+                }
+                bool ok__ = og__.invoke();
+                try
+                {
+                    if(!ok__)
+                    {
+                        try
+                        {
+                            og__.throwUserException();
+                        }
+                        catch(Ice.UserException ex__)
+                        {
+                            throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                        }
+                    }
+                    IceInternal.BasicStream is__ = og__.istr();
+                    is__.startReadEncaps();
+                    BomberLoutreIce.ServerPrx ret__;
+                    ret__ = BomberLoutreIce.ServerPrxHelper.read__(is__);
+                    is__.endReadEncaps();
+                    return ret__;
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    throw new IceInternal.LocalExceptionWrapper(ex__, false);
+                }
+            }
+            finally
+            {
+                handler__.reclaimOutgoing(og__);
+            }
+        }
     }
 }
 
 namespace BomberLoutreIce
 {
+    [_System.Runtime.InteropServices.ComVisible(false)]
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public sealed class ServerDelD_ : Ice.ObjectDelD_, ServerDel_
+    {
+    }
+
     [_System.Runtime.InteropServices.ComVisible(false)]
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public sealed class ClientDelD_ : Ice.ObjectDelD_, ClientDel_
@@ -1322,6 +3399,51 @@ namespace BomberLoutreIce
             catch(BomberLoutreIce.BadUserInfoException)
             {
                 throw;
+            }
+            catch(Ice.SystemException)
+            {
+                throw;
+            }
+            catch(_System.Exception ex__)
+            {
+                IceInternal.LocalExceptionWrapper.throwWrapper(ex__);
+            }
+            return result__;
+        }
+
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
+        public BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            Ice.Current current__ = new Ice.Current();
+            initCurrent__(ref current__, "CreateGame", Ice.OperationMode.Normal, context__);
+            BomberLoutreIce.ServerPrx result__ = null;
+            IceInternal.Direct.RunDelegate run__ = delegate(Ice.Object obj__)
+            {
+                Client servant__ = null;
+                try
+                {
+                    servant__ = (Client)obj__;
+                }
+                catch(_System.InvalidCastException)
+                {
+                    throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
+                }
+                result__ = servant__.CreateGame(newGame, current__);
+                return Ice.DispatchStatus.DispatchOK;
+            };
+            IceInternal.Direct direct__ = null;
+            try
+            {
+                direct__ = new IceInternal.Direct(current__, run__);
+                try
+                {
+                    Ice.DispatchStatus status__ = direct__.servant().collocDispatch__(direct__);
+                    _System.Diagnostics.Debug.Assert(status__ == Ice.DispatchStatus.DispatchOK);
+                }
+                finally
+                {
+                    direct__.destroy();
+                }
             }
             catch(Ice.SystemException)
             {
@@ -1395,11 +3517,188 @@ namespace BomberLoutreIce
             }
             return result__;
         }
+
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
+        public BomberLoutreIce.Game[] GetGameList(_System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            Ice.Current current__ = new Ice.Current();
+            initCurrent__(ref current__, "GetGameList", Ice.OperationMode.Normal, context__);
+            BomberLoutreIce.Game[] result__ = null;
+            IceInternal.Direct.RunDelegate run__ = delegate(Ice.Object obj__)
+            {
+                Client servant__ = null;
+                try
+                {
+                    servant__ = (Client)obj__;
+                }
+                catch(_System.InvalidCastException)
+                {
+                    throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
+                }
+                result__ = servant__.GetGameList(current__);
+                return Ice.DispatchStatus.DispatchOK;
+            };
+            IceInternal.Direct direct__ = null;
+            try
+            {
+                direct__ = new IceInternal.Direct(current__, run__);
+                try
+                {
+                    Ice.DispatchStatus status__ = direct__.servant().collocDispatch__(direct__);
+                    _System.Diagnostics.Debug.Assert(status__ == Ice.DispatchStatus.DispatchOK);
+                }
+                finally
+                {
+                    direct__.destroy();
+                }
+            }
+            catch(Ice.SystemException)
+            {
+                throw;
+            }
+            catch(_System.Exception ex__)
+            {
+                IceInternal.LocalExceptionWrapper.throwWrapper(ex__);
+            }
+            return result__;
+        }
+
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
+        public BomberLoutreIce.ServerPrx JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            Ice.Current current__ = new Ice.Current();
+            initCurrent__(ref current__, "JoinGame", Ice.OperationMode.Normal, context__);
+            BomberLoutreIce.ServerPrx result__ = null;
+            IceInternal.Direct.RunDelegate run__ = delegate(Ice.Object obj__)
+            {
+                Client servant__ = null;
+                try
+                {
+                    servant__ = (Client)obj__;
+                }
+                catch(_System.InvalidCastException)
+                {
+                    throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
+                }
+                result__ = servant__.JoinGame(name, current__);
+                return Ice.DispatchStatus.DispatchOK;
+            };
+            IceInternal.Direct direct__ = null;
+            try
+            {
+                direct__ = new IceInternal.Direct(current__, run__);
+                try
+                {
+                    Ice.DispatchStatus status__ = direct__.servant().collocDispatch__(direct__);
+                    _System.Diagnostics.Debug.Assert(status__ == Ice.DispatchStatus.DispatchOK);
+                }
+                finally
+                {
+                    direct__.destroy();
+                }
+            }
+            catch(Ice.SystemException)
+            {
+                throw;
+            }
+            catch(_System.Exception ex__)
+            {
+                IceInternal.LocalExceptionWrapper.throwWrapper(ex__);
+            }
+            return result__;
+        }
     }
 }
 
 namespace BomberLoutreIce
 {
+    [_System.Runtime.InteropServices.ComVisible(false)]
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public abstract class ServerDisp_ : Ice.ObjectImpl, Server
+    {
+        #region Slice type-related members
+
+        public static new readonly string[] ids__ = 
+        {
+            "::BomberLoutreIce::Server",
+            "::Ice::Object"
+        };
+
+        public override bool ice_isA(string s)
+        {
+            return _System.Array.BinarySearch(ids__, s, IceUtilInternal.StringUtil.OrdinalStringComparer) >= 0;
+        }
+
+        public override bool ice_isA(string s, Ice.Current current__)
+        {
+            return _System.Array.BinarySearch(ids__, s, IceUtilInternal.StringUtil.OrdinalStringComparer) >= 0;
+        }
+
+        public override string[] ice_ids()
+        {
+            return ids__;
+        }
+
+        public override string[] ice_ids(Ice.Current current__)
+        {
+            return ids__;
+        }
+
+        public override string ice_id()
+        {
+            return ids__[0];
+        }
+
+        public override string ice_id(Ice.Current current__)
+        {
+            return ids__[0];
+        }
+
+        public static new string ice_staticId()
+        {
+            return ids__[0];
+        }
+
+        #endregion
+
+        #region Marshaling support
+
+        public override void write__(IceInternal.BasicStream os__)
+        {
+            os__.writeTypeId(ice_staticId());
+            os__.startWriteSlice();
+            os__.endWriteSlice();
+            base.write__(os__);
+        }
+
+        public override void read__(IceInternal.BasicStream is__, bool rid__)
+        {
+            if(rid__)
+            {
+                /* string myId = */ is__.readTypeId();
+            }
+            is__.startReadSlice();
+            is__.endReadSlice();
+            base.read__(is__, true);
+        }
+
+        public override void write__(Ice.OutputStream outS__)
+        {
+            Ice.MarshalException ex = new Ice.MarshalException();
+            ex.reason = "type BomberLoutreIce::Server was not generated with stream support";
+            throw ex;
+        }
+
+        public override void read__(Ice.InputStream inS__, bool rid__)
+        {
+            Ice.MarshalException ex = new Ice.MarshalException();
+            ex.reason = "type BomberLoutreIce::Server was not generated with stream support";
+            throw ex;
+        }
+
+        #endregion
+    }
+
     [_System.Runtime.InteropServices.ComVisible(false)]
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public abstract class ClientDisp_ : Ice.ObjectImpl, Client
@@ -1419,6 +3718,27 @@ namespace BomberLoutreIce
         }
 
         public abstract BomberLoutreIce.User CreateUser(string login, string password, Ice.Current current__);
+
+        public BomberLoutreIce.Game[] GetGameList()
+        {
+            return GetGameList(Ice.ObjectImpl.defaultCurrent);
+        }
+
+        public abstract BomberLoutreIce.Game[] GetGameList(Ice.Current current__);
+
+        public BomberLoutreIce.ServerPrx JoinGame(string name)
+        {
+            return JoinGame(name, Ice.ObjectImpl.defaultCurrent);
+        }
+
+        public abstract BomberLoutreIce.ServerPrx JoinGame(string name, Ice.Current current__);
+
+        public BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame)
+        {
+            return CreateGame(newGame, Ice.ObjectImpl.defaultCurrent);
+        }
+
+        public abstract BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame, Ice.Current current__);
 
         #endregion
 
@@ -1535,10 +3855,70 @@ namespace BomberLoutreIce
             }
         }
 
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+        public static Ice.DispatchStatus GetGameList___(Client obj__, IceInternal.Incoming inS__, Ice.Current current__)
+        {
+            checkMode__(Ice.OperationMode.Normal, current__.mode);
+            inS__.istr().skipEmptyEncaps();
+            IceInternal.BasicStream os__ = inS__.ostr();
+            BomberLoutreIce.Game[] ret__ = obj__.GetGameList(current__);
+            if(ret__ == null)
+            {
+                os__.writeSize(0);
+            }
+            else
+            {
+                os__.writeSize(ret__.Length);
+                for(int ix__ = 0; ix__ < ret__.Length; ++ix__)
+                {
+                    (ret__[ix__] == null ? new BomberLoutreIce.Game() : ret__[ix__]).write__(os__);
+                }
+            }
+            return Ice.DispatchStatus.DispatchOK;
+        }
+
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+        public static Ice.DispatchStatus JoinGame___(Client obj__, IceInternal.Incoming inS__, Ice.Current current__)
+        {
+            checkMode__(Ice.OperationMode.Normal, current__.mode);
+            IceInternal.BasicStream is__ = inS__.istr();
+            is__.startReadEncaps();
+            string name;
+            name = is__.readString();
+            is__.endReadEncaps();
+            IceInternal.BasicStream os__ = inS__.ostr();
+            BomberLoutreIce.ServerPrx ret__ = obj__.JoinGame(name, current__);
+            BomberLoutreIce.ServerPrxHelper.write__(os__, ret__);
+            return Ice.DispatchStatus.DispatchOK;
+        }
+
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+        public static Ice.DispatchStatus CreateGame___(Client obj__, IceInternal.Incoming inS__, Ice.Current current__)
+        {
+            checkMode__(Ice.OperationMode.Normal, current__.mode);
+            IceInternal.BasicStream is__ = inS__.istr();
+            is__.startReadEncaps();
+            BomberLoutreIce.Game newGame;
+            newGame = null;
+            if(newGame == null)
+            {
+                newGame = new BomberLoutreIce.Game();
+            }
+            newGame.read__(is__);
+            is__.endReadEncaps();
+            IceInternal.BasicStream os__ = inS__.ostr();
+            BomberLoutreIce.ServerPrx ret__ = obj__.CreateGame(newGame, current__);
+            BomberLoutreIce.ServerPrxHelper.write__(os__, ret__);
+            return Ice.DispatchStatus.DispatchOK;
+        }
+
         private static string[] all__ =
         {
             "Connect",
+            "CreateGame",
             "CreateUser",
+            "GetGameList",
+            "JoinGame",
             "ice_id",
             "ice_ids",
             "ice_isA",
@@ -1561,21 +3941,33 @@ namespace BomberLoutreIce
                 }
                 case 1:
                 {
-                    return CreateUser___(this, inS__, current__);
+                    return CreateGame___(this, inS__, current__);
                 }
                 case 2:
                 {
-                    return ice_id___(this, inS__, current__);
+                    return CreateUser___(this, inS__, current__);
                 }
                 case 3:
                 {
-                    return ice_ids___(this, inS__, current__);
+                    return GetGameList___(this, inS__, current__);
                 }
                 case 4:
                 {
-                    return ice_isA___(this, inS__, current__);
+                    return JoinGame___(this, inS__, current__);
                 }
                 case 5:
+                {
+                    return ice_id___(this, inS__, current__);
+                }
+                case 6:
+                {
+                    return ice_ids___(this, inS__, current__);
+                }
+                case 7:
+                {
+                    return ice_isA___(this, inS__, current__);
+                }
+                case 8:
                 {
                     return ice_ping___(this, inS__, current__);
                 }
