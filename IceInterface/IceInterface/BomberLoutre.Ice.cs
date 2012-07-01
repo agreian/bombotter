@@ -41,6 +41,9 @@ namespace BomberLoutreIce
         #region Slice data members
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public int id;
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
         public string login;
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
@@ -56,8 +59,9 @@ namespace BomberLoutreIce
         }
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public User(string login, string password)
+        public User(int id, string login, string password)
         {
+            this.id = id;
             this.login = login;
             this.password = password;
         }
@@ -80,6 +84,7 @@ namespace BomberLoutreIce
         public override int GetHashCode()
         {
             int h__ = 0;
+            h__ = 5 * h__ + id.GetHashCode();
             if(login != null)
             {
                 h__ = 5 * h__ + login.GetHashCode();
@@ -107,6 +112,10 @@ namespace BomberLoutreIce
                 return false;
             }
             User o__ = (User)other__;
+            if(!id.Equals(o__.id))
+            {
+                return false;
+            }
             if(login == null)
             {
                 if(o__.login != null)
@@ -161,6 +170,7 @@ namespace BomberLoutreIce
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
         public void write__(IceInternal.BasicStream os__)
         {
+            os__.writeInt(id);
             os__.writeString(login);
             os__.writeString(password);
         }
@@ -168,6 +178,7 @@ namespace BomberLoutreIce
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
         public void read__(IceInternal.BasicStream is__)
         {
+            id = is__.readInt();
             login = is__.readString();
             password = is__.readString();
         }
@@ -351,27 +362,27 @@ namespace BomberLoutreIce
     [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720")]
     [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1722")]
     [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724")]
-    public partial class BadLoginException : BomberLoutreIce.UserException
+    public partial class BadUserInfoException : BomberLoutreIce.UserException
     {
         #region Constructors
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public BadLoginException()
+        public BadUserInfoException()
         {
         }
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public BadLoginException(_System.Exception ex__) : base(ex__)
+        public BadUserInfoException(_System.Exception ex__) : base(ex__)
         {
         }
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public BadLoginException(string reason) : base(reason)
+        public BadUserInfoException(string reason) : base(reason)
         {
         }
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public BadLoginException(string reason, _System.Exception ex__) : base(reason, ex__)
+        public BadUserInfoException(string reason, _System.Exception ex__) : base(reason, ex__)
         {
         }
 
@@ -380,7 +391,7 @@ namespace BomberLoutreIce
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
         public override string ice_name()
         {
-            return "BomberLoutreIce::BadLoginException";
+            return "BomberLoutreIce::BadUserInfoException";
         }
 
         #region Object members
@@ -403,7 +414,7 @@ namespace BomberLoutreIce
             {
                 return true;
             }
-            BadLoginException o__ = other__ as BadLoginException;
+            BadUserInfoException o__ = other__ as BadUserInfoException;
             if(o__ == null)
             {
                 return false;
@@ -420,13 +431,13 @@ namespace BomberLoutreIce
         #region Comparison members
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public static bool operator==(BadLoginException lhs__, BadLoginException rhs__)
+        public static bool operator==(BadUserInfoException lhs__, BadUserInfoException rhs__)
         {
             return Equals(lhs__, rhs__);
         }
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public static bool operator!=(BadLoginException lhs__, BadLoginException rhs__)
+        public static bool operator!=(BadUserInfoException lhs__, BadUserInfoException rhs__)
         {
             return !Equals(lhs__, rhs__);
         }
@@ -438,7 +449,7 @@ namespace BomberLoutreIce
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
         public override void write__(IceInternal.BasicStream os__)
         {
-            os__.writeString("::BomberLoutreIce::BadLoginException");
+            os__.writeString("::BomberLoutreIce::BadUserInfoException");
             os__.startWriteSlice();
             os__.endWriteSlice();
             base.write__(os__);
@@ -460,7 +471,7 @@ namespace BomberLoutreIce
         public override void write__(Ice.OutputStream outS__)
         {
             Ice.MarshalException ex = new Ice.MarshalException();
-            ex.reason = "exception BomberLoutreIce::BadLoginException was not generated with stream support";
+            ex.reason = "exception BomberLoutreIce::BadUserInfoException was not generated with stream support";
             throw ex;
         }
 
@@ -468,143 +479,7 @@ namespace BomberLoutreIce
         public override void read__(Ice.InputStream inS__, bool rid__)
         {
             Ice.MarshalException ex = new Ice.MarshalException();
-            ex.reason = "exception BomberLoutreIce::BadLoginException was not generated with stream support";
-            throw ex;
-        }
-
-        #endregion
-    }
-
-    [_System.Runtime.InteropServices.ComVisible(false)]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1032")]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704")]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707")]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709")]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1710")]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711")]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1715")]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720")]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1722")]
-    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724")]
-    public partial class BadPasswordException : BomberLoutreIce.UserException
-    {
-        #region Constructors
-
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public BadPasswordException()
-        {
-        }
-
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public BadPasswordException(_System.Exception ex__) : base(ex__)
-        {
-        }
-
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public BadPasswordException(string reason) : base(reason)
-        {
-        }
-
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public BadPasswordException(string reason, _System.Exception ex__) : base(reason, ex__)
-        {
-        }
-
-        #endregion
-
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public override string ice_name()
-        {
-            return "BomberLoutreIce::BadPasswordException";
-        }
-
-        #region Object members
-
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public override int GetHashCode()
-        {
-            int h__ = base.GetHashCode();
-            return h__;
-        }
-
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public override bool Equals(object other__)
-        {
-            if(other__ == null)
-            {
-                return false;
-            }
-            if(object.ReferenceEquals(this, other__))
-            {
-                return true;
-            }
-            BadPasswordException o__ = other__ as BadPasswordException;
-            if(o__ == null)
-            {
-                return false;
-            }
-            if(!base.Equals(other__))
-            {
-                return false;
-            }
-            return true;
-        }
-
-        #endregion
-
-        #region Comparison members
-
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public static bool operator==(BadPasswordException lhs__, BadPasswordException rhs__)
-        {
-            return Equals(lhs__, rhs__);
-        }
-
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public static bool operator!=(BadPasswordException lhs__, BadPasswordException rhs__)
-        {
-            return !Equals(lhs__, rhs__);
-        }
-
-        #endregion
-
-        #region Marshaling support
-
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public override void write__(IceInternal.BasicStream os__)
-        {
-            os__.writeString("::BomberLoutreIce::BadPasswordException");
-            os__.startWriteSlice();
-            os__.endWriteSlice();
-            base.write__(os__);
-        }
-
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public override void read__(IceInternal.BasicStream is__, bool rid__)
-        {
-            if(rid__)
-            {
-                /* string myId = */ is__.readString();
-            }
-            is__.startReadSlice();
-            is__.endReadSlice();
-            base.read__(is__, true);
-        }
-
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public override void write__(Ice.OutputStream outS__)
-        {
-            Ice.MarshalException ex = new Ice.MarshalException();
-            ex.reason = "exception BomberLoutreIce::BadPasswordException was not generated with stream support";
-            throw ex;
-        }
-
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public override void read__(Ice.InputStream inS__, bool rid__)
-        {
-            Ice.MarshalException ex = new Ice.MarshalException();
-            ex.reason = "exception BomberLoutreIce::BadPasswordException was not generated with stream support";
+            ex.reason = "exception BomberLoutreIce::BadUserInfoException was not generated with stream support";
             throw ex;
         }
 
@@ -940,11 +815,7 @@ namespace BomberLoutreIce
                 {
                     outAsync__.throwUserException__();
                 }
-                catch(BomberLoutreIce.BadLoginException)
-                {
-                    throw;
-                }
-                catch(BomberLoutreIce.BadPasswordException)
+                catch(BomberLoutreIce.BadUserInfoException)
                 {
                     throw;
                 }
@@ -1305,11 +1176,7 @@ namespace BomberLoutreIce
                         {
                             og__.throwUserException();
                         }
-                        catch(BomberLoutreIce.BadLoginException)
-                        {
-                            throw;
-                        }
-                        catch(BomberLoutreIce.BadPasswordException)
+                        catch(BomberLoutreIce.BadUserInfoException)
                         {
                             throw;
                         }
@@ -1452,11 +1319,7 @@ namespace BomberLoutreIce
                     direct__.destroy();
                 }
             }
-            catch(BomberLoutreIce.BadLoginException)
-            {
-                throw;
-            }
-            catch(BomberLoutreIce.BadPasswordException)
+            catch(BomberLoutreIce.BadUserInfoException)
             {
                 throw;
             }
@@ -1632,12 +1495,7 @@ namespace BomberLoutreIce
                 }
                 return Ice.DispatchStatus.DispatchOK;
             }
-            catch(BomberLoutreIce.BadLoginException ex__)
-            {
-                os__.writeUserException(ex__);
-                return Ice.DispatchStatus.DispatchUserException;
-            }
-            catch(BomberLoutreIce.BadPasswordException ex__)
+            catch(BomberLoutreIce.BadUserInfoException ex__)
             {
                 os__.writeUserException(ex__);
                 return Ice.DispatchStatus.DispatchUserException;

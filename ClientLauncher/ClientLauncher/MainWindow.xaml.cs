@@ -22,5 +22,27 @@ namespace BomberLoutre.Client.Launcher
         {
             InitializeComponent();
         }
+
+        private void btnSolo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnMulti_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow login = new LoginWindow();
+            login.Show();
+            this.Close();
+        }
+
+        private void btnOptions_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnQuitter_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
