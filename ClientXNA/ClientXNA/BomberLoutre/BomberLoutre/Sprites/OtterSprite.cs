@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 
 namespace BomberLoutre.Sprites
@@ -70,12 +69,12 @@ namespace BomberLoutre.Sprites
                 column = 6;
 
             // Encadre la frame
-            sourceRect = new Rectangle(column * SpriteWidth, line * SpriteHeight, SpriteWidth, SpriteHeight);            
+            SourceRectangle = new Rectangle(column * SpriteWidth, line * SpriteHeight, SpriteWidth, SpriteHeight);            
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(SpriteTexture, SpritePosition, sourceRect, Color.White);
+            spriteBatch.Draw(SpriteTexture, SpritePosition, SourceRectangle, Color.White);
         }
 
         public void AnimateRight(GameTime gameTime)
@@ -188,11 +187,6 @@ namespace BomberLoutre.Sprites
 
                 Timer = 0f;
             }
-        }
-
-        private Rectangle SourceRectangle()
-        {
-            return sourceRect;
         }
     }
 }

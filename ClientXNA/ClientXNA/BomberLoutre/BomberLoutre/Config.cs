@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 
 namespace BomberLoutre
@@ -7,9 +6,11 @@ namespace BomberLoutre
     public static class Config
     {
         public static int PlayerNumber = 1;
-        
+
         public static int OtterWidth = 64;
         public static int OtterHeight = 72;
+        public static int HitBoxWidth = 50;
+        public static int HitBoxHeight = 50;
 
         public static int ExplosionDelay = 2; // s
         public static int BurningDelay = 500; // ms

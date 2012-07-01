@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
 using BomberLoutre.Sprites;
 using BomberLoutre.World;
 using BomberLoutre.Screens;

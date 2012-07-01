@@ -22,6 +22,7 @@ namespace BomberLoutre.Components
         KeyboardState previousKBState;
 
         private bool bombDropped;
+        public Rectangle HitBox { get; set; }
 
         // Characteristics
         public bool IsAlive { get; set; }       // Joueur vivant
@@ -51,6 +52,8 @@ namespace BomberLoutre.Components
 
             Texture2D spriteTexture = GameRef.Content.Load<Texture2D>("Graphics/Sprites/otterSprite");
             Sprite = new OtterSprite(spriteTexture, currentFrame, position);
+
+            HitBox = new Rectangle(0, 0, Config.HitBoxWidth, Config.HitBoxHeight);
         }
         #endregion
 
@@ -58,6 +61,7 @@ namespace BomberLoutre.Components
 
         public void Update(GameTime gameTime)
         {
+            HitBox = new Rectangle((int)Sprite.SpritePosition.X + (Config.OtterWidth - Config.HitBoxWidth)/2, (int)Sprite.SpritePosition.Y + (Config.OtterHeight - Config.HitBoxHeight) / 2, Config.HitBoxWidth, Config.HitBoxHeight);
             CheckBombing();
 
             previousKBState = currentKBState;

@@ -9,10 +9,10 @@ namespace BomberLoutre.Components
 {
     public class Flame
     {
-        protected Sprite Sprite;
+        public Sprite Sprite { get; protected set; }
         protected BomberLoutreGame GameRef;
         protected GameScreen GameScreen;
-        protected Rectangle SourceRectangle;
+        public Rectangle SourceRectangle { get; set; }
         protected Texture2D Texture;
         protected Vector2 Cellule;
         protected TimeSpan Timer;
@@ -23,7 +23,7 @@ namespace BomberLoutre.Components
         {
             GameRef = gameRef;
             GameScreen = gameScreen;
-            SourceRectangle = new Rectangle(0, 0, Config.TileWidth, Config.TileHeight);
+            SourceRectangle = new Rectangle((x-1) * Config.TileWidth + Config.MapLayer.X, (y-1) * Config.TileHeight + Config.MapLayer.Y, Config.TileWidth, Config.TileHeight);
             Cellule = new Vector2(x, y);
 
             RotationAngle = (rotate) ? (float)Math.Atan2(1, 0) : 0;
