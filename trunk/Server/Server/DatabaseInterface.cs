@@ -50,7 +50,7 @@ namespace BomberLoutre.Server
             {
                 //Console.WriteLine("{0}, {1}, {2}", reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
 
-                User user = new User(reader.GetInt32(0), reader.GetString(1));
+                User user = new User(reader.GetInt32(0), reader.GetString(2), new UserInfo(reader.GetString(1), reader.GetInt32(3), reader.GetInt32(4), reader.GetInt32(5), reader.GetInt32(6), reader.GetInt32(7), reader.GetInt32(8), reader.GetInt32(9)));
 
                 reader.Close();
 
@@ -66,7 +66,7 @@ namespace BomberLoutre.Server
             throw new BadUserInfoException();
         }
 
-        internal static User SelectUser(string login)
+        internal static UserInfo SelectUser(string login)
         {
             SQLiteConnection conn = Connection();
 
@@ -82,7 +82,7 @@ namespace BomberLoutre.Server
             {
                 //Console.WriteLine("{0}, {1}, {2}", reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
 
-                User user = new User(reader.GetInt32(0), reader.GetString(1));
+                UserInfo user = new UserInfo(reader.GetString(1), reader.GetInt32(3), reader.GetInt32(4), reader.GetInt32(5), reader.GetInt32(6), reader.GetInt32(7), reader.GetInt32(8), reader.GetInt32(9));
 
                 reader.Close();
 
@@ -110,7 +110,7 @@ namespace BomberLoutre.Server
 
             while (reader.Read())
             {
-                users.Add(new User(reader.GetInt32(0), reader.GetString(1)));
+                users.Add(new UserInfo(reader.GetString(1), reader.GetInt32(3), reader.GetInt32(4), reader.GetInt32(5), reader.GetInt32(6), reader.GetInt32(7), reader.GetInt32(8), reader.GetInt32(9)));
             }
 
             reader.Close();
@@ -137,7 +137,7 @@ namespace BomberLoutre.Server
                 SQLiteCommand mycommand = new SQLiteCommand(conn);
 
                 mycommand.CommandType = CommandType.Text;
-                mycommand.CommandText = "insert into user VALUES(@id, @login, @password);";
+                mycommand.CommandText = "insert into user VALUES(@id, @login, @password, 0, 0, 0, 0, 0, 0, 0);";
                 mycommand.Parameters.Add(new SQLiteParameter("@id", lastID + 1));
                 mycommand.Parameters.Add(new SQLiteParameter("@login", login.ToLower()));
                 mycommand.Parameters.Add(new SQLiteParameter("@password", password));
@@ -146,7 +146,7 @@ namespace BomberLoutre.Server
 
                 Deconnection(conn);
 
-                return new User(lastID + 1, login.ToLower());
+                return new User(lastID + 1, password, new UserInfo(login.ToLower(), 0, 0, 0, 0, 0, 0, 0));
             }
         }
 

@@ -8,10 +8,10 @@ namespace BomberLoutre.Client.Launcher
 {
     internal static class Client
     {
-        internal static ClientPrx CurrentClientPrx
+        internal static ServerPrx CurrentClientPrx
         {
             get;
-            private set;
+            set;
         }
 
         internal static User CurrentUser
@@ -26,10 +26,28 @@ namespace BomberLoutre.Client.Launcher
             try
             {
                 ic = Ice.Util.initialize();
-                Ice.ObjectPrx obj = ic.stringToProxy("ClientI:default -p 10000");
-                CurrentClientPrx = ClientPrxHelper.checkedCast(obj);
+                //tcp -p 10001 -h 192.168.0.2
+                Ice.ObjectPrx obj = ic.stringToProxy("ServerI:default -p 10000");
+                CurrentClientPrx = ServerPrxHelper.checkedCast(obj);
                 if (CurrentClientPrx == null)
                     throw new ApplicationException("Invalid proxy");
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(e);
+            }
+        }
+
+        internal static void ConnectToServer()
+        {
+            Ice.Communicator ic = null;
+            try
+            {
+                ic = Ice.Util.initialize();
+                Ice.ObjectAdapter adapter = ic.createObjectAdapterWithEndpoints("ClientAdapter", "default -p 10001");
+                Ice.Object obj = new ClientI();
+                adapter.add(obj, ic.stringToIdentity("ClientI"));
+                adapter.activate();
             }
             catch (Exception e)
             {

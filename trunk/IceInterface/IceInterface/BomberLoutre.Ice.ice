@@ -74,26 +74,27 @@ module BomberLoutreIce
 	};
 	sequence<Game> GameList;
 
-	exception UserException
-	{
-		string reason;
-	};
+	exception UserException { };
 
-	exception BadUserInfoException extends UserException {};
-	exception UserAlreadyExistsException extends UserException {};
+	exception BadUserInfoException extends UserException { };
+	exception UserAlreadyExistsException extends UserException { };
 
-	interface Server
-	{
-		
-	};
+	exception GameException { };
+	exception WTFIsThatGameException extends GameException { };
+	exception GameIsFullException extends GameException { };
 
 	interface Client
+	{
+		void Test();
+	};
+
+	interface Server
 	{
 		User Connect(string login, string password) throws BadUserInfoException;
 		User CreateUser(string login, string password) throws UserAlreadyExistsException;
 		GameList GetGameList();
-		Server* JoinGame(string name);
-		Server* CreateGame(Game newGame);
+		Game JoinGame(Game aGame, User aUser) throws WTFIsThatGameException;
+		Game CreateGame(Game newGame, User aUser);
 	};
 };
 

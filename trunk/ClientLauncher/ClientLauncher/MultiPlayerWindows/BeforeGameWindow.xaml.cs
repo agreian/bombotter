@@ -21,6 +21,9 @@ namespace BomberLoutre.Client.Launcher
     {
         public BeforeGameWindow(Game game)
         {
+            Client.ConnectToServer();
+            Client.CurrentClientPrx.JoinGame(game, Client.CurrentUser);
+
             InitializeComponent();
         }
     }

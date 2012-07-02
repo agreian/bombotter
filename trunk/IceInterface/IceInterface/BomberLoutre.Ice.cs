@@ -1297,13 +1297,6 @@ namespace BomberLoutreIce
     [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724")]
     public partial class UserException : Ice.UserException
     {
-        #region Slice data members
-
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public string reason;
-
-        #endregion
-
         #region Constructors
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
@@ -1314,23 +1307,6 @@ namespace BomberLoutreIce
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
         public UserException(_System.Exception ex__) : base(ex__)
         {
-        }
-
-        private void initDM__(string reason)
-        {
-            this.reason = reason;
-        }
-
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public UserException(string reason)
-        {
-            initDM__(reason);
-        }
-
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public UserException(string reason, _System.Exception ex__) : base(ex__)
-        {
-            initDM__(reason);
         }
 
         #endregion
@@ -1347,10 +1323,6 @@ namespace BomberLoutreIce
         public override int GetHashCode()
         {
             int h__ = 0;
-            if(reason != null)
-            {
-                h__ = 5 * h__ + reason.GetHashCode();
-            }
             return h__;
         }
 
@@ -1369,20 +1341,6 @@ namespace BomberLoutreIce
             if(o__ == null)
             {
                 return false;
-            }
-            if(reason == null)
-            {
-                if(o__.reason != null)
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                if(!reason.Equals(o__.reason))
-                {
-                    return false;
-                }
             }
             return true;
         }
@@ -1412,7 +1370,6 @@ namespace BomberLoutreIce
         {
             os__.writeString("::BomberLoutreIce::UserException");
             os__.startWriteSlice();
-            os__.writeString(reason);
             os__.endWriteSlice();
         }
 
@@ -1424,7 +1381,6 @@ namespace BomberLoutreIce
                 /* string myId = */ is__.readString();
             }
             is__.startReadSlice();
-            reason = is__.readString();
             is__.endReadSlice();
         }
 
@@ -1470,16 +1426,6 @@ namespace BomberLoutreIce
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
         public BadUserInfoException(_System.Exception ex__) : base(ex__)
-        {
-        }
-
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public BadUserInfoException(string reason) : base(reason)
-        {
-        }
-
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public BadUserInfoException(string reason, _System.Exception ex__) : base(reason, ex__)
         {
         }
 
@@ -1609,16 +1555,6 @@ namespace BomberLoutreIce
         {
         }
 
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public UserAlreadyExistsException(string reason) : base(reason)
-        {
-        }
-
-        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-        public UserAlreadyExistsException(string reason, _System.Exception ex__) : base(reason, ex__)
-        {
-        }
-
         #endregion
 
         [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
@@ -1720,6 +1656,7 @@ namespace BomberLoutreIce
     }
 
     [_System.Runtime.InteropServices.ComVisible(false)]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1032")]
     [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704")]
     [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707")]
     [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709")]
@@ -1730,8 +1667,364 @@ namespace BomberLoutreIce
     [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720")]
     [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1722")]
     [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724")]
-    public partial interface Server : Ice.Object, ServerOperations_, ServerOperationsNC_
+    public partial class GameException : Ice.UserException
     {
+        #region Constructors
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public GameException()
+        {
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public GameException(_System.Exception ex__) : base(ex__)
+        {
+        }
+
+        #endregion
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override string ice_name()
+        {
+            return "BomberLoutreIce::GameException";
+        }
+
+        #region Object members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override int GetHashCode()
+        {
+            int h__ = 0;
+            return h__;
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override bool Equals(object other__)
+        {
+            if(other__ == null)
+            {
+                return false;
+            }
+            if(object.ReferenceEquals(this, other__))
+            {
+                return true;
+            }
+            GameException o__ = other__ as GameException;
+            if(o__ == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        #endregion
+
+        #region Comparison members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public static bool operator==(GameException lhs__, GameException rhs__)
+        {
+            return Equals(lhs__, rhs__);
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public static bool operator!=(GameException lhs__, GameException rhs__)
+        {
+            return !Equals(lhs__, rhs__);
+        }
+
+        #endregion
+
+        #region Marshaling support
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override void write__(IceInternal.BasicStream os__)
+        {
+            os__.writeString("::BomberLoutreIce::GameException");
+            os__.startWriteSlice();
+            os__.endWriteSlice();
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override void read__(IceInternal.BasicStream is__, bool rid__)
+        {
+            if(rid__)
+            {
+                /* string myId = */ is__.readString();
+            }
+            is__.startReadSlice();
+            is__.endReadSlice();
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override void write__(Ice.OutputStream outS__)
+        {
+            Ice.MarshalException ex = new Ice.MarshalException();
+            ex.reason = "exception BomberLoutreIce::GameException was not generated with stream support";
+            throw ex;
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override void read__(Ice.InputStream inS__, bool rid__)
+        {
+            Ice.MarshalException ex = new Ice.MarshalException();
+            ex.reason = "exception BomberLoutreIce::GameException was not generated with stream support";
+            throw ex;
+        }
+
+        #endregion
+    }
+
+    [_System.Runtime.InteropServices.ComVisible(false)]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1032")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1710")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1715")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1722")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724")]
+    public partial class WTFIsThatGameException : BomberLoutreIce.GameException
+    {
+        #region Constructors
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public WTFIsThatGameException()
+        {
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public WTFIsThatGameException(_System.Exception ex__) : base(ex__)
+        {
+        }
+
+        #endregion
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override string ice_name()
+        {
+            return "BomberLoutreIce::WTFIsThatGameException";
+        }
+
+        #region Object members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override int GetHashCode()
+        {
+            int h__ = base.GetHashCode();
+            return h__;
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override bool Equals(object other__)
+        {
+            if(other__ == null)
+            {
+                return false;
+            }
+            if(object.ReferenceEquals(this, other__))
+            {
+                return true;
+            }
+            WTFIsThatGameException o__ = other__ as WTFIsThatGameException;
+            if(o__ == null)
+            {
+                return false;
+            }
+            if(!base.Equals(other__))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        #endregion
+
+        #region Comparison members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public static bool operator==(WTFIsThatGameException lhs__, WTFIsThatGameException rhs__)
+        {
+            return Equals(lhs__, rhs__);
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public static bool operator!=(WTFIsThatGameException lhs__, WTFIsThatGameException rhs__)
+        {
+            return !Equals(lhs__, rhs__);
+        }
+
+        #endregion
+
+        #region Marshaling support
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override void write__(IceInternal.BasicStream os__)
+        {
+            os__.writeString("::BomberLoutreIce::WTFIsThatGameException");
+            os__.startWriteSlice();
+            os__.endWriteSlice();
+            base.write__(os__);
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override void read__(IceInternal.BasicStream is__, bool rid__)
+        {
+            if(rid__)
+            {
+                /* string myId = */ is__.readString();
+            }
+            is__.startReadSlice();
+            is__.endReadSlice();
+            base.read__(is__, true);
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override void write__(Ice.OutputStream outS__)
+        {
+            Ice.MarshalException ex = new Ice.MarshalException();
+            ex.reason = "exception BomberLoutreIce::WTFIsThatGameException was not generated with stream support";
+            throw ex;
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override void read__(Ice.InputStream inS__, bool rid__)
+        {
+            Ice.MarshalException ex = new Ice.MarshalException();
+            ex.reason = "exception BomberLoutreIce::WTFIsThatGameException was not generated with stream support";
+            throw ex;
+        }
+
+        #endregion
+    }
+
+    [_System.Runtime.InteropServices.ComVisible(false)]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1032")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1710")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1715")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1722")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724")]
+    public partial class GameIsFullException : BomberLoutreIce.GameException
+    {
+        #region Constructors
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public GameIsFullException()
+        {
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public GameIsFullException(_System.Exception ex__) : base(ex__)
+        {
+        }
+
+        #endregion
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override string ice_name()
+        {
+            return "BomberLoutreIce::GameIsFullException";
+        }
+
+        #region Object members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override int GetHashCode()
+        {
+            int h__ = base.GetHashCode();
+            return h__;
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override bool Equals(object other__)
+        {
+            if(other__ == null)
+            {
+                return false;
+            }
+            if(object.ReferenceEquals(this, other__))
+            {
+                return true;
+            }
+            GameIsFullException o__ = other__ as GameIsFullException;
+            if(o__ == null)
+            {
+                return false;
+            }
+            if(!base.Equals(other__))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        #endregion
+
+        #region Comparison members
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public static bool operator==(GameIsFullException lhs__, GameIsFullException rhs__)
+        {
+            return Equals(lhs__, rhs__);
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public static bool operator!=(GameIsFullException lhs__, GameIsFullException rhs__)
+        {
+            return !Equals(lhs__, rhs__);
+        }
+
+        #endregion
+
+        #region Marshaling support
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override void write__(IceInternal.BasicStream os__)
+        {
+            os__.writeString("::BomberLoutreIce::GameIsFullException");
+            os__.startWriteSlice();
+            os__.endWriteSlice();
+            base.write__(os__);
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override void read__(IceInternal.BasicStream is__, bool rid__)
+        {
+            if(rid__)
+            {
+                /* string myId = */ is__.readString();
+            }
+            is__.startReadSlice();
+            is__.endReadSlice();
+            base.read__(is__, true);
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override void write__(Ice.OutputStream outS__)
+        {
+            Ice.MarshalException ex = new Ice.MarshalException();
+            ex.reason = "exception BomberLoutreIce::GameIsFullException was not generated with stream support";
+            throw ex;
+        }
+
+        [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+        public override void read__(Ice.InputStream inS__, bool rid__)
+        {
+            Ice.MarshalException ex = new Ice.MarshalException();
+            ex.reason = "exception BomberLoutreIce::GameIsFullException was not generated with stream support";
+            throw ex;
+        }
+
+        #endregion
     }
 
     [_System.Runtime.InteropServices.ComVisible(false)]
@@ -1748,41 +2041,69 @@ namespace BomberLoutreIce
     public partial interface Client : Ice.Object, ClientOperations_, ClientOperationsNC_
     {
     }
-}
 
-namespace BomberLoutreIce
-{
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public delegate void Callback_Client_Connect(BomberLoutreIce.User ret__);
-
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public delegate void Callback_Client_CreateUser(BomberLoutreIce.User ret__);
-
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public delegate void Callback_Client_GetGameList(BomberLoutreIce.Game[] ret__);
-
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public delegate void Callback_Client_JoinGame(BomberLoutreIce.ServerPrx ret__);
-
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public delegate void Callback_Client_CreateGame(BomberLoutreIce.ServerPrx ret__);
-}
-
-namespace BomberLoutreIce
-{
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public interface ServerPrx : Ice.ObjectPrx
+    [_System.Runtime.InteropServices.ComVisible(false)]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1710")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1715")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1722")]
+    [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1724")]
+    public partial interface Server : Ice.Object, ServerOperations_, ServerOperationsNC_
     {
+    }
+}
+
+namespace BomberLoutreIce
+{
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public delegate void Callback_Client_Test();
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public delegate void Callback_Server_Connect(BomberLoutreIce.User ret__);
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public delegate void Callback_Server_CreateUser(BomberLoutreIce.User ret__);
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public delegate void Callback_Server_GetGameList(BomberLoutreIce.Game[] ret__);
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public delegate void Callback_Server_JoinGame(BomberLoutreIce.Game ret__);
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public delegate void Callback_Server_CreateGame(BomberLoutreIce.Game ret__);
+}
+
+namespace BomberLoutreIce
+{
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public interface ClientPrx : Ice.ObjectPrx
+    {
+        void Test();
+        void Test(_System.Collections.Generic.Dictionary<string, string> context__);
+
+        Ice.AsyncResult<BomberLoutreIce.Callback_Client_Test> begin_Test();
+        Ice.AsyncResult<BomberLoutreIce.Callback_Client_Test> begin_Test(_System.Collections.Generic.Dictionary<string, string> ctx__);
+
+        Ice.AsyncResult begin_Test(Ice.AsyncCallback cb__, object cookie__);
+        Ice.AsyncResult begin_Test(_System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
+
+        void end_Test(Ice.AsyncResult r__);
     }
 
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public interface ClientPrx : Ice.ObjectPrx
+    public interface ServerPrx : Ice.ObjectPrx
     {
         BomberLoutreIce.User Connect(string login, string password);
         BomberLoutreIce.User Connect(string login, string password, _System.Collections.Generic.Dictionary<string, string> context__);
 
-        Ice.AsyncResult<BomberLoutreIce.Callback_Client_Connect> begin_Connect(string login, string password);
-        Ice.AsyncResult<BomberLoutreIce.Callback_Client_Connect> begin_Connect(string login, string password, _System.Collections.Generic.Dictionary<string, string> ctx__);
+        Ice.AsyncResult<BomberLoutreIce.Callback_Server_Connect> begin_Connect(string login, string password);
+        Ice.AsyncResult<BomberLoutreIce.Callback_Server_Connect> begin_Connect(string login, string password, _System.Collections.Generic.Dictionary<string, string> ctx__);
 
         Ice.AsyncResult begin_Connect(string login, string password, Ice.AsyncCallback cb__, object cookie__);
         Ice.AsyncResult begin_Connect(string login, string password, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
@@ -1792,8 +2113,8 @@ namespace BomberLoutreIce
         BomberLoutreIce.User CreateUser(string login, string password);
         BomberLoutreIce.User CreateUser(string login, string password, _System.Collections.Generic.Dictionary<string, string> context__);
 
-        Ice.AsyncResult<BomberLoutreIce.Callback_Client_CreateUser> begin_CreateUser(string login, string password);
-        Ice.AsyncResult<BomberLoutreIce.Callback_Client_CreateUser> begin_CreateUser(string login, string password, _System.Collections.Generic.Dictionary<string, string> ctx__);
+        Ice.AsyncResult<BomberLoutreIce.Callback_Server_CreateUser> begin_CreateUser(string login, string password);
+        Ice.AsyncResult<BomberLoutreIce.Callback_Server_CreateUser> begin_CreateUser(string login, string password, _System.Collections.Generic.Dictionary<string, string> ctx__);
 
         Ice.AsyncResult begin_CreateUser(string login, string password, Ice.AsyncCallback cb__, object cookie__);
         Ice.AsyncResult begin_CreateUser(string login, string password, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
@@ -1803,52 +2124,54 @@ namespace BomberLoutreIce
         BomberLoutreIce.Game[] GetGameList();
         BomberLoutreIce.Game[] GetGameList(_System.Collections.Generic.Dictionary<string, string> context__);
 
-        Ice.AsyncResult<BomberLoutreIce.Callback_Client_GetGameList> begin_GetGameList();
-        Ice.AsyncResult<BomberLoutreIce.Callback_Client_GetGameList> begin_GetGameList(_System.Collections.Generic.Dictionary<string, string> ctx__);
+        Ice.AsyncResult<BomberLoutreIce.Callback_Server_GetGameList> begin_GetGameList();
+        Ice.AsyncResult<BomberLoutreIce.Callback_Server_GetGameList> begin_GetGameList(_System.Collections.Generic.Dictionary<string, string> ctx__);
 
         Ice.AsyncResult begin_GetGameList(Ice.AsyncCallback cb__, object cookie__);
         Ice.AsyncResult begin_GetGameList(_System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
 
         BomberLoutreIce.Game[] end_GetGameList(Ice.AsyncResult r__);
 
-        BomberLoutreIce.ServerPrx JoinGame(string name);
-        BomberLoutreIce.ServerPrx JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> context__);
+        BomberLoutreIce.Game JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser);
+        BomberLoutreIce.Game JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> context__);
 
-        Ice.AsyncResult<BomberLoutreIce.Callback_Client_JoinGame> begin_JoinGame(string name);
-        Ice.AsyncResult<BomberLoutreIce.Callback_Client_JoinGame> begin_JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> ctx__);
+        Ice.AsyncResult<BomberLoutreIce.Callback_Server_JoinGame> begin_JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser);
+        Ice.AsyncResult<BomberLoutreIce.Callback_Server_JoinGame> begin_JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> ctx__);
 
-        Ice.AsyncResult begin_JoinGame(string name, Ice.AsyncCallback cb__, object cookie__);
-        Ice.AsyncResult begin_JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
+        Ice.AsyncResult begin_JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser, Ice.AsyncCallback cb__, object cookie__);
+        Ice.AsyncResult begin_JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
 
-        BomberLoutreIce.ServerPrx end_JoinGame(Ice.AsyncResult r__);
+        BomberLoutreIce.Game end_JoinGame(Ice.AsyncResult r__);
 
-        BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame);
-        BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> context__);
+        BomberLoutreIce.Game CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser);
+        BomberLoutreIce.Game CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> context__);
 
-        Ice.AsyncResult<BomberLoutreIce.Callback_Client_CreateGame> begin_CreateGame(BomberLoutreIce.Game newGame);
-        Ice.AsyncResult<BomberLoutreIce.Callback_Client_CreateGame> begin_CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> ctx__);
+        Ice.AsyncResult<BomberLoutreIce.Callback_Server_CreateGame> begin_CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser);
+        Ice.AsyncResult<BomberLoutreIce.Callback_Server_CreateGame> begin_CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> ctx__);
 
-        Ice.AsyncResult begin_CreateGame(BomberLoutreIce.Game newGame, Ice.AsyncCallback cb__, object cookie__);
-        Ice.AsyncResult begin_CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
+        Ice.AsyncResult begin_CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser, Ice.AsyncCallback cb__, object cookie__);
+        Ice.AsyncResult begin_CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__);
 
-        BomberLoutreIce.ServerPrx end_CreateGame(Ice.AsyncResult r__);
+        BomberLoutreIce.Game end_CreateGame(Ice.AsyncResult r__);
     }
 }
 
 namespace BomberLoutreIce
 {
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public interface ServerOperations_
-    {
-    }
-
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public interface ServerOperationsNC_
-    {
-    }
-
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public interface ClientOperations_
+    {
+        void Test(Ice.Current current__);
+    }
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public interface ClientOperationsNC_
+    {
+        void Test();
+    }
+
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public interface ServerOperations_
     {
         BomberLoutreIce.User Connect(string login, string password, Ice.Current current__);
 
@@ -1856,13 +2179,13 @@ namespace BomberLoutreIce
 
         BomberLoutreIce.Game[] GetGameList(Ice.Current current__);
 
-        BomberLoutreIce.ServerPrx JoinGame(string name, Ice.Current current__);
+        BomberLoutreIce.Game JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser, Ice.Current current__);
 
-        BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame, Ice.Current current__);
+        BomberLoutreIce.Game CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser, Ice.Current current__);
     }
 
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public interface ClientOperationsNC_
+    public interface ServerOperationsNC_
     {
         BomberLoutreIce.User Connect(string login, string password);
 
@@ -1870,9 +2193,9 @@ namespace BomberLoutreIce
 
         BomberLoutreIce.Game[] GetGameList();
 
-        BomberLoutreIce.ServerPrx JoinGame(string name);
+        BomberLoutreIce.Game JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser);
 
-        BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame);
+        BomberLoutreIce.Game CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser);
     }
 }
 
@@ -2053,180 +2376,21 @@ namespace BomberLoutreIce
 
     [_System.Runtime.InteropServices.ComVisible(false)]
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public sealed class ServerPrxHelper : Ice.ObjectPrxHelperBase, ServerPrx
-    {
-        #region Asynchronous operations
-
-        #endregion
-
-        #region Checked and unchecked cast operations
-
-        public static ServerPrx checkedCast(Ice.ObjectPrx b)
-        {
-            if(b == null)
-            {
-                return null;
-            }
-            ServerPrx r = b as ServerPrx;
-            if((r == null) && b.ice_isA(ice_staticId()))
-            {
-                ServerPrxHelper h = new ServerPrxHelper();
-                h.copyFrom__(b);
-                r = h;
-            }
-            return r;
-        }
-
-        public static ServerPrx checkedCast(Ice.ObjectPrx b, _System.Collections.Generic.Dictionary<string, string> ctx)
-        {
-            if(b == null)
-            {
-                return null;
-            }
-            ServerPrx r = b as ServerPrx;
-            if((r == null) && b.ice_isA(ice_staticId(), ctx))
-            {
-                ServerPrxHelper h = new ServerPrxHelper();
-                h.copyFrom__(b);
-                r = h;
-            }
-            return r;
-        }
-
-        public static ServerPrx checkedCast(Ice.ObjectPrx b, string f)
-        {
-            if(b == null)
-            {
-                return null;
-            }
-            Ice.ObjectPrx bb = b.ice_facet(f);
-            try
-            {
-                if(bb.ice_isA(ice_staticId()))
-                {
-                    ServerPrxHelper h = new ServerPrxHelper();
-                    h.copyFrom__(bb);
-                    return h;
-                }
-            }
-            catch(Ice.FacetNotExistException)
-            {
-            }
-            return null;
-        }
-
-        public static ServerPrx checkedCast(Ice.ObjectPrx b, string f, _System.Collections.Generic.Dictionary<string, string> ctx)
-        {
-            if(b == null)
-            {
-                return null;
-            }
-            Ice.ObjectPrx bb = b.ice_facet(f);
-            try
-            {
-                if(bb.ice_isA(ice_staticId(), ctx))
-                {
-                    ServerPrxHelper h = new ServerPrxHelper();
-                    h.copyFrom__(bb);
-                    return h;
-                }
-            }
-            catch(Ice.FacetNotExistException)
-            {
-            }
-            return null;
-        }
-
-        public static ServerPrx uncheckedCast(Ice.ObjectPrx b)
-        {
-            if(b == null)
-            {
-                return null;
-            }
-            ServerPrx r = b as ServerPrx;
-            if(r == null)
-            {
-                ServerPrxHelper h = new ServerPrxHelper();
-                h.copyFrom__(b);
-                r = h;
-            }
-            return r;
-        }
-
-        public static ServerPrx uncheckedCast(Ice.ObjectPrx b, string f)
-        {
-            if(b == null)
-            {
-                return null;
-            }
-            Ice.ObjectPrx bb = b.ice_facet(f);
-            ServerPrxHelper h = new ServerPrxHelper();
-            h.copyFrom__(bb);
-            return h;
-        }
-
-        public static readonly string[] ids__ =
-        {
-            "::BomberLoutreIce::Server",
-            "::Ice::Object"
-        };
-
-        public static string ice_staticId()
-        {
-            return ids__[0];
-        }
-
-        #endregion
-
-        #region Marshaling support
-
-        protected override Ice.ObjectDelM_ createDelegateM__()
-        {
-            return new ServerDelM_();
-        }
-
-        protected override Ice.ObjectDelD_ createDelegateD__()
-        {
-            return new ServerDelD_();
-        }
-
-        public static void write__(IceInternal.BasicStream os__, ServerPrx v__)
-        {
-            os__.writeProxy(v__);
-        }
-
-        public static ServerPrx read__(IceInternal.BasicStream is__)
-        {
-            Ice.ObjectPrx proxy = is__.readProxy();
-            if(proxy != null)
-            {
-                ServerPrxHelper result = new ServerPrxHelper();
-                result.copyFrom__(proxy);
-                return result;
-            }
-            return null;
-        }
-
-        #endregion
-    }
-
-    [_System.Runtime.InteropServices.ComVisible(false)]
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public sealed class ClientPrxHelper : Ice.ObjectPrxHelperBase, ClientPrx
     {
         #region Synchronous operations
 
-        public BomberLoutreIce.User Connect(string login, string password)
+        public void Test()
         {
-            return Connect(login, password, null, false);
+            Test(null, false);
         }
 
-        public BomberLoutreIce.User Connect(string login, string password, _System.Collections.Generic.Dictionary<string, string> context__)
+        public void Test(_System.Collections.Generic.Dictionary<string, string> context__)
         {
-            return Connect(login, password, context__, true);
+            Test(context__, true);
         }
 
-        private BomberLoutreIce.User Connect(string login, string password, _System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
+        private void Test(_System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
         {
             if(explicitContext__ && context__ == null)
             {
@@ -2238,162 +2402,10 @@ namespace BomberLoutreIce
                 Ice.ObjectDel_ delBase__ = null;
                 try
                 {
-                    checkTwowayOnly__("Connect");
                     delBase__ = getDelegate__(false);
                     ClientDel_ del__ = (ClientDel_)delBase__;
-                    return del__.Connect(login, password, context__);
-                }
-                catch(IceInternal.LocalExceptionWrapper ex__)
-                {
-                    handleExceptionWrapper__(delBase__, ex__);
-                }
-                catch(Ice.LocalException ex__)
-                {
-                    handleException__(delBase__, ex__, true, ref cnt__);
-                }
-            }
-        }
-
-        public BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame)
-        {
-            return CreateGame(newGame, null, false);
-        }
-
-        public BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> context__)
-        {
-            return CreateGame(newGame, context__, true);
-        }
-
-        private BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
-        {
-            if(explicitContext__ && context__ == null)
-            {
-                context__ = emptyContext_;
-            }
-            int cnt__ = 0;
-            while(true)
-            {
-                Ice.ObjectDel_ delBase__ = null;
-                try
-                {
-                    checkTwowayOnly__("CreateGame");
-                    delBase__ = getDelegate__(false);
-                    ClientDel_ del__ = (ClientDel_)delBase__;
-                    return del__.CreateGame(newGame, context__);
-                }
-                catch(IceInternal.LocalExceptionWrapper ex__)
-                {
-                    handleExceptionWrapper__(delBase__, ex__);
-                }
-                catch(Ice.LocalException ex__)
-                {
-                    handleException__(delBase__, ex__, true, ref cnt__);
-                }
-            }
-        }
-
-        public BomberLoutreIce.User CreateUser(string login, string password)
-        {
-            return CreateUser(login, password, null, false);
-        }
-
-        public BomberLoutreIce.User CreateUser(string login, string password, _System.Collections.Generic.Dictionary<string, string> context__)
-        {
-            return CreateUser(login, password, context__, true);
-        }
-
-        private BomberLoutreIce.User CreateUser(string login, string password, _System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
-        {
-            if(explicitContext__ && context__ == null)
-            {
-                context__ = emptyContext_;
-            }
-            int cnt__ = 0;
-            while(true)
-            {
-                Ice.ObjectDel_ delBase__ = null;
-                try
-                {
-                    checkTwowayOnly__("CreateUser");
-                    delBase__ = getDelegate__(false);
-                    ClientDel_ del__ = (ClientDel_)delBase__;
-                    return del__.CreateUser(login, password, context__);
-                }
-                catch(IceInternal.LocalExceptionWrapper ex__)
-                {
-                    handleExceptionWrapper__(delBase__, ex__);
-                }
-                catch(Ice.LocalException ex__)
-                {
-                    handleException__(delBase__, ex__, true, ref cnt__);
-                }
-            }
-        }
-
-        public BomberLoutreIce.Game[] GetGameList()
-        {
-            return GetGameList(null, false);
-        }
-
-        public BomberLoutreIce.Game[] GetGameList(_System.Collections.Generic.Dictionary<string, string> context__)
-        {
-            return GetGameList(context__, true);
-        }
-
-        private BomberLoutreIce.Game[] GetGameList(_System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
-        {
-            if(explicitContext__ && context__ == null)
-            {
-                context__ = emptyContext_;
-            }
-            int cnt__ = 0;
-            while(true)
-            {
-                Ice.ObjectDel_ delBase__ = null;
-                try
-                {
-                    checkTwowayOnly__("GetGameList");
-                    delBase__ = getDelegate__(false);
-                    ClientDel_ del__ = (ClientDel_)delBase__;
-                    return del__.GetGameList(context__);
-                }
-                catch(IceInternal.LocalExceptionWrapper ex__)
-                {
-                    handleExceptionWrapper__(delBase__, ex__);
-                }
-                catch(Ice.LocalException ex__)
-                {
-                    handleException__(delBase__, ex__, true, ref cnt__);
-                }
-            }
-        }
-
-        public BomberLoutreIce.ServerPrx JoinGame(string name)
-        {
-            return JoinGame(name, null, false);
-        }
-
-        public BomberLoutreIce.ServerPrx JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> context__)
-        {
-            return JoinGame(name, context__, true);
-        }
-
-        private BomberLoutreIce.ServerPrx JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
-        {
-            if(explicitContext__ && context__ == null)
-            {
-                context__ = emptyContext_;
-            }
-            int cnt__ = 0;
-            while(true)
-            {
-                Ice.ObjectDel_ delBase__ = null;
-                try
-                {
-                    checkTwowayOnly__("JoinGame");
-                    delBase__ = getDelegate__(false);
-                    ClientDel_ del__ = (ClientDel_)delBase__;
-                    return del__.JoinGame(name, context__);
+                    del__.Test(context__);
+                    return;
                 }
                 catch(IceInternal.LocalExceptionWrapper ex__)
                 {
@@ -2410,365 +2422,43 @@ namespace BomberLoutreIce
 
         #region Asynchronous operations
 
-        public Ice.AsyncResult<BomberLoutreIce.Callback_Client_Connect> begin_Connect(string login, string password)
+        public Ice.AsyncResult<BomberLoutreIce.Callback_Client_Test> begin_Test()
         {
-            return begin_Connect(login, password, null, false, null, null);
+            return begin_Test(null, false, null, null);
         }
 
-        public Ice.AsyncResult<BomberLoutreIce.Callback_Client_Connect> begin_Connect(string login, string password, _System.Collections.Generic.Dictionary<string, string> ctx__)
+        public Ice.AsyncResult<BomberLoutreIce.Callback_Client_Test> begin_Test(_System.Collections.Generic.Dictionary<string, string> ctx__)
         {
-            return begin_Connect(login, password, ctx__, true, null, null);
+            return begin_Test(ctx__, true, null, null);
         }
 
-        public Ice.AsyncResult begin_Connect(string login, string password, Ice.AsyncCallback cb__, object cookie__)
+        public Ice.AsyncResult begin_Test(Ice.AsyncCallback cb__, object cookie__)
         {
-            return begin_Connect(login, password, null, false, cb__, cookie__);
+            return begin_Test(null, false, cb__, cookie__);
         }
 
-        public Ice.AsyncResult begin_Connect(string login, string password, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
+        public Ice.AsyncResult begin_Test(_System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
         {
-            return begin_Connect(login, password, ctx__, true, cb__, cookie__);
+            return begin_Test(ctx__, true, cb__, cookie__);
         }
 
-        private const string __Connect_name = "Connect";
+        private const string __Test_name = "Test";
 
-        public BomberLoutreIce.User end_Connect(Ice.AsyncResult r__)
+        public void end_Test(Ice.AsyncResult r__)
         {
-            IceInternal.OutgoingAsync outAsync__ = (IceInternal.OutgoingAsync)r__;
-            IceInternal.OutgoingAsync.check__(outAsync__, this, __Connect_name);
-            if(!outAsync__.wait__())
-            {
-                try
-                {
-                    outAsync__.throwUserException__();
-                }
-                catch(BomberLoutreIce.BadUserInfoException)
-                {
-                    throw;
-                }
-                catch(Ice.UserException ex__)
-                {
-                    throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
-                }
-            }
-            BomberLoutreIce.User ret__;
-            IceInternal.BasicStream is__ = outAsync__.istr__;
-            is__.startReadEncaps();
-            ret__ = null;
-            if(ret__ == null)
-            {
-                ret__ = new BomberLoutreIce.User();
-            }
-            ret__.read__(is__);
-            is__.endReadEncaps();
-            return ret__;
+            end__(r__, __Test_name);
         }
 
-        private Ice.AsyncResult<BomberLoutreIce.Callback_Client_Connect> begin_Connect(string login, string password, _System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
+        private Ice.AsyncResult<BomberLoutreIce.Callback_Client_Test> begin_Test(_System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
         {
-            checkAsyncTwowayOnly__(__Connect_name);
-            IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Client_Connect> result__ =  new IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Client_Connect>(this, __Connect_name, Connect_completed__, cookie__);
+            IceInternal.OnewayOutgoingAsync<BomberLoutreIce.Callback_Client_Test> result__ = new IceInternal.OnewayOutgoingAsync<BomberLoutreIce.Callback_Client_Test>(this, __Test_name, Test_completed__, cookie__);
             if(cb__ != null)
             {
                 result__.whenCompletedWithAsyncCallback(cb__);
             }
             try
             {
-                result__.prepare__(__Connect_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
-                IceInternal.BasicStream os__ = result__.ostr__;
-                os__.writeString(login);
-                os__.writeString(password);
-                os__.endWriteEncaps();
-                result__.send__(true);
-            }
-            catch(Ice.LocalException ex__)
-            {
-                result__.exceptionAsync__(ex__);
-            }
-            return result__;
-        }
-
-        private void Connect_completed__(Ice.AsyncResult r__, BomberLoutreIce.Callback_Client_Connect cb__, Ice.ExceptionCallback excb__)
-        {
-            BomberLoutreIce.User ret__;
-            try
-            {
-                ret__ = end_Connect(r__);
-            }
-            catch(Ice.Exception ex__)
-            {
-                if(excb__ != null)
-                {
-                    excb__(ex__);
-                }
-                return;
-            }
-            if(cb__ != null)
-            {
-                cb__(ret__);
-            }
-        }
-
-        public Ice.AsyncResult<BomberLoutreIce.Callback_Client_CreateGame> begin_CreateGame(BomberLoutreIce.Game newGame)
-        {
-            return begin_CreateGame(newGame, null, false, null, null);
-        }
-
-        public Ice.AsyncResult<BomberLoutreIce.Callback_Client_CreateGame> begin_CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> ctx__)
-        {
-            return begin_CreateGame(newGame, ctx__, true, null, null);
-        }
-
-        public Ice.AsyncResult begin_CreateGame(BomberLoutreIce.Game newGame, Ice.AsyncCallback cb__, object cookie__)
-        {
-            return begin_CreateGame(newGame, null, false, cb__, cookie__);
-        }
-
-        public Ice.AsyncResult begin_CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
-        {
-            return begin_CreateGame(newGame, ctx__, true, cb__, cookie__);
-        }
-
-        private const string __CreateGame_name = "CreateGame";
-
-        public BomberLoutreIce.ServerPrx end_CreateGame(Ice.AsyncResult r__)
-        {
-            IceInternal.OutgoingAsync outAsync__ = (IceInternal.OutgoingAsync)r__;
-            IceInternal.OutgoingAsync.check__(outAsync__, this, __CreateGame_name);
-            if(!outAsync__.wait__())
-            {
-                try
-                {
-                    outAsync__.throwUserException__();
-                }
-                catch(Ice.UserException ex__)
-                {
-                    throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
-                }
-            }
-            BomberLoutreIce.ServerPrx ret__;
-            IceInternal.BasicStream is__ = outAsync__.istr__;
-            is__.startReadEncaps();
-            ret__ = BomberLoutreIce.ServerPrxHelper.read__(is__);
-            is__.endReadEncaps();
-            return ret__;
-        }
-
-        private Ice.AsyncResult<BomberLoutreIce.Callback_Client_CreateGame> begin_CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
-        {
-            checkAsyncTwowayOnly__(__CreateGame_name);
-            IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Client_CreateGame> result__ =  new IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Client_CreateGame>(this, __CreateGame_name, CreateGame_completed__, cookie__);
-            if(cb__ != null)
-            {
-                result__.whenCompletedWithAsyncCallback(cb__);
-            }
-            try
-            {
-                result__.prepare__(__CreateGame_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
-                IceInternal.BasicStream os__ = result__.ostr__;
-                if(newGame == null)
-                {
-                    BomberLoutreIce.Game tmp__ = new BomberLoutreIce.Game();
-                    tmp__.write__(os__);
-                }
-                else
-                {
-                    newGame.write__(os__);
-                }
-                os__.endWriteEncaps();
-                result__.send__(true);
-            }
-            catch(Ice.LocalException ex__)
-            {
-                result__.exceptionAsync__(ex__);
-            }
-            return result__;
-        }
-
-        private void CreateGame_completed__(Ice.AsyncResult r__, BomberLoutreIce.Callback_Client_CreateGame cb__, Ice.ExceptionCallback excb__)
-        {
-            BomberLoutreIce.ServerPrx ret__;
-            try
-            {
-                ret__ = end_CreateGame(r__);
-            }
-            catch(Ice.Exception ex__)
-            {
-                if(excb__ != null)
-                {
-                    excb__(ex__);
-                }
-                return;
-            }
-            if(cb__ != null)
-            {
-                cb__(ret__);
-            }
-        }
-
-        public Ice.AsyncResult<BomberLoutreIce.Callback_Client_CreateUser> begin_CreateUser(string login, string password)
-        {
-            return begin_CreateUser(login, password, null, false, null, null);
-        }
-
-        public Ice.AsyncResult<BomberLoutreIce.Callback_Client_CreateUser> begin_CreateUser(string login, string password, _System.Collections.Generic.Dictionary<string, string> ctx__)
-        {
-            return begin_CreateUser(login, password, ctx__, true, null, null);
-        }
-
-        public Ice.AsyncResult begin_CreateUser(string login, string password, Ice.AsyncCallback cb__, object cookie__)
-        {
-            return begin_CreateUser(login, password, null, false, cb__, cookie__);
-        }
-
-        public Ice.AsyncResult begin_CreateUser(string login, string password, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
-        {
-            return begin_CreateUser(login, password, ctx__, true, cb__, cookie__);
-        }
-
-        private const string __CreateUser_name = "CreateUser";
-
-        public BomberLoutreIce.User end_CreateUser(Ice.AsyncResult r__)
-        {
-            IceInternal.OutgoingAsync outAsync__ = (IceInternal.OutgoingAsync)r__;
-            IceInternal.OutgoingAsync.check__(outAsync__, this, __CreateUser_name);
-            if(!outAsync__.wait__())
-            {
-                try
-                {
-                    outAsync__.throwUserException__();
-                }
-                catch(BomberLoutreIce.UserAlreadyExistsException)
-                {
-                    throw;
-                }
-                catch(Ice.UserException ex__)
-                {
-                    throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
-                }
-            }
-            BomberLoutreIce.User ret__;
-            IceInternal.BasicStream is__ = outAsync__.istr__;
-            is__.startReadEncaps();
-            ret__ = null;
-            if(ret__ == null)
-            {
-                ret__ = new BomberLoutreIce.User();
-            }
-            ret__.read__(is__);
-            is__.endReadEncaps();
-            return ret__;
-        }
-
-        private Ice.AsyncResult<BomberLoutreIce.Callback_Client_CreateUser> begin_CreateUser(string login, string password, _System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
-        {
-            checkAsyncTwowayOnly__(__CreateUser_name);
-            IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Client_CreateUser> result__ =  new IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Client_CreateUser>(this, __CreateUser_name, CreateUser_completed__, cookie__);
-            if(cb__ != null)
-            {
-                result__.whenCompletedWithAsyncCallback(cb__);
-            }
-            try
-            {
-                result__.prepare__(__CreateUser_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
-                IceInternal.BasicStream os__ = result__.ostr__;
-                os__.writeString(login);
-                os__.writeString(password);
-                os__.endWriteEncaps();
-                result__.send__(true);
-            }
-            catch(Ice.LocalException ex__)
-            {
-                result__.exceptionAsync__(ex__);
-            }
-            return result__;
-        }
-
-        private void CreateUser_completed__(Ice.AsyncResult r__, BomberLoutreIce.Callback_Client_CreateUser cb__, Ice.ExceptionCallback excb__)
-        {
-            BomberLoutreIce.User ret__;
-            try
-            {
-                ret__ = end_CreateUser(r__);
-            }
-            catch(Ice.Exception ex__)
-            {
-                if(excb__ != null)
-                {
-                    excb__(ex__);
-                }
-                return;
-            }
-            if(cb__ != null)
-            {
-                cb__(ret__);
-            }
-        }
-
-        public Ice.AsyncResult<BomberLoutreIce.Callback_Client_GetGameList> begin_GetGameList()
-        {
-            return begin_GetGameList(null, false, null, null);
-        }
-
-        public Ice.AsyncResult<BomberLoutreIce.Callback_Client_GetGameList> begin_GetGameList(_System.Collections.Generic.Dictionary<string, string> ctx__)
-        {
-            return begin_GetGameList(ctx__, true, null, null);
-        }
-
-        public Ice.AsyncResult begin_GetGameList(Ice.AsyncCallback cb__, object cookie__)
-        {
-            return begin_GetGameList(null, false, cb__, cookie__);
-        }
-
-        public Ice.AsyncResult begin_GetGameList(_System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
-        {
-            return begin_GetGameList(ctx__, true, cb__, cookie__);
-        }
-
-        private const string __GetGameList_name = "GetGameList";
-
-        public BomberLoutreIce.Game[] end_GetGameList(Ice.AsyncResult r__)
-        {
-            IceInternal.OutgoingAsync outAsync__ = (IceInternal.OutgoingAsync)r__;
-            IceInternal.OutgoingAsync.check__(outAsync__, this, __GetGameList_name);
-            if(!outAsync__.wait__())
-            {
-                try
-                {
-                    outAsync__.throwUserException__();
-                }
-                catch(Ice.UserException ex__)
-                {
-                    throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
-                }
-            }
-            BomberLoutreIce.Game[] ret__;
-            IceInternal.BasicStream is__ = outAsync__.istr__;
-            is__.startReadEncaps();
-            {
-                int szx__ = is__.readAndCheckSeqSize(41);
-                ret__ = new BomberLoutreIce.Game[szx__];
-                for(int ix__ = 0; ix__ < szx__; ++ix__)
-                {
-                    ret__[ix__] = new BomberLoutreIce.Game();
-                    ret__[ix__].read__(is__);
-                }
-            }
-            is__.endReadEncaps();
-            return ret__;
-        }
-
-        private Ice.AsyncResult<BomberLoutreIce.Callback_Client_GetGameList> begin_GetGameList(_System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
-        {
-            checkAsyncTwowayOnly__(__GetGameList_name);
-            IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Client_GetGameList> result__ =  new IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Client_GetGameList>(this, __GetGameList_name, GetGameList_completed__, cookie__);
-            if(cb__ != null)
-            {
-                result__.whenCompletedWithAsyncCallback(cb__);
-            }
-            try
-            {
-                result__.prepare__(__GetGameList_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
+                result__.prepare__(__Test_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
                 IceInternal.BasicStream os__ = result__.ostr__;
                 os__.endWriteEncaps();
                 result__.send__(true);
@@ -2780,113 +2470,11 @@ namespace BomberLoutreIce
             return result__;
         }
 
-        private void GetGameList_completed__(Ice.AsyncResult r__, BomberLoutreIce.Callback_Client_GetGameList cb__, Ice.ExceptionCallback excb__)
+        private void Test_completed__(BomberLoutreIce.Callback_Client_Test cb__)
         {
-            BomberLoutreIce.Game[] ret__;
-            try
-            {
-                ret__ = end_GetGameList(r__);
-            }
-            catch(Ice.Exception ex__)
-            {
-                if(excb__ != null)
-                {
-                    excb__(ex__);
-                }
-                return;
-            }
             if(cb__ != null)
             {
-                cb__(ret__);
-            }
-        }
-
-        public Ice.AsyncResult<BomberLoutreIce.Callback_Client_JoinGame> begin_JoinGame(string name)
-        {
-            return begin_JoinGame(name, null, false, null, null);
-        }
-
-        public Ice.AsyncResult<BomberLoutreIce.Callback_Client_JoinGame> begin_JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> ctx__)
-        {
-            return begin_JoinGame(name, ctx__, true, null, null);
-        }
-
-        public Ice.AsyncResult begin_JoinGame(string name, Ice.AsyncCallback cb__, object cookie__)
-        {
-            return begin_JoinGame(name, null, false, cb__, cookie__);
-        }
-
-        public Ice.AsyncResult begin_JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
-        {
-            return begin_JoinGame(name, ctx__, true, cb__, cookie__);
-        }
-
-        private const string __JoinGame_name = "JoinGame";
-
-        public BomberLoutreIce.ServerPrx end_JoinGame(Ice.AsyncResult r__)
-        {
-            IceInternal.OutgoingAsync outAsync__ = (IceInternal.OutgoingAsync)r__;
-            IceInternal.OutgoingAsync.check__(outAsync__, this, __JoinGame_name);
-            if(!outAsync__.wait__())
-            {
-                try
-                {
-                    outAsync__.throwUserException__();
-                }
-                catch(Ice.UserException ex__)
-                {
-                    throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
-                }
-            }
-            BomberLoutreIce.ServerPrx ret__;
-            IceInternal.BasicStream is__ = outAsync__.istr__;
-            is__.startReadEncaps();
-            ret__ = BomberLoutreIce.ServerPrxHelper.read__(is__);
-            is__.endReadEncaps();
-            return ret__;
-        }
-
-        private Ice.AsyncResult<BomberLoutreIce.Callback_Client_JoinGame> begin_JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
-        {
-            checkAsyncTwowayOnly__(__JoinGame_name);
-            IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Client_JoinGame> result__ =  new IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Client_JoinGame>(this, __JoinGame_name, JoinGame_completed__, cookie__);
-            if(cb__ != null)
-            {
-                result__.whenCompletedWithAsyncCallback(cb__);
-            }
-            try
-            {
-                result__.prepare__(__JoinGame_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
-                IceInternal.BasicStream os__ = result__.ostr__;
-                os__.writeString(name);
-                os__.endWriteEncaps();
-                result__.send__(true);
-            }
-            catch(Ice.LocalException ex__)
-            {
-                result__.exceptionAsync__(ex__);
-            }
-            return result__;
-        }
-
-        private void JoinGame_completed__(Ice.AsyncResult r__, BomberLoutreIce.Callback_Client_JoinGame cb__, Ice.ExceptionCallback excb__)
-        {
-            BomberLoutreIce.ServerPrx ret__;
-            try
-            {
-                ret__ = end_JoinGame(r__);
-            }
-            catch(Ice.Exception ex__)
-            {
-                if(excb__ != null)
-                {
-                    excb__(ex__);
-                }
-                return;
-            }
-            if(cb__ != null)
-            {
-                cb__(ret__);
+                cb__();
             }
         }
 
@@ -3042,17 +2630,891 @@ namespace BomberLoutreIce
 
         #endregion
     }
+
+    [_System.Runtime.InteropServices.ComVisible(false)]
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public sealed class ServerPrxHelper : Ice.ObjectPrxHelperBase, ServerPrx
+    {
+        #region Synchronous operations
+
+        public BomberLoutreIce.User Connect(string login, string password)
+        {
+            return Connect(login, password, null, false);
+        }
+
+        public BomberLoutreIce.User Connect(string login, string password, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            return Connect(login, password, context__, true);
+        }
+
+        private BomberLoutreIce.User Connect(string login, string password, _System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
+        {
+            if(explicitContext__ && context__ == null)
+            {
+                context__ = emptyContext_;
+            }
+            int cnt__ = 0;
+            while(true)
+            {
+                Ice.ObjectDel_ delBase__ = null;
+                try
+                {
+                    checkTwowayOnly__("Connect");
+                    delBase__ = getDelegate__(false);
+                    ServerDel_ del__ = (ServerDel_)delBase__;
+                    return del__.Connect(login, password, context__);
+                }
+                catch(IceInternal.LocalExceptionWrapper ex__)
+                {
+                    handleExceptionWrapper__(delBase__, ex__);
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    handleException__(delBase__, ex__, true, ref cnt__);
+                }
+            }
+        }
+
+        public BomberLoutreIce.Game CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser)
+        {
+            return CreateGame(newGame, aUser, null, false);
+        }
+
+        public BomberLoutreIce.Game CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            return CreateGame(newGame, aUser, context__, true);
+        }
+
+        private BomberLoutreIce.Game CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
+        {
+            if(explicitContext__ && context__ == null)
+            {
+                context__ = emptyContext_;
+            }
+            int cnt__ = 0;
+            while(true)
+            {
+                Ice.ObjectDel_ delBase__ = null;
+                try
+                {
+                    checkTwowayOnly__("CreateGame");
+                    delBase__ = getDelegate__(false);
+                    ServerDel_ del__ = (ServerDel_)delBase__;
+                    return del__.CreateGame(newGame, aUser, context__);
+                }
+                catch(IceInternal.LocalExceptionWrapper ex__)
+                {
+                    handleExceptionWrapper__(delBase__, ex__);
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    handleException__(delBase__, ex__, true, ref cnt__);
+                }
+            }
+        }
+
+        public BomberLoutreIce.User CreateUser(string login, string password)
+        {
+            return CreateUser(login, password, null, false);
+        }
+
+        public BomberLoutreIce.User CreateUser(string login, string password, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            return CreateUser(login, password, context__, true);
+        }
+
+        private BomberLoutreIce.User CreateUser(string login, string password, _System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
+        {
+            if(explicitContext__ && context__ == null)
+            {
+                context__ = emptyContext_;
+            }
+            int cnt__ = 0;
+            while(true)
+            {
+                Ice.ObjectDel_ delBase__ = null;
+                try
+                {
+                    checkTwowayOnly__("CreateUser");
+                    delBase__ = getDelegate__(false);
+                    ServerDel_ del__ = (ServerDel_)delBase__;
+                    return del__.CreateUser(login, password, context__);
+                }
+                catch(IceInternal.LocalExceptionWrapper ex__)
+                {
+                    handleExceptionWrapper__(delBase__, ex__);
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    handleException__(delBase__, ex__, true, ref cnt__);
+                }
+            }
+        }
+
+        public BomberLoutreIce.Game[] GetGameList()
+        {
+            return GetGameList(null, false);
+        }
+
+        public BomberLoutreIce.Game[] GetGameList(_System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            return GetGameList(context__, true);
+        }
+
+        private BomberLoutreIce.Game[] GetGameList(_System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
+        {
+            if(explicitContext__ && context__ == null)
+            {
+                context__ = emptyContext_;
+            }
+            int cnt__ = 0;
+            while(true)
+            {
+                Ice.ObjectDel_ delBase__ = null;
+                try
+                {
+                    checkTwowayOnly__("GetGameList");
+                    delBase__ = getDelegate__(false);
+                    ServerDel_ del__ = (ServerDel_)delBase__;
+                    return del__.GetGameList(context__);
+                }
+                catch(IceInternal.LocalExceptionWrapper ex__)
+                {
+                    handleExceptionWrapper__(delBase__, ex__);
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    handleException__(delBase__, ex__, true, ref cnt__);
+                }
+            }
+        }
+
+        public BomberLoutreIce.Game JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser)
+        {
+            return JoinGame(aGame, aUser, null, false);
+        }
+
+        public BomberLoutreIce.Game JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            return JoinGame(aGame, aUser, context__, true);
+        }
+
+        private BomberLoutreIce.Game JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> context__, bool explicitContext__)
+        {
+            if(explicitContext__ && context__ == null)
+            {
+                context__ = emptyContext_;
+            }
+            int cnt__ = 0;
+            while(true)
+            {
+                Ice.ObjectDel_ delBase__ = null;
+                try
+                {
+                    checkTwowayOnly__("JoinGame");
+                    delBase__ = getDelegate__(false);
+                    ServerDel_ del__ = (ServerDel_)delBase__;
+                    return del__.JoinGame(aGame, aUser, context__);
+                }
+                catch(IceInternal.LocalExceptionWrapper ex__)
+                {
+                    handleExceptionWrapper__(delBase__, ex__);
+                }
+                catch(Ice.LocalException ex__)
+                {
+                    handleException__(delBase__, ex__, true, ref cnt__);
+                }
+            }
+        }
+
+        #endregion
+
+        #region Asynchronous operations
+
+        public Ice.AsyncResult<BomberLoutreIce.Callback_Server_Connect> begin_Connect(string login, string password)
+        {
+            return begin_Connect(login, password, null, false, null, null);
+        }
+
+        public Ice.AsyncResult<BomberLoutreIce.Callback_Server_Connect> begin_Connect(string login, string password, _System.Collections.Generic.Dictionary<string, string> ctx__)
+        {
+            return begin_Connect(login, password, ctx__, true, null, null);
+        }
+
+        public Ice.AsyncResult begin_Connect(string login, string password, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_Connect(login, password, null, false, cb__, cookie__);
+        }
+
+        public Ice.AsyncResult begin_Connect(string login, string password, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_Connect(login, password, ctx__, true, cb__, cookie__);
+        }
+
+        private const string __Connect_name = "Connect";
+
+        public BomberLoutreIce.User end_Connect(Ice.AsyncResult r__)
+        {
+            IceInternal.OutgoingAsync outAsync__ = (IceInternal.OutgoingAsync)r__;
+            IceInternal.OutgoingAsync.check__(outAsync__, this, __Connect_name);
+            if(!outAsync__.wait__())
+            {
+                try
+                {
+                    outAsync__.throwUserException__();
+                }
+                catch(BomberLoutreIce.BadUserInfoException)
+                {
+                    throw;
+                }
+                catch(Ice.UserException ex__)
+                {
+                    throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                }
+            }
+            BomberLoutreIce.User ret__;
+            IceInternal.BasicStream is__ = outAsync__.istr__;
+            is__.startReadEncaps();
+            ret__ = null;
+            if(ret__ == null)
+            {
+                ret__ = new BomberLoutreIce.User();
+            }
+            ret__.read__(is__);
+            is__.endReadEncaps();
+            return ret__;
+        }
+
+        private Ice.AsyncResult<BomberLoutreIce.Callback_Server_Connect> begin_Connect(string login, string password, _System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            checkAsyncTwowayOnly__(__Connect_name);
+            IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Server_Connect> result__ =  new IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Server_Connect>(this, __Connect_name, Connect_completed__, cookie__);
+            if(cb__ != null)
+            {
+                result__.whenCompletedWithAsyncCallback(cb__);
+            }
+            try
+            {
+                result__.prepare__(__Connect_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
+                IceInternal.BasicStream os__ = result__.ostr__;
+                os__.writeString(login);
+                os__.writeString(password);
+                os__.endWriteEncaps();
+                result__.send__(true);
+            }
+            catch(Ice.LocalException ex__)
+            {
+                result__.exceptionAsync__(ex__);
+            }
+            return result__;
+        }
+
+        private void Connect_completed__(Ice.AsyncResult r__, BomberLoutreIce.Callback_Server_Connect cb__, Ice.ExceptionCallback excb__)
+        {
+            BomberLoutreIce.User ret__;
+            try
+            {
+                ret__ = end_Connect(r__);
+            }
+            catch(Ice.Exception ex__)
+            {
+                if(excb__ != null)
+                {
+                    excb__(ex__);
+                }
+                return;
+            }
+            if(cb__ != null)
+            {
+                cb__(ret__);
+            }
+        }
+
+        public Ice.AsyncResult<BomberLoutreIce.Callback_Server_CreateGame> begin_CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser)
+        {
+            return begin_CreateGame(newGame, aUser, null, false, null, null);
+        }
+
+        public Ice.AsyncResult<BomberLoutreIce.Callback_Server_CreateGame> begin_CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> ctx__)
+        {
+            return begin_CreateGame(newGame, aUser, ctx__, true, null, null);
+        }
+
+        public Ice.AsyncResult begin_CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_CreateGame(newGame, aUser, null, false, cb__, cookie__);
+        }
+
+        public Ice.AsyncResult begin_CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_CreateGame(newGame, aUser, ctx__, true, cb__, cookie__);
+        }
+
+        private const string __CreateGame_name = "CreateGame";
+
+        public BomberLoutreIce.Game end_CreateGame(Ice.AsyncResult r__)
+        {
+            IceInternal.OutgoingAsync outAsync__ = (IceInternal.OutgoingAsync)r__;
+            IceInternal.OutgoingAsync.check__(outAsync__, this, __CreateGame_name);
+            if(!outAsync__.wait__())
+            {
+                try
+                {
+                    outAsync__.throwUserException__();
+                }
+                catch(Ice.UserException ex__)
+                {
+                    throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                }
+            }
+            BomberLoutreIce.Game ret__;
+            IceInternal.BasicStream is__ = outAsync__.istr__;
+            is__.startReadEncaps();
+            ret__ = null;
+            if(ret__ == null)
+            {
+                ret__ = new BomberLoutreIce.Game();
+            }
+            ret__.read__(is__);
+            is__.endReadEncaps();
+            return ret__;
+        }
+
+        private Ice.AsyncResult<BomberLoutreIce.Callback_Server_CreateGame> begin_CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            checkAsyncTwowayOnly__(__CreateGame_name);
+            IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Server_CreateGame> result__ =  new IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Server_CreateGame>(this, __CreateGame_name, CreateGame_completed__, cookie__);
+            if(cb__ != null)
+            {
+                result__.whenCompletedWithAsyncCallback(cb__);
+            }
+            try
+            {
+                result__.prepare__(__CreateGame_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
+                IceInternal.BasicStream os__ = result__.ostr__;
+                if(newGame == null)
+                {
+                    BomberLoutreIce.Game tmp__ = new BomberLoutreIce.Game();
+                    tmp__.write__(os__);
+                }
+                else
+                {
+                    newGame.write__(os__);
+                }
+                if(aUser == null)
+                {
+                    BomberLoutreIce.User tmp__ = new BomberLoutreIce.User();
+                    tmp__.write__(os__);
+                }
+                else
+                {
+                    aUser.write__(os__);
+                }
+                os__.endWriteEncaps();
+                result__.send__(true);
+            }
+            catch(Ice.LocalException ex__)
+            {
+                result__.exceptionAsync__(ex__);
+            }
+            return result__;
+        }
+
+        private void CreateGame_completed__(Ice.AsyncResult r__, BomberLoutreIce.Callback_Server_CreateGame cb__, Ice.ExceptionCallback excb__)
+        {
+            BomberLoutreIce.Game ret__;
+            try
+            {
+                ret__ = end_CreateGame(r__);
+            }
+            catch(Ice.Exception ex__)
+            {
+                if(excb__ != null)
+                {
+                    excb__(ex__);
+                }
+                return;
+            }
+            if(cb__ != null)
+            {
+                cb__(ret__);
+            }
+        }
+
+        public Ice.AsyncResult<BomberLoutreIce.Callback_Server_CreateUser> begin_CreateUser(string login, string password)
+        {
+            return begin_CreateUser(login, password, null, false, null, null);
+        }
+
+        public Ice.AsyncResult<BomberLoutreIce.Callback_Server_CreateUser> begin_CreateUser(string login, string password, _System.Collections.Generic.Dictionary<string, string> ctx__)
+        {
+            return begin_CreateUser(login, password, ctx__, true, null, null);
+        }
+
+        public Ice.AsyncResult begin_CreateUser(string login, string password, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_CreateUser(login, password, null, false, cb__, cookie__);
+        }
+
+        public Ice.AsyncResult begin_CreateUser(string login, string password, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_CreateUser(login, password, ctx__, true, cb__, cookie__);
+        }
+
+        private const string __CreateUser_name = "CreateUser";
+
+        public BomberLoutreIce.User end_CreateUser(Ice.AsyncResult r__)
+        {
+            IceInternal.OutgoingAsync outAsync__ = (IceInternal.OutgoingAsync)r__;
+            IceInternal.OutgoingAsync.check__(outAsync__, this, __CreateUser_name);
+            if(!outAsync__.wait__())
+            {
+                try
+                {
+                    outAsync__.throwUserException__();
+                }
+                catch(BomberLoutreIce.UserAlreadyExistsException)
+                {
+                    throw;
+                }
+                catch(Ice.UserException ex__)
+                {
+                    throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                }
+            }
+            BomberLoutreIce.User ret__;
+            IceInternal.BasicStream is__ = outAsync__.istr__;
+            is__.startReadEncaps();
+            ret__ = null;
+            if(ret__ == null)
+            {
+                ret__ = new BomberLoutreIce.User();
+            }
+            ret__.read__(is__);
+            is__.endReadEncaps();
+            return ret__;
+        }
+
+        private Ice.AsyncResult<BomberLoutreIce.Callback_Server_CreateUser> begin_CreateUser(string login, string password, _System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            checkAsyncTwowayOnly__(__CreateUser_name);
+            IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Server_CreateUser> result__ =  new IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Server_CreateUser>(this, __CreateUser_name, CreateUser_completed__, cookie__);
+            if(cb__ != null)
+            {
+                result__.whenCompletedWithAsyncCallback(cb__);
+            }
+            try
+            {
+                result__.prepare__(__CreateUser_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
+                IceInternal.BasicStream os__ = result__.ostr__;
+                os__.writeString(login);
+                os__.writeString(password);
+                os__.endWriteEncaps();
+                result__.send__(true);
+            }
+            catch(Ice.LocalException ex__)
+            {
+                result__.exceptionAsync__(ex__);
+            }
+            return result__;
+        }
+
+        private void CreateUser_completed__(Ice.AsyncResult r__, BomberLoutreIce.Callback_Server_CreateUser cb__, Ice.ExceptionCallback excb__)
+        {
+            BomberLoutreIce.User ret__;
+            try
+            {
+                ret__ = end_CreateUser(r__);
+            }
+            catch(Ice.Exception ex__)
+            {
+                if(excb__ != null)
+                {
+                    excb__(ex__);
+                }
+                return;
+            }
+            if(cb__ != null)
+            {
+                cb__(ret__);
+            }
+        }
+
+        public Ice.AsyncResult<BomberLoutreIce.Callback_Server_GetGameList> begin_GetGameList()
+        {
+            return begin_GetGameList(null, false, null, null);
+        }
+
+        public Ice.AsyncResult<BomberLoutreIce.Callback_Server_GetGameList> begin_GetGameList(_System.Collections.Generic.Dictionary<string, string> ctx__)
+        {
+            return begin_GetGameList(ctx__, true, null, null);
+        }
+
+        public Ice.AsyncResult begin_GetGameList(Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_GetGameList(null, false, cb__, cookie__);
+        }
+
+        public Ice.AsyncResult begin_GetGameList(_System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_GetGameList(ctx__, true, cb__, cookie__);
+        }
+
+        private const string __GetGameList_name = "GetGameList";
+
+        public BomberLoutreIce.Game[] end_GetGameList(Ice.AsyncResult r__)
+        {
+            IceInternal.OutgoingAsync outAsync__ = (IceInternal.OutgoingAsync)r__;
+            IceInternal.OutgoingAsync.check__(outAsync__, this, __GetGameList_name);
+            if(!outAsync__.wait__())
+            {
+                try
+                {
+                    outAsync__.throwUserException__();
+                }
+                catch(Ice.UserException ex__)
+                {
+                    throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                }
+            }
+            BomberLoutreIce.Game[] ret__;
+            IceInternal.BasicStream is__ = outAsync__.istr__;
+            is__.startReadEncaps();
+            {
+                int szx__ = is__.readAndCheckSeqSize(41);
+                ret__ = new BomberLoutreIce.Game[szx__];
+                for(int ix__ = 0; ix__ < szx__; ++ix__)
+                {
+                    ret__[ix__] = new BomberLoutreIce.Game();
+                    ret__[ix__].read__(is__);
+                }
+            }
+            is__.endReadEncaps();
+            return ret__;
+        }
+
+        private Ice.AsyncResult<BomberLoutreIce.Callback_Server_GetGameList> begin_GetGameList(_System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            checkAsyncTwowayOnly__(__GetGameList_name);
+            IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Server_GetGameList> result__ =  new IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Server_GetGameList>(this, __GetGameList_name, GetGameList_completed__, cookie__);
+            if(cb__ != null)
+            {
+                result__.whenCompletedWithAsyncCallback(cb__);
+            }
+            try
+            {
+                result__.prepare__(__GetGameList_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
+                IceInternal.BasicStream os__ = result__.ostr__;
+                os__.endWriteEncaps();
+                result__.send__(true);
+            }
+            catch(Ice.LocalException ex__)
+            {
+                result__.exceptionAsync__(ex__);
+            }
+            return result__;
+        }
+
+        private void GetGameList_completed__(Ice.AsyncResult r__, BomberLoutreIce.Callback_Server_GetGameList cb__, Ice.ExceptionCallback excb__)
+        {
+            BomberLoutreIce.Game[] ret__;
+            try
+            {
+                ret__ = end_GetGameList(r__);
+            }
+            catch(Ice.Exception ex__)
+            {
+                if(excb__ != null)
+                {
+                    excb__(ex__);
+                }
+                return;
+            }
+            if(cb__ != null)
+            {
+                cb__(ret__);
+            }
+        }
+
+        public Ice.AsyncResult<BomberLoutreIce.Callback_Server_JoinGame> begin_JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser)
+        {
+            return begin_JoinGame(aGame, aUser, null, false, null, null);
+        }
+
+        public Ice.AsyncResult<BomberLoutreIce.Callback_Server_JoinGame> begin_JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> ctx__)
+        {
+            return begin_JoinGame(aGame, aUser, ctx__, true, null, null);
+        }
+
+        public Ice.AsyncResult begin_JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_JoinGame(aGame, aUser, null, false, cb__, cookie__);
+        }
+
+        public Ice.AsyncResult begin_JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> ctx__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            return begin_JoinGame(aGame, aUser, ctx__, true, cb__, cookie__);
+        }
+
+        private const string __JoinGame_name = "JoinGame";
+
+        public BomberLoutreIce.Game end_JoinGame(Ice.AsyncResult r__)
+        {
+            IceInternal.OutgoingAsync outAsync__ = (IceInternal.OutgoingAsync)r__;
+            IceInternal.OutgoingAsync.check__(outAsync__, this, __JoinGame_name);
+            if(!outAsync__.wait__())
+            {
+                try
+                {
+                    outAsync__.throwUserException__();
+                }
+                catch(BomberLoutreIce.WTFIsThatGameException)
+                {
+                    throw;
+                }
+                catch(Ice.UserException ex__)
+                {
+                    throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                }
+            }
+            BomberLoutreIce.Game ret__;
+            IceInternal.BasicStream is__ = outAsync__.istr__;
+            is__.startReadEncaps();
+            ret__ = null;
+            if(ret__ == null)
+            {
+                ret__ = new BomberLoutreIce.Game();
+            }
+            ret__.read__(is__);
+            is__.endReadEncaps();
+            return ret__;
+        }
+
+        private Ice.AsyncResult<BomberLoutreIce.Callback_Server_JoinGame> begin_JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> ctx__, bool explicitContext__, Ice.AsyncCallback cb__, object cookie__)
+        {
+            checkAsyncTwowayOnly__(__JoinGame_name);
+            IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Server_JoinGame> result__ =  new IceInternal.TwowayOutgoingAsync<BomberLoutreIce.Callback_Server_JoinGame>(this, __JoinGame_name, JoinGame_completed__, cookie__);
+            if(cb__ != null)
+            {
+                result__.whenCompletedWithAsyncCallback(cb__);
+            }
+            try
+            {
+                result__.prepare__(__JoinGame_name, Ice.OperationMode.Normal, ctx__, explicitContext__);
+                IceInternal.BasicStream os__ = result__.ostr__;
+                if(aGame == null)
+                {
+                    BomberLoutreIce.Game tmp__ = new BomberLoutreIce.Game();
+                    tmp__.write__(os__);
+                }
+                else
+                {
+                    aGame.write__(os__);
+                }
+                if(aUser == null)
+                {
+                    BomberLoutreIce.User tmp__ = new BomberLoutreIce.User();
+                    tmp__.write__(os__);
+                }
+                else
+                {
+                    aUser.write__(os__);
+                }
+                os__.endWriteEncaps();
+                result__.send__(true);
+            }
+            catch(Ice.LocalException ex__)
+            {
+                result__.exceptionAsync__(ex__);
+            }
+            return result__;
+        }
+
+        private void JoinGame_completed__(Ice.AsyncResult r__, BomberLoutreIce.Callback_Server_JoinGame cb__, Ice.ExceptionCallback excb__)
+        {
+            BomberLoutreIce.Game ret__;
+            try
+            {
+                ret__ = end_JoinGame(r__);
+            }
+            catch(Ice.Exception ex__)
+            {
+                if(excb__ != null)
+                {
+                    excb__(ex__);
+                }
+                return;
+            }
+            if(cb__ != null)
+            {
+                cb__(ret__);
+            }
+        }
+
+        #endregion
+
+        #region Checked and unchecked cast operations
+
+        public static ServerPrx checkedCast(Ice.ObjectPrx b)
+        {
+            if(b == null)
+            {
+                return null;
+            }
+            ServerPrx r = b as ServerPrx;
+            if((r == null) && b.ice_isA(ice_staticId()))
+            {
+                ServerPrxHelper h = new ServerPrxHelper();
+                h.copyFrom__(b);
+                r = h;
+            }
+            return r;
+        }
+
+        public static ServerPrx checkedCast(Ice.ObjectPrx b, _System.Collections.Generic.Dictionary<string, string> ctx)
+        {
+            if(b == null)
+            {
+                return null;
+            }
+            ServerPrx r = b as ServerPrx;
+            if((r == null) && b.ice_isA(ice_staticId(), ctx))
+            {
+                ServerPrxHelper h = new ServerPrxHelper();
+                h.copyFrom__(b);
+                r = h;
+            }
+            return r;
+        }
+
+        public static ServerPrx checkedCast(Ice.ObjectPrx b, string f)
+        {
+            if(b == null)
+            {
+                return null;
+            }
+            Ice.ObjectPrx bb = b.ice_facet(f);
+            try
+            {
+                if(bb.ice_isA(ice_staticId()))
+                {
+                    ServerPrxHelper h = new ServerPrxHelper();
+                    h.copyFrom__(bb);
+                    return h;
+                }
+            }
+            catch(Ice.FacetNotExistException)
+            {
+            }
+            return null;
+        }
+
+        public static ServerPrx checkedCast(Ice.ObjectPrx b, string f, _System.Collections.Generic.Dictionary<string, string> ctx)
+        {
+            if(b == null)
+            {
+                return null;
+            }
+            Ice.ObjectPrx bb = b.ice_facet(f);
+            try
+            {
+                if(bb.ice_isA(ice_staticId(), ctx))
+                {
+                    ServerPrxHelper h = new ServerPrxHelper();
+                    h.copyFrom__(bb);
+                    return h;
+                }
+            }
+            catch(Ice.FacetNotExistException)
+            {
+            }
+            return null;
+        }
+
+        public static ServerPrx uncheckedCast(Ice.ObjectPrx b)
+        {
+            if(b == null)
+            {
+                return null;
+            }
+            ServerPrx r = b as ServerPrx;
+            if(r == null)
+            {
+                ServerPrxHelper h = new ServerPrxHelper();
+                h.copyFrom__(b);
+                r = h;
+            }
+            return r;
+        }
+
+        public static ServerPrx uncheckedCast(Ice.ObjectPrx b, string f)
+        {
+            if(b == null)
+            {
+                return null;
+            }
+            Ice.ObjectPrx bb = b.ice_facet(f);
+            ServerPrxHelper h = new ServerPrxHelper();
+            h.copyFrom__(bb);
+            return h;
+        }
+
+        public static readonly string[] ids__ =
+        {
+            "::BomberLoutreIce::Server",
+            "::Ice::Object"
+        };
+
+        public static string ice_staticId()
+        {
+            return ids__[0];
+        }
+
+        #endregion
+
+        #region Marshaling support
+
+        protected override Ice.ObjectDelM_ createDelegateM__()
+        {
+            return new ServerDelM_();
+        }
+
+        protected override Ice.ObjectDelD_ createDelegateD__()
+        {
+            return new ServerDelD_();
+        }
+
+        public static void write__(IceInternal.BasicStream os__, ServerPrx v__)
+        {
+            os__.writeProxy(v__);
+        }
+
+        public static ServerPrx read__(IceInternal.BasicStream is__)
+        {
+            Ice.ObjectPrx proxy = is__.readProxy();
+            if(proxy != null)
+            {
+                ServerPrxHelper result = new ServerPrxHelper();
+                result.copyFrom__(proxy);
+                return result;
+            }
+            return null;
+        }
+
+        #endregion
+    }
 }
 
 namespace BomberLoutreIce
 {
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public interface ServerDel_ : Ice.ObjectDel_
+    public interface ClientDel_ : Ice.ObjectDel_
     {
+        void Test(_System.Collections.Generic.Dictionary<string, string> context__);
     }
 
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public interface ClientDel_ : Ice.ObjectDel_
+    public interface ServerDel_ : Ice.ObjectDel_
     {
         BomberLoutreIce.User Connect(string login, string password, _System.Collections.Generic.Dictionary<string, string> context__);
 
@@ -3060,9 +3522,9 @@ namespace BomberLoutreIce
 
         BomberLoutreIce.Game[] GetGameList(_System.Collections.Generic.Dictionary<string, string> context__);
 
-        BomberLoutreIce.ServerPrx JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> context__);
+        BomberLoutreIce.Game JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> context__);
 
-        BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> context__);
+        BomberLoutreIce.Game CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> context__);
     }
 }
 
@@ -3070,13 +3532,47 @@ namespace BomberLoutreIce
 {
     [_System.Runtime.InteropServices.ComVisible(false)]
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public sealed class ServerDelM_ : Ice.ObjectDelM_, ServerDel_
+    public sealed class ClientDelM_ : Ice.ObjectDelM_, ClientDel_
     {
+        public void Test(_System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            IceInternal.Outgoing og__ = handler__.getOutgoing("Test", Ice.OperationMode.Normal, context__);
+            try
+            {
+                bool ok__ = og__.invoke();
+                if(!og__.istr().isEmpty())
+                {
+                    try
+                    {
+                        if(!ok__)
+                        {
+                            try
+                            {
+                                og__.throwUserException();
+                            }
+                            catch(Ice.UserException ex__)
+                            {
+                                throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
+                            }
+                        }
+                        og__.istr().skipEmptyEncaps();
+                    }
+                    catch(Ice.LocalException ex__)
+                    {
+                        throw new IceInternal.LocalExceptionWrapper(ex__, false);
+                    }
+                }
+            }
+            finally
+            {
+                handler__.reclaimOutgoing(og__);
+            }
+        }
     }
 
     [_System.Runtime.InteropServices.ComVisible(false)]
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public sealed class ClientDelM_ : Ice.ObjectDelM_, ClientDel_
+    public sealed class ServerDelM_ : Ice.ObjectDelM_, ServerDel_
     {
         public BomberLoutreIce.User Connect(string login, string password, _System.Collections.Generic.Dictionary<string, string> context__)
         {
@@ -3134,7 +3630,7 @@ namespace BomberLoutreIce
             }
         }
 
-        public BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> context__)
+        public BomberLoutreIce.Game CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> context__)
         {
             IceInternal.Outgoing og__ = handler__.getOutgoing("CreateGame", Ice.OperationMode.Normal, context__);
             try
@@ -3150,6 +3646,15 @@ namespace BomberLoutreIce
                     else
                     {
                         newGame.write__(os__);
+                    }
+                    if(aUser == null)
+                    {
+                        BomberLoutreIce.User tmp__ = new BomberLoutreIce.User();
+                        tmp__.write__(os__);
+                    }
+                    else
+                    {
+                        aUser.write__(os__);
                     }
                 }
                 catch(Ice.LocalException ex__)
@@ -3172,8 +3677,13 @@ namespace BomberLoutreIce
                     }
                     IceInternal.BasicStream is__ = og__.istr();
                     is__.startReadEncaps();
-                    BomberLoutreIce.ServerPrx ret__;
-                    ret__ = BomberLoutreIce.ServerPrxHelper.read__(is__);
+                    BomberLoutreIce.Game ret__;
+                    ret__ = null;
+                    if(ret__ == null)
+                    {
+                        ret__ = new BomberLoutreIce.Game();
+                    }
+                    ret__.read__(is__);
                     is__.endReadEncaps();
                     return ret__;
                 }
@@ -3289,7 +3799,7 @@ namespace BomberLoutreIce
             }
         }
 
-        public BomberLoutreIce.ServerPrx JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> context__)
+        public BomberLoutreIce.Game JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> context__)
         {
             IceInternal.Outgoing og__ = handler__.getOutgoing("JoinGame", Ice.OperationMode.Normal, context__);
             try
@@ -3297,7 +3807,24 @@ namespace BomberLoutreIce
                 try
                 {
                     IceInternal.BasicStream os__ = og__.ostr();
-                    os__.writeString(name);
+                    if(aGame == null)
+                    {
+                        BomberLoutreIce.Game tmp__ = new BomberLoutreIce.Game();
+                        tmp__.write__(os__);
+                    }
+                    else
+                    {
+                        aGame.write__(os__);
+                    }
+                    if(aUser == null)
+                    {
+                        BomberLoutreIce.User tmp__ = new BomberLoutreIce.User();
+                        tmp__.write__(os__);
+                    }
+                    else
+                    {
+                        aUser.write__(os__);
+                    }
                 }
                 catch(Ice.LocalException ex__)
                 {
@@ -3312,6 +3839,10 @@ namespace BomberLoutreIce
                         {
                             og__.throwUserException();
                         }
+                        catch(BomberLoutreIce.WTFIsThatGameException)
+                        {
+                            throw;
+                        }
                         catch(Ice.UserException ex__)
                         {
                             throw new Ice.UnknownUserException(ex__.ice_name(), ex__);
@@ -3319,8 +3850,13 @@ namespace BomberLoutreIce
                     }
                     IceInternal.BasicStream is__ = og__.istr();
                     is__.startReadEncaps();
-                    BomberLoutreIce.ServerPrx ret__;
-                    ret__ = BomberLoutreIce.ServerPrxHelper.read__(is__);
+                    BomberLoutreIce.Game ret__;
+                    ret__ = null;
+                    if(ret__ == null)
+                    {
+                        ret__ = new BomberLoutreIce.Game();
+                    }
+                    ret__.read__(is__);
                     is__.endReadEncaps();
                     return ret__;
                 }
@@ -3341,13 +3877,55 @@ namespace BomberLoutreIce
 {
     [_System.Runtime.InteropServices.ComVisible(false)]
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public sealed class ServerDelD_ : Ice.ObjectDelD_, ServerDel_
+    public sealed class ClientDelD_ : Ice.ObjectDelD_, ClientDel_
     {
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
+        public void Test(_System.Collections.Generic.Dictionary<string, string> context__)
+        {
+            Ice.Current current__ = new Ice.Current();
+            initCurrent__(ref current__, "Test", Ice.OperationMode.Normal, context__);
+            IceInternal.Direct.RunDelegate run__ = delegate(Ice.Object obj__)
+            {
+                Client servant__ = null;
+                try
+                {
+                    servant__ = (Client)obj__;
+                }
+                catch(_System.InvalidCastException)
+                {
+                    throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
+                }
+                servant__.Test(current__);
+                return Ice.DispatchStatus.DispatchOK;
+            };
+            IceInternal.Direct direct__ = null;
+            try
+            {
+                direct__ = new IceInternal.Direct(current__, run__);
+                try
+                {
+                    Ice.DispatchStatus status__ = direct__.servant().collocDispatch__(direct__);
+                    _System.Diagnostics.Debug.Assert(status__ == Ice.DispatchStatus.DispatchOK);
+                }
+                finally
+                {
+                    direct__.destroy();
+                }
+            }
+            catch(Ice.SystemException)
+            {
+                throw;
+            }
+            catch(_System.Exception ex__)
+            {
+                IceInternal.LocalExceptionWrapper.throwWrapper(ex__);
+            }
+        }
     }
 
     [_System.Runtime.InteropServices.ComVisible(false)]
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public sealed class ClientDelD_ : Ice.ObjectDelD_, ClientDel_
+    public sealed class ServerDelD_ : Ice.ObjectDelD_, ServerDel_
     {
         [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
         public BomberLoutreIce.User Connect(string login, string password, _System.Collections.Generic.Dictionary<string, string> context__)
@@ -3358,10 +3936,10 @@ namespace BomberLoutreIce
             Ice.UserException userException__ = null;
             IceInternal.Direct.RunDelegate run__ = delegate(Ice.Object obj__)
             {
-                Client servant__ = null;
+                Server servant__ = null;
                 try
                 {
-                    servant__ = (Client)obj__;
+                    servant__ = (Server)obj__;
                 }
                 catch(_System.InvalidCastException)
                 {
@@ -3412,23 +3990,23 @@ namespace BomberLoutreIce
         }
 
         [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
-        public BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame, _System.Collections.Generic.Dictionary<string, string> context__)
+        public BomberLoutreIce.Game CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> context__)
         {
             Ice.Current current__ = new Ice.Current();
             initCurrent__(ref current__, "CreateGame", Ice.OperationMode.Normal, context__);
-            BomberLoutreIce.ServerPrx result__ = null;
+            BomberLoutreIce.Game result__ = new BomberLoutreIce.Game();
             IceInternal.Direct.RunDelegate run__ = delegate(Ice.Object obj__)
             {
-                Client servant__ = null;
+                Server servant__ = null;
                 try
                 {
-                    servant__ = (Client)obj__;
+                    servant__ = (Server)obj__;
                 }
                 catch(_System.InvalidCastException)
                 {
                     throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
                 }
-                result__ = servant__.CreateGame(newGame, current__);
+                result__ = servant__.CreateGame(newGame, aUser, current__);
                 return Ice.DispatchStatus.DispatchOK;
             };
             IceInternal.Direct direct__ = null;
@@ -3465,10 +4043,10 @@ namespace BomberLoutreIce
             Ice.UserException userException__ = null;
             IceInternal.Direct.RunDelegate run__ = delegate(Ice.Object obj__)
             {
-                Client servant__ = null;
+                Server servant__ = null;
                 try
                 {
-                    servant__ = (Client)obj__;
+                    servant__ = (Server)obj__;
                 }
                 catch(_System.InvalidCastException)
                 {
@@ -3526,10 +4104,10 @@ namespace BomberLoutreIce
             BomberLoutreIce.Game[] result__ = null;
             IceInternal.Direct.RunDelegate run__ = delegate(Ice.Object obj__)
             {
-                Client servant__ = null;
+                Server servant__ = null;
                 try
                 {
-                    servant__ = (Client)obj__;
+                    servant__ = (Server)obj__;
                 }
                 catch(_System.InvalidCastException)
                 {
@@ -3564,24 +4142,33 @@ namespace BomberLoutreIce
         }
 
         [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031")]
-        public BomberLoutreIce.ServerPrx JoinGame(string name, _System.Collections.Generic.Dictionary<string, string> context__)
+        public BomberLoutreIce.Game JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser, _System.Collections.Generic.Dictionary<string, string> context__)
         {
             Ice.Current current__ = new Ice.Current();
             initCurrent__(ref current__, "JoinGame", Ice.OperationMode.Normal, context__);
-            BomberLoutreIce.ServerPrx result__ = null;
+            BomberLoutreIce.Game result__ = new BomberLoutreIce.Game();
+            Ice.UserException userException__ = null;
             IceInternal.Direct.RunDelegate run__ = delegate(Ice.Object obj__)
             {
-                Client servant__ = null;
+                Server servant__ = null;
                 try
                 {
-                    servant__ = (Client)obj__;
+                    servant__ = (Server)obj__;
                 }
                 catch(_System.InvalidCastException)
                 {
                     throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
                 }
-                result__ = servant__.JoinGame(name, current__);
-                return Ice.DispatchStatus.DispatchOK;
+                try
+                {
+                    result__ = servant__.JoinGame(aGame, aUser, current__);
+                    return Ice.DispatchStatus.DispatchOK;
+                }
+                catch(Ice.UserException ex__)
+                {
+                    userException__ = ex__;
+                    return Ice.DispatchStatus.DispatchUserException;
+                }
             };
             IceInternal.Direct direct__ = null;
             try
@@ -3590,12 +4177,20 @@ namespace BomberLoutreIce
                 try
                 {
                     Ice.DispatchStatus status__ = direct__.servant().collocDispatch__(direct__);
+                    if(status__ == Ice.DispatchStatus.DispatchUserException)
+                    {
+                        throw userException__;
+                    }
                     _System.Diagnostics.Debug.Assert(status__ == Ice.DispatchStatus.DispatchOK);
                 }
                 finally
                 {
                     direct__.destroy();
                 }
+            }
+            catch(BomberLoutreIce.WTFIsThatGameException)
+            {
+                throw;
             }
             catch(Ice.SystemException)
             {
@@ -3614,131 +4209,16 @@ namespace BomberLoutreIce
 {
     [_System.Runtime.InteropServices.ComVisible(false)]
     [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
-    public abstract class ServerDisp_ : Ice.ObjectImpl, Server
-    {
-        #region Slice type-related members
-
-        public static new readonly string[] ids__ = 
-        {
-            "::BomberLoutreIce::Server",
-            "::Ice::Object"
-        };
-
-        public override bool ice_isA(string s)
-        {
-            return _System.Array.BinarySearch(ids__, s, IceUtilInternal.StringUtil.OrdinalStringComparer) >= 0;
-        }
-
-        public override bool ice_isA(string s, Ice.Current current__)
-        {
-            return _System.Array.BinarySearch(ids__, s, IceUtilInternal.StringUtil.OrdinalStringComparer) >= 0;
-        }
-
-        public override string[] ice_ids()
-        {
-            return ids__;
-        }
-
-        public override string[] ice_ids(Ice.Current current__)
-        {
-            return ids__;
-        }
-
-        public override string ice_id()
-        {
-            return ids__[0];
-        }
-
-        public override string ice_id(Ice.Current current__)
-        {
-            return ids__[0];
-        }
-
-        public static new string ice_staticId()
-        {
-            return ids__[0];
-        }
-
-        #endregion
-
-        #region Marshaling support
-
-        public override void write__(IceInternal.BasicStream os__)
-        {
-            os__.writeTypeId(ice_staticId());
-            os__.startWriteSlice();
-            os__.endWriteSlice();
-            base.write__(os__);
-        }
-
-        public override void read__(IceInternal.BasicStream is__, bool rid__)
-        {
-            if(rid__)
-            {
-                /* string myId = */ is__.readTypeId();
-            }
-            is__.startReadSlice();
-            is__.endReadSlice();
-            base.read__(is__, true);
-        }
-
-        public override void write__(Ice.OutputStream outS__)
-        {
-            Ice.MarshalException ex = new Ice.MarshalException();
-            ex.reason = "type BomberLoutreIce::Server was not generated with stream support";
-            throw ex;
-        }
-
-        public override void read__(Ice.InputStream inS__, bool rid__)
-        {
-            Ice.MarshalException ex = new Ice.MarshalException();
-            ex.reason = "type BomberLoutreIce::Server was not generated with stream support";
-            throw ex;
-        }
-
-        #endregion
-    }
-
-    [_System.Runtime.InteropServices.ComVisible(false)]
-    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
     public abstract class ClientDisp_ : Ice.ObjectImpl, Client
     {
         #region Slice operations
 
-        public BomberLoutreIce.User Connect(string login, string password)
+        public void Test()
         {
-            return Connect(login, password, Ice.ObjectImpl.defaultCurrent);
+            Test(Ice.ObjectImpl.defaultCurrent);
         }
 
-        public abstract BomberLoutreIce.User Connect(string login, string password, Ice.Current current__);
-
-        public BomberLoutreIce.User CreateUser(string login, string password)
-        {
-            return CreateUser(login, password, Ice.ObjectImpl.defaultCurrent);
-        }
-
-        public abstract BomberLoutreIce.User CreateUser(string login, string password, Ice.Current current__);
-
-        public BomberLoutreIce.Game[] GetGameList()
-        {
-            return GetGameList(Ice.ObjectImpl.defaultCurrent);
-        }
-
-        public abstract BomberLoutreIce.Game[] GetGameList(Ice.Current current__);
-
-        public BomberLoutreIce.ServerPrx JoinGame(string name)
-        {
-            return JoinGame(name, Ice.ObjectImpl.defaultCurrent);
-        }
-
-        public abstract BomberLoutreIce.ServerPrx JoinGame(string name, Ice.Current current__);
-
-        public BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame)
-        {
-            return CreateGame(newGame, Ice.ObjectImpl.defaultCurrent);
-        }
-
-        public abstract BomberLoutreIce.ServerPrx CreateGame(BomberLoutreIce.Game newGame, Ice.Current current__);
+        public abstract void Test(Ice.Current current__);
 
         #endregion
 
@@ -3790,7 +4270,191 @@ namespace BomberLoutreIce
         #region Operation dispatch
 
         [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-        public static Ice.DispatchStatus Connect___(Client obj__, IceInternal.Incoming inS__, Ice.Current current__)
+        public static Ice.DispatchStatus Test___(Client obj__, IceInternal.Incoming inS__, Ice.Current current__)
+        {
+            checkMode__(Ice.OperationMode.Normal, current__.mode);
+            inS__.istr().skipEmptyEncaps();
+            obj__.Test(current__);
+            return Ice.DispatchStatus.DispatchOK;
+        }
+
+        private static string[] all__ =
+        {
+            "Test",
+            "ice_id",
+            "ice_ids",
+            "ice_isA",
+            "ice_ping"
+        };
+
+        public override Ice.DispatchStatus dispatch__(IceInternal.Incoming inS__, Ice.Current current__)
+        {
+            int pos = _System.Array.BinarySearch(all__, current__.operation, IceUtilInternal.StringUtil.OrdinalStringComparer);
+            if(pos < 0)
+            {
+                throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
+            }
+
+            switch(pos)
+            {
+                case 0:
+                {
+                    return Test___(this, inS__, current__);
+                }
+                case 1:
+                {
+                    return ice_id___(this, inS__, current__);
+                }
+                case 2:
+                {
+                    return ice_ids___(this, inS__, current__);
+                }
+                case 3:
+                {
+                    return ice_isA___(this, inS__, current__);
+                }
+                case 4:
+                {
+                    return ice_ping___(this, inS__, current__);
+                }
+            }
+
+            _System.Diagnostics.Debug.Assert(false);
+            throw new Ice.OperationNotExistException(current__.id, current__.facet, current__.operation);
+        }
+
+        #endregion
+
+        #region Marshaling support
+
+        public override void write__(IceInternal.BasicStream os__)
+        {
+            os__.writeTypeId(ice_staticId());
+            os__.startWriteSlice();
+            os__.endWriteSlice();
+            base.write__(os__);
+        }
+
+        public override void read__(IceInternal.BasicStream is__, bool rid__)
+        {
+            if(rid__)
+            {
+                /* string myId = */ is__.readTypeId();
+            }
+            is__.startReadSlice();
+            is__.endReadSlice();
+            base.read__(is__, true);
+        }
+
+        public override void write__(Ice.OutputStream outS__)
+        {
+            Ice.MarshalException ex = new Ice.MarshalException();
+            ex.reason = "type BomberLoutreIce::Client was not generated with stream support";
+            throw ex;
+        }
+
+        public override void read__(Ice.InputStream inS__, bool rid__)
+        {
+            Ice.MarshalException ex = new Ice.MarshalException();
+            ex.reason = "type BomberLoutreIce::Client was not generated with stream support";
+            throw ex;
+        }
+
+        #endregion
+    }
+
+    [_System.Runtime.InteropServices.ComVisible(false)]
+    [_System.CodeDom.Compiler.GeneratedCodeAttribute("slice2cs", "3.4.2")]
+    public abstract class ServerDisp_ : Ice.ObjectImpl, Server
+    {
+        #region Slice operations
+
+        public BomberLoutreIce.User Connect(string login, string password)
+        {
+            return Connect(login, password, Ice.ObjectImpl.defaultCurrent);
+        }
+
+        public abstract BomberLoutreIce.User Connect(string login, string password, Ice.Current current__);
+
+        public BomberLoutreIce.User CreateUser(string login, string password)
+        {
+            return CreateUser(login, password, Ice.ObjectImpl.defaultCurrent);
+        }
+
+        public abstract BomberLoutreIce.User CreateUser(string login, string password, Ice.Current current__);
+
+        public BomberLoutreIce.Game[] GetGameList()
+        {
+            return GetGameList(Ice.ObjectImpl.defaultCurrent);
+        }
+
+        public abstract BomberLoutreIce.Game[] GetGameList(Ice.Current current__);
+
+        public BomberLoutreIce.Game JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser)
+        {
+            return JoinGame(aGame, aUser, Ice.ObjectImpl.defaultCurrent);
+        }
+
+        public abstract BomberLoutreIce.Game JoinGame(BomberLoutreIce.Game aGame, BomberLoutreIce.User aUser, Ice.Current current__);
+
+        public BomberLoutreIce.Game CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser)
+        {
+            return CreateGame(newGame, aUser, Ice.ObjectImpl.defaultCurrent);
+        }
+
+        public abstract BomberLoutreIce.Game CreateGame(BomberLoutreIce.Game newGame, BomberLoutreIce.User aUser, Ice.Current current__);
+
+        #endregion
+
+        #region Slice type-related members
+
+        public static new readonly string[] ids__ = 
+        {
+            "::BomberLoutreIce::Server",
+            "::Ice::Object"
+        };
+
+        public override bool ice_isA(string s)
+        {
+            return _System.Array.BinarySearch(ids__, s, IceUtilInternal.StringUtil.OrdinalStringComparer) >= 0;
+        }
+
+        public override bool ice_isA(string s, Ice.Current current__)
+        {
+            return _System.Array.BinarySearch(ids__, s, IceUtilInternal.StringUtil.OrdinalStringComparer) >= 0;
+        }
+
+        public override string[] ice_ids()
+        {
+            return ids__;
+        }
+
+        public override string[] ice_ids(Ice.Current current__)
+        {
+            return ids__;
+        }
+
+        public override string ice_id()
+        {
+            return ids__[0];
+        }
+
+        public override string ice_id(Ice.Current current__)
+        {
+            return ids__[0];
+        }
+
+        public static new string ice_staticId()
+        {
+            return ids__[0];
+        }
+
+        #endregion
+
+        #region Operation dispatch
+
+        [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
+        public static Ice.DispatchStatus Connect___(Server obj__, IceInternal.Incoming inS__, Ice.Current current__)
         {
             checkMode__(Ice.OperationMode.Normal, current__.mode);
             IceInternal.BasicStream is__ = inS__.istr();
@@ -3823,7 +4487,7 @@ namespace BomberLoutreIce
         }
 
         [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-        public static Ice.DispatchStatus CreateUser___(Client obj__, IceInternal.Incoming inS__, Ice.Current current__)
+        public static Ice.DispatchStatus CreateUser___(Server obj__, IceInternal.Incoming inS__, Ice.Current current__)
         {
             checkMode__(Ice.OperationMode.Normal, current__.mode);
             IceInternal.BasicStream is__ = inS__.istr();
@@ -3856,7 +4520,7 @@ namespace BomberLoutreIce
         }
 
         [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-        public static Ice.DispatchStatus GetGameList___(Client obj__, IceInternal.Incoming inS__, Ice.Current current__)
+        public static Ice.DispatchStatus GetGameList___(Server obj__, IceInternal.Incoming inS__, Ice.Current current__)
         {
             checkMode__(Ice.OperationMode.Normal, current__.mode);
             inS__.istr().skipEmptyEncaps();
@@ -3878,22 +4542,50 @@ namespace BomberLoutreIce
         }
 
         [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-        public static Ice.DispatchStatus JoinGame___(Client obj__, IceInternal.Incoming inS__, Ice.Current current__)
+        public static Ice.DispatchStatus JoinGame___(Server obj__, IceInternal.Incoming inS__, Ice.Current current__)
         {
             checkMode__(Ice.OperationMode.Normal, current__.mode);
             IceInternal.BasicStream is__ = inS__.istr();
             is__.startReadEncaps();
-            string name;
-            name = is__.readString();
+            BomberLoutreIce.Game aGame;
+            aGame = null;
+            if(aGame == null)
+            {
+                aGame = new BomberLoutreIce.Game();
+            }
+            aGame.read__(is__);
+            BomberLoutreIce.User aUser;
+            aUser = null;
+            if(aUser == null)
+            {
+                aUser = new BomberLoutreIce.User();
+            }
+            aUser.read__(is__);
             is__.endReadEncaps();
             IceInternal.BasicStream os__ = inS__.ostr();
-            BomberLoutreIce.ServerPrx ret__ = obj__.JoinGame(name, current__);
-            BomberLoutreIce.ServerPrxHelper.write__(os__, ret__);
-            return Ice.DispatchStatus.DispatchOK;
+            try
+            {
+                BomberLoutreIce.Game ret__ = obj__.JoinGame(aGame, aUser, current__);
+                if(ret__ == null)
+                {
+                    BomberLoutreIce.Game tmp__ = new BomberLoutreIce.Game();
+                    tmp__.write__(os__);
+                }
+                else
+                {
+                    ret__.write__(os__);
+                }
+                return Ice.DispatchStatus.DispatchOK;
+            }
+            catch(BomberLoutreIce.WTFIsThatGameException ex__)
+            {
+                os__.writeUserException(ex__);
+                return Ice.DispatchStatus.DispatchUserException;
+            }
         }
 
         [_System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011")]
-        public static Ice.DispatchStatus CreateGame___(Client obj__, IceInternal.Incoming inS__, Ice.Current current__)
+        public static Ice.DispatchStatus CreateGame___(Server obj__, IceInternal.Incoming inS__, Ice.Current current__)
         {
             checkMode__(Ice.OperationMode.Normal, current__.mode);
             IceInternal.BasicStream is__ = inS__.istr();
@@ -3905,10 +4597,25 @@ namespace BomberLoutreIce
                 newGame = new BomberLoutreIce.Game();
             }
             newGame.read__(is__);
+            BomberLoutreIce.User aUser;
+            aUser = null;
+            if(aUser == null)
+            {
+                aUser = new BomberLoutreIce.User();
+            }
+            aUser.read__(is__);
             is__.endReadEncaps();
             IceInternal.BasicStream os__ = inS__.ostr();
-            BomberLoutreIce.ServerPrx ret__ = obj__.CreateGame(newGame, current__);
-            BomberLoutreIce.ServerPrxHelper.write__(os__, ret__);
+            BomberLoutreIce.Game ret__ = obj__.CreateGame(newGame, aUser, current__);
+            if(ret__ == null)
+            {
+                BomberLoutreIce.Game tmp__ = new BomberLoutreIce.Game();
+                tmp__.write__(os__);
+            }
+            else
+            {
+                ret__.write__(os__);
+            }
             return Ice.DispatchStatus.DispatchOK;
         }
 
@@ -4003,14 +4710,14 @@ namespace BomberLoutreIce
         public override void write__(Ice.OutputStream outS__)
         {
             Ice.MarshalException ex = new Ice.MarshalException();
-            ex.reason = "type BomberLoutreIce::Client was not generated with stream support";
+            ex.reason = "type BomberLoutreIce::Server was not generated with stream support";
             throw ex;
         }
 
         public override void read__(Ice.InputStream inS__, bool rid__)
         {
             Ice.MarshalException ex = new Ice.MarshalException();
-            ex.reason = "type BomberLoutreIce::Client was not generated with stream support";
+            ex.reason = "type BomberLoutreIce::Server was not generated with stream support";
             throw ex;
         }
 
