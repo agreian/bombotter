@@ -56,7 +56,7 @@ namespace BomberLoutre.Client.Launcher
 
         private void btnJoinGame_Click(object sender, RoutedEventArgs e)
         {
-            BeforeGameWindow beforeGame = new BeforeGameWindow(Client.CurrentClientPrx.JoinGame(((GameClient)this.listGames.SelectedItem).Name));
+            BeforeGameWindow beforeGame = new BeforeGameWindow(((GameClient)this.listGames.SelectedItem).Game);
             beforeGame.Show();
             this.Close();
         }
