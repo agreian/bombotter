@@ -29,7 +29,6 @@ namespace BomberLoutre
         public BomberLoutreGame()
         {
             graphics = new GraphicsDeviceManager(this);
-
             Content.RootDirectory = "Content";
             /*
             IsFixedTimeStep = false;
@@ -38,6 +37,12 @@ namespace BomberLoutre
             graphics.PreferredBackBufferWidth = Properties.App.Default.ScreenWidth;
             graphics.PreferredBackBufferHeight = Properties.App.Default.ScreenHeight;
             graphics.IsFullScreen = Properties.App.Default.ScreenFullScreen;
+
+            Config.BonusDrop.Add(Config.BonusPower, 60);
+            Config.BonusDrop.Add(Config.BonusBomb, 60);
+            Config.BonusDrop.Add(Config.BonusSpeed, 40);
+            Config.BonusDrop.Add(Config.BonusKick, 20);
+            Config.BonusDrop.Add(Config.BonusPowerMax, 10);
 
             // Jeu
             Components.Add(new InputHandler(this));

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace BomberLoutre
 {
@@ -9,11 +10,18 @@ namespace BomberLoutre
 
         public static int OtterWidth = 64;
         public static int OtterHeight = 72;
-        public static int HitBoxWidth = 50;
-        public static int HitBoxHeight = 50;
+        public static int HitBoxWidth = 45;
+        public static int HitBoxHeight = 45;
 
         public static int ExplosionDelay = 2; // s
-        public static int BurningDelay = 500; // ms
+        public static int BurningDelay = 400; // ms
+
+        public static Dictionary<string, int> BonusDrop = new Dictionary<string, int>(); // rempli dans BomberLoutreGame()
+        public const string BonusPower = "POWER";
+        public const string BonusPowerMax = "POWERMAX";
+        public const string BonusBomb = "BOMB";
+        public const string BonusKick = "KICK";
+        public const string BonusSpeed = "SPEED";
 
         public static Point MapSize = new Point(13, 11);
         public static int TileWidth = 60;
