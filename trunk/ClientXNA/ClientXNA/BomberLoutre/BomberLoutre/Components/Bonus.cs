@@ -23,22 +23,21 @@ namespace BomberLoutre.Components
 
             switch (type)
             {
-                case "powerUp":
+                case Config.BonusPower:
                     Texture = gameRef.Content.Load<Texture2D>("Graphics/Bonus/flameNormal");
                 break;
-                case "powerUpGold":
+                case Config.BonusPowerMax:
                     Texture = gameRef.Content.Load<Texture2D>("Graphics/Bonus/flameGold");
                 break;
-                case "canKick":
+                case Config.BonusKick:
                     Texture = gameRef.Content.Load<Texture2D>("Graphics/Bonus/kick");
                 break;
-                case "speedUp":
+                case Config.BonusSpeed:
                     Texture = gameRef.Content.Load<Texture2D>("Graphics/Bonus/boots");
                 break;
-                case "bombUp":
+                case Config.BonusBomb:
                     Texture = gameRef.Content.Load<Texture2D>("Graphics/Bonus/bombUp");
                 break;
-
             }
 
             Vector2 perfectPosition = Map.CellToVector((int)cellule.X, (int)cellule.Y);

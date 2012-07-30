@@ -98,7 +98,6 @@ namespace BomberLoutre.Screens
 
             MapZone.Draw(gameTime); // Dessin de la map
 
-
             GameRef.spriteBatch.Begin();
 
             for (i = 0; i < boxList.Count; ++i)         boxList[i].Draw(gameTime);
@@ -109,7 +108,7 @@ namespace BomberLoutre.Screens
             for (i = 0; i < flameList.Count; ++i)       flameList[i].Draw(gameTime);
 
             //GameRef.spriteBatch.DrawString(this.MidFont, String.Format("({0} : {1})", playerList[0].Sprite.SpritePosition.X - Config.MapLayer.X, playerList[0].Sprite.SpritePosition.Y - Config.MapLayer.Y), new Vector2(30, 30), Color.Red);
-            GameRef.spriteBatch.DrawString(this.MidFont, String.Format("({0} : {1})", playerList[0].Sprite.CellPosition.X, playerList[0].Sprite.CellPosition.Y), new Vector2(30, 60), Color.Red);
+            //GameRef.spriteBatch.DrawString(this.MidFont, String.Format("({0} : {1})", playerList[0].Sprite.CellPosition.X, playerList[0].Sprite.CellPosition.Y), new Vector2(30, 60), Color.Red);
             
             GameRef.spriteBatch.End();
             base.Draw(gameTime);
@@ -137,10 +136,28 @@ namespace BomberLoutre.Screens
         public void AddRandomBonus(int x, int y)
         {
             Bonus randomBonus;
-            string[] types = new string[] { "powerUp", "powerUpGold", "canKick", "speedUp", "bombUp" };
-            int randomNumber = randomizer.Next(10);
+            string[] types = new string[] { Config.BonusPowerMax, 
 
-            if (randomNumber < 5)
+                                            Config.BonusKick, 
+                                            Config.BonusKick, 
+
+                                            Config.BonusSpeed,
+                                            Config.BonusSpeed,
+                                            Config.BonusSpeed,
+
+                                            Config.BonusPower,
+                                            Config.BonusPower,
+                                            Config.BonusPower,
+                                            Config.BonusPower,
+
+                                            Config.BonusBomb,
+                                            Config.BonusBomb,
+                                            Config.BonusBomb,
+                                            Config.BonusBomb
+                                            };
+
+            int randomNumber = randomizer.Next(types.Length);
+            if (Config.BonusDrop[types[randomNumber]] >= randomizer.Next(100))
             {
                 randomBonus = new Bonus(GameRef, new Vector2(x, y), types[(randomNumber)]);
                 bonusList.Add(randomBonus);
@@ -192,43 +209,57 @@ namespace BomberLoutre.Screens
             flameList.Remove(flame);
         }
 
+        public void RemoveBonus(Bonus bonus)
+        {
+            bonusList.Remove(bonus);
+            Map.RemoveBonus((int) bonus.CellPosition.X, (int) bonus.CellPosition.Y);
+        }
+
         public void ApplyBonus(Player player, int x, int y)
         {
-            int i;
-            for (i = 0; i < bonusList.Count; ++i)
+            Bonus toApply = GetBonus(x, y);
+
+            switch (toApply.Type)
+            {
+                case Config.BonusPower:
+                    if(player.BombPower < Config.MaxBombPower)
+                        player.BombPower++;
+                break;
+
+                case Config.BonusPowerMax:
+                    player.BombPower = Config.MaxBombPower;
+                    break;
+
+                case Config.BonusSpeed:
+                    if(player.WalkSpeed < Config.MaxWalkSpeed)
+                        player.WalkSpeed += Config.SpeedUpIncrement;
+                    break;
+
+                case Config.BonusBomb:
+                    player.BombNumber++;
+                    player.BombAvailable++;
+                break;
+
+                case Config.BonusKick:
+                    player.CanKick = true;
+                break;
+            }
+
+            Map.RemoveBonus(x, y);
+            bonusList.Remove(toApply);
+        }
+
+        public Bonus GetBonus(int x, int y)
+        {
+            for (int i = 0; i < bonusList.Count; ++i)
             {
                 if ((bonusList[i].CellPosition.X == x && bonusList[i].CellPosition.Y == y))
                 {
-                    switch (bonusList[i].Type)
-                    {
-                        case "powerUp":
-                            if(player.BombPower < Config.MaxBombPower)
-                                player.BombPower++;
-                        break;
-
-                        case "powerUpGold":
-                            player.BombPower = Config.MaxBombPower;
-                          break;
-
-                        case "speedUp":
-                            if(player.WalkSpeed < Config.MaxWalkSpeed)
-                                player.WalkSpeed += Config.SpeedUpIncrement;
-                         break;
-
-                        case "bombUp":
-                            player.BombNumber++;
-                            player.BombAvailable++;
-                        break;
-
-                        case "canKick":
-                            player.CanKick = true;
-                        break;
-                    }
-
-                    Map.RemoveBonus(x, y);
-                    bonusList.RemoveAt(i);
+                    return bonusList[i];
                 }
             }
+
+            return null;
         }
 
         public bool ComputeExplosion(Bomb bomb, int xOffset, int yOffset, bool stop)
@@ -244,6 +275,11 @@ namespace BomberLoutre.Screens
                         newFlame = new Flame((int)bomb.CellPosition.X + xOffset, (int)bomb.CellPosition.Y + yOffset, this, GameRef, rotateFlame);
                         flameList.Add(newFlame);
                         CheckIfPlayersDie(newFlame);
+
+                        if(Map.IsBonus((int)bomb.CellPosition.X + xOffset, (int)bomb.CellPosition.Y + yOffset))
+                        {
+                            RemoveBonus(GetBonus((int)bomb.CellPosition.X + xOffset, (int)bomb.CellPosition.Y + yOffset));
+                        }
                     }
                 }
 

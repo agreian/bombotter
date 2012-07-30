@@ -61,7 +61,7 @@ namespace BomberLoutre.Components
 
         public void Update(GameTime gameTime)
         {
-            HitBox = new Rectangle((int)Sprite.SpritePosition.X + (Config.OtterWidth - Config.HitBoxWidth)/2, (int)Sprite.SpritePosition.Y + (Config.OtterHeight - Config.HitBoxHeight) / 2, Config.HitBoxWidth, Config.HitBoxHeight);
+            HitBox = new Rectangle((int)Sprite.SpritePosition.X + (Config.OtterWidth - Config.HitBoxWidth)/2, (int)Sprite.SpritePosition.Y + 7 + (Config.OtterHeight - Config.HitBoxHeight) / 2, Config.HitBoxWidth, Config.HitBoxHeight);
             CheckBombing();
 
             previousKBState = currentKBState;
